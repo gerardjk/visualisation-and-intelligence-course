@@ -1,0 +1,2 @@
+date,tool_model,purpose,prompt_summary,output_summary,accepted_modified_rejected,verification_step,what_tool_missed_or_got_wrong,responsible_student
+Week 5,Example tool,Debug cached loading,Asked for cached Streamlit CSV loader,Suggested st.cache_data function,modified,Ran app and checked row count,Did not include column validation,Example Student

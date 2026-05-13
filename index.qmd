@@ -1,0 +1,53 @@
+---
+title: "Visualisation and Intelligence"
+subtitle: "Narrative, Critique, and Analytics"
+---
+
+::: {.hero-title}
+Visualisation and Intelligence
+:::
+
+::: {.hero-subtitle}
+Narrative, Critique, and Analytics
+:::
+
+This course teaches students to design, critique, deploy, and defend visual data products in an environment where intelligent tools can generate charts, code, captions, and dashboards quickly but not always reliably.
+
+The course is not primarily about tools. It uses Tableau Public and Streamlit, but the core capability is professional judgement: identifying the user story, selecting the visual task, building the artefact, disclosing the data and intelligent-tool use, reviewing the interpretation, repairing weaknesses, and defending the judgement.
+
+::: {.callout-tip title="How this site fits with Canvas"}
+Use Canvas for enrolment, announcements, graded quizzes, submissions, due dates, and the gradebook. Use this Quarto site for weekly content, code examples, templates, assignment briefs, readings, and the eventual public-facing course/book materials.
+:::
+
+## Course spine
+
+| Week | Title | Core question |
+|---:|---|---|
+| 1 | Seeing Data: Visualisation, Intelligence, and Interpretation | How do charts create meaning? |
+| 2 | Choosing Visual Forms: Encoding, Tidy Data, and the Visual Vocabulary | What visual task are we performing? |
+| 3 | Dashboards, Personas, and User Stories: Tableau Public | Who is this for and what do they need to do? |
+| 4 | Interactive Data Apps with Streamlit | How does a user interact with the data? |
+| 5 | From Prototype to Public Data Product | Can someone else open, understand, trust, and use it? |
+| 6 | Web Visualisation Studio: Maps, Flows, Animation, 3D, and JavaScript Literacy | When do we need specialised or web-native visualisation? |
+| 7 | Responsible Interpretation and Visualisation Quality Review | Is the interpretation justified, accessible, and responsible? |
+| 8 | Present and Defend: Visual Intelligence in Practice | Can students defend the whole product? |
+
+## Repeated professional routine
+
+1. Identify the user story.
+2. Choose the visual task using the FT Visual Vocabulary.
+3. Build the artefact.
+4. Deploy or publish it so another person can use it.
+5. Disclose the data source, limitations, and intelligent-tool use.
+6. Review the interpretation.
+7. Repair weaknesses.
+8. Defend the judgement.
+
+## Quick links
+
+- [Weekly schedule](schedule.qmd)
+- [Assessment overview](assessments.qmd)
+- [Canvas and quizzes](canvas.qmd)
+- [Resources](resources.qmd)
+- [Starter Streamlit app](starter_app/README.md)
+- [Autograder README](autograder/README.md)

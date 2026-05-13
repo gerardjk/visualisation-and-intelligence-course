@@ -1,0 +1,60 @@
+---
+title: "Web Visualisation Studio: Maps, Flows, Animation, 3D, and JavaScript Literacy"
+---
+
+::: {.week-card}
+**Core question:** When do we need specialised or web-native visualisation?
+:::
+
+## Learning focus
+
+- web stack literacy: HTML, CSS, JavaScript, SVG, Canvas, WebGL
+- D3, Vega-Lite, Plotly.js, Leaflet, deck.gl, Three.js
+- maps, flows, networks, animation, 3D
+- specialised visualisation decision: use or reject
+
+## Three-hour structure
+
+| Segment | Activity |
+|---|---|
+| Hour 1 | Concept, examples, and discussion |
+| Hour 2 | Build, classify, or test |
+| Hour 3 | Critique, review, repair, or studio output |
+
+## Studio output
+
+- Compare Tableau, Streamlit, Observable/D3, and WebGL examples. Complete a Specialised Visualisation Decision.
+
+## Visual Vocabulary prompt
+
+```text
+User story:
+Visualisation purpose:
+FT Visual Vocabulary category:
+Chosen visual form:
+Why this fits the task:
+What could mislead:
+Simpler alternative considered:
+```
+
+## Responsibility checkpoint
+
+```text
+Who is represented?
+Who benefits from this visualisation?
+Who could be harmed or misled?
+What limitation must be disclosed?
+What did intelligent tools help with, and how was the output checked?
+```
+
+## Relevant references
+
+- Robertson et al., “Effectiveness of Animation in Trend Visualization”
+- Marriott et al., “Immersive Analytics”
+- Monmonier, *How to Lie with Maps*, selected chapter
+
+## Related course files
+
+- [Course outline](../COURSE_OUTLINE.md)
+- [Assessment overview](../assessments.qmd)
+- [Templates](../resources.qmd)

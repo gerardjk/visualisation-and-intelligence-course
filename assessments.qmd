@@ -1,0 +1,29 @@
+---
+title: "Assessment"
+---
+
+The assessment architecture keeps as much grading as possible automated while preserving human judgement for critique and defence.
+
+| Assessment | Weight | Type | AI/intelligent-tool status | Primary grading mode |
+|---|---:|---|---|---|
+| Weekly quizzes | 20% | Individual | Open-resource, time-limited | Canvas auto-graded |
+| Studio Critique Portfolio | 15% | Individual | AI-restricted, supervised | Short rubric |
+| Tableau Dashboard Checkpoint | 10% | Individual | Allowed with declaration | Checklist + sample moderation |
+| Public Data Product Checkpoint | 15% | Group | AI-integrated, documented | Autograder/checklist |
+| Group Streamlit App | 20% | Group | AI-integrated, provenance required | Rubric + automated checks |
+| Visualisation Quality Review | 10% | Group | AI-integrated, structured review | Structured rubric |
+| Individual Oral Defence | 10% | Individual | AI-restricted, live | Human rubric |
+
+## Required disclosure
+
+Every group project must include:
+
+- a user story map,
+- a Visual Vocabulary planning table,
+- a Data and AI Disclosure,
+- an AI Provenance Matrix,
+- a revision log after quality review.
+
+## Key rubric principle
+
+Students receive credit not for making the most elaborate visualisation, but for matching visual form to user task and defending the interpretation responsibly.

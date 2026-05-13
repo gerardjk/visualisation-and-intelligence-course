@@ -1,0 +1,31 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "Visualisation and Intelligence"
+  subtitle: "Narrative, Critique, and Analytics"
+  author: "Gerard Kelly"
+  search: true
+  page-navigation: true
+  chapters:
+    - index.qmd
+    - chapters/01-seeing-data.qmd
+    - chapters/02-visual-vocabulary.qmd
+    - chapters/03-dashboards-user-stories.qmd
+    - chapters/04-streamlit-apps.qmd
+    - chapters/05-public-data-products.qmd
+    - chapters/06-web-visualisation-studio.qmd
+    - chapters/07-responsible-interpretation.qmd
+    - chapters/08-critique-defence.qmd
+
+bibliography: ../references.bib
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-copy: true
+  pdf:
+    documentclass: scrreprt
+  epub: default

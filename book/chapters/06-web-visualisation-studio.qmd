@@ -1,0 +1,24 @@
+---
+title: "Maps, Flows, Animation, 3D, and the Web"
+---
+
+## Opening idea
+
+This chapter expands the corresponding weekly course material into a durable book chapter. Replace this scaffold with a worked example, conceptual explanation, technical walkthrough, intelligent-tool critique, common mistakes, and practice exercises.
+
+## Suggested chapter structure
+
+1. Opening example
+2. Core principle
+3. Key concepts
+4. Worked case
+5. Tool demonstration
+6. Intelligent-tool critique
+7. Common mistakes
+8. Practice exercise
+9. Reflection questions
+10. Further reading
+
+## Course connection
+
+See the matching weekly page in the course website for teaching activities, templates, and assessment links.

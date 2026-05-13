@@ -1,0 +1,61 @@
+---
+title: "Dashboards, Personas, and User Stories: Tableau Public"
+---
+
+::: {.week-card}
+**Core question:** Who is this for and what do they need to do?
+:::
+
+## Learning focus
+
+- Tableau Public fundamentals
+- personas and user stories
+- dashboard genres
+- Visual Vocabulary planning for dashboards
+- methodology-change traps and public-data safety
+
+## Three-hour structure
+
+| Segment | Activity |
+|---|---|
+| Hour 1 | Concept, examples, and discussion |
+| Hour 2 | Build, classify, or test |
+| Hour 3 | Critique, review, repair, or studio output |
+
+## Studio output
+
+- Build a one-page Tableau Public dashboard from a supplied dataset and defend it for one persona.
+
+## Visual Vocabulary prompt
+
+```text
+User story:
+Visualisation purpose:
+FT Visual Vocabulary category:
+Chosen visual form:
+Why this fits the task:
+What could mislead:
+Simpler alternative considered:
+```
+
+## Responsibility checkpoint
+
+```text
+Who is represented?
+Who benefits from this visualisation?
+Who could be harmed or misled?
+What limitation must be disclosed?
+What did intelligent tools help with, and how was the output checked?
+```
+
+## Relevant references
+
+- Sarikaya et al., “What Do We Talk About When We Talk About Dashboards?”
+- Bach et al., “Dashboard Design Patterns”
+- Setlur et al., “Heuristics for Supporting Cooperative Dashboard Design”
+
+## Related course files
+
+- [Course outline](../COURSE_OUTLINE.md)
+- [Assessment overview](../assessments.qmd)
+- [Templates](../resources.qmd)

@@ -1,0 +1,60 @@
+---
+title: "Present and Defend: Visual Intelligence in Practice"
+---
+
+::: {.week-card}
+**Core question:** Can students defend the whole product?
+:::
+
+## Learning focus
+
+- group showcase
+- individual oral defence
+- defending user stories, Visual Vocabulary choices, code, data, deployment, disclosure, and AI use
+- final reflection
+
+## Three-hour structure
+
+| Segment | Activity |
+|---|---|
+| Hour 1 | Concept, examples, and discussion |
+| Hour 2 | Build, classify, or test |
+| Hour 3 | Critique, review, repair, or studio output |
+
+## Studio output
+
+- Present the final app and complete individual oral defence.
+
+## Visual Vocabulary prompt
+
+```text
+User story:
+Visualisation purpose:
+FT Visual Vocabulary category:
+Chosen visual form:
+Why this fits the task:
+What could mislead:
+Simpler alternative considered:
+```
+
+## Responsibility checkpoint
+
+```text
+Who is represented?
+Who benefits from this visualisation?
+Who could be harmed or misled?
+What limitation must be disclosed?
+What did intelligent tools help with, and how was the output checked?
+```
+
+## Relevant references
+
+- Bearman et al., “Developing Evaluative Judgement for a Time of Generative AI”
+- Sotiriadou et al., “The Role of Authentic Assessment to Preserve Academic Integrity”
+- Dawson et al., “Validity Matters More Than Cheating”
+
+## Related course files
+
+- [Course outline](../COURSE_OUTLINE.md)
+- [Assessment overview](../assessments.qmd)
+- [Templates](../resources.qmd)

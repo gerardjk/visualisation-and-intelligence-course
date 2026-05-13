@@ -1,0 +1,62 @@
+---
+title: "From Prototype to Public Data Product"
+---
+
+::: {.week-card}
+**Core question:** Can someone else open, understand, trust, and use it?
+:::
+
+## Learning focus
+
+- deployment as public communication
+- GitHub repository structure
+- requirements.txt and dependency errors
+- caching and performance
+- column validation and empty states
+- README, Data and AI Disclosure, provenance
+
+## Three-hour structure
+
+| Segment | Activity |
+|---|---|
+| Hour 1 | Concept, examples, and discussion |
+| Hour 2 | Build, classify, or test |
+| Hour 3 | Critique, review, repair, or studio output |
+
+## Studio output
+
+- Deploy the app, run the Public Data Product Checkpoint, and complete the disclosure draft.
+
+## Visual Vocabulary prompt
+
+```text
+User story:
+Visualisation purpose:
+FT Visual Vocabulary category:
+Chosen visual form:
+Why this fits the task:
+What could mislead:
+Simpler alternative considered:
+```
+
+## Responsibility checkpoint
+
+```text
+Who is represented?
+Who benefits from this visualisation?
+Who could be harmed or misled?
+What limitation must be disclosed?
+What did intelligent tools help with, and how was the output checked?
+```
+
+## Relevant references
+
+- Gebru et al., “Datasheets for Datasets”
+- Mitchell et al., “Model Cards for Model Reporting”
+- Holland et al., “The Dataset Nutrition Label”
+
+## Related course files
+
+- [Course outline](../COURSE_OUTLINE.md)
+- [Assessment overview](../assessments.qmd)
+- [Templates](../resources.qmd)

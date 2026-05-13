@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Minimal SVG Chart</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 2rem; }
+    svg { border: 1px solid #ddd; }
+  </style>
+</head>
+<body>
+  <h1>Minimal JavaScript/SVG Chart</h1>
+  <p>This is not a D3 lesson. It shows the web stack: HTML for structure, CSS for appearance, JavaScript for behaviour, and SVG for drawing.</p>
+
+  <svg id="chart" width="420" height="180" role="img" aria-label="Simple bar chart of three values"></svg>
+
+  <script>
+    const data = [
+      { category: "A", value: 40 },
+      { category: "B", value: 90 },
+      { category: "C", value: 65 }
+    ];
+
+    const svg = document.getElementById("chart");
+    const barHeight = 30;
+
+    data.forEach((d, i) => {
+      const y = 20 + i * 45;
+
+      const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      label.setAttribute("x", 10);
+      label.setAttribute("y", y + 20);
+      label.textContent = d.category;
+      svg.appendChild(label);
+
+      const bar = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      bar.setAttribute("x", 40);
+      bar.setAttribute("y", y);
+      bar.setAttribute("width", d.value * 3);
+      bar.setAttribute("height", barHeight);
+      svg.appendChild(bar);
+    });
+  </script>
+</body>
+</html>

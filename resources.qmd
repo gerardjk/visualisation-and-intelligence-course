@@ -1,0 +1,30 @@
+---
+title: "Resources"
+---
+
+## Core practical resources
+
+- [FT Visual Vocabulary](https://ft-interactive.github.io/visual-vocabulary/)
+- [Tableau Public](https://public.tableau.com/)
+- [Streamlit documentation](https://docs.streamlit.io/)
+- [Streamlit Community Cloud deployment guide](https://docs.streamlit.io/deploy/streamlit-community-cloud)
+- [Quarto documentation](https://quarto.org/docs/)
+
+## Course templates
+
+- [Visual Vocabulary planning table](templates/visual_vocabulary_planning_table.md)
+- [User story map](templates/user_story_map.csv)
+- [Data and AI Disclosure](templates/data_ai_disclosure.md)
+- [AI Provenance Matrix](templates/ai_provenance_matrix.csv)
+- [Visualisation Quality Review form](templates/visualisation_quality_review_form.md)
+- [Oral defence marker sheet](templates/oral_defence_marker_sheet.md)
+
+## Technical resources
+
+- [Starter Streamlit app](starter_app/README.md)
+- [Autograder](autograder/README.md)
+- [Dataset guide](datasets/README.md)
+
+## Curated references
+
+See [docs/references_curated.md](docs/references_curated.md) and [references.bib](references.bib).

@@ -1,0 +1,61 @@
+---
+title: "Choosing Visual Forms: Encoding, Tidy Data, and the Visual Vocabulary"
+---
+
+::: {.week-card}
+**Core question:** What visual task are we performing?
+:::
+
+## Learning focus
+
+- FT Visual Vocabulary categories
+- visual encodings and perceptual ranking
+- colour as encoding
+- tidy data and the wide-to-long pattern
+- AI-assisted data wrangling critique
+
+## Three-hour structure
+
+| Segment | Activity |
+|---|---|
+| Hour 1 | Concept, examples, and discussion |
+| Hour 2 | Build, classify, or test |
+| Hour 3 | Critique, review, repair, or studio output |
+
+## Studio output
+
+- Sort analytical questions into Visual Vocabulary categories, then redesign a weak chart three ways.
+
+## Visual Vocabulary prompt
+
+```text
+User story:
+Visualisation purpose:
+FT Visual Vocabulary category:
+Chosen visual form:
+Why this fits the task:
+What could mislead:
+Simpler alternative considered:
+```
+
+## Responsibility checkpoint
+
+```text
+Who is represented?
+Who benefits from this visualisation?
+Who could be harmed or misled?
+What limitation must be disclosed?
+What did intelligent tools help with, and how was the output checked?
+```
+
+## Relevant references
+
+- FT Visual Vocabulary
+- Franconeri et al., “The Science of Visual Data Communication”
+- Wickham, “Tidy Data”
+
+## Related course files
+
+- [Course outline](../COURSE_OUTLINE.md)
+- [Assessment overview](../assessments.qmd)
+- [Templates](../resources.qmd)

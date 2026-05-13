@@ -1,0 +1,10 @@
+---
+title: "Visualisation and Intelligence"
+subtitle: "Narrative, Critique, and Analytics"
+---
+
+This book is the long-form version of the course. The course website is organised by week; the book is organised as a coherent text that can be refined after teaching the subject.
+
+## Book argument
+
+Visualisation is not simply a way to present analysis. It is a way to organise attention, comparison, interpretation, and judgement. In an environment of intelligent tools, the human task shifts toward deciding whether visual outputs are accurate, ethical, usable, and fit for purpose.

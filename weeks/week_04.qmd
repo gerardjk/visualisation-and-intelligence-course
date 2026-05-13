@@ -1,0 +1,61 @@
+---
+title: "Interactive Data Apps with Streamlit"
+---
+
+::: {.week-card}
+**Core question:** How does a user interact with the data?
+:::
+
+## Learning focus
+
+- Streamlit app structure
+- data loading and cached loading
+- filters and reactive interaction
+- interface basics: hierarchy, empty states, error states
+- prompt-driven development and AI provenance
+
+## Three-hour structure
+
+| Segment | Activity |
+|---|---|
+| Hour 1 | Concept, examples, and discussion |
+| Hour 2 | Build, classify, or test |
+| Hour 3 | Critique, review, repair, or studio output |
+
+## Studio output
+
+- Build a local Streamlit MVP with two filters, two charts, a user story, and initial provenance entries.
+
+## Visual Vocabulary prompt
+
+```text
+User story:
+Visualisation purpose:
+FT Visual Vocabulary category:
+Chosen visual form:
+Why this fits the task:
+What could mislead:
+Simpler alternative considered:
+```
+
+## Responsibility checkpoint
+
+```text
+Who is represented?
+Who benefits from this visualisation?
+Who could be harmed or misled?
+What limitation must be disclosed?
+What did intelligent tools help with, and how was the output checked?
+```
+
+## Relevant references
+
+- Long and Magerko, “What is AI Literacy?”
+- Denny et al., “Computing Education in the Era of Generative AI”
+- White et al., “A Prompt Pattern Catalog”
+
+## Related course files
+
+- [Course outline](../COURSE_OUTLINE.md)
+- [Assessment overview](../assessments.qmd)
+- [Templates](../resources.qmd)

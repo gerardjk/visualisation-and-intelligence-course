@@ -1,0 +1,60 @@
+---
+title: "Seeing Data: Visualisation, Intelligence, and Interpretation"
+---
+
+::: {.week-card}
+**Core question:** How do charts create meaning?
+:::
+
+## Learning focus
+
+- visualisation as interpretation
+- human and machine intelligence
+- AI-generated charts and hallucinated insight
+- Indigenous Data Sovereignty and data-governance questions
+
+## Three-hour structure
+
+| Segment | Activity |
+|---|---|
+| Hour 1 | Concept, examples, and discussion |
+| Hour 2 | Build, classify, or test |
+| Hour 3 | Critique, review, repair, or studio output |
+
+## Studio output
+
+- Critique one human-made chart and one AI-generated interpretation. Identify claim, audience, visual task, omissions, and verification needs.
+
+## Visual Vocabulary prompt
+
+```text
+User story:
+Visualisation purpose:
+FT Visual Vocabulary category:
+Chosen visual form:
+Why this fits the task:
+What could mislead:
+Simpler alternative considered:
+```
+
+## Responsibility checkpoint
+
+```text
+Who is represented?
+Who benefits from this visualisation?
+Who could be harmed or misled?
+What limitation must be disclosed?
+What did intelligent tools help with, and how was the output checked?
+```
+
+## Relevant references
+
+- Cairo, selected chapter from *How Charts Lie*
+- D’Ignazio and Klein, selected chapter from *Data Feminism*
+- Maiam nayri Wingara Indigenous Data Sovereignty Communique
+
+## Related course files
+
+- [Course outline](../COURSE_OUTLINE.md)
+- [Assessment overview](../assessments.qmd)
+- [Templates](../resources.qmd)

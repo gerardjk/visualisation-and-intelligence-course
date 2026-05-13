@@ -1,0 +1,51 @@
+---
+title: "Canvas, Quizzes, and Quarto"
+---
+
+Quarto should not replace Canvas. Canvas remains the official teaching system for enrolments, announcements, assignments, quizzes, deadlines, and the gradebook.
+
+Quarto handles the materials that Canvas handles poorly: long-form notes, code examples, templates, weekly pages, book chapters, and public-facing course resources.
+
+## Recommended division of labour
+
+| Need | Use Canvas | Use Quarto |
+|---|---|---|
+| Announcements | yes | no |
+| Official due dates | yes | optional mirror |
+| Gradebook | yes | no |
+| Graded quizzes | yes | no |
+| Assignment submission | yes | no |
+| Weekly lecture notes | link out | yes |
+| Code examples | link out | yes |
+| Templates | link out | yes |
+| Public course website | no | yes |
+| Book/exportable text | no | yes |
+
+## Quarto and quizzes
+
+Quarto is not a quiz engine and does not provide a Canvas-style gradebook. Use Canvas New Quizzes or the institutional LMS for all graded quizzes.
+
+Quarto can still host:
+
+- practice questions,
+- worked examples,
+- quiz study guides,
+- links to Canvas quizzes,
+- ungraded self-check questions,
+- embedded H5P or external quiz widgets if the institution supports them.
+
+## Weekly Canvas shell
+
+A simple Canvas weekly module can be:
+
+```text
+Week 4 — Interactive Data Apps with Streamlit
+1. Read the Quarto Week 4 page
+2. Download the starter app template
+3. Complete Canvas Quiz 4
+4. Submit the Streamlit MVP checkpoint
+```
+
+## Why keep quizzes in Canvas?
+
+Canvas handles authentication, timing, accessibility accommodations, submissions, grades, and institutional records. Quarto is better treated as the publishing layer, not the assessment-management layer.

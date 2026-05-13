@@ -1,0 +1,4 @@
+user_story_id,persona,user_story,app_feature,visual_vocabulary_category,data_required,interaction_required,risk
+US1,Transport analyst,"As a transport analyst, I want to compare patronage recovery by mode since 2019, so that I can identify which modes remain below baseline.",Mode and region filters plus indexed line chart,Change over time,"date region mode index_2019",multiselect filters,methodology break
+US2,Policy adviser,"As a policy adviser, I want to identify which modes are weakest in the latest month, so that I can prioritise follow-up analysis.",Latest ranking bar chart,Ranking,"date mode region index_2019",metric and filter controls,latest month may be atypical
+US3,Reviewer,"As a reviewer, I want to see the data source and limitations, so that I can judge whether the app is appropriate for my use.",Data and AI Disclosure expander,Documentation/trust,metadata and provenance,expander,disclosure could be too vague

@@ -1,0 +1,100 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Visualisation and Intelligence"
+  description: "Narrative, Critique, and Analytics"
+  site-url: "https://YOUR-GITHUB-USERNAME.github.io/visualisation-and-intelligence-course/"
+  repo-url: "https://github.com/YOUR-GITHUB-USERNAME/visualisation-and-intelligence-course"
+  repo-actions: [edit, issue]
+  search: true
+  page-navigation: true
+  back-to-top-navigation: true
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: schedule.qmd
+        text: Schedule
+      - href: assessments.qmd
+        text: Assessment
+      - href: canvas.qmd
+        text: Canvas + Quizzes
+      - href: resources.qmd
+        text: Resources
+      - text: Weeks
+        menu:
+          - href: weeks/week_01.qmd
+            text: "1 Seeing Data"
+          - href: weeks/week_02.qmd
+            text: "2 Visual Forms"
+          - href: weeks/week_03.qmd
+            text: "3 Dashboards"
+          - href: weeks/week_04.qmd
+            text: "4 Streamlit Apps"
+          - href: weeks/week_05.qmd
+            text: "5 Public Data Product"
+          - href: weeks/week_06.qmd
+            text: "6 Web Visualisation Studio"
+          - href: weeks/week_07.qmd
+            text: "7 Responsible Interpretation"
+          - href: weeks/week_08.qmd
+            text: "8 Present and Defend"
+    right:
+      - href: https://ft-interactive.github.io/visual-vocabulary/
+        text: FT Visual Vocabulary
+      - href: https://docs.streamlit.io/
+        text: Streamlit Docs
+  sidebar:
+    style: docked
+    search: true
+    contents:
+      - section: "Course"
+        contents:
+          - index.qmd
+          - schedule.qmd
+          - assessments.qmd
+          - canvas.qmd
+          - resources.qmd
+      - section: "Weekly materials"
+        contents:
+          - weeks/week_01.qmd
+          - weeks/week_02.qmd
+          - weeks/week_03.qmd
+          - weeks/week_04.qmd
+          - weeks/week_05.qmd
+          - weeks/week_06.qmd
+          - weeks/week_07.qmd
+          - weeks/week_08.qmd
+      - section: "Assignments"
+        contents:
+          - href: assignments/A2_studio_critique_portfolio.md
+            text: Studio Critique Portfolio
+          - href: assignments/A3_tableau_dashboard_checkpoint.md
+            text: Tableau Dashboard Checkpoint
+          - href: assignments/A4_public_data_product_checkpoint.md
+            text: Public Data Product Checkpoint
+          - href: assignments/A5_group_streamlit_app.md
+            text: Group Streamlit App
+          - href: assignments/A6_visualisation_quality_review.md
+            text: Visualisation Quality Review
+          - href: assignments/A7_individual_oral_defence.md
+            text: Individual Oral Defence
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    css: assets/course.css
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-overflow: wrap
+    link-external-icon: true
+    callout-appearance: simple
+    citations-hover: true
+    footnotes-hover: true
+
+bibliography: references.bib

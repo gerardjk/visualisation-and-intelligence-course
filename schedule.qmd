@@ -1,0 +1,24 @@
+---
+title: "Schedule"
+---
+
+| Week | Lecture | Studio output | Assessment milestone |
+|---:|---|---|---|
+| 1 | Seeing Data: Visualisation, Intelligence, and Interpretation | Critique 1 | Diagnostic quiz |
+| 2 | Choosing Visual Forms: Encoding, Tidy Data, and the Visual Vocabulary | Critique 2 + visual vocabulary sort | Weekly quiz |
+| 3 | Dashboards, Personas, and User Stories: Tableau Public | Tableau dashboard planning + build | Tableau Dashboard Checkpoint |
+| 4 | Interactive Data Apps with Streamlit | Local Streamlit MVP | Weekly quiz |
+| 5 | From Prototype to Public Data Product | Deployed app prototype + disclosure draft | Public Data Product Checkpoint |
+| 6 | Web Visualisation Studio: Maps, Flows, Animation, 3D, and JavaScript Literacy | Specialised Visualisation Decision | Weekly quiz |
+| 7 | Responsible Interpretation and Visualisation Quality Review | Quality Review + revision log | Studio Critique 3 + Quality Review |
+| 8 | Present and Defend: Visual Intelligence in Practice | Presentation + oral defence | Final app + oral defence |
+
+## Weekly rhythm
+
+Each session is three hours:
+
+| Segment | Purpose |
+|---|---|
+| Hour 1 | Concept and examples |
+| Hour 2 | Build or technical practice |
+| Hour 3 | Critique, review, repair, or studio work |
