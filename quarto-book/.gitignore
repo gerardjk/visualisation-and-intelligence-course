@@ -1,0 +1,14 @@
+# Quarto
+/.quarto/
+/_book/
+/_freeze/
+/*_files/
+*.tex
+!references.bib
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+**/*.quarto_ipynb

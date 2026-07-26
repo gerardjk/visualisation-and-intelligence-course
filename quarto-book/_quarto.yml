@@ -1,0 +1,34 @@
+project:
+  type: book
+  pre-render: check_citations.py
+
+book:
+  title: "How the World Is Organised"
+  subtitle: "A Visual Account"
+  author: "Gerard Kelly"
+  date: today
+  search: true
+  repo-url: https://github.com/gerardjk/quarto-book
+  repo-actions: [edit, source]
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - atlas.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+# Cache results so unchanged chapters are not re-run on every build.
+# Delete _freeze/ to force a full rerun.
+execute:
+  freeze: auto
+
+format:
+  html:
+    theme: cosmo
+    code-fold: true
+    toc: true
+  pdf:
+    documentclass: scrbook
+    pdf-engine: lualatex   # preserves the lualatex/microtype workflow
+    keep-tex: true

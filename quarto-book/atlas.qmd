@@ -1,0 +1,4782 @@
+# Atlas {#sec-atlas}
+
+Every entry below follows one fixed template — a provenance class, a citable
+canonical introduction, the domain the form organises, a gloss of one or two
+sentences, and a reproduction generated from data or a faithful model instance.
+The set is meant to read as a catalogue, not an anthology: the shape repeats so
+that the differences between forms, not the differences between write-ups, do
+the work. Each entry carries a *citable canonical introduction* rather than an
+asserted origin, and where the earliest instance and the cited introduction are
+different documents both are named.
+
+| Class | Means |
+|-------|-------|
+| **Named first** | A specific, attributable earliest instance. |
+| **Canonical reference** | The publication the field cites as the introduction, which may post-date the first. |
+| **Shared genre idiom** | A form with no single inventor; emerged across multiple hands. |
+| **Uncertain attribution** | Contested or unverified origin; flagged, not resolved. |
+
+The order is a teaching order, not a chronology and not a subject index. It runs
+from the raw perceptual channels a single mark can exploit (Part A), through the
+Gestalt principles that let many marks group into structure (Part B), to the
+dynamic and uncertain territory beyond the static frame (Part C). Entries keep a
+running number from 1 to 103 and sit under unit headings that carry the
+argument. The AIATSIS map of Indigenous Australia stands before them all.
+
+Every figure is redrawn from data or a reproduced model instance; no
+copyrighted original is embedded. The historical image is described in prose and
+cited. Reproductions use representative data where the original series is not
+to hand — enough to show the form the field made canonical, never passed off as
+the original measurement.
+
+# Prelude — Acknowledgement of Country {#sec-prelude}
+
+## AIATSIS Map of Indigenous Australia {#sec-aiatsis}
+
+> **Class:** named first
+> **Canonical introduction:** [@horton1996aiatsis]
+> **Domain:** country, language and nation groups across the Australian continent
+
+This book was written on Aboriginal land. David Horton's map for the Australian
+Institute of Aboriginal and Torres Strait Islander Studies renders the general
+locations of more than 250 language, social and nation groups across the
+continent — an attempt to show, on one sheet, that the land was never empty
+[@horton1996aiatsis]. Its boundaries are deliberately soft: they are a general
+guide, contested in places, and explicitly not for use in native-title claims.
+The official image is copyright AIATSIS and is not reproduced here; it should be
+viewed from the source. The panel below is an acknowledgement placeholder, not
+the map, and the problem of drawing a curved continent onto a flat sheet returns
+as a formal question at entry 81.
+
+```{python}
+#| label: fig-aiatsis
+#| fig-cap: "Acknowledgement placeholder — not the AIATSIS map. The official copyright image is viewable from AIATSIS. The soft outline stands only for the continent it describes."
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+# A deliberately abstract continent outline — an acknowledgement panel, not a
+# reproduction of the copyrighted AIATSIS map, which cannot be embedded.
+theta = np.linspace(0, 2 * np.pi, 400)
+r = (1.0 + 0.18 * np.sin(3 * theta) + 0.10 * np.cos(5 * theta)
+     + 0.06 * np.sin(7 * theta))
+x, y = r * np.cos(theta), 0.72 * r * np.sin(theta)
+
+fig, ax = plt.subplots(figsize=(6, 4.4))
+ax.fill(x, y, color="#d9c8a9", alpha=0.55, zorder=1)
+ax.plot(x, y, color="#8a7a5c", lw=1.3, zorder=2)
+ax.text(0, 0.08, "Acknowledgement of Country",
+        ha="center", va="center", fontsize=13, weight="bold",
+        color="#5b4b2e")
+ax.text(0, -0.18,
+        "The land shown was cared for by\nhundreds of language and nation groups.\n"
+        "View the official AIATSIS map from its source.",
+        ha="center", va="center", fontsize=8.5, color="#5b4b2e")
+ax.set_xlim(-1.5, 1.5)
+ax.set_ylim(-1.25, 1.25)
+ax.axis("off")
+ax.set_aspect("equal")
+plt.tight_layout()
+plt.show()
+```
+
+# Day One — cold open {#sec-dayone}
+
+Two figures open the book because they make its case before any theory does.
+Anscombe's quartet (entry 18) holds four datasets with the same mean, variance,
+correlation and regression line, and four completely different shapes — the
+argument for why a summary statistic is not a substitute for a picture. John
+Snow's cholera map (entry 78) is the consequence: a picture that was an
+argument, and that argument changed what a city did about its water. Both live
+in their proper units below; they are named here because everything between them
+is an elaboration of the same two claims — *look at the data*, and *a good
+picture is a claim about cause*.
+# Part A — Encoding & the pre-attentive channels {#sec-part-a}
+
+The pre-attentive channels — position, length, size, colour, orientation — are read before attention lands, and each is read at a sharply different precision. This part walks them one at a time, each illustrated by the canonical figure that made the channel famous.
+
+## A0. The channels themselves {#sec-unit-a0}
+
+*After Bertin, Sémiologie graphique (1967).*
+
+### 1 — Bertin's visual-variables chart {#sec-bertin}
+
+> **Class:** named first
+> **Canonical introduction:** [@bertin1967semiologie]
+> **Domain:** the grammar of marks
+
+Every mark on a plane carries information through a fixed set of retinal variables — position, size, value, texture, colour, orientation, shape — and Bertin was the first to name them as a system and rank their perceptual power [@bertin1967semiologie]. The chart holds every variable constant but one, so each row shows a single channel varying in isolation.
+
+```{python}
+#| label: fig-bertin
+#| fig-cap: "The retinal variables, each varied in isolation along a row."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
+
+np.random.seed(0)
+
+rows = ["Position", "Size", "Value", "Texture", "Colour", "Orientation", "Shape"]
+xs = np.linspace(0.15, 0.95, 6)
+base = "#4269d0"
+
+fig, ax = plt.subplots(figsize=(6, 4.0))
+
+for i, name in enumerate(rows):
+    y = len(rows) - i
+    for j, x in enumerate(xs):
+        t = j / (len(xs) - 1)
+        if name == "Position":
+            ax.scatter(x, y - 0.15 + 0.30 * t, s=90, color=base, zorder=3)
+        elif name == "Size":
+            ax.scatter(x, y, s=30 + 260 * t, color=base, zorder=3)
+        elif name == "Value":
+            ax.scatter(x, y, s=140, color=str(0.9 - 0.8 * t), zorder=3)
+        elif name == "Texture":
+            n = 1 + j
+            gx = np.linspace(x - 0.05, x + 0.05, n)
+            gy = np.full(n, y)
+            ax.scatter(gx, gy, s=12, color="0.25", zorder=3)
+        elif name == "Colour":
+            cols = ["#4269d0", "#efb118", "#ff725c", "#6cc5b0", "#3ca951", "#a463f2"]
+            ax.scatter(x, y, s=140, color=cols[j], zorder=3)
+        elif name == "Orientation":
+            ang = np.pi * t
+            dx, dy = 0.045 * np.cos(ang), 0.28 * np.sin(ang)
+            ax.plot([x - dx, x + dx], [y - dy, y + dy], color=base, lw=3, zorder=3)
+        elif name == "Shape":
+            markers = ["o", "s", "^", "D", "v", "P"]
+            ax.scatter(x, y, s=120, marker=markers[j], color=base, zorder=3)
+    ax.text(0.02, y, name, ha="left", va="center", fontsize=10, fontweight="bold")
+
+ax.set_xlim(-0.02, 1.02)
+ax.set_ylim(0.4, len(rows) + 0.6)
+ax.axis("off")
+ax.set_title("Bertin's retinal variables", fontsize=11)
+plt.tight_layout()
+plt.show()
+```
+
+## A1. Magnitude — length, size, and the biased area channel {#sec-unit-a1}
+
+*After Cleveland & McGill, "Graphical Perception" (1984).*
+
+### 2 — Mohs hardness scale {#sec-mohs}
+
+> **Class:** named first
+> **Canonical introduction:** [@mohs1825treatise]
+> **Domain:** rank as position
+
+Mohs ordered ten reference minerals so that each scratches the one below, giving a clean ordinal ladder from talc to diamond [@mohs1825treatise]. Placed against absolute hardness the ladder betrays itself — the rungs are evenly spaced by rank yet the Vickers numbers explode near the top, so rank is not magnitude.
+
+```{python}
+#| label: fig-mohs
+#| fig-cap: "Mohs rank (evenly spaced) against absolute Vickers hardness (wildly nonlinear)."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+minerals = ["Talc", "Gypsum", "Calcite", "Fluorite", "Apatite",
+            "Orthoclase", "Quartz", "Topaz", "Corundum", "Diamond"]
+rank = np.arange(1, 11)
+vickers = [2, 36, 140, 190, 540, 800, 1120, 1430, 2100, 10000]  # representative
+
+fig, ax1 = plt.subplots(figsize=(6, 3.6))
+
+ax1.barh(rank, rank, color="#4269d0", alpha=0.85, zorder=2)
+ax1.set_yticks(rank)
+ax1.set_yticklabels(minerals, fontsize=8)
+ax1.set_xlabel("Mohs rank (ordinal)")
+ax1.set_xlim(0, 10.5)
+
+ax2 = ax1.twiny()
+ax2.plot(vickers, rank, "o-", color="#ff725c", zorder=3)
+ax2.set_xscale("log")
+ax2.set_xlabel("Vickers hardness (log scale)", color="#ff725c")
+ax2.tick_params(axis="x", colors="#ff725c")
+
+ax1.set_title("Rank ≠ magnitude", fontsize=11)
+ax1.grid(True, axis="x", alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 3 — Population pyramids {#sec-population-pyramid}
+
+> **Class:** uncertain attribution
+> **Canonical introduction:** [@walker1874statistical]
+> **Domain:** a distribution split by category
+
+Back-to-back horizontal bars set male against female across age bands, so the shape of a population — youthful and broad, or ageing and top-heavy — is read at a glance. The form appears in Francis Walker's census atlas [@walker1874statistical], though who drew the first such pyramid is not settled.
+
+```{python}
+#| label: fig-population-pyramid
+#| fig-cap: "Back-to-back age–sex bars: male left, female right, counts tapering with age."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+ages = ["0–9", "10–19", "20–29", "30–39", "40–49",
+        "50–59", "60–69", "70–79", "80+"]
+male = np.array([98, 94, 88, 80, 70, 56, 40, 24, 10], dtype=float)
+female = np.array([94, 90, 86, 79, 71, 59, 45, 30, 16], dtype=float)
+y = np.arange(len(ages))
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.barh(y, -male, color="#4269d0", label="Male")
+ax.barh(y, female, color="#ff725c", label="Female")
+
+ax.set_yticks(y)
+ax.set_yticklabels(ages, fontsize=8)
+ax.set_xlabel("Population (thousands)")
+ax.set_xticks([-100, -50, 0, 50, 100])
+ax.set_xticklabels([100, 50, 0, 50, 100])
+ax.set_title("Population pyramid", fontsize=11)
+ax.legend(loc="lower right", fontsize=8)
+ax.grid(True, axis="x", alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 4 — Cosmic abundance of the elements {#sec-abundance}
+
+> **Class:** named first
+> **Canonical introduction:** [@suess1956abundances]
+> **Domain:** the odd–even sawtooth
+
+Plotting abundance against atomic number on a log scale shows two facts at once: a steep overall decline, and a persistent sawtooth in which even-Z elements sit above their odd neighbours — the Oddo–Harkins rule of nuclear stability. Suess and Urey compiled the reference abundance table that fixed the curve's shape [@suess1956abundances].
+
+```{python}
+#| label: fig-abundance
+#| fig-cap: "Cosmic abundance vs atomic number Z; even-Z elements ride above odd (Oddo–Harkins)."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+Z = np.arange(1, 33)
+names = {1: "H", 2: "He", 3: "Li", 4: "Be", 5: "B", 6: "C",
+         8: "O", 14: "Si", 26: "Fe"}
+# representative log10 abundances (Si = 6 reference), Oddo–Harkins sawtooth
+abund = np.array([
+    10.6, 10.4, 1.1, 0.5, 0.8, 8.6, 6.3, 8.9, 6.0, 7.7,
+    5.7, 7.5, 5.4, 6.0, 4.4, 6.2, 4.6, 5.5, 4.1, 5.4,
+    2.2, 4.0, 3.0, 4.6, 3.5, 6.9, 3.0, 5.1, 3.2, 4.2,
+    2.4, 3.4
+])
+
+even = Z % 2 == 0
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.plot(Z, abund, color="0.6", lw=1, zorder=1)
+ax.scatter(Z[even], abund[even], color="#4269d0", label="even Z", zorder=3)
+ax.scatter(Z[~even], abund[~even], color="#ff725c", label="odd Z", zorder=3)
+
+for z, lab in names.items():
+    ax.annotate(lab, (z, abund[z - 1]), textcoords="offset points",
+                xytext=(0, 6), ha="center", fontsize=8)
+
+ax.set_xlabel("Atomic number Z")
+ax.set_ylabel("log$_{10}$ abundance (Si = 6)")
+ax.set_title("Oddo–Harkins sawtooth", fontsize=11)
+ax.legend(fontsize=8)
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 5 — Box plot {#sec-boxplot}
+
+> **Class:** named first
+> **Canonical introduction:** [@tukey1977eda]
+> **Domain:** robust summary read by length
+
+The box plot compresses a batch to five robust numbers — median, quartiles, and whiskers — so spread and skew are read from length rather than computed. Tukey introduced it as part of exploratory data analysis [@tukey1977eda]; the runs shown here are representative of Michelson's 1879 speed-of-light experiment.
+
+```{python}
+#| label: fig-boxplot
+#| fig-cap: "Box plots of five representative Michelson (1879) speed-of-light runs."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+# representative km/s values per run, centred near 299,850
+centres = [299870, 299840, 299900, 299810, 299880]
+spreads = [55, 70, 45, 80, 60]
+runs = [rng.normal(c, s, 20) for c, s in zip(centres, spreads)]
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+bp = ax.boxplot(runs, patch_artist=True, medianprops=dict(color="black"))
+for patch in bp["boxes"]:
+    patch.set_facecolor("#6cc5b0")
+    patch.set_alpha(0.8)
+
+ax.axhline(299792.458, color="#ff725c", ls="--", lw=1, label="modern value")
+ax.set_xticklabels([f"Run {i+1}" for i in range(5)])
+ax.set_ylabel("Speed of light (km/s)")
+ax.set_title("Michelson 1879, five runs", fontsize=11)
+ax.legend(fontsize=8)
+ax.grid(True, axis="y", alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 6 — Lorenz curve + Gini {#sec-lorenz}
+
+> **Class:** named first
+> **Canonical introduction:** [@lorenz1905methods]
+> **Domain:** inequality as the area between curves
+
+Cumulative income share plotted against cumulative population share bows below the 45° line of equality, and the area of that gap measures concentration. Lorenz proposed the curve to compare distributions of wealth [@lorenz1905methods]; twice the shaded area is the Gini coefficient.
+
+```{python}
+#| label: fig-lorenz
+#| fig-cap: "Lorenz curve against the line of equality; shaded gap gives the Gini coefficient."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+incomes = np.sort(rng.lognormal(mean=0.0, sigma=0.9, size=1000))
+cum = np.cumsum(incomes)
+lorenz = np.insert(cum / cum[-1], 0, 0)
+p = np.linspace(0, 1, len(lorenz))
+
+# Gini = 1 - 2 * area under Lorenz
+gini = 1 - 2 * np.trapezoid(lorenz, p)
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.plot([0, 1], [0, 1], color="0.4", ls="--", label="equality")
+ax.plot(p, lorenz, color="#4269d0", lw=2, label="Lorenz curve")
+ax.fill_between(p, lorenz, p, color="#4269d0", alpha=0.2)
+
+ax.annotate(f"Gini = {gini:.2f}", (0.55, 0.28), fontsize=10)
+ax.set_xlabel("Cumulative share of population")
+ax.set_ylabel("Cumulative share of income")
+ax.set_title("Lorenz curve", fontsize=11)
+ax.legend(loc="upper left", fontsize=8)
+ax.set_aspect("equal")
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+## A2. The single curve — distributions and profiles {#sec-unit-a2}
+
+*After Tufte, The Visual Display of Quantitative Information (1983).*
+
+### 7 — The bell curve (Gaussian) {#sec-gaussian}
+
+> **Class:** named first + canonical reference (distinct documents)
+> **Canonical introduction:** [@gauss1809theoria]
+> **Named first:** [@demoivre1733approximatio]
+> **Domain:** additive error
+
+The normal curve is the shape additive errors pile into, and its bell is the single most recognisable profile in statistics. De Moivre derived it as the limiting form of the binomial [@demoivre1733approximatio]; Gauss gave it its canonical role as the law of observational error [@gauss1809theoria].
+
+```{python}
+#| label: fig-gaussian
+#| fig-cap: "The standard normal pdf, with ±1σ and ±2σ bands shaded."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+x = np.linspace(-4, 4, 400)
+pdf = np.exp(-x**2 / 2) / np.sqrt(2 * np.pi)
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.plot(x, pdf, color="#4269d0", lw=2)
+ax.fill_between(x, pdf, where=(np.abs(x) <= 1), color="#4269d0", alpha=0.35, label="±1σ")
+ax.fill_between(x, pdf, where=(np.abs(x) <= 2) & (np.abs(x) > 1),
+                color="#4269d0", alpha=0.18, label="±2σ")
+
+ax.set_xlabel("z")
+ax.set_ylabel("density")
+ax.set_title("Standard normal distribution", fontsize=11)
+ax.legend(fontsize=8)
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 8 — The log-normal {#sec-lognormal}
+
+> **Class:** uncertain attribution
+> **Canonical introduction:** [@aitchison1957lognormal]
+> **Named first:** [@galton1879geometric]
+> **Domain:** multiplicative processes
+
+When effects multiply rather than add, the logarithm of the outcome is normal and the outcome itself is right-skewed with a long upper tail. Galton described the geometric mean's distribution [@galton1879geometric]; Aitchison and Brown gave the log-normal its canonical monograph treatment [@aitchison1957lognormal].
+
+```{python}
+#| label: fig-lognormal
+#| fig-cap: "Right-skewed log-normal density; inset shows it normalised under the log transform."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+sample = rng.lognormal(mean=0.0, sigma=0.6, size=5000)
+x = np.linspace(0.01, 8, 400)
+pdf = np.exp(-(np.log(x))**2 / (2 * 0.6**2)) / (x * 0.6 * np.sqrt(2 * np.pi))
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.hist(sample, bins=60, density=True, color="#6cc5b0", alpha=0.6)
+ax.plot(x, pdf, color="#4269d0", lw=2)
+ax.set_xlim(0, 8)
+ax.set_xlabel("x")
+ax.set_ylabel("density")
+ax.set_title("Log-normal distribution", fontsize=11)
+
+inset = fig.add_axes([0.58, 0.5, 0.32, 0.36])
+inset.hist(np.log(sample), bins=40, density=True, color="#efb118", alpha=0.7)
+inset.set_title("log x", fontsize=8)
+inset.tick_params(labelsize=6)
+
+plt.tight_layout()
+plt.show()
+```
+
+### 9 — The power law / heavy tail {#sec-powerlaw}
+
+> **Class:** named first
+> **Canonical introduction:** [@pareto1896cours]
+> **Domain:** the signature of complexity
+
+A power law is a straight line on log-log axes, its slope the exponent, and its tail decays far more slowly than an exponential's. Pareto found the form in the distribution of incomes [@pareto1896cours]; it recurs across city sizes, word frequencies, and network degrees.
+
+```{python}
+#| label: fig-powerlaw
+#| fig-cap: "A power law is straight on log-log axes; an exponential curves away."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+x = np.linspace(1, 100, 400)
+powerlaw = x ** -2.0
+expo = np.exp(-x / 12) * powerlaw[0] / np.exp(-1 / 12)
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.plot(x, powerlaw, color="#4269d0", lw=2, label="power law  x$^{-2}$")
+ax.plot(x, expo, color="#ff725c", lw=1.5, ls="--", alpha=0.7, label="exponential")
+ax.set_xscale("log")
+ax.set_yscale("log")
+ax.set_xlabel("x")
+ax.set_ylabel("p(x)")
+ax.set_title("Heavy tail on log-log axes", fontsize=11)
+ax.legend(fontsize=8)
+ax.grid(True, which="both", alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 10 — Species-abundance distribution {#sec-sad}
+
+> **Class:** named first
+> **Canonical introduction:** [@fisher1943relation]
+> **Domain:** ecology's heavy tail
+
+Binning species by abundance octave yields the hollow curve every community shares: a wall of rare species and a thin scatter of common ones. Fisher, Corbet, and Williams fitted the log-series that made the pattern quantitative [@fisher1943relation].
+
+```{python}
+#| label: fig-sad
+#| fig-cap: "Species-abundance distribution: many rare species, few common (abundance octaves)."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+# log-series-like abundances
+abund = rng.logseries(0.98, size=4000)
+octave = np.floor(np.log2(abund)).astype(int)
+counts = np.bincount(octave)
+oct_idx = np.arange(len(counts))
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.bar(oct_idx, counts, color="#3ca951", alpha=0.85, width=0.9)
+ax.set_xlabel("Abundance octave  (log$_2$ individuals)")
+ax.set_ylabel("Number of species")
+ax.set_title("Fisher's log-series", fontsize=11)
+ax.grid(True, axis="y", alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 11 — The S-curve / logistic {#sec-logistic}
+
+> **Class:** named first
+> **Canonical introduction:** [@verhulst1838notice]
+> **Domain:** bounded growth
+
+Growth that starts exponential but is checked by a ceiling traces an S, accelerating then saturating at the carrying capacity K. Verhulst named the logistic and wrote its closed-form solution [@verhulst1838notice].
+
+```{python}
+#| label: fig-logistic
+#| fig-cap: "The logistic curve rising from near zero and saturating at carrying capacity K."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+K, r, t0 = 1.0, 1.0, 6.0
+t = np.linspace(0, 12, 400)
+y = K / (1 + np.exp(-r * (t - t0)))
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.plot(t, y, color="#a463f2", lw=2)
+ax.axhline(K, color="0.5", ls="--", lw=1)
+ax.text(0.3, K - 0.06, "K", fontsize=10, color="0.4")
+ax.set_xlabel("time")
+ax.set_ylabel("population")
+ax.set_title("Logistic (Verhulst) growth", fontsize=11)
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 12 — Violin plot {#sec-violin}
+
+> **Class:** named first
+> **Canonical introduction:** [@hintze1998violin]
+> **Domain:** a density shape mirrored
+
+The violin mirrors a kernel density estimate about its axis, so multimodality and skew that a box plot hides become visible in the outline. Hintze and Nelson introduced the form and its name [@hintze1998violin].
+
+```{python}
+#| label: fig-violin
+#| fig-cap: "Violin plots of four groups; the mirrored density reveals bimodal shape."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+groups = [
+    rng.normal(0, 1, 300),
+    np.concatenate([rng.normal(-2, 0.5, 150), rng.normal(2, 0.5, 150)]),
+    rng.normal(1, 1.5, 300),
+    rng.gamma(2, 1.0, 300) - 2,
+]
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+parts = ax.violinplot(groups, showmedians=True)
+for pc in parts["bodies"]:
+    pc.set_facecolor("#4269d0")
+    pc.set_alpha(0.6)
+
+ax.set_xticks(range(1, 5))
+ax.set_xticklabels(["unimodal", "bimodal", "wide", "skewed"], fontsize=8)
+ax.set_ylabel("value")
+ax.set_title("Violin plot", fontsize=11)
+ax.grid(True, axis="y", alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 13 — Reaction energy-coordinate diagram {#sec-energy-coordinate}
+
+> **Class:** shared genre idiom
+> **Canonical introduction:** [@evans1935applications]
+> **Domain:** an energy landscape
+
+Potential energy plotted against a reaction coordinate shows reactants and products as wells separated by a transition-state hump whose height is the activation energy. Evans and Polanyi gave the profile its canonical thermodynamic reading [@evans1935applications]; the barrier sets the rate, the well depth difference sets the equilibrium.
+
+```{python}
+#| label: fig-energy-coordinate
+#| fig-cap: "Energy vs reaction coordinate: reactant well, activation hump, lower product well."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+x = np.linspace(0, 1, 400)
+# reactant plateau -> barrier -> lower product plateau
+reactant, product, barrier = 0.0, -1.0, 1.5
+curve = (product * (3 * x**2 - 2 * x**3)
+         + barrier * np.exp(-((x - 0.5) / 0.12) ** 2))
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.plot(x, curve, color="#9c6b4e", lw=2.5)
+
+xts = x[np.argmax(curve)]
+yts = curve.max()
+ax.annotate("", xy=(xts, yts), xytext=(xts, reactant),
+            arrowprops=dict(arrowstyle="<->", color="#ff725c"))
+ax.text(xts + 0.02, yts / 2, "ΔG‡", color="#ff725c", fontsize=10, va="center")
+
+ax.annotate("", xy=(0.9, product), xytext=(0.9, reactant),
+            arrowprops=dict(arrowstyle="<->", color="#4269d0"))
+ax.text(0.92, product / 2, "ΔG", color="#4269d0", fontsize=10, va="center")
+
+ax.text(0.05, 0.05, "reactants", fontsize=8)
+ax.text(0.72, product - 0.18, "products", fontsize=8)
+ax.set_xlabel("reaction coordinate")
+ax.set_ylabel("potential energy")
+ax.set_title("Energy-coordinate diagram", fontsize=11)
+ax.set_yticks([])
+plt.tight_layout()
+plt.show()
+```
+## A3. Position — relating two variables {#sec-unit-a3}
+
+*Cleveland, The Elements of Graphing Data (1985), ranks position along a common scale as the channel the eye decodes most accurately — so relating two variables begins with points in a plane.*
+
+### 14 — Hertzsprung–Russell diagram {#sec-hr}
+
+> **Class:** named first + canonical reference (distinct documents)
+> **Canonical introduction:** [@russell1914relations]
+> **Named first:** [@hertzsprung1911uber]
+> **Domain:** stellar evolution read as a sequence, not a snapshot
+
+Plotting luminosity against temperature turns the whole stellar population into a shape — a dense main sequence running diagonally, a giant clump, a scatter of white dwarfs — that later reads as an evolutionary track. Hertzsprung tabulated the luminosity–colour relation first [@hertzsprung1911uber]; Russell drew the diagram the field now cites [@russell1914relations].
+
+```{python}
+#| label: fig-hr
+#| fig-cap: "Synthetic Hertzsprung–Russell diagram: luminosity against temperature, hot stars to the left, brightness upward."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+# Main sequence: a steep diagonal in log luminosity vs log temperature.
+n = 250
+logT = rng.uniform(3.55, 4.5, n)
+logL = 8.0 * (logT - 3.55) - 2.0 + rng.normal(0, 0.3, n)
+
+# Cool, luminous giants form a clump above the cool end of the sequence.
+ng = 60
+gT = rng.uniform(3.55, 3.75, ng)
+gL = rng.uniform(2.0, 3.2, ng) + rng.normal(0, 0.15, ng)
+
+# Hot, dim white dwarfs sit in the lower corner.
+nw = 40
+wT = rng.uniform(4.0, 4.45, nw)
+wL = rng.uniform(-3.5, -2.0, nw)
+
+T = 10 ** np.concatenate([logT, gT, wT])
+L = np.concatenate([logL, gL, wL])
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+sc = ax.scatter(T, L, c=T, cmap="viridis", s=12, alpha=0.85)
+ax.set_xscale("log")
+ax.invert_xaxis()                       # hot to the left
+ax.set_xlabel("effective temperature (K)")
+ax.set_ylabel("log luminosity (L / L$_\\odot$)")
+ax.set_title("Hertzsprung–Russell diagram")
+ax.text(6500, 2.7, "giants", fontsize=8, color="#555")
+ax.text(20000, -3.0, "white dwarfs", fontsize=8, color="#555")
+ax.text(9000, 2.0, "main\nsequence", fontsize=8, color="#555", rotation=-30)
+fig.colorbar(sc, ax=ax, label="temperature (K)")
+plt.tight_layout()
+plt.show()
+```
+
+### 15 — Hubble diagram {#sec-hubble}
+
+> **Class:** named first
+> **Canonical introduction:** [@hubble1929relation]
+> **Domain:** the expansion of the universe as a straight line
+
+A galaxy's recession velocity rises in proportion to its distance, and the slope of that line is the expansion rate itself. Hubble's 1929 plot fixed the relation with a scatter of a few dozen galaxies through a line near the origin [@hubble1929relation].
+
+```{python}
+#| label: fig-hubble
+#| fig-cap: "Recession velocity against distance at 1929 scale, with a linear fit through the origin."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+d = rng.uniform(0.05, 2.0, 40)          # distance, Mpc
+H0 = 500.0                               # Hubble's original slope, km/s/Mpc
+v = H0 * d + rng.normal(0, 80, 40)       # recession velocity, km/s
+
+coef = np.polyfit(d, v, 1)
+xline = np.array([0.0, 2.1])
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.scatter(d, v, color="#4269d0", s=22, alpha=0.85)
+ax.plot(xline, np.polyval(coef, xline), color="#ff725c", lw=1.8)
+ax.axhline(0, color="#999", lw=0.6)
+ax.set_xlabel("distance (Mpc)")
+ax.set_ylabel("velocity (km s$^{-1}$)")
+ax.set_title("Hubble diagram")
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 16 — Kleiber's law {#sec-kleiber}
+
+> **Class:** named first
+> **Canonical introduction:** [@kleiber1932body]
+> **Domain:** metabolic rate against body mass across the tree of life
+
+On log–log axes the metabolic rates of animals spanning six orders of magnitude in mass fall on a single line of slope three-quarters. Kleiber measured the exponent and named the regularity that carries his name [@kleiber1932body].
+
+```{python}
+#| label: fig-kleiber
+#| fig-cap: "Metabolic rate against body mass, log–log, on a line of slope 3/4."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+mass = np.logspace(-2, 3, 60)                       # 0.01 to 1000 kg
+bmr = 3.4 * mass ** 0.75 * np.exp(rng.normal(0, 0.15, 60))
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.loglog(mass, bmr, "o", color="#6cc5b0", ms=4, alpha=0.85)
+ax.loglog(mass, 3.4 * mass ** 0.75, color="#9c6b4e", lw=1.6)
+ax.text(1.0, 1.0, "slope = 3/4", rotation=27, fontsize=9, color="#9c6b4e")
+ax.set_xlabel("body mass (kg)")
+ax.set_ylabel("metabolic rate (W)")
+ax.set_title("Kleiber's law")
+ax.grid(True, which="both", alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 17 — Zipf's law of city sizes {#sec-zipf}
+
+> **Class:** named first + canonical reference (distinct documents)
+> **Canonical introduction:** [@zipf1949human]
+> **Named first:** [@auerbach1913gesetz]
+> **Domain:** rank against size in a heavy-tailed population
+
+Rank a country's cities from largest down and plot size against rank on log–log axes: the points follow a straight line of slope near $-1$, so the second city is roughly half the first. Auerbach first noticed the rank–size regularity [@auerbach1913gesetz]; Zipf made it a general law of human systems [@zipf1949human].
+
+```{python}
+#| label: fig-zipf
+#| fig-cap: "City population against rank, log–log, on a line of slope near −1."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+rank = np.arange(1, 101)
+pop = 8.0e6 / rank * np.exp(rng.normal(0, 0.12, 100))
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.loglog(rank, pop, "o", color="#4269d0", ms=4, alpha=0.8)
+ax.loglog(rank, 8.0e6 / rank, color="#ff725c", lw=1.6)
+ax.text(6, 4.5e5, "slope = −1", rotation=-32, fontsize=9, color="#ff725c")
+ax.set_xlabel("rank")
+ax.set_ylabel("population")
+ax.set_title("Zipf's law of city sizes")
+ax.grid(True, which="both", alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 18 — Anscombe's quartet {#sec-anscombe}
+
+> **Class:** named first
+> **Canonical introduction:** [@anscombe1973graphs]
+> **Domain:** the argument for plotting the data at all
+
+Four datasets share the same mean, variance, correlation and fitted line $y = 3 + 0.5x$, yet a linear trend, a curve, an outlier-bent line and a single leverage point could not look less alike. This is the book's Day-One cold open — Anscombe built the quartet precisely to show that a summary statistic is no substitute for the picture [@anscombe1973graphs].
+
+```{python}
+#| label: fig-anscombe
+#| fig-cap: "Anscombe's four datasets, each with the identical fit y = 3 + 0.5x."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+x123 = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])
+x4 = np.array([8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8])
+y1 = np.array([8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68])
+y2 = np.array([9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74])
+y3 = np.array([7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73])
+y4 = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89])
+
+sets = [(x123, y1, "I"), (x123, y2, "II"),
+        (x123, y3, "III"), (x4, y4, "IV")]
+xline = np.array([3.0, 20.0])
+
+fig, axes = plt.subplots(2, 2, figsize=(6, 4.6), sharex=True, sharey=True)
+for ax, (x, y, name) in zip(axes.flat, sets):
+    ax.scatter(x, y, color="#4269d0", s=22)
+    ax.plot(xline, 3 + 0.5 * xline, color="#ff725c", lw=1.4)
+    ax.set_title(name, fontsize=10, loc="left")
+    ax.grid(True, alpha=0.3)
+axes[0, 0].set_xlim(2, 20)
+axes[0, 0].set_ylim(2, 14)
+fig.suptitle("Anscombe's quartet — identical statistics, different shapes")
+plt.tight_layout()
+plt.show()
+```
+
+### 19 — P–T phase diagram {#sec-phase-diagram}
+
+> **Class:** canonical reference
+> **Canonical introduction:** [@gibbs1876equilibrium]
+> **Domain:** the state space of matter
+
+Pressure against temperature carves the plane into solid, liquid and gas, with sublimation, fusion and vaporisation curves meeting at a triple point and the liquid–gas line ending abruptly at a critical point. Gibbs's phase rule gave the diagram its coordinates and its constraints [@gibbs1876equilibrium].
+
+```{python}
+#| label: fig-phase-diagram
+#| fig-cap: "Schematic pressure–temperature phase diagram with triple and critical points."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+Tt, Pt = 0.30, 0.18                       # triple point
+Tc, Pc = 0.80, 0.85                       # critical point
+
+Ts = np.linspace(0.05, Tt, 100)           # sublimation curve
+Ps = Pt * np.exp(6.0 * (Ts - Tt))
+
+Tv = np.linspace(Tt, Tc, 100)             # vaporisation curve
+Pv = Pt * np.exp(np.log(Pc / Pt) * (Tv - Tt) / (Tc - Tt))
+
+Tf = np.linspace(Tt, Tt + 0.05, 100)      # fusion curve, near vertical
+Pf = np.linspace(Pt, 1.0, 100)
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+ax.plot(Ts, Ps, color="#4269d0", lw=1.8)
+ax.plot(Tv, Pv, color="#3ca951", lw=1.8)
+ax.plot(Tf, Pf, color="#a463f2", lw=1.8)
+ax.scatter([Tt, Tc], [Pt, Pc], color="#ff725c", zorder=5)
+ax.annotate("triple point", (Tt, Pt), (0.34, 0.05), fontsize=8,
+            arrowprops=dict(arrowstyle="->", color="#555"))
+ax.annotate("critical point", (Tc, Pc), (0.5, 0.92), fontsize=8,
+            arrowprops=dict(arrowstyle="->", color="#555"))
+ax.text(0.10, 0.70, "solid", fontsize=10)
+ax.text(0.52, 0.65, "liquid", fontsize=10)
+ax.text(0.62, 0.12, "gas", fontsize=10)
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 1)
+ax.set_xlabel("temperature")
+ax.set_ylabel("pressure")
+ax.set_title("P–T phase diagram")
+plt.tight_layout()
+plt.show()
+```
+
+### 20 — Ramachandran plot {#sec-ramachandran}
+
+> **Class:** named first
+> **Canonical introduction:** [@ramachandran1963stereochemistry]
+> **Domain:** the allowed backbone conformations of a protein
+
+The two backbone dihedral angles $\varphi$ and $\psi$ span a torus, and steric clashes forbid most of it — leaving tight clusters at the $\alpha$-helix and $\beta$-sheet conformations. Ramachandran computed the allowed regions from hard-sphere contacts and gave the plot its name [@ramachandran1963stereochemistry].
+
+```{python}
+#| label: fig-ramachandran
+#| fig-cap: "Backbone dihedral angles φ against ψ, clustered in the allowed regions."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+a_phi = rng.normal(-63, 12, 160); a_psi = rng.normal(-43, 12, 160)   # alpha
+b_phi = rng.normal(-120, 15, 120); b_psi = rng.normal(135, 15, 120)  # beta
+l_phi = rng.normal(60, 10, 25);  l_psi = rng.normal(45, 10, 25)      # left-handed
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+ax.scatter(a_phi, a_psi, s=10, color="#4269d0", alpha=0.7, label="α-helix")
+ax.scatter(b_phi, b_psi, s=10, color="#ff725c", alpha=0.7, label="β-sheet")
+ax.scatter(l_phi, l_psi, s=10, color="#3ca951", alpha=0.7, label="left-handed")
+ax.axhline(0, color="#ccc", lw=0.6)
+ax.axvline(0, color="#ccc", lw=0.6)
+ax.set_xlim(-180, 180)
+ax.set_ylim(-180, 180)
+ax.set_xticks(range(-180, 181, 90))
+ax.set_yticks(range(-180, 181, 90))
+ax.set_xlabel("φ (degrees)")
+ax.set_ylabel("ψ (degrees)")
+ax.set_title("Ramachandran plot")
+ax.legend(fontsize=7, loc="lower right")
+plt.tight_layout()
+plt.show()
+```
+
+## A4. The line over time — trends {#sec-unit-a4}
+
+*Playfair's time-series line, as Tufte reads it, turns a column of dated numbers into a single continuous trend the eye follows without effort.*
+
+### 21 — Keeling curve {#sec-keeling}
+
+> **Class:** named first
+> **Canonical introduction:** [@keeling1960concentration]
+> **Domain:** the line that moved climate policy
+
+Atmospheric CO$_2$ climbs from about 315 ppm in 1958 toward 420 ppm, with an annual sawtooth from the breathing of Northern-Hemisphere forests riding the upward trend. Keeling's continuous Mauna Loa record established both the rise and its seasonal signature [@keeling1960concentration].
+
+```{python}
+#| label: fig-keeling
+#| fig-cap: "Atmospheric CO2 rising with an annual sawtooth (representative shape)."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+t = np.linspace(1958, 2020, 62 * 12)
+trend = 315 + 1.4 * (t - 1958) + 0.007 * (t - 1958) ** 2
+season = 3.0 * np.sin(2 * np.pi * (t - 1958))
+co2 = trend + season
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.plot(t, co2, color="#3ca951", lw=0.9)
+ax.set_xlabel("year")
+ax.set_ylabel("CO$_2$ (ppm)")
+ax.set_title("Keeling curve")
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 22 — Hockey stick {#sec-hockeystick}
+
+> **Class:** named first
+> **Canonical introduction:** [@mann1998global]
+> **Domain:** a millennium of reconstructed temperature
+
+A temperature anomaly reconstructed from proxies stays roughly flat for nine centuries, then bends sharply upward in the twentieth — the blade of the stick. Mann, Bradley and Hughes assembled the multiproxy reconstruction that fixed the shape and its uncertainty band [@mann1998global].
+
+```{python}
+#| label: fig-hockeystick
+#| fig-cap: "Reconstructed temperature anomaly, flat then sharply rising, with an uncertainty band."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+yr = np.arange(1000, 2001)
+anom = -0.2 + 0.05 * rng.standard_normal(yr.size)
+blade = yr > 1900
+anom[blade] += (yr[blade] - 1900) / 100.0 * 1.0          # 20th-century upturn
+unc = 0.10 + 0.15 * (2000 - yr) / 1000.0                 # wider back in time
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.fill_between(yr, anom - unc, anom + unc, color="#4269d0", alpha=0.2)
+ax.plot(yr, anom, color="#4269d0", lw=1.0)
+ax.axhline(0, color="#999", lw=0.6)
+ax.set_xlabel("year")
+ax.set_ylabel("temperature anomaly (°C)")
+ax.set_title("Hockey stick")
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 23 — Sea-ice annual-cycle graph {#sec-seaice}
+
+> **Class:** canonical reference
+> **Canonical introduction:** [@fetterer2017seaice]
+> **Domain:** one calendar year, a line per year
+
+Drawing sea-ice extent month by month, one line per year, stacks the seasonal max–min cycle and lets a downward drift across decades show as later lines sitting lower. The National Snow and Ice Data Center's sea-ice index is the reference series for this now-standard spaghetti plot [@fetterer2017seaice].
+
+```{python}
+#| label: fig-seaice
+#| fig-cap: "Monthly sea-ice extent, one line per year, coloured by year (representative shape)."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.cm import ScalarMappable
+from matplotlib.colors import Normalize
+
+rng = np.random.default_rng(0)
+
+months = np.arange(1, 13)
+years = np.arange(1980, 2021)
+norm = Normalize(years[0], years[-1])
+cmap = plt.get_cmap("viridis")
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+for y in years:
+    base = 12.5 - 0.045 * (y - 1980)                     # declining baseline
+    ext = base + 3.0 * np.cos(2 * np.pi * (months - 3) / 12) \
+        + rng.normal(0, 0.1, 12)
+    ax.plot(months, ext, color=cmap(norm(y)), lw=1.0, alpha=0.85)
+
+ax.set_xticks(months)
+ax.set_xlabel("month")
+ax.set_ylabel("sea-ice extent (10$^6$ km$^2$)")
+ax.set_title("Sea-ice annual cycle")
+sm = ScalarMappable(norm=norm, cmap=cmap); sm.set_array([])
+fig.colorbar(sm, ax=ax, label="year")
+plt.tight_layout()
+plt.show()
+```
+
+### 24 — Kyoto cherry-blossom bloom dates {#sec-cherry}
+
+> **Class:** named first
+> **Canonical introduction:** [@aono2008phenological]
+> **Domain:** twelve centuries of phenology
+
+Kyoto's court diaries record the day of peak cherry bloom back to the ninth century, giving a noisy line that plunges to markedly earlier dates in the warming modern era. Aono and Kazui reconstructed the full-flowering series and the March temperatures behind it [@aono2008phenological].
+
+```{python}
+#| label: fig-cherry
+#| fig-cap: "Kyoto full-bloom day of year, 800–2020, with a rolling mean (representative shape)."
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+yr = np.arange(800, 2021)
+bloom = 105 + 4.0 * rng.standard_normal(yr.size)         # ~mid-April
+modern = yr > 1950
+bloom[modern] -= (yr[modern] - 1950) / 70.0 * 12.0       # sharp modern plunge
+roll = pd.Series(bloom).rolling(30, center=True).mean()
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.scatter(yr, bloom, s=4, color="#97737b", alpha=0.4)
+ax.plot(yr, roll, color="#a463f2", lw=1.6)
+ax.set_xlabel("year")
+ax.set_ylabel("full-bloom day of year")
+ax.set_title("Kyoto cherry-blossom dates")
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 25 — Candlestick / financial series {#sec-candlestick}
+
+> **Class:** named first
+> **Canonical introduction:** [@nison1991candlestick]
+> **Domain:** four prices per session in one dense mark
+
+Each session becomes a candle: a body from open to close, thin wicks to the high and low, coloured by whether the price rose or fell — four numbers per bar with almost no ink. Nison brought the Japanese rice-trading technique to Western markets and named it for the West [@nison1991candlestick].
+
+```{python}
+#| label: fig-candlestick
+#| fig-cap: "OHLC candlesticks for thirty synthetic sessions; up sessions green, down red."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+n = 30
+open_ = np.empty(n); close = np.empty(n)
+price = 100.0
+for i in range(n):
+    open_[i] = price
+    close[i] = price + rng.normal(0, 2.0)
+    price = close[i]
+high = np.maximum(open_, close) + rng.uniform(0, 1.5, n)
+low = np.minimum(open_, close) - rng.uniform(0, 1.5, n)
+
+up = close >= open_
+colors = np.where(up, "#3ca951", "#ff725c")
+x = np.arange(n)
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.vlines(x, low, high, color="#444", lw=0.8)
+ax.bar(x, np.abs(close - open_), bottom=np.minimum(open_, close),
+       width=0.6, color=colors)
+ax.set_xlabel("session")
+ax.set_ylabel("price")
+ax.set_title("Candlestick chart")
+ax.grid(True, axis="y", alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 26 — Culturomics / Google Books Ngram {#sec-ngram}
+
+> **Class:** named first
+> **Canonical introduction:** [@michel2011quantitative]
+> **Domain:** a word's frequency across centuries
+
+Relative frequency against year traces the life of a word — one term rising as its rival falls, their curves crossing where usage changed hands. Michel and colleagues built the culturomic corpus that made these trajectories a quantitative object [@michel2011quantitative].
+
+```{python}
+#| label: fig-ngram
+#| fig-cap: "Relative frequency of three competing terms crossing over (synthetic)."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+yr = np.linspace(1800, 2000, 300)
+steam = 1.0 / (1 + np.exp((yr - 1890) / 15))             # falling
+electric = 1.0 / (1 + np.exp(-(yr - 1905) / 15))         # rising
+atomic = np.exp(-((yr - 1955) / 22) ** 2)                # a mid-century bump
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.plot(yr, steam, color="#9c6b4e", lw=1.8, label="steam")
+ax.plot(yr, electric, color="#4269d0", lw=1.8, label="electric")
+ax.plot(yr, atomic, color="#ff725c", lw=1.8, label="atomic")
+ax.set_xlabel("year")
+ax.set_ylabel("relative frequency")
+ax.set_title("Culturomics / Ngram")
+ax.legend(fontsize=8)
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 27 — LIGO gravitational-wave chirp {#sec-ligo}
+
+> **Class:** named first
+> **Canonical introduction:** [@abbott2016observation]
+> **Domain:** a signal in time
+
+The strain from two merging black holes sweeps up in frequency and amplitude — the chirp — then rings down in a few cycles once the horizons fuse. The LIGO collaboration's GW150914 detection was the first direct observation of the waveform [@abbott2016observation].
+
+```{python}
+#| label: fig-ligo
+#| fig-cap: "Synthetic gravitational-wave chirp: strain against time, sweeping up then ringing down."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+t = np.linspace(-0.18, 0.04, 2000)
+tc = 0.0
+dt = t[1] - t[0]
+
+tau = np.maximum(tc - t, 0.004)                          # time to merger
+f = np.clip(35.0 * tau ** (-0.375), 35, 300)             # rising frequency
+phase = 2 * np.pi * np.cumsum(f) * dt
+amp = tau ** (-0.25)
+ring = t >= 0
+amp[ring] = amp[~ring][-1] * np.exp(-(t[ring] - tc) / 0.008)
+h = amp * np.sin(phase)
+h = h / np.max(np.abs(h))
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.plot(t, h, color="#4269d0", lw=1.0)
+ax.set_xlabel("time (s)")
+ax.set_ylabel("strain (normalised)")
+ax.set_title("Gravitational-wave chirp (GW150914)")
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 28 — Exoplanet transit & radial-velocity curves {#sec-exoplanet}
+
+> **Class:** named first
+> **Canonical introduction:** [@charbonneau2000detection]
+> **Domain:** the dimming and the wobble
+
+A transiting planet cuts a flat-bottomed dip in the star's light while its gravity pulls the star through a radial-velocity sinusoid — two independent curves for one orbit. Charbonneau and colleagues measured the first transit of a known exoplanet, joining the photometric dip to the spectroscopic wobble [@charbonneau2000detection].
+
+```{python}
+#| label: fig-exoplanet
+#| fig-cap: "Stacked transit light curve and radial-velocity curve against orbital phase."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+phase = np.linspace(-0.5, 0.5, 600)
+
+dur, ing, depth = 0.06, 0.015, 0.02
+flux = np.ones_like(phase)
+inb = np.abs(phase) < dur
+flux[inb] = 1 - depth
+edge = (np.abs(phase) >= dur) & (np.abs(phase) < dur + ing)
+flux[edge] = 1 - depth * (1 - (np.abs(phase[edge]) - dur) / ing)
+flux += rng.normal(0, 0.0015, phase.size)
+
+rv = 30.0 * np.sin(2 * np.pi * phase)
+
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(6, 5), sharex=True)
+ax1.plot(phase, flux, color="#efb118", lw=1.0)
+ax1.set_ylabel("relative flux")
+ax1.set_title("Transit and radial-velocity curves")
+ax1.grid(True, alpha=0.3)
+ax2.plot(phase, rv, color="#4269d0", lw=1.4)
+ax2.axhline(0, color="#999", lw=0.6)
+ax2.set_xlabel("orbital phase")
+ax2.set_ylabel("radial velocity (m s$^{-1}$)")
+ax2.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 29 — Yield curve {#sec-yieldcurve}
+
+> **Class:** shared genre idiom
+> **Canonical introduction:** [@macaulay1938movements]
+> **Domain:** a cross-sectional curve read as a signal
+
+Yield against maturity is normally an upward slope; when it flattens or inverts — short rates above long — the shape itself is read as a recession signal. Macaulay's study of interest-rate movements gave the term-structure curve its analytical footing [@macaulay1938movements].
+
+```{python}
+#| label: fig-yieldcurve
+#| fig-cap: "Yield against maturity for a normal and an inverted date."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+mat = np.array([0.25, 0.5, 1, 2, 3, 5, 7, 10, 20, 30])
+
+normal = 1.0 + 2.2 * (1 - np.exp(-mat / 6.0))
+inverted = 3.4 - 0.9 * (1 - np.exp(-mat / 5.0))
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.plot(mat, normal, "o-", color="#3ca951", lw=1.6, label="normal")
+ax.plot(mat, inverted, "o-", color="#ff725c", lw=1.6, label="inverted")
+ax.set_xscale("log")
+ax.set_xticks(mat)
+ax.set_xticklabels([f"{m:g}" for m in mat], fontsize=7)
+ax.set_xlabel("maturity (years)")
+ax.set_ylabel("yield (%)")
+ax.set_title("Yield curve")
+ax.legend(fontsize=8)
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+## A5. Colour — luminance, hue, the wheel, and colour-blindness {#sec-unit-a5}
+
+*Ware, Information Visualization (2004), treats colour as three separable channels — luminance, hue, saturation — each with its own perceptual budget and its own failure under colour-blindness.*
+
+### 30 — Colour wheel {#sec-colourwheel}
+
+> **Class:** named first
+> **Canonical introduction:** [@newton1704opticks]
+> **Domain:** the organisation of colour into a closed ring
+
+Bending the spectrum into a circle joins violet back to red and turns hue into an angle — the first diagram to treat colour as a cyclic quantity. Newton drew the wheel in the *Opticks* [@newton1704opticks]; Dalton's 1798 account of his own colour-blindness stands as the conscience of every palette choice that follows.
+
+```{python}
+#| label: fig-colourwheel
+#| fig-cap: "A hue wheel: wedges around a circle spanning the spectrum."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.colors import hsv_to_rgb
+
+N = 360
+theta = np.linspace(0, 2 * np.pi, N, endpoint=False)
+width = 2 * np.pi / N
+colors = [hsv_to_rgb((i / N, 1.0, 1.0)) for i in range(N)]
+
+fig = plt.figure(figsize=(5, 5))
+ax = fig.add_subplot(projection="polar")
+ax.bar(theta, np.ones(N), width=width, bottom=0.5,
+       color=colors, edgecolor="none")
+ax.set_xticklabels([])
+ax.set_yticklabels([])
+ax.set_title("Colour wheel", pad=14)
+plt.tight_layout()
+plt.show()
+```
+
+### 31 — Climate stripes {#sec-climatestripes}
+
+> **Class:** named first
+> **Canonical introduction:** [@hawkins2018warming]
+> **Domain:** temperature as pure colour, axes removed
+
+Stripping every axis and label leaves one coloured band per year on a blue-to-red diverging scale — warming shown as colour alone, legible with no training. Hawkins designed the warming-stripes graphic for exactly that reach [@hawkins2018warming].
+
+```{python}
+#| label: fig-climatestripes
+#| fig-cap: "One coloured stripe per year on a diverging scale; no axes."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+years = np.arange(1900, 2021)
+anom = np.linspace(-0.4, 1.1, years.size) + rng.normal(0, 0.12, years.size)
+lim = np.max(np.abs(anom))
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.imshow(anom[np.newaxis, :], cmap="RdBu_r", aspect="auto",
+          vmin=-lim, vmax=lim, extent=[years[0], years[-1], 0, 1])
+ax.axis("off")
+ax.set_title("Climate stripes")
+plt.tight_layout()
+plt.show()
+```
+
+### 32 — CMB temperature map {#sec-cmb-map}
+
+> **Class:** named first
+> **Canonical introduction:** [@smoot1992structure]
+> **Domain:** the oldest light as a field of fluctuations
+
+Tiny temperature variations across the microwave sky — parts in a hundred thousand — become a field of hot and cold blotches on a diverging colour scale. COBE's DMR, reported by Smoot and colleagues, first resolved the anisotropy [@smoot1992structure].
+
+```{python}
+#| label: fig-cmb-map
+#| fig-cap: "A smoothed Gaussian random field standing for CMB temperature anisotropy."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.ndimage import gaussian_filter
+
+rng = np.random.default_rng(0)
+
+field = rng.standard_normal((120, 180))
+field = gaussian_filter(field, sigma=4.0)
+lim = np.max(np.abs(field))
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+im = ax.imshow(field, cmap="RdBu_r", vmin=-lim, vmax=lim,
+               extent=[-90, 90, -45, 45])
+ax.set_xlabel("longitude (deg)")
+ax.set_ylabel("latitude (deg)")
+ax.set_title("CMB temperature map (sky patch)")
+fig.colorbar(im, ax=ax, label="ΔT (arb.)")
+plt.tight_layout()
+plt.show()
+```
+
+### 33 — Ozone hole {#sec-ozone}
+
+> **Class:** named first
+> **Canonical introduction:** [@farman1985large]
+> **Domain:** the Antarctic false-colour map
+
+Total-column ozone mapped over the pole shows a deep central minimum — the hole — rendered in false colour so the depletion reads instantly. Farman, Gardiner and Shanklin's ground measurements first reported the springtime Antarctic loss [@farman1985large].
+
+```{python}
+#| label: fig-ozone
+#| fig-cap: "A synthetic polar ozone field with a deep central minimum in false colour."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+n = 240
+g = np.linspace(-1, 1, n)
+X, Y = np.meshgrid(g, g)
+R = np.sqrt(X ** 2 + Y ** 2)
+
+ozone = 300 + 60 * R                                     # rising outward
+ozone -= 180 * np.exp(-(R / 0.4) ** 2)                   # central hole
+ozone += rng.normal(0, 5, (n, n))
+ozone[R > 1] = np.nan
+
+fig, ax = plt.subplots(figsize=(5.4, 4.4))
+im = ax.imshow(ozone, cmap="viridis", extent=[-1, 1, -1, 1], origin="lower")
+ax.set_aspect("equal")
+ax.axis("off")
+ax.set_title("Ozone hole (total column)")
+fig.colorbar(im, ax=ax, label="ozone (DU)")
+plt.tight_layout()
+plt.show()
+```
+
+### 34 — Choropleth + cartogram {#sec-choropleth}
+
+> **Class:** named first
+> **Canonical introduction:** [@dupin1826carte]
+> **Domain:** a value carried by area
+
+A choropleth shades each region by its value; a cartogram resizes the same regions by that value, trading true shape for true magnitude — two answers to the problem that big areas shout and small ones vanish. Dupin's 1826 shaded map of French literacy is the first modern choropleth [@dupin1826carte].
+
+```{python}
+#| label: fig-choropleth
+#| fig-cap: "The same 4×4 regions as a choropleth (left) and a crude cartogram (right)."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
+from matplotlib.colors import Normalize
+
+rng = np.random.default_rng(0)
+
+vals = rng.uniform(0.2, 1.0, (4, 4))
+norm = Normalize(vals.min(), vals.max())
+cmap = plt.get_cmap("viridis")
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(6.6, 3.4))
+
+ax1.imshow(vals, cmap="viridis")
+ax1.set_title("choropleth", fontsize=10)
+ax1.set_xticks([]); ax1.set_yticks([])
+
+for i in range(4):
+    for j in range(4):
+        s = vals[i, j]
+        ax2.add_patch(Rectangle((j + 0.5 - s / 2, (3 - i) + 0.5 - s / 2),
+                                s, s, color=cmap(norm(vals[i, j]))))
+ax2.set_xlim(0, 4); ax2.set_ylim(0, 4)
+ax2.set_aspect("equal")
+ax2.set_title("cartogram", fontsize=10)
+ax2.set_xticks([]); ax2.set_yticks([])
+
+plt.tight_layout()
+plt.show()
+```
+
+## A6. Depth and 3D form — shading, occlusion, the volumetric {#sec-unit-a6}
+
+*Munzner, Visualization Analysis and Design (2014), counts depth cues — shading, occlusion, perspective — as the means by which a flat display fakes the third dimension.*
+
+### 35 — 3D molecular structure {#sec-molecule3d}
+
+> **Class:** shared genre idiom
+> **Canonical introduction:** [@corey1953molecular]
+> **Domain:** ball-and-stick to space-filling
+
+Atoms drawn as spheres and bonds as sticks make a molecule's geometry legible in three dimensions — here methane's carbon at the centre of a hydrogen tetrahedron. Corey and Pauling's models set the conventions for scaled atomic radii and bond sticks [@corey1953molecular].
+
+```{python}
+#| label: fig-molecule3d
+#| fig-cap: "Methane as ball-and-stick: a central carbon with four tetrahedral hydrogens."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D  # noqa: F401
+
+C = np.array([0.0, 0.0, 0.0])
+H = np.array([[1, 1, 1], [1, -1, -1], [-1, 1, -1], [-1, -1, 1]]) / np.sqrt(3)
+
+fig = plt.figure(figsize=(6, 5))
+ax = fig.add_subplot(projection="3d")
+for h in H:
+    ax.plot(*zip(C, h), color="#97737b", lw=2.5)
+ax.scatter(*C, s=700, color="#9c6b4e", depthshade=True)
+ax.scatter(H[:, 0], H[:, 1], H[:, 2], s=320, color="#4269d0", depthshade=True)
+ax.set_box_aspect((1, 1, 1))
+ax.set_title("Methane (ball-and-stick)")
+ax.set_xticks([]); ax.set_yticks([]); ax.set_zticks([])
+plt.tight_layout()
+plt.show()
+```
+
+### 36 — DNA double helix {#sec-dna}
+
+> **Class:** named first
+> **Canonical introduction:** [@watson1953molecular]
+> **Domain:** 3D structure inferred from diffraction
+
+Two antiparallel strands wind around a common axis, rungs of paired bases holding them at a fixed spacing — a shape that carried its own copying mechanism in plain sight. Watson and Crick proposed the double helix from Franklin's and Wilkins's diffraction data [@watson1953molecular].
+
+```{python}
+#| label: fig-dna
+#| fig-cap: "Two intertwined helices with base-pair rungs (parametric)."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D  # noqa: F401
+
+t = np.linspace(0, 4 * np.pi, 300)
+z = t
+x1, y1 = np.cos(t), np.sin(t)
+x2, y2 = np.cos(t + np.pi), np.sin(t + np.pi)
+
+fig = plt.figure(figsize=(6, 5))
+ax = fig.add_subplot(projection="3d")
+ax.plot(x1, y1, z, color="#4269d0", lw=2.0)
+ax.plot(x2, y2, z, color="#ff725c", lw=2.0)
+for i in range(0, t.size, 12):
+    ax.plot([x1[i], x2[i]], [y1[i], y2[i]], [z[i], z[i]],
+            color="#6cc5b0", lw=1.0)
+ax.set_box_aspect((1, 1, 3))
+ax.set_title("DNA double helix")
+ax.set_xticks([]); ax.set_yticks([]); ax.set_zticks([])
+plt.tight_layout()
+plt.show()
+```
+
+### 37 — Protein ribbon {#sec-ribbon}
+
+> **Class:** named first
+> **Canonical introduction:** [@richardson1981anatomy]
+> **Domain:** the fold made legible
+
+A single backbone traced as a ribbon coils tightly through a helix, then straightens into a strand — the schematic that lets an eye read secondary structure at a glance. Jane Richardson's *Anatomy and Taxonomy of Protein Structure* introduced the ribbon idiom [@richardson1981anatomy].
+
+```{python}
+#| label: fig-ribbon
+#| fig-cap: "A continuous backbone coiling into a helix then extending into a strand."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D  # noqa: F401
+
+# Helix segment.
+th = np.linspace(0, 6 * np.pi, 200)
+xh, yh, zh = np.cos(th), np.sin(th), np.linspace(0, 6, 200)
+
+# Extended strand segment: a gentle zig-zag straightening out.
+s = np.linspace(0, 1, 120)
+xs = np.cos(6 * np.pi) * (1 - s) + 0.3 * np.sin(6 * np.pi * s) * (1 - s)
+ys = np.sin(6 * np.pi) * (1 - s)
+zs = np.linspace(6, 11, 120)
+
+x = np.concatenate([xh, xs])
+y = np.concatenate([yh, ys])
+z = np.concatenate([zh, zs])
+
+fig = plt.figure(figsize=(6, 5))
+ax = fig.add_subplot(projection="3d")
+ax.plot(x, y, z, color="#a463f2", lw=4.0, solid_capstyle="round")
+ax.set_box_aspect((1, 1, 2.5))
+ax.set_title("Protein ribbon (helix → strand)")
+ax.set_xticks([]); ax.set_yticks([]); ax.set_zticks([])
+plt.tight_layout()
+plt.show()
+```
+
+### 38 — Atomic orbitals / probability clouds {#sec-orbitals}
+
+> **Class:** canonical reference
+> **Canonical introduction:** [@white1931pictorial]
+> **Domain:** continuous probability in three dimensions
+
+An orbital is a probability density, not an orbit; the hydrogen $2p_z$ state shows as two lobes of $|\psi|^2$ above and below the nucleus, densest where the electron is most likely found. White's *Pictorial Representations of the Electron Cloud* gave these densities their canonical images [@white1931pictorial].
+
+```{python}
+#| label: fig-orbitals
+#| fig-cap: "Cross-section of the hydrogen 2p_z probability density |ψ|², two lobes."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+n = 300
+g = np.linspace(-15, 15, n)
+X, Z = np.meshgrid(g, g)
+r = np.sqrt(X ** 2 + Z ** 2)
+psi = Z * np.exp(-r / 2.0)                                # 2p_z, up to a constant
+dens = psi ** 2
+
+fig, ax = plt.subplots(figsize=(5.2, 4.6))
+im = ax.imshow(dens, cmap="viridis", extent=[-15, 15, -15, 15],
+               origin="lower")
+ax.set_aspect("equal")
+ax.set_xlabel("x (a$_0$)")
+ax.set_ylabel("z (a$_0$)")
+ax.set_title("Hydrogen 2p$_z$ probability density")
+fig.colorbar(im, ax=ax, label="|ψ|² (arb.)")
+plt.tight_layout()
+plt.show()
+```
+
+### 39 — Cosmic web {#sec-cosmicweb}
+
+> **Class:** shared genre idiom
+> **Canonical introduction:** [@delapparent1986slice]
+> **Domain:** large-scale structure as filaments and voids
+
+Plotting galaxies by redshift and sky angle in a thin wedge reveals that matter is not scattered but strung along filaments around great empty voids. De Lapparent, Geller and Huchra's slice of the CfA survey first showed the frothy structure at this scale [@delapparent1986slice].
+
+```{python}
+#| label: fig-cosmicweb
+#| fig-cap: "A redshift-vs-angle wedge of galaxies clustered into filaments and voids."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+th_lo, th_hi = np.deg2rad(-30), np.deg2rad(150)
+
+# Filament clumps: a handful of centres, points scattered around each.
+nc = 30
+c_th = rng.uniform(th_lo, th_hi, nc)
+c_r = rng.uniform(1500, 11000, nc)
+th, r = [], []
+for a, b in zip(c_th, c_r):
+    k = rng.integers(15, 45)
+    th.append(rng.normal(a, 0.05, k))
+    r.append(rng.normal(b, 350, k))
+# Sparse uniform background.
+th.append(rng.uniform(th_lo, th_hi, 120))
+r.append(rng.uniform(1500, 11000, 120))
+th = np.concatenate(th); r = np.concatenate(r)
+
+fig = plt.figure(figsize=(6, 4.4))
+ax = fig.add_subplot(projection="polar")
+ax.scatter(th, r, s=4, color="#4269d0", alpha=0.7)
+ax.set_thetamin(-30); ax.set_thetamax(150)
+ax.set_rlim(0, 11500)
+ax.set_rlabel_position(-32)
+ax.set_title("Cosmic web — slice of the universe", pad=16)
+plt.tight_layout()
+plt.show()
+```
+# Part B — Gestalt grouping {#sec-part-b}
+
+Perception does not stop at measuring single marks; it groups them. Marks that connect read as one structure, marks that flow read as a path, marks that sit close or look alike read as a cluster, and a boundary read as enclosure turns empty space into an encoding — these Gestalt principles are the load-bearing walls of the network, the Sankey, the heatmap and the map.
+
+## B1. Connectedness — networks, trees, and designed relational structures {#sec-unit-b1}
+
+*Munzner on network and tree layouts (2014).*
+
+### 40 — Food web {#sec-foodweb}
+
+> **Class:** uncertain attribution
+> **Canonical introduction:** [@elton1927animal]
+> **Named first:** [@summerhayes1923contribution]
+> **Domain:** when connection is the data
+
+A food web draws species as nodes and feeding as directed edges, so the trophic structure of a community becomes a graph read at a glance. Elton fixed the ecological concepts of the food chain and the niche [@elton1927animal], though the Bear Island survey of Summerhayes and Elton [@summerhayes1923contribution] had printed the connected web four years earlier.
+
+```{python}
+#| label: fig-foodweb
+#| fig-cap: "A small directed food web laid out by trophic level; arrows point from prey to predator."
+
+import matplotlib.pyplot as plt
+import networkx as nx
+
+palette = ["#4269d0", "#efb118", "#ff725c", "#6cc5b0",
+           "#3ca951", "#a463f2", "#9c6b4e", "#97737b"]
+
+producers  = ["Diatoms", "Algae", "Detritus"]
+herbivores = ["Copepod", "Snail", "Midge larva"]
+carnivores = ["Stickleback", "Beetle", "Heron"]
+
+edges = [
+    ("Diatoms", "Copepod"), ("Algae", "Copepod"), ("Algae", "Snail"),
+    ("Detritus", "Midge larva"), ("Diatoms", "Midge larva"),
+    ("Copepod", "Stickleback"), ("Snail", "Beetle"),
+    ("Midge larva", "Stickleback"), ("Midge larva", "Beetle"),
+    ("Stickleback", "Heron"), ("Beetle", "Heron"),
+]
+G = nx.DiGraph()
+G.add_edges_from(edges)
+
+pos, colours = {}, {}
+for level, (row, col) in enumerate(
+        [(producers, palette[3]), (herbivores, palette[0]), (carnivores, palette[2])]):
+    for i, node in enumerate(row):
+        pos[node] = (i - (len(row) - 1) / 2, level)
+        colours[node] = col
+
+fig, ax = plt.subplots(figsize=(6.5, 4.5))
+nx.draw_networkx_edges(G, pos, ax=ax, arrows=True, arrowsize=12,
+                       edge_color="#888888", width=1.2,
+                       connectionstyle="arc3,rad=0.05")
+nx.draw_networkx_nodes(G, pos, ax=ax, node_size=1100,
+                       node_color=[colours[n] for n in G.nodes()])
+nx.draw_networkx_labels(G, pos, ax=ax, font_size=7)
+for y, lab in [(0, "Producers"), (1, "Herbivores"), (2, "Carnivores")]:
+    ax.text(-2.1, y, lab, va="center", ha="left", fontsize=8, style="italic")
+ax.set_title("Food web by trophic level")
+ax.axis("off")
+plt.tight_layout(); plt.show()
+```
+
+### 41 — Connectome {#sec-connectome}
+
+> **Class:** named first
+> **Canonical introduction:** [@sporns2005human]
+> **Domain:** the brain as a network
+
+The connectome renders the brain as a graph — regions as nodes, tracts or correlations as edges — whose modular community structure is the finding, not the layout. Sporns, Tononi and Kötter named the human connectome and set the network agenda for neuroscience [@sporns2005human].
+
+```{python}
+#| label: fig-connectome
+#| fig-cap: "A modular graph — dense within communities, sparse between — under a spring layout, coloured by module."
+
+import matplotlib.pyplot as plt
+import networkx as nx
+
+palette = ["#4269d0", "#efb118", "#ff725c", "#6cc5b0",
+           "#3ca951", "#a463f2", "#9c6b4e", "#97737b"]
+
+sizes = [14, 14, 12, 10]
+G = nx.random_partition_graph(sizes, 0.38, 0.015, seed=0)
+
+module = {}
+for k, block in enumerate(G.graph["partition"]):
+    for node in block:
+        module[node] = k
+colours = [palette[module[n]] for n in G.nodes()]
+
+pos = nx.spring_layout(G, seed=0)
+fig, ax = plt.subplots(figsize=(6.5, 5))
+nx.draw_networkx_edges(G, pos, ax=ax, edge_color="#cccccc", width=0.6)
+nx.draw_networkx_nodes(G, pos, ax=ax, node_size=90, node_color=colours,
+                       edgecolors="white", linewidths=0.5)
+ax.set_title("Modular community structure")
+ax.axis("off")
+plt.tight_layout(); plt.show()
+```
+
+### 42 — Artificial neural network {#sec-ann}
+
+> **Class:** canonical reference
+> **Canonical introduction:** [@mcculloch1943logical]
+> **Domain:** the engineered twin
+
+An artificial neural network diagram stacks layers of units with full connections between adjacent layers, the engineered mirror of the biological graph. McCulloch and Pitts gave the first formal model of a neuron as a logical threshold unit [@mcculloch1943logical].
+
+```{python}
+#| label: fig-ann
+#| fig-cap: "A feed-forward network: input, two hidden, and output layers, fully connected between neighbours."
+
+import matplotlib.pyplot as plt
+
+palette = ["#4269d0", "#efb118", "#ff725c", "#6cc5b0",
+           "#3ca951", "#a463f2", "#9c6b4e", "#97737b"]
+
+layers = [3, 5, 4, 2]
+colours = [palette[0], palette[3], palette[3], palette[2]]
+
+pos = []
+for x, n in enumerate(layers):
+    ys = [(i - (n - 1) / 2) * 1.0 for i in range(n)]
+    pos.append([(x * 2.0, y) for y in ys])
+
+fig, ax = plt.subplots(figsize=(6.5, 4))
+for l in range(len(layers) - 1):
+    for (x0, y0) in pos[l]:
+        for (x1, y1) in pos[l + 1]:
+            ax.plot([x0, x1], [y0, y1], color="#cfcfcf", lw=0.6, zorder=1)
+for l, layer in enumerate(pos):
+    for (x, y) in layer:
+        ax.scatter(x, y, s=420, color=colours[l], edgecolors="white",
+                   linewidths=1.0, zorder=2)
+labels = ["input", "hidden", "hidden", "output"]
+for x, lab in zip([0, 2, 4, 6], labels):
+    ax.text(x, -3.4, lab, ha="center", fontsize=8, style="italic")
+ax.set_title("Feed-forward neural network")
+ax.set_ylim(-3.8, 3)
+ax.axis("off")
+plt.tight_layout(); plt.show()
+```
+
+### 43 — Airline / transport network {#sec-airline}
+
+> **Class:** shared genre idiom
+> **Canonical introduction:** [@guimera2005worldwide]
+> **Domain:** a spatial graph
+
+A transport network embeds nodes at their geographic coordinates and draws routes as edges, so hubs surface as high-degree points. Guimerà and colleagues analysed the worldwide airport network and exposed its scale-free, community-structured form [@guimera2005worldwide].
+
+```{python}
+#| label: fig-airline
+#| fig-cap: "A synthetic route network on (lon, lat) positions; node size grows with degree, revealing hubs."
+
+import matplotlib.pyplot as plt
+import numpy as np
+import networkx as nx
+
+rng = np.random.default_rng(0)
+n = 16
+G = nx.barabasi_albert_graph(n, 2, seed=0)
+lon = rng.uniform(0, 10, n)
+lat = rng.uniform(0, 6, n)
+pos = {i: (lon[i], lat[i]) for i in range(n)}
+deg = dict(G.degree())
+
+fig, ax = plt.subplots(figsize=(6.5, 4.2))
+for u, v in G.edges():
+    ax.plot([pos[u][0], pos[v][0]], [pos[u][1], pos[v][1]],
+            color="#9db4e2", lw=0.8, zorder=1)
+sizes = [40 + deg[i] * 60 for i in range(n)]
+ax.scatter(lon, lat, s=sizes, c="#4269d0", edgecolors="white",
+           linewidths=0.6, zorder=2)
+for i in range(n):
+    if deg[i] >= 4:
+        ax.annotate(f"H{i}", (lon[i], lat[i]), fontsize=7,
+                    ha="center", va="center", color="white", zorder=3)
+ax.set_xlabel("Longitude"); ax.set_ylabel("Latitude")
+ax.set_title("Route network with degree-scaled hubs")
+ax.grid(True, alpha=0.3)
+plt.tight_layout(); plt.show()
+```
+
+### 44 — Feynman diagram {#sec-feynman}
+
+> **Class:** named first
+> **Canonical introduction:** [@feynman1949spacetime]
+> **Domain:** a graph that is also physics
+
+A Feynman diagram is a graph whose edges are particle worldlines and whose vertices are interactions, at once a bookkeeping device and a term in a perturbation series. Feynman introduced the space-time diagrams in his 1949 formulation of quantum electrodynamics [@feynman1949spacetime].
+
+```{python}
+#| label: fig-feynman
+#| fig-cap: "An s-channel diagram: an incoming fermion pair annihilate at a vertex, a photon propagates, an outgoing pair emerge."
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig, ax = plt.subplots(figsize=(6, 4))
+v1, v2 = (-1.0, 0.0), (1.0, 0.0)
+
+# incoming fermion lines into left vertex
+ax.plot([-2.4, v1[0]], [1.2, v1[1]], color="#333333", lw=1.4)
+ax.plot([-2.4, v1[0]], [-1.2, v1[1]], color="#333333", lw=1.4)
+# outgoing fermion lines from right vertex
+ax.plot([v2[0], 2.4], [v2[1], 1.2], color="#333333", lw=1.4)
+ax.plot([v2[0], 2.4], [v2[1], -1.2], color="#333333", lw=1.4)
+
+# fermion-flow arrows
+for (x0, y0, x1, y1) in [(-2.4, 1.2, -1.7, 0.6), (-1.7, -0.6, -2.4, -1.2),
+                         (1.7, 0.6, 2.4, 1.2), (2.4, -1.2, 1.7, -0.6)]:
+    ax.annotate("", xy=(x1, y1), xytext=(x0, y0),
+                arrowprops=dict(arrowstyle="->", color="#333333", lw=1.2))
+
+# photon propagator as a sine wiggle
+xs = np.linspace(v1[0], v2[0], 200)
+ax.plot(xs, 0.12 * np.sin(np.pi * 8 * (xs + 1) / 2), color="#4269d0", lw=1.4)
+
+for (vx, vy) in (v1, v2):
+    ax.scatter(vx, vy, s=45, color="#ff725c", zorder=3)
+ax.text(-2.5, 1.35, r"$e^-$", fontsize=11, ha="right")
+ax.text(-2.5, -1.35, r"$e^+$", fontsize=11, ha="right")
+ax.text(2.5, 1.35, r"$\mu^-$", fontsize=11, ha="left")
+ax.text(2.5, -1.35, r"$\mu^+$", fontsize=11, ha="left")
+ax.text(0, 0.32, r"$\gamma$", fontsize=12, ha="center", color="#4269d0")
+ax.text(v1[0], -0.45, "vertex", fontsize=7, ha="center")
+ax.text(v2[0], -0.45, "vertex", fontsize=7, ha="center")
+ax.set_xlim(-3, 3); ax.set_ylim(-1.8, 1.8)
+ax.set_title("s-channel QED diagram")
+ax.axis("off")
+plt.tight_layout(); plt.show()
+```
+
+### 45 — Logic gate / transistor {#sec-logicgate}
+
+> **Class:** shared genre idiom
+> **Canonical introduction:** [@shannon1938symbolic]
+> **Domain:** the unit of computation
+
+A logic-circuit schematic wires gate glyphs into a combinational function, each gate a node and each wire an edge carrying a Boolean value. Shannon's thesis established that switching circuits realise Boolean algebra [@shannon1938symbolic].
+
+```{python}
+#| label: fig-logicgate
+#| fig-cap: "An AND gate and an OR gate feeding a final OR gate; a truth table for the output sits inset."
+
+import matplotlib.pyplot as plt
+from matplotlib.path import Path
+import matplotlib.patches as patches
+
+def and_gate(x, y, w=0.9, h=0.7):
+    verts = [(x, y), (x, y + h), (x + 0.5 * w, y + h),
+             (x + 0.9 * w, y + h), (x + w, y + 0.75 * h), (x + w, y + 0.5 * h),
+             (x + w, y + 0.25 * h), (x + 0.9 * w, y), (x + 0.5 * w, y), (x, y)]
+    codes = [Path.MOVETO, Path.LINETO, Path.LINETO,
+             Path.CURVE4, Path.CURVE4, Path.CURVE4,
+             Path.CURVE4, Path.CURVE4, Path.CURVE4, Path.CLOSEPOLY]
+    return Path(verts, codes)
+
+def or_gate(x, y, w=0.9, h=0.7):
+    verts = [(x, y + h),
+             (x + 0.5 * w, y + h), (x + 0.85 * w, y + 0.75 * h), (x + w, y + 0.5 * h),
+             (x + 0.85 * w, y + 0.25 * h), (x + 0.5 * w, y), (x, y),
+             (x + 0.25 * w, y + 0.35 * h), (x + 0.25 * w, y + 0.65 * h), (x, y + h)]
+    codes = [Path.MOVETO,
+             Path.CURVE4, Path.CURVE4, Path.CURVE4,
+             Path.CURVE4, Path.CURVE4, Path.CURVE4,
+             Path.CURVE4, Path.CURVE4, Path.CURVE4]
+    return Path(verts, codes)
+
+fig, ax = plt.subplots(figsize=(6.5, 4))
+for glyph, (gx, gy), col, lab in [
+        (and_gate, (1.0, 1.7), "#4269d0", "AND"),
+        (or_gate,  (1.0, 0.3), "#efb118", "OR"),
+        (or_gate,  (3.2, 1.0), "#6cc5b0", "OR")]:
+    ax.add_patch(patches.PathPatch(glyph(gx, gy), facecolor=col,
+                                   edgecolor="#333333", lw=1.2, alpha=0.85))
+    ax.text(gx + 0.42, gy + 0.35, lab, ha="center", va="center", fontsize=7)
+
+# input wires
+for wy, name in [(2.4, "A"), (2.0, "B"), (0.95, "C"), (0.55, "D")]:
+    ax.plot([0.3, 1.0], [wy, wy], color="#333333", lw=1.0)
+    ax.text(0.2, wy, name, ha="right", va="center", fontsize=8)
+# gate outputs into final gate
+ax.plot([1.9, 3.2], [2.05, 1.5], color="#333333", lw=1.0)
+ax.plot([1.9, 3.2], [0.65, 1.0], color="#333333", lw=1.0)
+# final output
+ax.plot([4.1, 4.9], [1.35, 1.35], color="#333333", lw=1.0)
+ax.text(4.95, 1.35, "Y", ha="left", va="center", fontsize=9)
+
+table = "A B C D | Y\n0 0 0 0 | 0\n1 1 0 0 | 1\n0 0 1 1 | 1\n1 1 1 0 | 1"
+ax.text(0.2, -0.7, table, family="monospace", fontsize=6.5, va="top",
+        bbox=dict(boxstyle="round", fc="#f4f4f4", ec="#bbbbbb"))
+ax.set_xlim(-0.1, 5.4); ax.set_ylim(-1.6, 3)
+ax.set_title("Combinational logic circuit")
+ax.axis("off")
+plt.tight_layout(); plt.show()
+```
+
+### 46 — Character co-occurrence network {#sec-lesmis}
+
+> **Class:** canonical reference
+> **Canonical introduction:** [@knuth1993stanford]
+> **Domain:** narrative as a graph
+
+A co-occurrence network turns a narrative into a graph — characters as nodes, shared scenes as weighted edges — and lets community structure stand in for plot. The Les Misérables graph enters the canon through Knuth's Stanford GraphBase [@knuth1993stanford].
+
+```{python}
+#| label: fig-lesmis
+#| fig-cap: "The Les Misérables co-appearance graph under a spring layout; node size scales with degree."
+
+import matplotlib.pyplot as plt
+import networkx as nx
+
+try:
+    G = nx.les_miserables_graph()
+except Exception:
+    rng = __import__("numpy").random.default_rng(0)
+    G = nx.gnm_random_graph(30, 90, seed=0)
+
+pos = nx.spring_layout(G, seed=0, k=0.45)
+deg = dict(G.degree())
+sizes = [30 + deg[n] * 22 for n in G.nodes()]
+
+fig, ax = plt.subplots(figsize=(6.8, 5.2))
+nx.draw_networkx_edges(G, pos, ax=ax, edge_color="#d0d0d0", width=0.5)
+nx.draw_networkx_nodes(G, pos, ax=ax, node_size=sizes, node_color="#a463f2",
+                       edgecolors="white", linewidths=0.4)
+hubs = sorted(deg, key=deg.get, reverse=True)[:5]
+nx.draw_networkx_labels(G, pos, ax=ax,
+                        labels={h: h for h in hubs}, font_size=7)
+ax.set_title("Character co-occurrence network")
+ax.axis("off")
+plt.tight_layout(); plt.show()
+```
+
+### 47 — Tree of life / phylogeny {#sec-treeoflife}
+
+> **Class:** named first
+> **Canonical introduction:** [@darwin1859origin]
+> **Domain:** the dendrogram archetype
+
+A phylogenetic tree draws descent as a rooted branching diagram, sister clades meeting at common ancestors. The sole illustration in Darwin's Origin was such a tree of divergence [@darwin1859origin].
+
+```{python}
+#| label: fig-treeoflife
+#| fig-cap: "A rooted branching tree over synthetic taxa, drawn as a dendrogram from a single common ancestor."
+
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.cluster.hierarchy import dendrogram, linkage
+
+rng = np.random.default_rng(0)
+centres = np.repeat(np.arange(3), 4)[:, None] * 4.0
+X = rng.normal(size=(12, 4)) + centres
+labels = [f"sp{i}" for i in range(12)]
+Z = linkage(X, method="ward")
+
+fig, ax = plt.subplots(figsize=(6.5, 4))
+dendrogram(Z, labels=labels, ax=ax, color_threshold=6,
+           above_threshold_color="#9c6b4e")
+ax.set_ylabel("Divergence")
+ax.set_title("Rooted phylogenetic tree")
+ax.spines[["top", "right"]].set_visible(False)
+plt.tight_layout(); plt.show()
+```
+
+### 48 — Molecular-clock divergence tree {#sec-molclock}
+
+> **Class:** named first
+> **Canonical introduction:** [@zuckerkandl1965evolutionary]
+> **Domain:** branch length as time
+
+A phylogram lets horizontal branch length encode divergence time, turning a bare topology into a datable chronology. Zuckerkandl and Pauling proposed the molecular clock, reading sequence differences as elapsed time [@zuckerkandl1965evolutionary].
+
+```{python}
+#| label: fig-molclock
+#| fig-cap: "A phylogram where horizontal branch length encodes divergence time, with a Mya axis."
+
+import matplotlib.pyplot as plt
+
+# tip y-positions
+y = {"Human": 4, "Chimp": 3, "Gorilla": 2, "Mouse": 1, "Chicken": 0}
+# internal node y = mean of descendants
+y_hc = (y["Human"] + y["Chimp"]) / 2
+y_hcg = (y_hc + y["Gorilla"]) / 2
+y_mam = (y_hcg + y["Mouse"]) / 2
+y_root = (y_mam + y["Chicken"]) / 2
+
+fig, ax = plt.subplots(figsize=(6.5, 4))
+col = "#333333"
+
+def split(x_parent, children):
+    ys = [c[2] for c in children]
+    ax.plot([x_parent, x_parent], [min(ys), max(ys)], color=col, lw=1.3)
+    for x_child, name, yc in children:
+        ax.plot([x_parent, x_child], [yc, yc], color=col, lw=1.3)
+        if name:
+            ax.text(-4, yc, name, va="center", ha="left", fontsize=8)
+
+split(6,   [(0, "Human", y["Human"]), (0, "Chimp", y["Chimp"])])
+split(9,   [(6, "", y_hc), (0, "Gorilla", y["Gorilla"])])
+split(90,  [(9, "", y_hcg), (0, "Mouse", y["Mouse"])])
+split(320, [(90, "", y_mam), (0, "Chicken", y["Chicken"])])
+
+ax.set_xlim(340, -35)   # deep past on the left, present (0 Mya) on the right
+ax.set_ylim(-0.6, 4.6)
+ax.set_xlabel("Time before present (Mya)")
+ax.set_yticks([])
+ax.set_title("Molecular-clock phylogram")
+ax.spines[["top", "left", "right"]].set_visible(False)
+plt.tight_layout(); plt.show()
+```
+
+### 49 — Language family tree {#sec-langtree}
+
+> **Class:** named first
+> **Canonical introduction:** [@schleicher1863darwinsche]
+> **Domain:** descent of languages
+
+A Stammbaum draws languages as a descent tree from a reconstructed proto-language, the dendrogram idiom borrowed for historical linguistics. Schleicher imported Darwin's branching diagram to model language families [@schleicher1863darwinsche].
+
+```{python}
+#| label: fig-langtree
+#| fig-cap: "A Stammbaum: a proto-language root branching to families and then to individual languages."
+
+import matplotlib.pyplot as plt
+
+palette = ["#4269d0", "#efb118", "#ff725c", "#6cc5b0",
+           "#3ca951", "#a463f2", "#9c6b4e", "#97737b"]
+
+families = {
+    "Germanic":     (["English", "German"], palette[0]),
+    "Italic":       (["French", "Spanish"], palette[1]),
+    "Slavic":       (["Russian", "Polish"], palette[2]),
+    "Indo-Iranian": (["Hindi", "Persian"], palette[3]),
+}
+
+fig, ax = plt.subplots(figsize=(6.8, 4.2))
+leaf_x = {}
+i = 0
+for fam, (langs, _) in families.items():
+    for lang in langs:
+        leaf_x[lang] = i
+        i += 1
+
+fam_x = {}
+for fam, (langs, col) in families.items():
+    fx = sum(leaf_x[l] for l in langs) / len(langs)
+    fam_x[fam] = fx
+    for lang in langs:
+        ax.plot([fx, leaf_x[lang]], [1, 0], color=col, lw=1.4)
+        ax.text(leaf_x[lang], -0.12, lang, ha="center", va="top",
+                fontsize=8, rotation=45)
+    ax.scatter(fx, 1, s=60, color=col, zorder=3)
+    ax.text(fx, 1.12, fam, ha="center", va="bottom", fontsize=8)
+
+root_x = sum(fam_x.values()) / len(fam_x)
+for fam, fx in fam_x.items():
+    ax.plot([root_x, fx], [2, 1], color="#666666", lw=1.2)
+ax.scatter(root_x, 2, s=90, color="#333333", zorder=3)
+ax.text(root_x, 2.14, "Proto-Indo-European", ha="center", va="bottom", fontsize=9)
+
+ax.set_xlim(-0.8, i - 0.2); ax.set_ylim(-0.9, 2.5)
+ax.set_title("Stammbaum of language descent")
+ax.axis("off")
+plt.tight_layout(); plt.show()
+```
+
+### 50 — The Tonnetz {#sec-tonnetz}
+
+> **Class:** named first
+> **Canonical introduction:** [@euler1739tentamen]
+> **Domain:** a designed lattice for pitch
+
+The Tonnetz lays pitch classes on a triangular lattice whose three axes are the perfect fifth, the major third and the minor third, so consonant triads become adjacent triangles. Euler drew the first such tone-network [@euler1739tentamen].
+
+```{python}
+#| label: fig-tonnetz
+#| fig-cap: "A triangular pitch lattice: nodes are pitch classes, edges run along the fifth, major-third and minor-third axes."
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+names = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+I, J = range(5), range(4)
+
+def coord(i, j):
+    return (i + 0.5 * j, 0.866 * j)
+
+def pc(i, j):
+    return (7 * i + 4 * j) % 12
+
+fig, ax = plt.subplots(figsize=(6.5, 4.5))
+# edges: fifth (i+1,j), major third (i,j+1), minor third (i+1,j-1)
+for i in I:
+    for j in J:
+        x0, y0 = coord(i, j)
+        for di, dj in [(1, 0), (0, 1), (1, -1)]:
+            ni, nj = i + di, j + dj
+            if ni in I and nj in J:
+                x1, y1 = coord(ni, nj)
+                ax.plot([x0, x1], [y0, y1], color="#cfcfcf", lw=0.8, zorder=1)
+for i in I:
+    for j in J:
+        x, y = coord(i, j)
+        ax.scatter(x, y, s=280, color="#6cc5b0", edgecolors="white",
+                   linewidths=0.8, zorder=2)
+        ax.text(x, y, names[pc(i, j)], ha="center", va="center",
+                fontsize=7, zorder=3)
+ax.set_title("The Tonnetz (fifth / major-third / minor-third axes)")
+ax.set_aspect("equal")
+ax.axis("off")
+plt.tight_layout(); plt.show()
+```
+
+### 51 — cGh cube {#sec-cghcube}
+
+> **Class:** shared genre idiom
+> **Canonical introduction:** [@okun1991fundamental]
+> **Domain:** physical theories placed by their constants
+
+The cGh cube places physical theories at the vertices of a cube whose axes are the constants c, G and h, so each theory is fixed by which constants it takes seriously. Okun popularised the cube as a map of the fundamental theories [@okun1991fundamental].
+
+```{python}
+#| label: fig-cghcube
+#| fig-cap: "The cube of physical theories: axes 1/c, G, h; each vertex a theory taking those constants seriously."
+
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D  # noqa: F401
+import itertools
+
+verts = list(itertools.product([0, 1], [0, 1], [0, 1]))
+labels = {
+    (0, 0, 0): "Newtonian\nmechanics",
+    (1, 0, 0): "Special\nrelativity",
+    (0, 1, 0): "Newtonian\ngravity",
+    (0, 0, 1): "Quantum\nmechanics",
+    (1, 1, 0): "General\nrelativity",
+    (1, 0, 1): "QFT",
+    (0, 1, 1): "Non-rel.\nquantum gravity",
+    (1, 1, 1): "Theory of\neverything",
+}
+
+fig = plt.figure(figsize=(6.5, 5.5))
+ax = fig.add_subplot(111, projection="3d")
+for a in verts:
+    for b in verts:
+        if sum(abs(ai - bi) for ai, bi in zip(a, b)) == 1:
+            ax.plot(*zip(a, b), color="#9db4e2", lw=1.0)
+for v in verts:
+    ax.scatter(*v, s=40, color="#ff725c")
+    ax.text(v[0], v[1], v[2], "  " + labels[v], fontsize=6.5)
+ax.set_xlabel("1/c"); ax.set_ylabel("G"); ax.set_zlabel("h")
+ax.set_xticks([0, 1]); ax.set_yticks([0, 1]); ax.set_zticks([0, 1])
+ax.set_title("The cGh cube of theories")
+ax.view_init(elev=20, azim=-55)
+plt.tight_layout(); plt.show()
+```
+
+### 52 — Standard Model double simplex {#sec-standardmodel}
+
+> **Class:** canonical reference
+> **Canonical introduction:** [@workman2022review]
+> **Domain:** particles placed to show interactions
+
+The Standard Model table arranges the fundamental particles as tiles — three generations of quarks and leptons plus the gauge bosons and the Higgs — coloured by kind so the interaction pattern reads off the grid. The Particle Data Group review is the canonical tabulation [@workman2022review].
+
+```{python}
+#| label: fig-standardmodel
+#| fig-cap: "The Standard Model as a tile chart: quarks and leptons over three generations, with bosons and the Higgs aside."
+
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+
+quark, lepton, boson, scalar = "#4269d0", "#6cc5b0", "#efb118", "#a463f2"
+
+# rows top->bottom, columns are generations
+rows = [
+    [("u", quark), ("c", quark), ("t", quark)],
+    [("d", quark), ("s", quark), ("b", quark)],
+    [("e", lepton), (u"μ", lepton), (u"τ", lepton)],
+    [(u"νₑ", lepton), (u"νμ", lepton), (u"ντ", lepton)],
+]
+bosons = [("g", boson), (u"γ", boson), ("Z", boson), ("W", boson), ("H", scalar)]
+
+fig, ax = plt.subplots(figsize=(6.5, 4.5))
+
+def tile(x, y, sym, col):
+    ax.add_patch(patches.FancyBboxPatch((x, y), 0.9, 0.9,
+                 boxstyle="round,pad=0.02", fc=col, ec="white", lw=1.5, alpha=0.9))
+    ax.text(x + 0.45, y + 0.45, sym, ha="center", va="center",
+            fontsize=12, color="white")
+
+for r, row in enumerate(rows):
+    for c, (sym, col) in enumerate(row):
+        tile(c, len(rows) - 1 - r, sym, col)
+for i, (sym, col) in enumerate(bosons):
+    tile(4, len(bosons) - 1 - i, sym, col)
+
+for c in range(3):
+    ax.text(c + 0.45, 4.15, f"gen {c+1}", ha="center", fontsize=8)
+ax.text(4.45, 5.15, "bosons", ha="center", fontsize=8)
+
+handles = [patches.Patch(color=quark, label="quark"),
+           patches.Patch(color=lepton, label="lepton"),
+           patches.Patch(color=boson, label="gauge boson"),
+           patches.Patch(color=scalar, label="scalar")]
+ax.legend(handles=handles, loc="lower left", bbox_to_anchor=(0, -0.18),
+          ncol=4, fontsize=7, frameon=False)
+ax.set_xlim(-0.2, 5.2); ax.set_ylim(-0.3, 5.4)
+ax.set_aspect("equal")
+ax.set_title("Standard Model particle tiles")
+ax.axis("off")
+plt.tight_layout(); plt.show()
+```
+
+### 53 — Cultural history as a network {#sec-culturenet}
+
+> **Class:** canonical reference
+> **Canonical introduction:** [@schich2014network]
+> **Domain:** 150,000 lives over two millennia
+
+A cultural-history network draws lives as directed edges from birthplace to death-place between geographic centres, edge weight tracing the migration of talent. Schich and colleagues mapped 150,000 notable lives over two millennia this way [@schich2014network].
+
+```{python}
+#| label: fig-culturenet
+#| fig-cap: "A birth-to-death migration graph over synthetic cultural centres; arrow width scales with flow."
+
+import matplotlib.pyplot as plt
+
+centres = {
+    "Rome": (12.5, 41.9), "Paris": (2.3, 48.9), "London": (-0.1, 51.5),
+    "Vienna": (16.4, 48.2), "Berlin": (13.4, 52.5), "Florence": (11.3, 43.8),
+    "Madrid": (-3.7, 40.4), "Amsterdam": (4.9, 52.4),
+}
+flows = [
+    ("Florence", "Rome", 9), ("Rome", "Paris", 6), ("Vienna", "Berlin", 7),
+    ("Madrid", "Rome", 4), ("Amsterdam", "London", 5), ("Paris", "London", 6),
+    ("Berlin", "Paris", 3), ("Florence", "Vienna", 4), ("London", "Paris", 5),
+]
+
+fig, ax = plt.subplots(figsize=(6.5, 4.5))
+for src, dst, w in flows:
+    x0, y0 = centres[src]
+    x1, y1 = centres[dst]
+    ax.annotate("", xy=(x1, y1), xytext=(x0, y0),
+                arrowprops=dict(arrowstyle="->", color="#4269d0",
+                                lw=0.4 * w, alpha=0.6,
+                                connectionstyle="arc3,rad=0.15"))
+for name, (x, y) in centres.items():
+    ax.scatter(x, y, s=90, color="#ff725c", edgecolors="white",
+               linewidths=0.6, zorder=3)
+    ax.text(x, y + 0.6, name, ha="center", fontsize=7)
+ax.set_xlabel("Longitude"); ax.set_ylabel("Latitude")
+ax.set_title("Birth-to-death migration of cultural figures")
+ax.grid(True, alpha=0.3)
+plt.tight_layout(); plt.show()
+```
+## B2. Continuity and flow — directed paths and bands {#sec-unit-b2}
+
+*After Tufte's reading of Minard, The Visual Display of Quantitative Information (1983).*
+
+### 54 — Water & carbon cycle {#sec-carboncycle}
+
+> **Class:** shared genre idiom  
+> **Canonical introduction:** [@falkowski2000global]  
+> **Domain:** closed-loop flows  
+
+Reservoirs sit as labelled boxes and fluxes run between them as directed arrows whose width scales with the mass moved per year, so a conserved quantity is tracked around a closed loop. Falkowski and colleagues drew the carbon budget in exactly this box-and-flux idiom to weigh the anthropogenic perturbation against the natural cycle [@falkowski2000global].
+
+```{python}
+#| label: fig-carboncycle
+#| fig-cap: "Carbon reservoirs as boxes, fluxes as arrows with width scaled to magnitude."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
+
+np.random.seed(0)
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+
+boxes = {
+    "Atmosphere": (0.50, 0.82),
+    "Ocean": (0.16, 0.40),
+    "Biosphere": (0.84, 0.40),
+    "Sediments": (0.50, 0.06),
+}
+bw, bh = 0.26, 0.15
+for name, (x, y) in boxes.items():
+    ax.add_patch(Rectangle((x - bw / 2, y - bh / 2), bw, bh,
+                           facecolor="#4269d0", edgecolor="black", alpha=0.85))
+    ax.text(x, y, name, ha="center", va="center", color="white",
+            fontsize=8, fontweight="bold")
+
+# (from, to, GtC/yr)
+fluxes = [
+    ("Ocean", "Atmosphere", 90),
+    ("Atmosphere", "Ocean", 92),
+    ("Biosphere", "Atmosphere", 120),
+    ("Atmosphere", "Biosphere", 123),
+    ("Biosphere", "Sediments", 0.5),
+    ("Ocean", "Sediments", 0.2),
+]
+for src, dst, val in fluxes:
+    (x0, y0), (x1, y1) = boxes[src], boxes[dst]
+    dx, dy = x1 - x0, y1 - y0
+    n = np.hypot(dx, dy)
+    ox, oy = -dy / n * 0.03, dx / n * 0.03  # offset so opposing arrows separate
+    ax.annotate("", xy=(x1 - dx * 0.28 + ox, y1 - dy * 0.28 + oy),
+                xytext=(x0 + dx * 0.28 + ox, y0 + dy * 0.28 + oy),
+                arrowprops=dict(arrowstyle="-|>", color="#ff725c",
+                                lw=0.6 + 2.2 * np.sqrt(val / 120)))
+
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 1)
+ax.axis("off")
+ax.set_title("Carbon cycle: reservoirs and fluxes (GtC yr$^{-1}$)", fontsize=11)
+plt.tight_layout()
+plt.show()
+```
+
+### 55 — Trophic / energy-flow pyramid {#sec-trophic}
+
+> **Class:** named first + canonical reference (distinct documents)  
+> **Canonical introduction:** [@lindeman1942trophic]  
+> **Named first:** [@elton1927animal]  
+> **Domain:** energy through an ecosystem  
+
+Stacked tiers taper from a wide base of producers to a narrow apex, each level roughly a tenth of the one below because most energy is lost as heat at every transfer. Elton drew the pyramid of numbers [@elton1927animal]; Lindeman recast it as a quantitative energy budget with the ~10% trophic efficiency [@lindeman1942trophic].
+
+```{python}
+#| label: fig-trophic
+#| fig-cap: "Trophic pyramid; each tier holds roughly 10% of the energy of the level below."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
+
+np.random.seed(0)
+
+levels = ["Producers", "Primary\nconsumers", "Secondary\nconsumers",
+          "Tertiary\nconsumers", "Apex\npredators"]
+energy = np.array([10000.0, 1000.0, 100.0, 10.0, 1.0])
+widths = energy / energy.max()
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+colors = ["#3ca951", "#6cc5b0", "#4269d0", "#a463f2", "#ff725c"]
+h = 1.0
+for i, (w, lab, c) in enumerate(zip(widths, levels, colors)):
+    y = i * h
+    ax.add_patch(Rectangle((-w / 2, y), w, h * 0.9, facecolor=c,
+                           edgecolor="white"))
+    ax.text(0, y + 0.45 * h, f"{lab}\n{energy[i]:.0f}", ha="center",
+            va="center", fontsize=7.5,
+            color="white" if i != 0 else "black")
+    if i > 0:
+        ax.annotate("~10%", xy=(w / 2 + 0.03, y + 0.1), fontsize=8,
+                    color="0.35")
+
+ax.set_xlim(-0.62, 0.62)
+ax.set_ylim(0, len(levels) * h)
+ax.axis("off")
+ax.set_title("Energy pyramid (relative units)", fontsize=11)
+plt.tight_layout()
+plt.show()
+```
+
+### 56 — Sankey of energy/material flow {#sec-sankey}
+
+> **Class:** named first  
+> **Canonical introduction:** [@sankey1898thermal]  
+> **Domain:** magnitude along paths  
+
+A Sankey diagram splits one input stream into branches whose widths stay proportional to the quantity carried, so conservation and loss are read directly from band thickness. Sankey drew the first such diagram to account for the energy losses of a steam engine [@sankey1898thermal].
+
+```{python}
+#| label: fig-sankey
+#| fig-cap: "Sankey flow: one input splitting into useful work and two loss streams."
+
+import matplotlib.pyplot as plt
+from matplotlib.sankey import Sankey
+
+fig = plt.figure(figsize=(6, 3.8))
+ax = fig.add_subplot(1, 1, 1, xticks=[], yticks=[])
+
+sankey = Sankey(ax=ax, scale=0.6, offset=0.25, head_angle=120, unit=None)
+sankey.add(flows=[1.0, -0.52, -0.33, -0.15],
+           labels=["input", "useful work", "friction loss", "exhaust"],
+           orientations=[0, 0, 1, -1],
+           facecolor="#4269d0", edgecolor="#2a2a2a")
+sankey.finish()
+
+ax.set_title("Sankey energy-flow diagram", fontsize=11)
+plt.tight_layout()
+plt.show()
+```
+
+### 57 — Haber–Bosch / refinery process flow {#sec-processflow}
+
+> **Class:** named first  
+> **Canonical introduction:** [@bosch1932development]  
+> **Domain:** the industrial transformation  
+
+A process-flow diagram chains unit operations as boxes and connects them with directed material streams, closing the loop where unreacted feed is recycled. Bosch described the high-pressure ammonia synthesis this diagram traces — feed compression, catalytic reaction, condensation, and recycle [@bosch1932development].
+
+```{python}
+#| label: fig-processflow
+#| fig-cap: "Haber–Bosch process flow: feed → compressor → reactor → condenser → product, with recycle."
+
+import matplotlib.pyplot as plt
+from matplotlib.patches import FancyBboxPatch
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+
+units = {
+    "Feed\nN$_2$+H$_2$": (0.10, 0.62),
+    "Compressor": (0.34, 0.62),
+    "Reactor": (0.58, 0.62),
+    "Condenser": (0.82, 0.62),
+    "Product\nNH$_3$": (0.82, 0.20),
+}
+bw, bh = 0.16, 0.16
+for name, (x, y) in units.items():
+    ax.add_patch(FancyBboxPatch((x - bw / 2, y - bh / 2), bw, bh,
+                                boxstyle="round,pad=0.01",
+                                facecolor="#6cc5b0", edgecolor="black"))
+    ax.text(x, y, name, ha="center", va="center", fontsize=7.5)
+
+def arrow(a, b, color="#4269d0"):
+    (x0, y0), (x1, y1) = units[a], units[b]
+    ax.annotate("", xy=(x1, y1), xytext=(x0, y0),
+                arrowprops=dict(arrowstyle="-|>", color=color, lw=1.6,
+                                shrinkA=22, shrinkB=22))
+
+arrow("Feed\nN$_2$+H$_2$", "Compressor")
+arrow("Compressor", "Reactor")
+arrow("Reactor", "Condenser")
+arrow("Condenser", "Product\nNH$_3$")
+
+# recycle loop: condenser -> back to compressor
+ax.annotate("", xy=(0.34, 0.70), xytext=(0.82, 0.78),
+            arrowprops=dict(arrowstyle="-|>", color="#ff725c", lw=1.4,
+                            connectionstyle="arc3,rad=-0.35"))
+ax.text(0.58, 0.86, "recycle", ha="center", fontsize=8, color="#ff725c")
+
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 1)
+ax.axis("off")
+ax.set_title("Ammonia synthesis process flow", fontsize=11)
+plt.tight_layout()
+plt.show()
+```
+
+### 58 — Central dogma {#sec-centraldogma}
+
+> **Class:** named first + canonical reference (distinct documents)  
+> **Canonical introduction:** [@crick1970central]  
+> **Named first:** [@crick1958protein]  
+> **Domain:** directional flow of information  
+
+Information passes DNA → RNA → protein along labelled arrows, with replication looping back onto DNA, and the arrow that is absent — protein back to nucleic acid — is the claim. Crick named the central dogma [@crick1958protein] and restated it precisely a decade later [@crick1970central].
+
+```{python}
+#| label: fig-centraldogma
+#| fig-cap: "Central dogma: DNA transcribed to RNA, translated to protein; DNA self-replicates."
+
+import matplotlib.pyplot as plt
+from matplotlib.patches import Circle
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+
+nodes = {"DNA": (0.20, 0.45), "RNA": (0.50, 0.45), "protein": (0.80, 0.45)}
+for name, (x, y) in nodes.items():
+    ax.add_patch(Circle((x, y), 0.10, facecolor="#4269d0", alpha=0.85,
+                        edgecolor="black"))
+    ax.text(x, y, name, ha="center", va="center", color="white",
+            fontsize=9, fontweight="bold")
+
+ax.annotate("", xy=(0.40, 0.45), xytext=(0.30, 0.45),
+            arrowprops=dict(arrowstyle="-|>", color="black", lw=1.6))
+ax.text(0.35, 0.52, "transcription", ha="center", fontsize=7.5)
+ax.annotate("", xy=(0.70, 0.45), xytext=(0.60, 0.45),
+            arrowprops=dict(arrowstyle="-|>", color="black", lw=1.6))
+ax.text(0.65, 0.52, "translation", ha="center", fontsize=7.5)
+
+# replication self-loop on DNA
+ax.annotate("", xy=(0.14, 0.55), xytext=(0.26, 0.55),
+            arrowprops=dict(arrowstyle="-|>", color="#ff725c", lw=1.4,
+                            connectionstyle="arc3,rad=-1.4"))
+ax.text(0.20, 0.74, "replication", ha="center", fontsize=7.5, color="#ff725c")
+
+ax.set_xlim(0, 1)
+ax.set_ylim(0.15, 0.85)
+ax.axis("off")
+ax.set_title("The central dogma of molecular biology", fontsize=11)
+plt.tight_layout()
+plt.show()
+```
+
+### 59 — Shannon channel + entropy {#sec-shannon}
+
+> **Class:** named first  
+> **Canonical introduction:** [@shannon1948mathematical]  
+> **Domain:** information through noise  
+
+The communication system is drawn as a chain — source, encoder, noisy channel, decoder, destination — and the amount of information is measured by an entropy that peaks when outcomes are equiprobable. Shannon set out both the block diagram and the entropy function in one paper [@shannon1948mathematical].
+
+```{python}
+#| label: fig-shannon
+#| fig-cap: "Shannon's channel block diagram (left) and binary entropy H(p), maximal at p=0.5 (right)."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
+
+np.random.seed(0)
+
+fig, (ax0, ax1) = plt.subplots(1, 2, figsize=(6, 3.2),
+                               gridspec_kw={"width_ratios": [1.25, 1]})
+
+# left: block diagram
+blocks = ["Source", "Encoder", "Channel", "Decoder", "Dest."]
+ys = np.linspace(0.85, 0.15, len(blocks))
+for b, y in zip(blocks, ys):
+    ax0.add_patch(Rectangle((0.25, y - 0.06), 0.5, 0.10,
+                            facecolor="#4269d0", alpha=0.85, edgecolor="black"))
+    ax0.text(0.5, y - 0.01, b, ha="center", va="center", color="white",
+             fontsize=8)
+for y0, y1 in zip(ys[:-1], ys[1:]):
+    ax0.annotate("", xy=(0.5, y1 + 0.04), xytext=(0.5, y0 - 0.06),
+                 arrowprops=dict(arrowstyle="-|>", color="black", lw=1.3))
+ax0.annotate("noise", xy=(0.75, ys[2] - 0.01), xytext=(0.98, ys[2] - 0.01),
+             ha="right", va="center", fontsize=8, color="#ff725c",
+             arrowprops=dict(arrowstyle="-|>", color="#ff725c", lw=1.3))
+ax0.set_xlim(0, 1)
+ax0.set_ylim(0, 1)
+ax0.axis("off")
+ax0.set_title("Channel", fontsize=10)
+
+# right: binary entropy
+p = np.linspace(1e-6, 1 - 1e-6, 400)
+H = -p * np.log2(p) - (1 - p) * np.log2(1 - p)
+ax1.plot(p, H, color="#a463f2", lw=2)
+ax1.axvline(0.5, color="0.6", ls="--", lw=1)
+ax1.set_xlabel("p")
+ax1.set_ylabel("H(p)  bits")
+ax1.set_title("Binary entropy", fontsize=10)
+ax1.grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+```
+
+### 60 — Greenhouse / energy-balance (Trenberth) diagram {#sec-energybudget}
+
+> **Class:** shared genre idiom  
+> **Canonical introduction:** [@trenberth2009earth]  
+> **Named first:** [@kiehl1997earth]  
+> **Domain:** the energy budget  
+
+Broad arrows carry incoming solar, reflected shortwave, outgoing longwave, and downward back-radiation, each tagged with a global-mean flux in W m⁻², so the planetary balance closes to a small residual. Kiehl and Trenberth fixed the canonical numbers [@kiehl1997earth]; Trenberth, Fasullo, and Kiehl revised them for the modern budget [@trenberth2009earth].
+
+```{python}
+#| label: fig-energybudget
+#| fig-cap: "Earth's energy budget: solar in, shortwave reflected, longwave out, back-radiation (W m$^{-2}$)."
+
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+
+# surface and top-of-atmosphere reference lines
+ax.axhline(0.12, color="#6cc5b0", lw=6, alpha=0.5)   # surface
+ax.axhline(0.92, color="0.75", lw=2)                 # top of atmosphere
+ax.text(0.02, 0.06, "surface", fontsize=8, color="0.35")
+ax.text(0.02, 0.95, "top of atmosphere", fontsize=8, color="0.35")
+
+def flux(x, y0, y1, val, color, label, side="left"):
+    ax.annotate("", xy=(x, y1), xytext=(x, y0),
+                arrowprops=dict(arrowstyle="-|>", color=color,
+                                lw=1 + val / 90))
+    ax.text(x + (0.02 if side == "left" else -0.02), (y0 + y1) / 2,
+            f"{label}\n{val}", fontsize=7.5, color=color,
+            ha="left" if side == "left" else "right", va="center")
+
+flux(0.16, 0.92, 0.12, 341, "#efb118", "solar in")
+flux(0.40, 0.12, 0.92, 102, "#4269d0", "reflected", side="right")
+flux(0.64, 0.12, 0.92, 239, "#ff725c", "longwave out")
+flux(0.88, 0.55, 0.12, 333, "#9c6b4e", "back-rad.", side="right")
+
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 1)
+ax.axis("off")
+ax.set_title("Earth's energy balance (W m$^{-2}$)", fontsize=11)
+plt.tight_layout()
+plt.show()
+```
+
+### 61 — Out-of-Africa migration map {#sec-outofafrica}
+
+> **Class:** shared genre idiom  
+> **Canonical introduction:** [@cann1987mitochondrial]  
+> **Domain:** movement across space  
+
+Arrows radiate from East Africa across an abstracted world, each annotated with an approximate arrival date, turning a genealogy into a route across space and time. Cann, Stoneking, and Wilson's mitochondrial coalescence placed the common ancestor in Africa and set this migration narrative going [@cann1987mitochondrial].
+
+```{python}
+#| label: fig-outofafrica
+#| fig-cap: "Abstract world map with dispersal arrows from East Africa, dates in thousand years ago."
+
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+ax.add_patch(Rectangle((0, 0), 1, 1, facecolor="#eef2f7", edgecolor="none"))
+
+regions = {
+    "E. Africa": (0.50, 0.42),
+    "Europe": (0.52, 0.72),
+    "Asia": (0.72, 0.62),
+    "Australia": (0.86, 0.20),
+    "Americas": (0.15, 0.55),
+}
+for name, (x, y) in regions.items():
+    ax.scatter(x, y, s=40, color="#3ca951", zorder=3)
+    ax.text(x, y + 0.04, name, ha="center", fontsize=7.5)
+
+origin = regions["E. Africa"]
+routes = [("Europe", "45 kya"), ("Asia", "50 kya"),
+          ("Australia", "50 kya"), ("Americas", "16 kya")]
+for dest, date in routes:
+    x1, y1 = regions[dest]
+    ax.annotate("", xy=(x1, y1), xytext=origin,
+                arrowprops=dict(arrowstyle="-|>", color="#ff725c", lw=1.6,
+                                connectionstyle="arc3,rad=0.2",
+                                shrinkA=6, shrinkB=6))
+    ax.text((origin[0] + x1) / 2, (origin[1] + y1) / 2 - 0.03, date,
+            fontsize=7, color="#ff725c", ha="center")
+
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 1)
+ax.axis("off")
+ax.set_title("Out-of-Africa dispersal", fontsize=11)
+plt.tight_layout()
+plt.show()
+```
+
+### 62 — Minard's march on Moscow {#sec-minard}
+
+> **Class:** named first  
+> **Canonical introduction:** [@minard1869carte]  
+> **Domain:** six variables, one frame  
+
+A band whose width tracks the surviving army thins along the advance and thins again on the retreat, while a linked panel below plots the falling temperature against longitude — six variables held in one frame. Minard's flow map of Napoleon's 1812 campaign is the canonical instance [@minard1869carte].
+
+```{python}
+#| label: fig-minard
+#| fig-cap: "Minard idiom: army-size band (advance vs retreat) above, retreat temperature below."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+# hand-entered (longitude, army size in thousands)
+adv_lon = np.array([24.0, 26.8, 28.5, 30.2, 33.2, 36.0, 37.6])
+adv_size = np.array([340, 300, 280, 240, 180, 145, 100])
+ret_lon = np.array([37.6, 36.0, 33.2, 30.2, 28.5, 26.8, 24.0])
+ret_size = np.array([100, 90, 55, 40, 30, 20, 10])
+ret_temp = np.array([0, -9, -21, -11, -20, -24, -26])  # °C, representative
+
+fig, (ax0, ax1) = plt.subplots(2, 1, figsize=(6, 4.2), sharex=True,
+                               gridspec_kw={"height_ratios": [3, 1]})
+
+scale = 6000.0
+y_adv, y_ret = 1.0, 0.4
+ax0.fill_between(adv_lon, y_adv - adv_size / scale, y_adv + adv_size / scale,
+                 color="#c9a227", alpha=0.9, label="advance")
+ax0.fill_between(ret_lon, y_ret - ret_size / scale, y_ret + ret_size / scale,
+                 color="#5a5a5a", alpha=0.9, label="retreat")
+ax0.text(24, y_adv + 0.10, "Kaunas", fontsize=7.5, ha="center")
+ax0.text(37.6, y_adv + 0.10, "Moscow", fontsize=7.5, ha="center")
+ax0.set_ylim(0.2, 1.3)
+ax0.set_yticks([])
+ax0.legend(loc="upper left", fontsize=8, frameon=False)
+ax0.set_title("Napoleon's 1812 campaign (Minard idiom)", fontsize=11)
+
+ax1.plot(ret_lon, ret_temp, "o-", color="#4269d0")
+for x, t in zip(ret_lon, ret_temp):
+    ax1.annotate(f"{t}°", (x, t), textcoords="offset points",
+                 xytext=(0, -10), fontsize=7, ha="center")
+ax1.set_ylabel("temp °C", fontsize=8)
+ax1.set_xlabel("longitude (°E)")
+ax1.grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+```
+
+## B3. Proximity and similarity — clustering, and how machines see {#sec-unit-b3}
+
+*After Cleveland & McGill on ordered comparison, and Ware on grouping by similarity.*
+
+### 63 — Clustered expression heatmap {#sec-heatmap}
+
+> **Class:** named first  
+> **Canonical introduction:** [@eisen1998cluster]  
+> **Domain:** reorder, and clusters appear  
+
+Permuting the rows and columns of an expression matrix by hierarchical clustering pulls co-regulated genes into contiguous blocks that a random ordering hides. Eisen and colleagues introduced the clustered heatmap with its red–green diverging map for genome-wide expression [@eisen1998cluster].
+
+```{python}
+#| label: fig-heatmap
+#| fig-cap: "The same genes×conditions matrix: random order (left) vs clustered order (right)."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.cluster.hierarchy import linkage, leaves_list
+
+rng = np.random.default_rng(0)
+
+ngenes, nconds = 30, 15
+data = rng.normal(0, 0.4, (ngenes, nconds))
+gene_grp = np.repeat([0, 1, 2], 10)
+cond_grp = np.repeat([0, 1, 2], 5)
+for g in range(3):
+    data[np.ix_(gene_grp == g, cond_grp == g)] += 2.5
+
+# shuffle rows and columns to hide the block structure
+rperm = rng.permutation(ngenes)
+cperm = rng.permutation(nconds)
+shuffled = data[np.ix_(rperm, cperm)]
+
+# recover order by clustering
+ro = leaves_list(linkage(shuffled, method="average"))
+co = leaves_list(linkage(shuffled.T, method="average"))
+clustered = shuffled[np.ix_(ro, co)]
+
+fig, (ax0, ax1) = plt.subplots(1, 2, figsize=(6, 3.6))
+vmax = np.abs(data).max()
+for ax, mat, title in [(ax0, shuffled, "shuffled"),
+                       (ax1, clustered, "clustered")]:
+    ax.imshow(mat, aspect="auto", cmap="RdBu_r", vmin=-vmax, vmax=vmax)
+    ax.set_title(title, fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.set_xlabel("conditions")
+ax0.set_ylabel("genes")
+fig.suptitle("Reorder and the clusters appear", fontsize=11)
+plt.tight_layout()
+plt.show()
+```
+
+### 64 — Correlation heatmap / scatter-matrix {#sec-splom}
+
+> **Class:** uncertain attribution  
+> **Canonical introduction:** [@chambers1983graphical]  
+> **Domain:** relationships at scale  
+
+A scatterplot matrix lays every pairwise plot in a grid so structure and correlation across many variables are scanned at once, off-diagonal cells mirroring about the diagonal. Chambers and colleagues codified the scatterplot matrix as a standard tool of graphical analysis [@chambers1983graphical].
+
+```{python}
+#| label: fig-splom
+#| fig-cap: "Scatterplot matrix of four variables with correlation coefficients on the diagonal."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+n = 150
+z = rng.normal(size=n)
+x1 = z + rng.normal(0, 0.6, n)
+x2 = 0.8 * z + rng.normal(0, 0.7, n)
+x3 = -0.7 * z + rng.normal(0, 0.8, n)
+X = np.column_stack([z, x1, x2, x3])
+names = ["A", "B", "C", "D"]
+
+k = X.shape[1]
+fig, axes = plt.subplots(k, k, figsize=(6, 3.8))
+for i in range(k):
+    for j in range(k):
+        ax = axes[i, j]
+        if i == j:
+            ax.text(0.5, 0.5, names[i], ha="center", va="center",
+                    fontsize=12, fontweight="bold", transform=ax.transAxes)
+        elif i > j:
+            ax.scatter(X[:, j], X[:, i], s=5, color="#4269d0", alpha=0.5)
+        else:
+            r = np.corrcoef(X[:, j], X[:, i])[0, 1]
+            ax.text(0.5, 0.5, f"{r:+.2f}", ha="center", va="center",
+                    fontsize=10, transform=ax.transAxes,
+                    color="#ff725c" if r < 0 else "#3ca951")
+        ax.set_xticks([])
+        ax.set_yticks([])
+
+fig.suptitle("Scatterplot matrix (SPLOM)", fontsize=11)
+plt.tight_layout()
+plt.show()
+```
+
+### 65 — Cosine similarity {#sec-cosine}
+
+> **Class:** canonical reference  
+> **Canonical introduction:** [@salton1975vector]  
+> **Domain:** the angle between vectors  
+
+Documents become vectors and their similarity is the cosine of the angle between them, so length drops out and only direction — shared term profile — counts. Salton's vector space model made cosine similarity the standard measure for information retrieval [@salton1975vector].
+
+```{python}
+#| label: fig-cosine
+#| fig-cap: "Document vectors from the origin; the angle between two gives cosine similarity."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+docs = {"d1": np.array([3.0, 1.0]),
+        "d2": np.array([2.5, 2.0]),
+        "d3": np.array([0.6, 3.0])}
+colors = {"d1": "#4269d0", "d2": "#ff725c", "d3": "#3ca951"}
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+for name, v in docs.items():
+    ax.annotate("", xy=v, xytext=(0, 0),
+                arrowprops=dict(arrowstyle="-|>", color=colors[name], lw=2))
+    ax.text(v[0] + 0.05, v[1] + 0.05, name, fontsize=9, color=colors[name])
+
+a, b = docs["d1"], docs["d2"]
+cos = a @ b / (np.linalg.norm(a) * np.linalg.norm(b))
+th = np.linspace(np.arctan2(a[1], a[0]), np.arctan2(b[1], b[0]), 30)
+ax.plot(0.9 * np.cos(th), 0.9 * np.sin(th), color="0.4", lw=1)
+ax.text(1.15, 0.55, f"cos θ = {cos:.2f}", fontsize=9, color="0.3")
+
+ax.set_xlim(0, 3.6)
+ax.set_ylim(0, 3.4)
+ax.set_xlabel("term 1")
+ax.set_ylabel("term 2")
+ax.set_aspect("equal")
+ax.set_title("Cosine similarity", fontsize=11)
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 66 — t-SNE / UMAP projection {#sec-tsne}
+
+> **Class:** named first  
+> **Canonical introduction:** [@vandermaaten2008visualizing]  
+> **Domain:** high dimensions flattened to 2D  
+
+A nonlinear embedding places high-dimensional points on the plane so that neighbours stay near and distinct groups fall into separated islands. van der Maaten and Hinton introduced t-SNE, whose crisply separated clusters became the signature look of embedding plots [@vandermaaten2008visualizing].
+
+```{python}
+#| label: fig-tsne
+#| fig-cap: "A 2D embedding: well-separated coloured clusters (simulated t-SNE output)."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+centers = np.array([[-6, -5], [5, -4], [0, 6], [7, 5], [-5, 5]])
+colors = ["#4269d0", "#efb118", "#ff725c", "#6cc5b0", "#a463f2"]
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+for c, col in zip(centers, colors):
+    pts = rng.normal(c, 1.1, size=(60, 2))
+    ax.scatter(pts[:, 0], pts[:, 1], s=12, color=col, alpha=0.8)
+
+ax.set_xticks([])
+ax.set_yticks([])
+ax.set_xlabel("dim 1")
+ax.set_ylabel("dim 2")
+ax.set_title("t-SNE / UMAP embedding", fontsize=11)
+plt.tight_layout()
+plt.show()
+```
+
+### 67 — Word embeddings {#sec-embeddings}
+
+> **Class:** named first  
+> **Canonical introduction:** [@mikolov2013efficient]  
+> **Domain:** semantics as geometry  
+
+Words map to vectors whose differences encode relations, so an analogy becomes a parallelogram: king − man + woman lands near queen. Mikolov and colleagues' word2vec produced these linear analogy structures [@mikolov2013efficient].
+
+```{python}
+#| label: fig-embeddings
+#| fig-cap: "Word vectors forming the analogy parallelogram king − man + woman ≈ queen."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+words = {"man": np.array([1.0, 1.0]),
+         "woman": np.array([3.0, 1.2]),
+         "king": np.array([1.3, 3.0]),
+         "queen": np.array([3.3, 3.2])}
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+for w, p in words.items():
+    ax.scatter(*p, s=60, color="#4269d0", zorder=3)
+    ax.text(p[0] + 0.06, p[1] + 0.06, w, fontsize=10)
+
+def arr(a, b, color):
+    ax.annotate("", xy=words[b], xytext=words[a],
+                arrowprops=dict(arrowstyle="-|>", color=color, lw=1.8))
+
+arr("man", "king", "#ff725c")
+arr("woman", "queen", "#ff725c")
+arr("man", "woman", "#3ca951")
+arr("king", "queen", "#3ca951")
+
+ax.set_xlim(0.5, 4.0)
+ax.set_ylim(0.5, 3.8)
+ax.set_xticks([])
+ax.set_yticks([])
+ax.set_title("Word-embedding analogy", fontsize=11)
+plt.tight_layout()
+plt.show()
+```
+
+### 68 — Art embedding map {#sec-artmap}
+
+> **Class:** uncertain attribution  
+> **Canonical introduction:** [@karayev2014recognizing]  
+> **Domain:** a collection placed by visual similarity  
+
+Every artwork becomes a point in a plane and visual style pulls similar works together, so a collection self-organises into style neighbourhoods. Karayev and colleagues learned image-style features whose embeddings cluster paintings and photographs by their look [@karayev2014recognizing].
+
+```{python}
+#| label: fig-artmap
+#| fig-cap: "Artworks embedded in 2D, clustering by visual style (colour = style label)."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+styles = ["Impressionist", "Baroque", "Cubist", "Ukiyo-e"]
+centers = np.array([[-4, 3], [4, 4], [-3, -4], [5, -3]])
+colors = ["#4269d0", "#efb118", "#ff725c", "#6cc5b0"]
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+for name, c, col in zip(styles, centers, colors):
+    pts = rng.normal(c, 1.4, size=(40, 2))
+    ax.scatter(pts[:, 0], pts[:, 1], s=14, color=col, alpha=0.75, label=name)
+    ax.text(c[0], c[1] + 2.0, name, ha="center", fontsize=8, color=col)
+
+ax.set_xticks([])
+ax.set_yticks([])
+ax.set_title("Art collection by visual style", fontsize=11)
+ax.legend(fontsize=7, loc="lower center", ncol=2, frameon=False)
+plt.tight_layout()
+plt.show()
+```
+
+### 69 — Stylometry / Burrows's Delta {#sec-delta}
+
+> **Class:** named first  
+> **Canonical introduction:** [@burrows2002delta]  
+> **Domain:** authorship as distance in style-space  
+
+Each text becomes a vector of z-scored frequencies of common words, and the mean absolute difference between two such vectors — Delta — clusters texts by author. Burrows defined the Delta measure for authorship attribution [@burrows2002delta].
+
+```{python}
+#| label: fig-delta
+#| fig-cap: "Pairwise Burrows's Delta between texts; the author blocks sit on the diagonal."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+n_auth, per, n_words = 4, 3, 40
+labels, vecs = [], []
+for a in range(n_auth):
+    signature = rng.normal(0, 1, n_words)  # author's stylistic fingerprint
+    for t in range(per):
+        vecs.append(signature + rng.normal(0, 0.6, n_words))
+        labels.append(f"A{a+1}")
+vecs = np.array(vecs)
+
+# z-score each word column across the corpus, then Delta = mean |Δz|
+z = (vecs - vecs.mean(0)) / vecs.std(0)
+m = len(z)
+delta = np.zeros((m, m))
+for i in range(m):
+    for j in range(m):
+        delta[i, j] = np.abs(z[i] - z[j]).mean()
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+im = ax.imshow(delta, cmap="viridis")
+ax.set_xticks(range(m))
+ax.set_yticks(range(m))
+ax.set_xticklabels(labels, fontsize=7)
+ax.set_yticklabels(labels, fontsize=7)
+fig.colorbar(im, ax=ax, label="Delta distance", fraction=0.046)
+ax.set_title("Burrows's Delta between texts", fontsize=11)
+plt.tight_layout()
+plt.show()
+```
+
+### 70 — Topic model (LDA) {#sec-lda}
+
+> **Class:** named first  
+> **Canonical introduction:** [@blei2003latent]  
+> **Domain:** latent themes as a reduced basis  
+
+Latent Dirichlet allocation represents each document as a mixture over a few latent topics, so a stacked bar reads off how much of every theme a document holds. Blei, Ng, and Jordan introduced LDA and its document-as-topic-mixture representation [@blei2003latent].
+
+```{python}
+#| label: fig-lda
+#| fig-cap: "Documents as topic mixtures; each stacked bar sums to one over the latent topics."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+n_docs, n_topics = 12, 4
+mix = rng.dirichlet(alpha=[0.5] * n_topics, size=n_docs)
+topics = ["climate", "finance", "biology", "politics"]
+colors = ["#4269d0", "#efb118", "#ff725c", "#6cc5b0"]
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+bottom = np.zeros(n_docs)
+x = np.arange(n_docs)
+for k in range(n_topics):
+    ax.bar(x, mix[:, k], bottom=bottom, color=colors[k], label=topics[k])
+    bottom += mix[:, k]
+
+ax.set_xticks(x)
+ax.set_xticklabels([f"d{i+1}" for i in range(n_docs)], fontsize=7)
+ax.set_ylabel("topic proportion")
+ax.set_ylim(0, 1)
+ax.set_title("LDA document–topic mixtures", fontsize=11)
+ax.legend(fontsize=7, ncol=4, loc="upper center",
+          bbox_to_anchor=(0.5, -0.12), frameon=False)
+plt.tight_layout()
+plt.show()
+```
+
+### 71 — Emotional arcs of stories {#sec-arcs}
+
+> **Class:** named first  
+> **Canonical introduction:** [@reagan2016emotional]  
+> **Domain:** six narrative shapes from SVD  
+
+Tracking sentiment across narrative time yields a small set of recurring shapes — steady rise, fall-then-rise, rise-then-fall — that a singular value decomposition of many stories reduces to a handful of archetypes. Reagan and colleagues extracted six such emotional arcs from thousands of texts [@reagan2016emotional].
+
+```{python}
+#| label: fig-arcs
+#| fig-cap: "Three archetypal emotional arcs: rags to riches, man in a hole, Icarus."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+t = np.linspace(0, 1, 200)
+rags = -1.0 + 2.0 * t                                  # rising
+hole = 1.0 - 3.0 * np.exp(-((t - 0.5) / 0.22) ** 2)    # down then up
+icarus = 1.4 * np.exp(-((t - 0.5) / 0.28) ** 2) - 0.4  # up then down
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+ax.plot(t, rags, color="#4269d0", lw=2, label="rags to riches")
+ax.plot(t, hole, color="#ff725c", lw=2, label="man in a hole")
+ax.plot(t, icarus, color="#3ca951", lw=2, label="Icarus")
+ax.axhline(0, color="0.7", lw=0.8)
+
+ax.set_xlabel("narrative time")
+ax.set_ylabel("sentiment")
+ax.set_title("Emotional arcs of stories", fontsize=11)
+ax.legend(fontsize=8, loc="lower right")
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+## B4. Enclosure, maps, and spatial reasoning {#sec-unit-b4}
+
+*After Bertin on maps and Cairo, The Truthful Art (2016).*
+
+### 72 — Periodic table {#sec-periodic}
+
+> **Class:** named first
+> **Canonical introduction:** [@mendeleev1869beziehungen]
+> **Domain:** periodicity by atomic number
+
+A tiled grid indexed by group and period turns the chemistry of an element into a position, and neighbours in a column share properties. Mendeleev arranged the known elements so that the periodic recurrence fell into columns and left gaps for elements not yet found [@mendeleev1869beziehungen].
+
+```{python}
+#| label: fig-periodic
+#| fig-cap: "The periodic grid: tiles at (group, period), coloured by element category."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle, Patch
+
+np.random.seed(0)
+
+# (symbol, group, period, category)
+main = [
+    ("H", 1, 1, "nonmetal"), ("He", 18, 1, "noble"),
+    ("Li", 1, 2, "alkali"), ("Be", 2, 2, "alkaline"), ("B", 13, 2, "metalloid"),
+    ("C", 14, 2, "nonmetal"), ("N", 15, 2, "nonmetal"), ("O", 16, 2, "nonmetal"),
+    ("F", 17, 2, "halogen"), ("Ne", 18, 2, "noble"),
+    ("Na", 1, 3, "alkali"), ("Mg", 2, 3, "alkaline"), ("Al", 13, 3, "posttrans"),
+    ("Si", 14, 3, "metalloid"), ("P", 15, 3, "nonmetal"), ("S", 16, 3, "nonmetal"),
+    ("Cl", 17, 3, "halogen"), ("Ar", 18, 3, "noble"),
+    ("K", 1, 4, "alkali"), ("Ca", 2, 4, "alkaline"),
+    ("Sc", 3, 4, "transition"), ("Ti", 4, 4, "transition"), ("V", 5, 4, "transition"),
+    ("Cr", 6, 4, "transition"), ("Mn", 7, 4, "transition"), ("Fe", 8, 4, "transition"),
+    ("Co", 9, 4, "transition"), ("Ni", 10, 4, "transition"), ("Cu", 11, 4, "transition"),
+    ("Zn", 12, 4, "transition"),
+    ("Ga", 13, 4, "posttrans"), ("Ge", 14, 4, "metalloid"), ("As", 15, 4, "metalloid"),
+    ("Se", 16, 4, "nonmetal"), ("Br", 17, 4, "halogen"), ("Kr", 18, 4, "noble"),
+    ("Rb", 1, 5, "alkali"), ("Sr", 2, 5, "alkaline"),
+    ("Y", 3, 5, "transition"), ("Zr", 4, 5, "transition"), ("Nb", 5, 5, "transition"),
+    ("Mo", 6, 5, "transition"), ("Tc", 7, 5, "transition"), ("Ru", 8, 5, "transition"),
+    ("Rh", 9, 5, "transition"), ("Pd", 10, 5, "transition"), ("Ag", 11, 5, "transition"),
+    ("Cd", 12, 5, "transition"),
+    ("In", 13, 5, "posttrans"), ("Sn", 14, 5, "posttrans"), ("Sb", 15, 5, "metalloid"),
+    ("Te", 16, 5, "metalloid"), ("I", 17, 5, "halogen"), ("Xe", 18, 5, "noble"),
+    ("Cs", 1, 6, "alkali"), ("Ba", 2, 6, "alkaline"), ("La", 3, 6, "lanthanide"),
+    ("Hf", 4, 6, "transition"), ("Ta", 5, 6, "transition"), ("W", 6, 6, "transition"),
+    ("Re", 7, 6, "transition"), ("Os", 8, 6, "transition"), ("Ir", 9, 6, "transition"),
+    ("Pt", 10, 6, "transition"), ("Au", 11, 6, "transition"), ("Hg", 12, 6, "transition"),
+    ("Tl", 13, 6, "posttrans"), ("Pb", 14, 6, "posttrans"), ("Bi", 15, 6, "posttrans"),
+    ("Po", 16, 6, "posttrans"), ("At", 17, 6, "halogen"), ("Rn", 18, 6, "noble"),
+    ("Fr", 1, 7, "alkali"), ("Ra", 2, 7, "alkaline"), ("Ac", 3, 7, "actinide"),
+    ("Rf", 4, 7, "transition"), ("Db", 5, 7, "transition"), ("Sg", 6, 7, "transition"),
+    ("Bh", 7, 7, "transition"), ("Hs", 8, 7, "transition"), ("Mt", 9, 7, "transition"),
+    ("Ds", 10, 7, "transition"), ("Rg", 11, 7, "transition"), ("Cn", 12, 7, "transition"),
+    ("Nh", 13, 7, "posttrans"), ("Fl", 14, 7, "posttrans"), ("Mc", 15, 7, "posttrans"),
+    ("Lv", 16, 7, "posttrans"), ("Ts", 17, 7, "halogen"), ("Og", 18, 7, "noble"),
+]
+
+lanth = ["Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu"]
+actin = ["Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr"]
+
+cat_color = {
+    "alkali": "#ff725c", "alkaline": "#efb118", "transition": "#4269d0",
+    "posttrans": "#6cc5b0", "metalloid": "#a463f2", "nonmetal": "#3ca951",
+    "halogen": "#97737b", "noble": "#9c6b4e",
+    "lanthanide": "#e6a1c7", "actinide": "#7fb3d5",
+}
+cat_label = {
+    "alkali": "alkali metal", "alkaline": "alkaline earth",
+    "transition": "transition metal", "posttrans": "post-transition",
+    "metalloid": "metalloid", "nonmetal": "nonmetal",
+    "halogen": "halogen", "noble": "noble gas",
+    "lanthanide": "lanthanide", "actinide": "actinide",
+}
+
+fig, ax = plt.subplots(figsize=(9, 5.4))
+
+
+def tile(g, p, sym, cat):
+    ax.add_patch(Rectangle((g - 0.45, -p - 0.45), 0.9, 0.9,
+                           facecolor=cat_color[cat], edgecolor="white", lw=0.8))
+    ax.text(g, -p, sym, ha="center", va="center", fontsize=6.5, color="black")
+
+
+for sym, g, p, cat in main:
+    tile(g, p, sym, cat)
+for i, sym in enumerate(lanth):
+    tile(4 + i, 8.6, sym, "lanthanide")
+for i, sym in enumerate(actin):
+    tile(4 + i, 9.6, sym, "actinide")
+
+ax.set_xlim(0.3, 18.7)
+ax.set_ylim(-10.3, -0.3)
+ax.set_aspect("equal")
+ax.axis("off")
+ax.set_title("The periodic table", fontsize=12)
+handles = [Patch(facecolor=cat_color[c], edgecolor="white", label=cat_label[c])
+           for c in cat_color]
+ax.legend(handles=handles, loc="upper center", bbox_to_anchor=(0.5, 0.14),
+          ncol=5, fontsize=7, frameon=False)
+plt.tight_layout()
+plt.show()
+```
+
+### 73 — Origin-of-the-elements table {#sec-nucleosynthesis}
+
+> **Class:** shared genre idiom
+> **Canonical introduction:** [@burbidge1957synthesis]
+> **Domain:** the grid recoloured by process
+
+The same tiled grid, recoloured by where each nucleus is forged, turns the table into a map of cosmic history — hydrogen from the Big Bang, iron from exploding stars, the heaviest nuclei from merging neutron stars. Burbidge, Burbidge, Fowler, and Hoyle set out the stellar processes that build the elements beyond hydrogen and helium [@burbidge1957synthesis].
+
+```{python}
+#| label: fig-nucleosynthesis
+#| fig-cap: "The periodic grid recoloured by nucleosynthetic origin."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle, Patch
+
+np.random.seed(0)
+
+main = [
+    ("H", 1, 1), ("He", 18, 1),
+    ("Li", 1, 2), ("Be", 2, 2), ("B", 13, 2), ("C", 14, 2), ("N", 15, 2),
+    ("O", 16, 2), ("F", 17, 2), ("Ne", 18, 2),
+    ("Na", 1, 3), ("Mg", 2, 3), ("Al", 13, 3), ("Si", 14, 3), ("P", 15, 3),
+    ("S", 16, 3), ("Cl", 17, 3), ("Ar", 18, 3),
+    ("K", 1, 4), ("Ca", 2, 4), ("Sc", 3, 4), ("Ti", 4, 4), ("V", 5, 4),
+    ("Cr", 6, 4), ("Mn", 7, 4), ("Fe", 8, 4), ("Co", 9, 4), ("Ni", 10, 4),
+    ("Cu", 11, 4), ("Zn", 12, 4), ("Ga", 13, 4), ("Ge", 14, 4), ("As", 15, 4),
+    ("Se", 16, 4), ("Br", 17, 4), ("Kr", 18, 4),
+    ("Rb", 1, 5), ("Sr", 2, 5), ("Y", 3, 5), ("Zr", 4, 5), ("Nb", 5, 5),
+    ("Mo", 6, 5), ("Tc", 7, 5), ("Ru", 8, 5), ("Rh", 9, 5), ("Pd", 10, 5),
+    ("Ag", 11, 5), ("Cd", 12, 5), ("In", 13, 5), ("Sn", 14, 5), ("Sb", 15, 5),
+    ("Te", 16, 5), ("I", 17, 5), ("Xe", 18, 5),
+    ("Cs", 1, 6), ("Ba", 2, 6), ("La", 3, 6), ("Hf", 4, 6), ("Ta", 5, 6),
+    ("W", 6, 6), ("Re", 7, 6), ("Os", 8, 6), ("Ir", 9, 6), ("Pt", 10, 6),
+    ("Au", 11, 6), ("Hg", 12, 6), ("Tl", 13, 6), ("Pb", 14, 6), ("Bi", 15, 6),
+    ("Po", 16, 6), ("At", 17, 6), ("Rn", 18, 6),
+    ("Fr", 1, 7), ("Ra", 2, 7), ("Ac", 3, 7), ("Rf", 4, 7), ("Db", 5, 7),
+    ("Sg", 6, 7), ("Bh", 7, 7), ("Hs", 8, 7), ("Mt", 9, 7), ("Ds", 10, 7),
+    ("Rg", 11, 7), ("Cn", 12, 7), ("Nh", 13, 7), ("Fl", 14, 7), ("Mc", 15, 7),
+    ("Lv", 16, 7), ("Ts", 17, 7), ("Og", 18, 7),
+]
+lanth = ["Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu"]
+actin = ["Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr"]
+
+big_bang = {"H", "He"}
+cosmic = {"Li", "Be", "B"}
+low_mass = {"C", "N", "F", "Na", "Sr", "Y", "Zr", "Nb", "Mo", "Ba", "La",
+            "Ce", "Pr", "Nd", "Pm", "Sm", "Pb", "Tl", "Hg"}
+white_dwarf = {"Mn", "Fe", "Co", "Ni", "Cu", "Zn"}
+neutron = {"Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", "Ag", "I",
+           "Xe", "Pt", "Ir", "Os", "Au", "At", "Rn", "Fr", "Ra", "Ac", "Th",
+           "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md",
+           "No", "Lr", "Rf", "Db", "Sg", "Bh", "Hs", "Mt", "Ds", "Rg", "Cn",
+           "Nh", "Fl", "Mc", "Lv", "Ts", "Og"}
+
+origin_color = {
+    "Big Bang": "#4269d0",
+    "cosmic-ray fission": "#6cc5b0",
+    "dying low-mass stars": "#efb118",
+    "exploding massive stars": "#ff725c",
+    "exploding white dwarfs": "#a463f2",
+    "merging neutron stars": "#3ca951",
+}
+
+
+def origin(sym):
+    if sym in big_bang:
+        return "Big Bang"
+    if sym in cosmic:
+        return "cosmic-ray fission"
+    if sym in low_mass:
+        return "dying low-mass stars"
+    if sym in white_dwarf:
+        return "exploding white dwarfs"
+    if sym in neutron:
+        return "merging neutron stars"
+    return "exploding massive stars"
+
+
+fig, ax = plt.subplots(figsize=(9, 5.4))
+
+
+def tile(g, p, sym):
+    ax.add_patch(Rectangle((g - 0.45, -p - 0.45), 0.9, 0.9,
+                           facecolor=origin_color[origin(sym)],
+                           edgecolor="white", lw=0.8))
+    ax.text(g, -p, sym, ha="center", va="center", fontsize=6.5, color="black")
+
+
+for sym, g, p in main:
+    tile(g, p, sym)
+for i, sym in enumerate(lanth):
+    tile(4 + i, 8.6, sym)
+for i, sym in enumerate(actin):
+    tile(4 + i, 9.6, sym)
+
+ax.set_xlim(0.3, 18.7)
+ax.set_ylim(-10.3, -0.3)
+ax.set_aspect("equal")
+ax.axis("off")
+ax.set_title("Origin of the elements", fontsize=12)
+handles = [Patch(facecolor=c, edgecolor="white", label=k)
+           for k, c in origin_color.items()]
+ax.legend(handles=handles, loc="upper center", bbox_to_anchor=(0.5, 0.16),
+          ncol=3, fontsize=7, frameon=False)
+plt.tight_layout()
+plt.show()
+```
+
+### 74 — Genetic code wheel {#sec-codonwheel}
+
+> **Class:** shared genre idiom
+> **Canonical introduction:** [@nirenberg1961dependence]
+> **Domain:** codon to amino acid
+
+Three concentric rings — first, second, third base — read from centre outward resolve each of the 64 codons to one amino acid, with synonymous codons falling into the same wedge. Nirenberg and Matthaei cracked the first codon by showing that a poly-uracil template directs synthesis of phenylalanine [@nirenberg1961dependence].
+
+```{python}
+#| label: fig-codonwheel
+#| fig-cap: "Codon wheel: rings for the 1st, 2nd, 3rd base map 64 codons to amino acids."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.patches import Patch
+
+np.random.seed(0)
+
+bases = ["U", "C", "A", "G"]
+table = {
+    "UU": ("Phe", "Phe", "Leu", "Leu"), "UC": ("Ser",) * 4,
+    "UA": ("Tyr", "Tyr", "Stop", "Stop"), "UG": ("Cys", "Cys", "Stop", "Trp"),
+    "CU": ("Leu",) * 4, "CC": ("Pro",) * 4,
+    "CA": ("His", "His", "Gln", "Gln"), "CG": ("Arg",) * 4,
+    "AU": ("Ile", "Ile", "Ile", "Met"), "AC": ("Thr",) * 4,
+    "AA": ("Asn", "Asn", "Lys", "Lys"), "AG": ("Ser", "Ser", "Arg", "Arg"),
+    "GU": ("Val",) * 4, "GC": ("Ala",) * 4,
+    "GA": ("Asp", "Asp", "Glu", "Glu"), "GG": ("Gly",) * 4,
+}
+one = {"Phe": "F", "Leu": "L", "Ile": "I", "Met": "M", "Val": "V", "Ser": "S",
+       "Pro": "P", "Thr": "T", "Ala": "A", "Tyr": "Y", "His": "H", "Gln": "Q",
+       "Asn": "N", "Lys": "K", "Asp": "D", "Glu": "E", "Cys": "C", "Trp": "W",
+       "Arg": "R", "Gly": "G", "Stop": "*"}
+klass = {}
+for a in ["Phe", "Leu", "Ile", "Met", "Val", "Ala", "Gly", "Pro", "Trp"]:
+    klass[a] = "nonpolar"
+for a in ["Ser", "Thr", "Tyr", "Cys", "Asn", "Gln"]:
+    klass[a] = "polar"
+for a in ["Asp", "Glu"]:
+    klass[a] = "acidic"
+for a in ["His", "Lys", "Arg"]:
+    klass[a] = "basic"
+klass["Stop"] = "stop"
+class_color = {"nonpolar": "#4269d0", "polar": "#6cc5b0", "acidic": "#ff725c",
+               "basic": "#efb118", "stop": "#97737b"}
+
+fig = plt.figure(figsize=(7, 7))
+ax = fig.add_subplot(111, projection="polar")
+ax.set_theta_zero_location("N")
+ax.set_theta_direction(-1)
+full = 2 * np.pi
+
+for i, b1 in enumerate(bases):
+    c = (i + 0.5) * full / 4
+    ax.bar(c, 1.0, width=full / 4, bottom=0.0, color="#dfe6f2",
+           edgecolor="white", lw=1.0)
+    ax.text(c, 0.5, b1, ha="center", va="center", fontsize=14, fontweight="bold")
+    for j, b2 in enumerate(bases):
+        c2 = (i * 4 + j + 0.5) * full / 16
+        ax.bar(c2, 1.0, width=full / 16, bottom=1.0, color="#eef1f7",
+               edgecolor="white", lw=0.8)
+        ax.text(c2, 1.5, b2, ha="center", va="center", fontsize=9)
+        aas = table[b1 + b2]
+        for k, b3 in enumerate(bases):
+            aa = aas[k]
+            c3 = (i * 16 + j * 4 + k + 0.5) * full / 64
+            ax.bar(c3, 1.0, width=full / 64, bottom=2.0,
+                   color=class_color[klass[aa]], edgecolor="white",
+                   lw=0.4, alpha=0.9)
+            ax.text(c3, 3.35, one[aa], ha="center", va="center", fontsize=6)
+
+ax.set_ylim(0, 3.7)
+ax.axis("off")
+ax.set_title("Genetic code wheel", fontsize=12, pad=12)
+handles = [Patch(facecolor=v, label=k) for k, v in class_color.items()]
+ax.legend(handles=handles, loc="center", bbox_to_anchor=(0.5, -0.02),
+          ncol=5, fontsize=7, frameon=False)
+plt.tight_layout()
+plt.show()
+```
+
+### 75 — Leontief input–output matrix {#sec-leontief}
+
+> **Class:** named first
+> **Canonical introduction:** [@leontief1936quantitative]
+> **Domain:** an economy as a matrix
+
+Laying every sector along both axes and filling cell (i, j) with the flow of output from sector i into sector j renders a whole economy as one matrix, its diagonal thick with intra-industry use. Leontief built the first such input–output table for the United States and solved it as a linear system [@leontief1936quantitative].
+
+```{python}
+#| label: fig-leontief
+#| fig-cap: "Inter-industry flow matrix: value flowing from row sector to column sector."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+sectors = ["Agriculture", "Mining", "Manufacturing", "Energy",
+           "Construction", "Transport", "Services"]
+n = len(sectors)
+flow = rng.uniform(2, 20, size=(n, n))
+flow += np.diag(rng.uniform(40, 90, size=n))  # heavy intra-industry diagonal
+flow[2, :] += 15  # manufacturing feeds many
+flow = np.round(flow, 0)
+
+fig, ax = plt.subplots(figsize=(6.4, 5.2))
+im = ax.imshow(flow, cmap="viridis")
+ax.set_xticks(range(n))
+ax.set_yticks(range(n))
+ax.set_xticklabels(sectors, rotation=45, ha="right", fontsize=8)
+ax.set_yticklabels(sectors, fontsize=8)
+ax.set_xlabel("to sector")
+ax.set_ylabel("from sector")
+
+for (i, j) in [(0, 0), (2, 2), (2, 4), (5, 6), (6, 6)]:
+    ax.text(j, i, f"{flow[i, j]:.0f}", ha="center", va="center",
+            fontsize=8, color="white", fontweight="bold")
+
+ax.set_title("Leontief input–output matrix", fontsize=11)
+fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04, label="flow")
+plt.tight_layout()
+plt.show()
+```
+
+### 76 — Planetary interior cross-sections {#sec-planetinterior}
+
+> **Class:** shared genre idiom
+> **Canonical introduction:** [@dziewonski1981preliminary]
+> **Domain:** layered structure
+
+Concentric shells drawn to scale expose a planet's radial structure — a solid inner core, a liquid outer core, the mantle, and a thin crust — with the density jumping at each boundary. Dziewonski and Anderson fixed the reference radii and densities of Earth's layers in the Preliminary Reference Earth Model [@dziewonski1981preliminary].
+
+```{python}
+#| label: fig-planetinterior
+#| fig-cap: "Earth's layers to scale (left) and a PREM-style density profile (right)."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.patches import Circle
+
+np.random.seed(0)
+
+layers = [
+    ("crust", 6371, "#efb118"),
+    ("mantle", 6346, "#ff725c"),
+    ("outer core", 3480, "#4269d0"),
+    ("inner core", 1221, "#6cc5b0"),
+]
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8.4, 4.2))
+
+for name, r, col in layers:  # largest first
+    ax1.add_patch(Circle((0, 0), r, facecolor=col, edgecolor="white", lw=1.2))
+mids = [(6371 + 6346) / 2, (6346 + 3480) / 2, (3480 + 1221) / 2, 1221 / 2]
+for (name, _, _), m in zip(layers, mids):
+    ax1.annotate(name, xy=(0, m), xytext=(6900, m - 200 + 900 * (name == "crust")),
+                 fontsize=8, ha="left", va="center",
+                 arrowprops=dict(arrowstyle="-", color="0.4", lw=0.8))
+ax1.set_xlim(-6800, 11500)
+ax1.set_ylim(-6800, 6800)
+ax1.set_aspect("equal")
+ax1.axis("off")
+ax1.set_title("Cross-section", fontsize=11)
+
+r = np.linspace(0, 6371, 700)
+rho = np.piecewise(
+    r,
+    [r < 1221, (r >= 1221) & (r < 3480), (r >= 3480) & (r < 5701),
+     (r >= 5701) & (r < 6346), r >= 6346],
+    [lambda r: 13.0 - 0.00016 * r,
+     lambda r: 12.2 - 0.001 * (r - 1221),
+     lambda r: 5.6 - 0.00053 * (r - 3480),
+     lambda r: 4.0 - 0.00108 * (r - 5701),
+     lambda r: 2.9],
+)
+ax2.plot(r, rho, color="#4269d0", lw=2)
+for _, b, _ in layers[1:]:
+    ax2.axvline(b, color="0.7", ls="--", lw=0.8)
+ax2.set_xlabel("radius (km)")
+ax2.set_ylabel("density (g/cm$^3$)")
+ax2.set_title("PREM density profile", fontsize=11)
+ax2.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 77 — Biogeography map / Wallace line {#sec-wallace}
+
+> **Class:** named first
+> **Canonical introduction:** [@wallace1876geographical]
+> **Domain:** boundaries in space
+
+A single line drawn between adjacent islands can separate two faunas that never mixed, making a deep-water barrier legible as a border on the map. Wallace traced the sharp zoological divide running between Bali and Lombok that splits Asian from Australian animals [@wallace1876geographical].
+
+```{python}
+#| label: fig-wallace
+#| fig-cap: "Schematic map: the Wallace Line dividing Asian (Sunda) from Australian (Sahul) fauna."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.patches import Ellipse
+
+rng = np.random.default_rng(0)
+
+fig, ax = plt.subplots(figsize=(6.8, 4.4))
+
+asian_is = [(1.6, 3.2, 2.0, 1.1), (2.4, 1.4, 1.5, 0.9),
+            (3.4, 3.7, 1.1, 0.7), (3.6, 2.0, 0.9, 0.6)]
+aus_is = [(7.6, 2.1, 2.4, 1.6), (6.7, 3.7, 1.2, 0.7), (8.4, 3.8, 0.9, 0.6)]
+for (x, y, w, h) in asian_is:
+    ax.add_patch(Ellipse((x, y), w, h, facecolor="#cfe0b8", edgecolor="0.5", lw=0.8))
+for (x, y, w, h) in aus_is:
+    ax.add_patch(Ellipse((x, y), w, h, facecolor="#e0cdb0", edgecolor="0.5", lw=0.8))
+
+# Wallace Line
+ax.plot([4.7, 5.3], [0.2, 4.8], color="#ff725c", lw=2.5, ls="--")
+ax.text(4.6, 4.9, "Wallace Line", color="#ff725c", fontsize=9, ha="right")
+
+# fauna points, coloured by region
+for (x, y, w, h) in asian_is:
+    pts = rng.normal([x, y], [w / 3, h / 3], size=(9, 2))
+    ax.scatter(pts[:, 0], pts[:, 1], s=22, color="#4269d0", zorder=3)
+for (x, y, w, h) in aus_is:
+    pts = rng.normal([x, y], [w / 3, h / 3], size=(9, 2))
+    ax.scatter(pts[:, 0], pts[:, 1], s=22, color="#efb118", marker="^", zorder=3)
+
+ax.scatter([], [], color="#4269d0", label="Asian fauna (Sunda)")
+ax.scatter([], [], color="#efb118", marker="^", label="Australian fauna (Sahul)")
+ax.set_xlim(0, 10)
+ax.set_ylim(0, 5.2)
+ax.set_aspect("equal")
+ax.axis("off")
+ax.set_title("Wallace's biogeographic boundary", fontsize=11)
+ax.legend(loc="lower center", fontsize=8, frameon=False, ncol=2)
+plt.tight_layout()
+plt.show()
+```
+
+### 78 — John Snow's cholera map {#sec-snow}
+
+> **Class:** named first
+> **Canonical introduction:** [@snow1855mode]
+> **Domain:** spatial pattern as causal argument
+
+Plotting each death as a dot turns a street into an argument: the cases pile up around one water pump and thin with distance from it, so the spatial pattern itself names the cause. Snow mapped the 1854 Soho outbreak and traced it to the Broad Street pump [@snow1855mode] — the second beat of the Day-One pairing, where a map, not a table, carries the inference.
+
+```{python}
+#| label: fig-snow
+#| fig-cap: "Dot map of cholera deaths clustered on the Broad Street pump."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+broad = np.array([0.0, 0.0])
+pumps = np.array([[0.0, 0.0], [3.2, 1.6], [-2.9, 2.1],
+                  [1.6, -3.1], [-3.1, -2.4], [3.6, -1.8]])
+
+deaths = rng.normal(broad, 0.95, size=(190, 2))
+scatter = rng.uniform(-4.2, 4.2, size=(28, 2))
+alld = np.vstack([deaths, scatter])
+
+fig, ax = plt.subplots(figsize=(6, 5))
+ax.scatter(alld[:, 0], alld[:, 1], s=14, color="#333333", alpha=0.7, zorder=2)
+ax.scatter(pumps[1:, 0], pumps[1:, 1], marker="s", s=90, color="#4269d0",
+           edgecolor="white", zorder=3, label="other pumps")
+ax.scatter(*broad, marker="s", s=160, color="#ff725c", edgecolor="black",
+           zorder=4, label="Broad Street pump")
+ax.text(0.2, 0.35, "Broad St", fontsize=8, color="#ff725c")
+
+ax.set_xlim(-5, 5)
+ax.set_ylim(-5, 5)
+ax.set_aspect("equal")
+ax.axis("off")
+ax.set_title("Snow's cholera map", fontsize=11)
+ax.legend(loc="lower right", fontsize=8, frameon=False)
+plt.tight_layout()
+plt.show()
+```
+
+### 79 — Gerrymander / districting {#sec-gerrymander}
+
+> **Class:** named first
+> **Canonical introduction:** [@griffith1907rise]
+> **Domain:** how boundaries manufacture outcomes
+
+Holding the votes fixed and redrawing the district lines changes who wins, so the partition — not the electorate — sets the seat count. Griffith gave the first systematic geometric analysis of how district shape converts votes into representation [@griffith1907rise].
+
+```{python}
+#| label: fig-gerrymander
+#| fig-cap: "Same 60/40 grid, two partitions: 3–2 by columns versus 5–0 by rows."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
+
+np.random.seed(0)
+
+grid = np.zeros((5, 5), int)
+grid[:, 3:] = 1  # columns 0-2 party A, columns 3-4 party B  -> 60/40
+colors = {0: "#4269d0", 1: "#efb118"}
+
+fig, axes = plt.subplots(1, 2, figsize=(8.4, 4.4))
+
+
+def draw(ax, title):
+    for i in range(5):
+        for j in range(5):
+            ax.add_patch(Rectangle((j, 4 - i), 1, 1, facecolor=colors[grid[i, j]],
+                                   edgecolor="white", lw=1.0))
+    ax.set_xlim(0, 5)
+    ax.set_ylim(0, 5)
+    ax.set_aspect("equal")
+    ax.axis("off")
+    ax.set_title(title, fontsize=10)
+
+
+# Panel 1: districts = columns -> A wins 3, B wins 2
+draw(axes[0], "Districts by column:  A 3 – B 2")
+for j in range(1, 5):
+    axes[0].plot([j, j], [0, 5], color="black", lw=2.5)
+
+# Panel 2: districts = rows -> each row 3A/2B -> A wins 5, B wins 0
+draw(axes[1], "Districts by row:  A 5 – B 0")
+for i in range(1, 5):
+    axes[1].plot([0, 5], [i, i], color="black", lw=2.5)
+
+fig.suptitle("Same votes, different maps", fontsize=12)
+plt.tight_layout()
+plt.show()
+```
+
+### 80 — Minkowski / light cone {#sec-lightcone}
+
+> **Class:** named first
+> **Canonical introduction:** [@minkowski1909raum]
+> **Domain:** the cone partitions spacetime
+
+Drawing space against time and marking the 45° paths of light carves spacetime into a causal future, a causal past, and an unreachable "elsewhere". Minkowski recast special relativity as geometry on this four-dimensional continuum, with the cone dividing what an event can and cannot influence [@minkowski1909raum].
+
+```{python}
+#| label: fig-lightcone
+#| fig-cap: "A spacetime diagram: light cones partition future, past, and spacelike elsewhere."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+lim = 4.0
+x = np.linspace(-lim, lim, 200)
+
+fig, ax = plt.subplots(figsize=(6, 5.6))
+
+# timelike future and past (|ct| > |x|)
+ax.fill_between(x, np.abs(x), lim, color="#4269d0", alpha=0.18)
+ax.fill_between(x, -lim, -np.abs(x), color="#ff725c", alpha=0.18)
+# spacelike elsewhere (|x| > |ct|)
+ax.fill_betweenx(x, np.abs(x), lim, color="0.85")
+ax.fill_betweenx(x, -lim, -np.abs(x), color="0.85")
+
+ax.plot(x, x, color="black", lw=1.5)
+ax.plot(x, -x, color="black", lw=1.5)
+
+# a worldline through the origin, staying timelike
+ct = np.linspace(-lim, lim, 100)
+wl = 0.35 * ct + 0.15 * np.sin(ct)
+ax.plot(wl, ct, color="#3ca951", lw=2, label="worldline")
+
+ax.text(0, 3.1, "future", ha="center", fontsize=10, color="#26418f")
+ax.text(0, -3.3, "past", ha="center", fontsize=10, color="#a3341f")
+ax.text(3.0, 0, "elsewhere", ha="center", va="center", fontsize=9, color="0.4")
+ax.text(-3.0, 0, "elsewhere", ha="center", va="center", fontsize=9, color="0.4")
+
+ax.set_xlim(-lim, lim)
+ax.set_ylim(-lim, lim)
+ax.set_aspect("equal")
+ax.set_xlabel("x")
+ax.set_ylabel("ct")
+ax.set_title("Minkowski light cone", fontsize=11)
+ax.legend(loc="upper right", fontsize=8)
+plt.tight_layout()
+plt.show()
+```
+
+### 81 — Map projection problem {#sec-projection}
+
+> **Class:** shared genre idiom
+> **Canonical introduction:** [@tissot1881memoire]
+> **Domain:** every map distorts
+
+No flat map preserves both shape and area; placing a small circle at each graticule node makes the distortion visible as the circles swell or stretch toward the poles. Tissot formalised this indicatrix as the general measure of a projection's local error [@tissot1881memoire] — the same tension the AIATSIS prelude raised, that no single frame renders the whole faithfully.
+
+```{python}
+#| label: fig-projection
+#| fig-cap: "Tissot indicatrices under equirectangular (stretched) and Mercator (inflated) projections."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.patches import Ellipse
+
+np.random.seed(0)
+
+lats = np.arange(-60, 61, 30)
+lons = np.arange(-120, 121, 60)
+base = 7.0
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8.6, 4.2))
+
+
+def merc(la):
+    return np.degrees(np.log(np.tan(np.pi / 4 + np.radians(la) / 2)))
+
+
+# Equirectangular: circles become ellipses widening east-west toward poles
+for la in np.arange(-90, 91, 30):
+    ax1.axhline(la, color="0.85", lw=0.7)
+for lo in np.arange(-180, 181, 60):
+    ax1.axvline(lo, color="0.85", lw=0.7)
+for la in lats:
+    for lo in lons:
+        w = base / np.cos(np.radians(la))
+        ax1.add_patch(Ellipse((lo, la), w, base, facecolor="#4269d0",
+                              alpha=0.5, edgecolor="#26418f"))
+ax1.set_xlim(-180, 180)
+ax1.set_ylim(-90, 90)
+ax1.set_aspect("equal")
+ax1.set_title("Equirectangular", fontsize=11)
+ax1.set_xlabel("longitude")
+ax1.set_ylabel("latitude")
+
+# Mercator: circles stay circles but inflate toward poles
+for la in np.arange(-75, 76, 30):
+    ax2.axhline(merc(la), color="0.85", lw=0.7)
+for lo in np.arange(-180, 181, 60):
+    ax2.axvline(lo, color="0.85", lw=0.7)
+for la in lats:
+    for lo in lons:
+        r = base / np.cos(np.radians(la))
+        ax2.add_patch(Ellipse((lo, merc(la)), r, r, facecolor="#ff725c",
+                              alpha=0.5, edgecolor="#a3341f"))
+ax2.set_xlim(-180, 180)
+ax2.set_ylim(merc(-78), merc(78))
+ax2.set_aspect("equal")
+ax2.set_title("Mercator", fontsize=11)
+ax2.set_xlabel("longitude")
+ax2.set_ylabel("projected y")
+
+fig.suptitle("Every projection distorts", fontsize=12)
+plt.tight_layout()
+plt.show()
+```
+
+## B5. Closure, common fate, and the diagnostic pattern {#sec-unit-b5}
+
+*After Ware on Gestalt closure and common fate (2004).*
+
+### 82 — Blackbody curve + spectral lines {#sec-blackbody}
+
+> **Class:** named first
+> **Canonical introduction:** [@planck1901gesetz]
+> **Domain:** lines pop against the continuum
+
+The smooth Planck continuum sets the backdrop against which sharp absorption lines read as notches — closure fills the missing light, so the eye completes the curve and the dark lines stand out. Planck derived the radiance law by quantising the oscillators of the cavity wall [@planck1901gesetz], and its peak shifts to shorter wavelengths as temperature climbs.
+
+```{python}
+#| label: fig-blackbody
+#| fig-cap: "Planck curves at three temperatures; absorption lines notched into the hottest."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+h, c, kB = 6.626e-34, 2.998e8, 1.381e-23
+lam = np.linspace(100e-9, 2000e-9, 800)
+
+
+def planck(lam, T):
+    return 2 * h * c**2 / lam**5 / (np.exp(h * c / (lam * kB * T)) - 1)
+
+
+colors = {4000: "#ff725c", 5000: "#efb118", 6000: "#4269d0"}
+
+fig, ax = plt.subplots(figsize=(6.4, 3.8))
+for T, col in colors.items():
+    B = planck(lam, T)
+    if T == 6000:  # notch a few Fraunhofer-style absorption lines
+        for line in [430e-9, 589e-9, 656e-9]:
+            B = B * (1 - 0.55 * np.exp(-((lam - line) / 4e-9) ** 2))
+    ax.plot(lam * 1e9, B / 1e13, color=col, lw=1.8, label=f"{T} K")
+
+ax.set_xlabel("wavelength (nm)")
+ax.set_ylabel("spectral radiance (a.u.)")
+ax.set_title("Blackbody continuum with absorption lines", fontsize=11)
+ax.legend(fontsize=8)
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 83 — CMB angular power spectrum {#sec-cmbspectrum}
+
+> **Class:** named first
+> **Canonical introduction:** [@debernardis2000flat]
+> **Domain:** the acoustic peaks
+
+Power plotted against multipole rises to a first acoustic peak near ℓ ≈ 200 and then rings down in damped harmonics — a single wave train the eye groups by common fate. The BOOMERANG flight resolved that first peak and pinned the geometry of the universe to flat [@debernardis2000flat].
+
+```{python}
+#| label: fig-cmbspectrum
+#| fig-cap: "Synthesised CMB angular power spectrum with acoustic peaks and Silk damping."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+ell = np.arange(2, 2500)
+plateau = 900 * (1 - np.exp(-ell / 45))
+damping = np.exp(-(ell / 1400) ** 2)
+acoustic = 5200 * damping * (0.5 + 0.5 * np.cos(2 * np.pi * (ell - 220) / 300))
+D = 0.45 * plateau + acoustic
+
+fig, ax = plt.subplots(figsize=(6.4, 3.8))
+ax.plot(ell, D, color="#4269d0", lw=2)
+ax.axvline(220, color="0.7", ls="--", lw=1)
+ax.text(232, D.max() * 0.9, r"first peak $\ell\approx220$", fontsize=8, color="0.4")
+
+ax.set_xlabel(r"multipole moment  $\ell$")
+ax.set_ylabel(r"$\ell(\ell+1)C_\ell/2\pi$  ($\mu$K$^2$)")
+ax.set_title("CMB angular power spectrum", fontsize=11)
+ax.set_xlim(2, 2400)
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 84 — Higgs discovery bump {#sec-higgs}
+
+> **Class:** named first
+> **Canonical introduction:** [@aad2012observation]
+> **Domain:** a particle as a bump
+
+A new particle announces itself as a small Gaussian bump riding on a smooth falling background in the invariant-mass spectrum; closure separates the excess from the continuum the eye extrapolates beneath it. The ATLAS collaboration reported such an excess near 125 GeV, the signature of the Higgs boson [@aad2012observation].
+
+```{python}
+#| label: fig-higgs
+#| fig-cap: "Diphoton invariant-mass spectrum: a small bump near 125 GeV over a falling background."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+
+edges = np.linspace(100, 160, 31)
+m = 0.5 * (edges[:-1] + edges[1:])
+background = 6000 * np.exp(-(m - 100) / 22)
+signal = 320 * np.exp(-(m - 125) ** 2 / (2 * 2.0 ** 2))
+expected = background + signal
+data = rng.poisson(expected)
+err = np.sqrt(data)
+
+fig, ax = plt.subplots(figsize=(6.4, 3.8))
+ax.errorbar(m, data, yerr=err, fmt="o", ms=4, color="#333333",
+            capsize=2, label="data")
+ax.plot(m, background, color="#ff725c", lw=1.8, ls="--", label="background fit")
+ax.plot(m, expected, color="#4269d0", lw=1.8, label="background + signal")
+
+ax.set_xlabel("diphoton invariant mass $m_{\\gamma\\gamma}$ (GeV)")
+ax.set_ylabel("events / 2 GeV")
+ax.set_title("A resonance at 125 GeV", fontsize=11)
+ax.legend(fontsize=8)
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 85 — Double-slit interference {#sec-doubleslit}
+
+> **Class:** canonical reference
+> **Canonical introduction:** [@young1804bakerian]
+> **Domain:** the wave pattern itself
+
+Two slits produce a cosine fringe pattern modulated by a single-slit envelope, and the regular banding is read as one continuous wave field. Young's Bakerian lecture argued from exactly this pattern that light interferes, and so behaves as a wave [@young1804bakerian].
+
+```{python}
+#| label: fig-doubleslit
+#| fig-cap: "Two-slit intensity under a single-slit envelope, with the fringe strip below."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+x = np.linspace(-0.03, 0.03, 1200)
+lam, d, a, L = 600e-9, 40e-6, 8e-6, 1.0
+alpha = np.pi * d * x / (lam * L)
+beta = np.pi * a * x / (lam * L)
+envelope = np.sinc(beta / np.pi) ** 2
+intensity = np.cos(alpha) ** 2 * envelope
+
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(6.4, 4.2),
+                               gridspec_kw={"height_ratios": [3, 1]})
+ax1.plot(x * 1e3, intensity, color="#4269d0", lw=1.4)
+ax1.plot(x * 1e3, envelope, color="#ff725c", lw=1.2, ls="--", label="single-slit envelope")
+ax1.set_ylabel("intensity")
+ax1.set_title("Two-slit interference", fontsize=11)
+ax1.legend(fontsize=8)
+ax1.grid(True, alpha=0.3)
+
+strip = np.tile(intensity, (60, 1))
+ax2.imshow(strip, aspect="auto", cmap="gray",
+           extent=[x[0] * 1e3, x[-1] * 1e3, 0, 1])
+ax2.set_yticks([])
+ax2.set_xlabel("screen position (mm)")
+plt.tight_layout()
+plt.show()
+```
+
+### 86 — Fourier decomposition + spectrogram {#sec-fourier}
+
+> **Class:** named first
+> **Canonical introduction:** [@fourier1822theorie]
+> **Domain:** signal as frequency
+
+A tangled time signal resolves into a handful of sharp lines once redrawn against frequency, each peak a sinusoidal component the ear and eye recover as one tone. Fourier proved that any such signal decomposes into a sum of sines and cosines [@fourier1822theorie].
+
+```{python}
+#| label: fig-fourier
+#| fig-cap: "A signal built from three sines (top) and its frequency spectrum (bottom)."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+fs = 1000
+t = np.linspace(0, 1, fs, endpoint=False)
+freqs = [(5, 1.0), (12, 0.6), (20, 0.3)]
+signal = sum(a * np.sin(2 * np.pi * f * t) for f, a in freqs)
+
+spectrum = np.abs(np.fft.rfft(signal)) / (len(t) / 2)
+fax = np.fft.rfftfreq(len(t), 1 / fs)
+
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(6.4, 4.2))
+ax1.plot(t, signal, color="#4269d0", lw=1.2)
+ax1.set_xlabel("time (s)")
+ax1.set_ylabel("amplitude")
+ax1.set_title("Signal in time", fontsize=11)
+ax1.grid(True, alpha=0.3)
+
+ax2.stem(fax, spectrum, basefmt=" ", linefmt="#ff725c", markerfmt="o")
+ax2.set_xlim(0, 40)
+ax2.set_xlabel("frequency (Hz)")
+ax2.set_ylabel("magnitude")
+ax2.set_title("Spectrum", fontsize=11)
+ax2.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 87 — Plate tectonics + seafloor-age stripes {#sec-seafloor}
+
+> **Class:** named first
+> **Canonical introduction:** [@vine1963magnetic]
+> **Domain:** the symmetric stripes as one pattern
+
+Magnetic anomalies recorded in new crust form a barcode of normal and reversed stripes that mirrors exactly across the ridge axis, and the symmetry reads as a single pattern generated by spreading. Vine and Matthews argued that these matched stripes record seafloor spreading writing the field's reversals into the rock [@vine1963magnetic].
+
+```{python}
+#| label: fig-seafloor
+#| fig-cap: "Magnetic stripes mirrored about a mid-ocean ridge, with seafloor age increasing outward."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+dist = np.linspace(0, 200, 600)  # km from ridge axis
+bounds = np.array([10, 25, 33, 50, 62, 78, 95, 110, 130, 150, 175])
+pol_right = np.where(np.searchsorted(bounds, dist) % 2 == 0, 1, -1)
+x = np.concatenate([-dist[::-1], dist])
+pol = np.concatenate([pol_right[::-1], pol_right])
+img = np.tile(pol, (80, 1))
+
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(6.6, 4.2),
+                               gridspec_kw={"height_ratios": [2, 1]})
+ax1.imshow(img, aspect="auto", cmap="RdBu_r",
+           extent=[x[0], x[-1], 0, 1], vmin=-1, vmax=1)
+ax1.axvline(0, color="black", lw=2)
+ax1.text(0, 1.06, "ridge axis", ha="center", fontsize=8)
+ax1.set_yticks([])
+ax1.set_title("Symmetric magnetic anomaly stripes", fontsize=11)
+
+age = np.abs(x) / 25.0  # spreading rate ~25 km/Myr each side
+ax2.plot(x, age, color="#4269d0", lw=2)
+ax2.axvline(0, color="black", lw=1)
+ax2.set_xlabel("distance from ridge (km)")
+ax2.set_ylabel("age (Myr)")
+ax2.set_xlim(x[0], x[-1])
+ax2.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+# Part C — Beyond the static frame {#sec-part-c}
+
+The static frame is left behind here — systems that move over time, figures whose whole point is animation, and the honest depiction of what is not known. Uncertainty is drawn rather than suppressed; where a form is genuinely animated, a print or HTML book shows it as one representative still or a short small-multiple sequence.
+
+## C1. Dynamical systems, chaos, and emergence {#sec-unit-c1}
+
+*After Strogatz, Nonlinear Dynamics and Chaos (1994).*
+
+### 88 — Lotka–Volterra phase portrait {#sec-lotkavolterra}
+
+> **Class:** named first  
+> **Canonical introduction:** [@lotka1925elements]  
+> **Domain:** predator–prey limit cycle  
+
+Predator and prey abundances chase each other around a closed orbit rather than settling to a point, and plotting one against the other turns a pair of coupled rate equations into a family of nested loops. Lotka set out the equations in 1925 [@lotka1925elements]; each initial condition traces its own conserved cycle, and the inset time series shows the same motion as the out-of-phase peaks familiar from population records.
+
+```{python}
+#| label: fig-lotkavolterra
+#| fig-cap: "Predator–prey phase portrait: closed orbits, with an inset time series."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+np.random.seed(0)
+
+a, b, c, d = 1.0, 0.1, 1.5, 0.075
+
+def lv(t, z):
+    x, y = z
+    return [a * x - b * x * y, -c * y + d * x * y]
+
+t_span = (0, 40)
+t_eval = np.linspace(*t_span, 4000)
+colors = ["#4269d0", "#efb118", "#ff725c", "#6cc5b0"]
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+for i, x0 in enumerate([10, 15, 20, 25]):
+    sol = solve_ivp(lv, t_span, [x0, 5], t_eval=t_eval, rtol=1e-8, atol=1e-8)
+    ax.plot(sol.y[0], sol.y[1], color=colors[i], lw=1.3)
+ax.set_xlabel("prey  x")
+ax.set_ylabel("predator  y")
+ax.set_title("Lotka–Volterra phase portrait")
+ax.grid(True, alpha=0.3)
+
+axin = ax.inset_axes([0.56, 0.60, 0.40, 0.36])
+sol = solve_ivp(lv, t_span, [20, 5], t_eval=t_eval, rtol=1e-8, atol=1e-8)
+axin.plot(sol.t, sol.y[0], color="#4269d0", lw=1)
+axin.plot(sol.t, sol.y[1], color="#ff725c", lw=1)
+axin.set_xticks([])
+axin.set_yticks([])
+axin.set_title("time series", fontsize=7)
+
+plt.tight_layout()
+plt.show()
+```
+
+### 89 — The strange attractor {#sec-attractor}
+
+> **Class:** named first  
+> **Canonical introduction:** [@lorenz1963deterministic]  
+> **Domain:** deterministic chaos with structure  
+
+A deterministic system with no noise can still be unpredictable, and its trajectory need not wander freely — it settles onto a set with fixed geometry that it never leaves and never repeats. Lorenz found this in a three-variable convection model in 1963 [@lorenz1963deterministic]; the x–z projection is the double-lobed butterfly whose two wings the state orbits in an order no forecast can pin down.
+
+```{python}
+#| label: fig-attractor
+#| fig-cap: "The Lorenz attractor, x–z projection (σ=10, ρ=28, β=8/3)."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+np.random.seed(0)
+
+sigma, rho, beta = 10.0, 28.0, 8.0 / 3.0
+
+def lorenz(t, s):
+    x, y, z = s
+    return [sigma * (y - x), x * (rho - z) - y, x * y - beta * z]
+
+sol = solve_ivp(lorenz, (0, 60), [1.0, 1.0, 1.0],
+                t_eval=np.linspace(0, 60, 20000), rtol=1e-9, atol=1e-9)
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+ax.plot(sol.y[0], sol.y[2], color="#4269d0", lw=0.4)
+ax.set_xlabel("x")
+ax.set_ylabel("z")
+ax.set_title("The Lorenz attractor")
+plt.tight_layout()
+plt.show()
+```
+
+### 90 — The bifurcation diagram {#sec-bifurcation}
+
+> **Class:** named first  
+> **Canonical introduction:** [@may1976simple]  
+> **Domain:** the road to chaos  
+
+Raising a single control parameter takes a system from one stable state, to an oscillation between two, then four, then a cascade of doublings that ends in chaos. May's 1976 review made the logistic map the emblem of this route [@may1976simple]; iterating x = r·x(1−x) and scattering the settled values against r draws the period-doubling tree with its self-similar windows of order inside the chaos.
+
+```{python}
+#| label: fig-bifurcation
+#| fig-cap: "Logistic-map bifurcation diagram: attractor values versus growth rate r."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+rs = np.linspace(2.5, 4.0, 1400)
+x = 1e-5 * np.ones_like(rs)
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+for _ in range(600):          # discard transient
+    x = rs * x * (1 - x)
+for _ in range(300):          # plot the attractor
+    x = rs * x * (1 - x)
+    ax.plot(rs, x, ",k", alpha=0.25)
+
+ax.set_xlabel("growth rate  r")
+ax.set_ylabel("attractor  x")
+ax.set_title("Logistic-map bifurcation diagram")
+plt.tight_layout()
+plt.show()
+```
+
+### 91 — Double pendulum {#sec-doublependulum}
+
+> **Class:** shared genre idiom  
+> **Canonical introduction:** [@shinbrot1992chaos]  
+> **Domain:** sensitive dependence you can watch  
+
+Two double pendulums released from all-but-identical angles keep step for a moment and then swing wildly apart, making sensitive dependence on initial conditions visible without any equations on the page. Shinbrot and colleagues used exactly this apparatus to demonstrate chaos in a table-top mechanical system [@shinbrot1992chaos]; the tip traces below start 0.01 radians apart and diverge within seconds. The physical form is animated — a single still stands in for the motion.
+
+```{python}
+#| label: fig-doublependulum
+#| fig-cap: "Two double-pendulum tip traces from near-identical starts, diverging."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+np.random.seed(0)
+
+g, L1, L2, m1, m2 = 9.81, 1.0, 1.0, 1.0, 1.0
+
+def deriv(t, y):
+    th1, w1, th2, w2 = y
+    dth = th2 - th1
+    den1 = (m1 + m2) * L1 - m2 * L1 * np.cos(dth) ** 2
+    dw1 = (m2 * L1 * w1 ** 2 * np.sin(dth) * np.cos(dth)
+           + m2 * g * np.sin(th2) * np.cos(dth)
+           + m2 * L2 * w2 ** 2 * np.sin(dth)
+           - (m1 + m2) * g * np.sin(th1)) / den1
+    den2 = (L2 / L1) * den1
+    dw2 = (-m2 * L2 * w2 ** 2 * np.sin(dth) * np.cos(dth)
+           + (m1 + m2) * g * np.sin(th1) * np.cos(dth)
+           - (m1 + m2) * L1 * w1 ** 2 * np.sin(dth)
+           - (m1 + m2) * g * np.sin(th2)) / den2
+    return [w1, dw1, w2, dw2]
+
+t_eval = np.linspace(0, 20, 6000)
+
+def tip(sol):
+    th1, th2 = sol.y[0], sol.y[2]
+    x = L1 * np.sin(th1) + L2 * np.sin(th2)
+    y = -L1 * np.cos(th1) - L2 * np.cos(th2)
+    return x, y
+
+s1 = solve_ivp(deriv, (0, 20), [np.pi / 2, 0, np.pi / 2, 0],
+               t_eval=t_eval, rtol=1e-9, atol=1e-9)
+s2 = solve_ivp(deriv, (0, 20), [np.pi / 2 + 1e-2, 0, np.pi / 2, 0],
+               t_eval=t_eval, rtol=1e-9, atol=1e-9)
+x1, y1 = tip(s1)
+x2, y2 = tip(s2)
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+ax.plot(x1, y1, color="#4269d0", lw=0.5, label="start θ")
+ax.plot(x2, y2, color="#ff725c", lw=0.5, label="start θ + 0.01")
+ax.set_aspect("equal")
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+ax.set_title("Double pendulum — tip traces diverge")
+ax.legend(loc="upper right", fontsize=8)
+plt.tight_layout()
+plt.show()
+```
+
+### 92 — The Mandelbrot set / fractal {#sec-mandelbrot}
+
+> **Class:** named first  
+> **Canonical introduction:** [@mandelbrot1982fractal]  
+> **Domain:** self-similarity at every scale  
+
+The boundary of the Mandelbrot set has detail at every magnification, an infinitely intricate coastline generated by iterating one quadratic map. Mandelbrot's 1982 book gave fractal geometry its name and this figure its icon [@mandelbrot1982fractal]; colouring each point c by how fast z = z² + c escapes to infinity draws the familiar bulbed body and its filigree edge.
+
+```{python}
+#| label: fig-mandelbrot
+#| fig-cap: "The Mandelbrot set, coloured by escape-time iteration count."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+N = 500
+x = np.linspace(-2.2, 0.8, N)
+y = np.linspace(-1.3, 1.3, N)
+X, Y = np.meshgrid(x, y)
+C = X + 1j * Y
+Z = np.zeros_like(C)
+counts = np.zeros(C.shape, dtype=int)
+maxit = 80
+alive = np.ones(C.shape, dtype=bool)
+
+for i in range(maxit):
+    Z[alive] = Z[alive] ** 2 + C[alive]
+    escaped = np.abs(Z) > 2.0
+    newly = escaped & alive
+    counts[newly] = i
+    alive &= ~escaped
+counts[alive] = maxit
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+ax.imshow(counts, extent=[-2.2, 0.8, -1.3, 1.3], cmap="viridis", origin="lower")
+ax.set_xlabel("Re(c)")
+ax.set_ylabel("Im(c)")
+ax.set_title("The Mandelbrot set")
+plt.tight_layout()
+plt.show()
+```
+
+### 93 — Reaction–diffusion (Turing) patterns {#sec-turing}
+
+> **Class:** named first  
+> **Canonical introduction:** [@turing1952chemical]  
+> **Domain:** pattern self-organising  
+
+Two chemicals that react and diffuse at different rates can break a uniform field into spots and stripes on their own, no template required. Turing proposed this mechanism for biological pattern in 1952 [@turing1952chemical]; a short Gray–Scott simulation started from a small seed self-organises into the maze of blobs shown here.
+
+```{python}
+#| label: fig-turing
+#| fig-cap: "A Gray–Scott reaction–diffusion field self-organised into spots and stripes."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+rng = np.random.default_rng(0)
+
+n = 120
+U = np.ones((n, n))
+V = np.zeros((n, n))
+r = 10
+c = n // 2
+U[c - r:c + r, c - r:c + r] = 0.50
+V[c - r:c + r, c - r:c + r] = 0.25
+V += 0.02 * rng.random((n, n))
+
+Du, Dv, f, k = 0.16, 0.08, 0.060, 0.062
+
+def lap(Z):
+    return (-4 * Z
+            + np.roll(Z, 1, 0) + np.roll(Z, -1, 0)
+            + np.roll(Z, 1, 1) + np.roll(Z, -1, 1))
+
+for _ in range(4000):
+    uvv = U * V * V
+    U += Du * lap(U) - uvv + f * (1 - U)
+    V += Dv * lap(V) + uvv - (f + k) * V
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+ax.imshow(V, cmap="viridis", origin="lower")
+ax.set_xticks([])
+ax.set_yticks([])
+ax.set_title("Reaction–diffusion (Turing) pattern")
+plt.tight_layout()
+plt.show()
+```
+
+### 94 — Flocking / boids {#sec-boids}
+
+> **Class:** named first  
+> **Canonical introduction:** [@reynolds1987flocks]  
+> **Domain:** emergence from local rules  
+
+Coherent flocking needs no leader and no global plan — three local rules, keep apart, match your neighbours' heading, steer toward their centre, are enough for a crowd to move as one. Reynolds introduced this model of "boids" in 1987 [@reynolds1987flocks]; after a few hundred steps the velocity arrows below have aligned into a common drift.
+
+```{python}
+#| label: fig-boids
+#| fig-cap: "Boids after simulation: positions with velocity arrows aligned into a flock."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+rng = np.random.default_rng(0)
+
+N = 40
+size = 20.0
+pos = rng.uniform(0, size, (N, 2))
+vel = rng.uniform(-1, 1, (N, 2))
+
+def limit(v, m):
+    s = np.linalg.norm(v, axis=1, keepdims=True)
+    s[s == 0] = 1.0
+    return v * np.minimum(s, m) / s
+
+for _ in range(200):
+    diff = pos[:, None, :] - pos[None, :, :]
+    dist = np.linalg.norm(diff, axis=2)
+    np.fill_diagonal(dist, np.inf)
+    coh = np.zeros((N, 2))
+    ali = np.zeros((N, 2))
+    sep = np.zeros((N, 2))
+    for i in range(N):
+        near = dist[i] < 5.0
+        if near.any():
+            coh[i] = pos[near].mean(0) - pos[i]
+            ali[i] = vel[near].mean(0)
+        close = dist[i] < 1.5
+        if close.any():
+            sep[i] = (pos[i] - pos[close]).sum(0)
+    vel += 0.01 * coh + 0.05 * ali + 0.05 * sep
+    vel = limit(vel, 1.0)
+    pos = (pos + vel) % size
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+ax.quiver(pos[:, 0], pos[:, 1], vel[:, 0], vel[:, 1],
+          color="#4269d0", angles="xy")
+ax.set_xlim(0, size)
+ax.set_ylim(0, size)
+ax.set_aspect("equal")
+ax.set_xticks([])
+ax.set_yticks([])
+ax.set_title("Flocking — local rules, one flock")
+plt.tight_layout()
+plt.show()
+```
+
+### 95 — SIR epidemic curve {#sec-sir}
+
+> **Class:** named first  
+> **Canonical introduction:** [@kermack1927contribution]  
+> **Domain:** contagion dynamics  
+
+Splitting a population into susceptible, infective, and recovered compartments and letting infection flow between them produces the single-humped epidemic curve, with its peak and its burnt-out tail. Kermack and McKendrick set out the compartmental equations in 1927 [@kermack1927contribution]; the infective fraction rises, crests when the susceptible pool runs thin, and decays.
+
+```{python}
+#| label: fig-sir
+#| fig-cap: "SIR compartments over time, with the classic infective peak."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+np.random.seed(0)
+
+beta, gamma = 0.4, 0.1
+
+def sir(t, y):
+    S, I, R = y
+    return [-beta * S * I, beta * S * I - gamma * I, gamma * I]
+
+sol = solve_ivp(sir, (0, 160), [0.99, 0.01, 0.0],
+                t_eval=np.linspace(0, 160, 400))
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+ax.plot(sol.t, sol.y[0], color="#4269d0", label="Susceptible")
+ax.plot(sol.t, sol.y[1], color="#ff725c", label="Infective")
+ax.plot(sol.t, sol.y[2], color="#3ca951", label="Recovered")
+ax.set_xlabel("time (days)")
+ax.set_ylabel("fraction of population")
+ax.set_title("SIR epidemic curve")
+ax.legend(fontsize=8)
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+## C2. Interaction, animation, and narrative {#sec-unit-c2}
+
+*After Cairo, The Functional Art (2012).*
+
+### 96 — Gapminder bubbles {#sec-gapminder}
+
+> **Class:** named first  
+> **Canonical introduction:** [@rosling2007visual]  
+> **Domain:** wealth vs health vs time, animated  
+
+Four variables ride on one scatter — income on a log x-axis, life expectancy on y, population as bubble area, region as colour — and running it across years turns development into visible motion. Rosling's Gapminder presentations made this the definitive animated statistical graphic [@rosling2007visual]; the frame below is one representative year, since the animation over time collapses to a single still in print.
+
+```{python}
+#| label: fig-gapminder
+#| fig-cap: "Gapminder bubbles for one representative year (synthetic country data)."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+rng = np.random.default_rng(0)
+
+regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"]
+colors = {"Africa": "#ff725c", "Americas": "#efb118", "Asia": "#4269d0",
+          "Europe": "#6cc5b0", "Oceania": "#a463f2"}
+counts = {"Africa": 12, "Americas": 8, "Asia": 14, "Europe": 10, "Oceania": 3}
+base_income = {"Africa": 2000, "Americas": 9000, "Asia": 6000,
+               "Europe": 25000, "Oceania": 20000}
+base_life = {"Africa": 58, "Americas": 72, "Asia": 70,
+             "Europe": 79, "Oceania": 78}
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+for reg in regions:
+    nn = counts[reg]
+    inc = base_income[reg] * np.exp(rng.normal(0, 0.5, nn))
+    life = base_life[reg] + 4 * np.log(inc / base_income[reg]) + rng.normal(0, 2, nn)
+    pop = 10 ** rng.uniform(6.5, 8.7, nn)
+    ax.scatter(inc, life, s=pop / 3e4, color=colors[reg], alpha=0.6,
+               edgecolor="white", linewidth=0.5, label=reg)
+
+ax.set_xscale("log")
+ax.set_xlabel("income per person (log)")
+ax.set_ylabel("life expectancy (years)")
+ax.set_title("Gapminder bubbles — one year")
+ax.legend(fontsize=7, loc="lower right")
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 97 — Sequence alignment / genome browser {#sec-genomebrowser}
+
+> **Class:** named first  
+> **Canonical introduction:** [@kent2002human]  
+> **Domain:** zoom from chromosome to base  
+
+A genome browser stacks heterogeneous data on a shared coordinate axis — gene models, read coverage, conservation — so that any locus can be read across all tracks at once and zoomed from whole chromosome down to single base. Kent's UCSC browser fixed this track layout for genomics in 2002 [@kent2002human]; genes appear as exon boxes joined by intron lines above histogram and conservation tracks.
+
+```{python}
+#| label: fig-genomebrowser
+#| fig-cap: "A genome-browser track view: genes, coverage, and conservation on one axis."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
+
+np.random.seed(0)
+rng = np.random.default_rng(0)
+
+L = 1000
+xs = np.arange(L)
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+
+# coverage histogram track
+cov = np.abs(np.convolve(rng.normal(0, 1, L), np.ones(30) / 30, mode="same"))
+ax.fill_between(xs, 8, 8 + cov / cov.max() * 1.6, color="#4269d0", step="mid")
+ax.text(-40, 8.8, "coverage", fontsize=7, ha="right", va="center")
+
+# conservation track
+cons = (np.sin(xs / 40) + 1) / 2 * rng.uniform(0.3, 1, L)
+ax.fill_between(xs, 6, 6 + cons * 1.4, color="#6cc5b0")
+ax.text(-40, 6.7, "conservation", fontsize=7, ha="right", va="center")
+
+# gene tracks: exon boxes joined by an intron line
+def draw_gene(y, exons):
+    ax.plot([exons[0][0], exons[-1][1]], [y, y], color="0.3", lw=0.8, zorder=1)
+    for a, b in exons:
+        ax.add_patch(Rectangle((a, y - 0.25), b - a, 0.5, color="#efb118", zorder=2))
+
+draw_gene(4, [(60, 110), (180, 230), (320, 360), (500, 560)])
+draw_gene(3, [(400, 460), (620, 700), (820, 880)])
+draw_gene(2, [(120, 160), (240, 300)])
+ax.text(-40, 3, "genes", fontsize=7, ha="right", va="center")
+
+ax.set_xlim(-120, L)
+ax.set_ylim(1.5, 10)
+ax.set_yticks([])
+ax.set_xlabel("chromosome coordinate (bp)")
+ax.set_title("Genome-browser track view")
+plt.tight_layout()
+plt.show()
+```
+
+### 98 — Geologic time spiral / stratigraphic column {#sec-geotime}
+
+> **Class:** canonical reference  
+> **Canonical introduction:** [@smith1815delineation]  
+> **Domain:** deep time compressed  
+
+A stratigraphic column stacks the eons and eras vertically with thickness scaled to duration, compressing four and a half billion years into a single legible strip that reads oldest at the bottom. William Smith's 1815 geological map established stratigraphic order as the organising principle of deep time [@smith1815delineation]; the column below colours each interval and sizes it by the span it covers.
+
+```{python}
+#| label: fig-geotime
+#| fig-cap: "A stratigraphic column: eons and eras stacked, thickness scaled to duration."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
+
+np.random.seed(0)
+
+# (name, duration in Ma, colour)
+layers = [
+    ("Cenozoic", 66, "#efb118"),
+    ("Mesozoic", 252 - 66, "#6cc5b0"),
+    ("Paleozoic", 541 - 252, "#4269d0"),
+    ("Proterozoic", 2500 - 541, "#a463f2"),
+    ("Archean", 4000 - 2500, "#ff725c"),
+    ("Hadean", 4600 - 4000, "#9c6b4e"),
+]
+
+fig, ax = plt.subplots(figsize=(4.6, 5.6))
+bottom = 0
+for name, dur, col in layers:
+    ax.add_patch(Rectangle((0, bottom), 1, dur, color=col, ec="white"))
+    ax.text(1.1, bottom + dur / 2, name, va="center", fontsize=9)
+    bottom += dur
+
+ax.set_ylim(0, bottom)
+ax.set_xlim(0, 2.4)
+ax.invert_yaxis()
+ax.set_xticks([])
+ax.set_ylabel("age (Ma before present)")
+ax.set_title("Stratigraphic column — deep time")
+plt.tight_layout()
+plt.show()
+```
+
+## C3. Encoding uncertainty — and reading wisely {#sec-unit-c3}
+
+*After Spiegelhalter, The Art of Statistics (2019), and Tufte on the honest depiction of uncertainty.*
+
+### 99 — Confidence / credible intervals, error bars, fan charts {#sec-intervals}
+
+> **Class:** shared genre idiom  
+> **Canonical introduction:** [@neyman1937outline]  
+> **Domain:** uncertainty made visible  
+
+An estimate without its interval is half a statement; error bars and shaded bands attach the range of plausible values to every point and every fitted curve. Neyman's 1937 paper defined the confidence interval that these bars most often carry [@neyman1937outline]; a wide bar and a narrow one side by side say directly how much a number can be trusted.
+
+```{python}
+#| label: fig-intervals
+#| fig-cap: "Point estimates with 95% error bars, and a fitted line with a shaded band."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(6.4, 3.6))
+
+groups = ["A", "B", "C", "D", "E"]
+means = np.array([5.2, 4.1, 6.0, 4.8, 5.5])
+err = np.array([0.4, 0.9, 0.3, 1.2, 0.5])
+ax1.errorbar(range(len(groups)), means, yerr=1.96 * err, fmt="o",
+             color="#4269d0", ecolor="#4269d0", capsize=4)
+ax1.set_xticks(range(len(groups)))
+ax1.set_xticklabels(groups)
+ax1.set_ylabel("estimate")
+ax1.set_title("95% CIs by group", fontsize=9)
+ax1.grid(True, alpha=0.3)
+
+x = np.linspace(0, 10, 60)
+y = 1.0 + 0.5 * x
+band = 0.5 + 0.05 * np.abs(x - 5)
+ax2.plot(x, y, color="#ff725c")
+ax2.fill_between(x, y - 1.96 * band, y + 1.96 * band, color="#ff725c", alpha=0.25)
+ax2.set_title("fitted line ± 95%", fontsize=9)
+ax2.set_xlabel("x")
+ax2.set_ylabel("y")
+ax2.grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+```
+
+### 100 — Poll-of-polls fan chart {#sec-fanchart}
+
+> **Class:** canonical reference  
+> **Canonical introduction:** [@britton1998inflation]  
+> **Domain:** uncertainty as the message  
+
+A fan chart puts uncertainty at the centre of the graphic: a central projection surrounded by nested predictive bands that fan wider the further ahead the forecast reaches. Britton, Fisher and Whitley described the Bank of England's inflation fan in 1998 [@britton1998inflation]; the darkening-to-lightening bands say plainly that the future is a distribution, not a line.
+
+```{python}
+#| label: fig-fanchart
+#| fig-cap: "A fan chart: central projection with predictive bands widening ahead."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+
+np.random.seed(0)
+
+t_hist = np.arange(-12, 1)
+hist = 2.0 + 0.1 * t_hist + 0.2 * np.sin(t_hist / 2)
+
+t_fut = np.arange(0, 13)
+central = hist[-1] + 0.05 * t_fut
+sigma = 0.15 * np.sqrt(t_fut)
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+ax.plot(t_hist, hist, color="0.2", lw=1.5)
+for lvl in [0.9, 0.7, 0.5, 0.3]:
+    z = norm.ppf(0.5 + lvl / 2)
+    ax.fill_between(t_fut, central - z * sigma, central + z * sigma,
+                    color="#ff725c", alpha=0.18)
+ax.plot(t_fut, central, color="#ff725c", lw=1.2)
+ax.axvline(0, color="0.6", ls="--", lw=0.8)
+ax.set_xlabel("quarters from now")
+ax.set_ylabel("projected value (%)")
+ax.set_title("Fan chart — widening ahead")
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+```
+
+### 101 — Bayesian updating {#sec-bayes}
+
+> **Class:** canonical reference  
+> **Canonical introduction:** [@bayes1763essay]  
+> **Domain:** prior to posterior  
+
+Bayesian updating is one picture: a prior belief, multiplied by the likelihood of the data, renormalised into a posterior that is sharper than either. The rule traces to Bayes's essay published in 1763 [@bayes1763essay]; a Beta prior times a binomial likelihood gives a Beta posterior, and plotting all three on one axis shows belief concentrating as evidence arrives.
+
+```{python}
+#| label: fig-bayes
+#| fig-cap: "Prior, likelihood, and posterior densities — the posterior sharpens."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import beta as beta_dist
+from scipy.integrate import trapezoid
+
+np.random.seed(0)
+
+theta = np.linspace(0, 1, 500)
+a0, b0 = 2, 2            # prior
+n, k = 20, 14           # 14 successes out of 20
+
+lik = theta ** k * (1 - theta) ** (n - k)
+lik /= trapezoid(lik, theta)
+prior = beta_dist.pdf(theta, a0, b0)
+post = beta_dist.pdf(theta, a0 + k, b0 + n - k)
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+ax.plot(theta, prior, color="#4269d0", label="prior  Beta(2, 2)")
+ax.plot(theta, lik, color="#efb118", label="likelihood  (14/20)")
+ax.plot(theta, post, color="#ff725c", label="posterior")
+ax.fill_between(theta, post, color="#ff725c", alpha=0.15)
+ax.set_xlabel("θ")
+ax.set_ylabel("density")
+ax.set_title("Bayesian updating")
+ax.legend(fontsize=8)
+plt.tight_layout()
+plt.show()
+```
+
+### 102 — ROC curve + confusion matrix {#sec-roc}
+
+> **Class:** named first  
+> **Canonical introduction:** [@green1966signal]  
+> **Domain:** decision under a threshold  
+
+Any classifier that scores cases trades false alarms against missed hits as its threshold slides, and the ROC curve plots that whole trade-off while the confusion matrix pins down one chosen operating point. Green and Swets brought signal-detection theory and the ROC curve into psychophysics in 1966 [@green1966signal]; the area under the curve summarises separability, and the 2×2 grid counts the four outcomes at the threshold picked.
+
+```{python}
+#| label: fig-roc
+#| fig-cap: "ROC curve with AUC (left) and a confusion matrix at a chosen threshold (right)."
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import trapezoid
+
+np.random.seed(0)
+rng = np.random.default_rng(0)
+
+neg = rng.normal(0.0, 1.0, 1000)
+pos = rng.normal(1.5, 1.0, 1000)
+
+thr = np.linspace(-4, 6, 300)
+tpr = np.array([(pos >= t).mean() for t in thr])
+fpr = np.array([(neg >= t).mean() for t in thr])
+order = np.argsort(fpr)
+auc = trapezoid(tpr[order], fpr[order])
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(6.4, 3.4))
+ax1.plot(fpr, tpr, color="#4269d0", lw=1.6)
+ax1.plot([0, 1], [0, 1], "--", color="0.6", lw=0.8)
+ax1.set_xlabel("false positive rate")
+ax1.set_ylabel("true positive rate")
+ax1.set_title(f"ROC  (AUC = {auc:.2f})", fontsize=9)
+ax1.set_aspect("equal")
+
+t0 = 0.75
+TP = int((pos >= t0).sum())
+FN = int((pos < t0).sum())
+FP = int((neg >= t0).sum())
+TN = int((neg < t0).sum())
+cm = np.array([[TN, FP], [FN, TP]])
+ax2.imshow(cm, cmap="viridis")
+ax2.set_xticks([0, 1])
+ax2.set_xticklabels(["pred −", "pred +"], fontsize=8)
+ax2.set_yticks([0, 1])
+ax2.set_yticklabels(["true −", "true +"], fontsize=8)
+for i in range(2):
+    for j in range(2):
+        ax2.text(j, i, cm[i, j], ha="center", va="center",
+                 color="white", fontsize=10)
+ax2.set_title("confusion (θ = 0.75)", fontsize=9)
+
+plt.tight_layout()
+plt.show()
+```
+
+### 103 — Null distribution / permutation test {#sec-permutation}
+
+> **Class:** canonical reference  
+> **Canonical introduction:** [@fisher1935design]  
+> **Domain:** what "significant" means  
+
+A permutation test makes the null hypothesis concrete: shuffle the group labels many times, recompute the statistic each time, and the spread of those values is the distribution to beat. Fisher set out this logic of randomisation in 1935 [@fisher1935design]; marking the observed difference against the shuffled histogram turns the p-value into a visible tail fraction.
+
+```{python}
+#| label: fig-permutation
+#| fig-cap: "A permutation null distribution with the observed statistic marked in the tail."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+rng = np.random.default_rng(0)
+
+a = rng.normal(0.5, 1.0, 30)
+b = rng.normal(0.0, 1.0, 30)
+obs = a.mean() - b.mean()
+
+pooled = np.concatenate([a, b])
+n = len(a)
+null = np.empty(5000)
+for i in range(5000):
+    perm = rng.permutation(pooled)
+    null[i] = perm[:n].mean() - perm[n:].mean()
+
+pval = (np.abs(null) >= abs(obs)).mean()
+
+fig, ax = plt.subplots(figsize=(6, 3.8))
+ax.hist(null, bins=50, color="#6cc5b0", edgecolor="white")
+ax.axvline(obs, color="#ff725c", lw=2, label=f"observed = {obs:.2f}")
+ax.set_xlabel("mean difference under label shuffling")
+ax.set_ylabel("count")
+ax.set_title(f"Permutation null  (p = {pval:.3f})")
+ax.legend(fontsize=8)
+plt.tight_layout()
+plt.show()
+```

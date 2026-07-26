@@ -1,0 +1,46 @@
+# The Argument
+
+A chart is a claim about how the world is organised. The scatter that became
+the Hertzsprung–Russell diagram claims that a star's brightness and colour are
+not independent; the map Snow drew of Broad Street claims that cholera deaths
+have a centre; Anscombe's four little panels claim that a summary statistic is
+not a substitute for looking. The history of scientific visualisation is not a
+history of decoration — it is a history of structural claims that happened to
+be made with ink.
+
+The claims succeed or fail through the eye. Human vision resolves a small set
+of channels before attention gets involved — position, length, size, colour,
+orientation, motion — and resolves them with sharply different precision;
+position on a common scale is read almost losslessly, area and colour
+saturation are read with systematic bias [@cleveland1984graphical]. Bertin
+catalogued these channels as a grammar of marks [@bertin1967semiologie], and
+the catalogue explains why the same data can be legible in one encoding and
+mute in another. The first part of the Atlas walks through the channels one at
+a time, each illustrated not by a toy but by the canonical figure that made
+the channel famous.
+
+Perception does more than measure single marks — it groups them. Marks that
+connect read as one structure; marks that flow read as a path; marks that sit
+close, or look alike, read as a cluster; a boundary read as enclosure turns
+space itself into an encoding. These Gestalt principles are the load-bearing
+walls of the network diagram, the Sankey, the heatmap, and the map, and they
+organise the second part. The third part leaves the static frame: systems that
+move, figures that animate, and the honest depiction of what is not known —
+uncertainty drawn rather than suppressed.
+
+Provenance is treated as data. *First* and *canonical* are distinct facts: the
+treemap is introduced at a 1991 conference but cited from a 1992 journal
+article, and conflating the two is the most common error in visual-history
+writing. Each Atlas entry therefore declares its provenance class — a named
+first, a canonical reference, a shared genre idiom with no single inventor, or
+an attribution that remains contested — and backs the claim with a citation
+that must resolve for the entry to exist. Some famous forms are excluded on
+principle: the supply–demand cross and the political compass are conceptual
+diagrams, not depictions of measured data, and this book catalogues only forms
+that show the world rather than a theory of it.
+
+What the catalogue adds up to is the book's argument: the sciences do not
+share a subject matter, but they share a visual language, and that language is
+small. A few perceptual channels, a few grouping principles, a few honest ways
+to draw a distribution or a flow or a doubt — the whole of organised knowledge
+is drawn with them.
