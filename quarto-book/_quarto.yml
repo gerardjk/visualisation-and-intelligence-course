@@ -8,7 +8,8 @@ book:
   author: "Gerard Kelly"
   date: today
   search: true
-  repo-url: https://github.com/gerardjk/quarto-book
+  repo-url: https://github.com/gerardjk/visualisation-and-intelligence-course
+  repo-subdir: quarto-book
   repo-actions: [edit, source]
   chapters:
     - index.qmd
