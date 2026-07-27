@@ -11,6 +11,7 @@ book:
   repo-url: https://github.com/gerardjk/visualisation-and-intelligence-course
   repo-subdir: quarto-book
   repo-actions: [edit, source]
+  downloads: [pdf]
   chapters:
     - index.qmd
     - intro.qmd

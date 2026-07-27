@@ -21,8 +21,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up Quarto
+      - name: Set up Quarto (with TinyTeX for the PDF download)
         uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          tinytex: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -40,10 +42,11 @@ jobs:
         continue-on-error: true
         run: quarto render
 
-      # The atlas book (nested project) -> quarto-book/_book, HTML only.
-      # Uses the committed freeze cache, so this does not re-run Python.
-      - name: Render book (HTML)
-        run: quarto render quarto-book --to html
+      # The atlas book (nested project) -> quarto-book/_book, HTML + PDF.
+      # Uses the committed freeze cache, so this does not re-run Python;
+      # TinyTeX compiles the PDF that the HTML "Download" link points to.
+      - name: Render book (HTML + PDF)
+        run: quarto render quarto-book
 
       - name: Assemble site (book under /quarto-book/)
         run: |

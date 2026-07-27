@@ -5,8 +5,8 @@ project:
 website:
   title: "Visualisation and Intelligence"
   description: "Narrative, Critique, and Analytics"
-  site-url: "https://YOUR-GITHUB-USERNAME.github.io/visualisation-and-intelligence-course/"
-  repo-url: "https://github.com/YOUR-GITHUB-USERNAME/visualisation-and-intelligence-course"
+  site-url: "https://gerardjk.github.io/visualisation-and-intelligence-course/"
+  repo-url: "https://github.com/gerardjk/visualisation-and-intelligence-course"
   repo-actions: [edit, issue]
   search: true
   page-navigation: true
