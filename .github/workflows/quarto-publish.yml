@@ -24,8 +24,35 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Render website
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Fallback only: the book ships a committed _freeze/ cache, so these
+      # deps are used only if Quarto decides a chapter must be re-executed.
+      - name: Install book Python dependencies
+        run: pip install -r quarto-book/requirements.txt
+
+      # Course website (root project) -> _site. Best-effort: a scaffold
+      # problem here must not block publishing the book.
+      - name: Render course website
+        continue-on-error: true
         run: quarto render
+
+      # The atlas book (nested project) -> quarto-book/_book, HTML only.
+      # Uses the committed freeze cache, so this does not re-run Python.
+      - name: Render book (HTML)
+        run: quarto render quarto-book --to html
+
+      - name: Assemble site (book under /quarto-book/)
+        run: |
+          mkdir -p _site/quarto-book
+          cp -R quarto-book/_book/. _site/quarto-book/
+          # If the course site failed to render, redirect the root to the book.
+          if [ ! -f _site/index.html ]; then
+            printf '%s\n' '<!doctype html><meta http-equiv="refresh" content="0; url=quarto-book/">' > _site/index.html
+          fi
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
