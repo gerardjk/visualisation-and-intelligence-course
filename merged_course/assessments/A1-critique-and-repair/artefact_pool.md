@@ -1,11 +1,26 @@
-# A1 Artefact Pool
+# A1 Candidate Artefact Pool — instructor staging file
 
-Ten starter chart+dataset pairs across seven domains. **Instructor to-do before
-release:** verify every link resolves, cache each dataset as CSV into
+Ten candidate chart-and-dataset pairs across seven domains. **Do not release
+this file to students yet.** Before release, verify every link resolves, add
+the exact chart URL and publication date, cache each dataset as CSV into
 `pool_data/<id>.csv`, and screenshot each chart into `pool_charts/<id>.png` —
 the pool ships with its data so no student inherits a six-hour digitisation job.
-Size the pool to at least the largest tutorial before assigning (duplicate this
-list with fresh artefacts rather than reusing within a tutorial).
+Each student selects **three artefacts from three different domains** (at
+least two from this pool, at most one approved bring-your-own), nominating
+one as their **primary**, by Monday 10 August 2026. It is acceptable for more
+than one student to use the same source artefact; their critiques,
+reconstructions, redesigns and claim audit remain individual.
+
+Release only rows that pass this checklist:
+
+```text
+[ ] Exact chart URL, creator/publisher and publication date recorded
+[ ] Screenshot cached and source credited
+[ ] Data CSV cached, opens cleanly and contains at least 6 usable rows
+[ ] Units and any reconstruction documented
+[ ] No personal, sensitive or culturally restricted data
+[ ] A staff member has completed a trial redesign and claim audit
+```
 
 | ID | Chart (published artefact) | Publisher / where found | Data source | Reconstruction risk |
 |---|---|---|---|---|
@@ -20,12 +35,11 @@ list with fresh artefacts rather than reusing within a tutorial).
 | POOL-09 | AFL/NRL attendance or ladder chart | League site / news graphic | austadiums.com attendance tables | Medium — scrape/table copy |
 | POOL-10 | Job vacancies vs unemployment chart | ABS/SEEK commentary graphic | ABS Labour Force + Job Vacancies CSV | Low — two series to join |
 
-## Bring-your-own approval checklist (recorded at Class 1)
+## Bring-your-own approval checklist (recorded in Week 1)
 
 ```text
 Chart: publisher, date, URL, screenshot attached?
 Claim: what does it invite the reader to believe?
 Data: exact source, or reconstruction plan (what quantities are readable)?
-Unique: no one else in the tutorial has it?
 Risk: any personal, sensitive, or culturally restricted data? (If yes: decline.)
 ```

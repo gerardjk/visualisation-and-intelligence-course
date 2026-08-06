@@ -47,45 +47,51 @@
 \toprule
 \textbf{Weight} & 30\% of the subject · individual \\
 \textbf{Covers} & Sessions 1–2: \emph{Seeing Data} and \emph{Choosing Visual Forms} \\
+\textbf{Artefacts} & Three published charts from three different domains — one \textbf{primary}, two \textbf{supporting}; choices recorded by Monday 10 August \\
 \textbf{Released} & Seeing Data session — Thursday 30 July 2026 \\
 \textbf{Supervised component} & 25-minute AI-restricted window at the start of the Dashboards-session studio — Thursday 13 August 2026 \\
 \textbf{Due} & \textbf{Monday 24 August 2026, 11:59\,pm} (Sydney time) \\
-\textbf{Submit} & One completed \labelbox{A1\_template.ipynb} · your data file(s) in \labelbox{data/} · a PNG/screenshot of the original chart \\
+\textbf{Submit} & One completed \labelbox{A1\_template.ipynb} · your data files in \labelbox{data/} · a PNG/screenshot of each original chart \\
 \bottomrule
 \end{tabularx}
 
 \section*{The task}
 
-You will take one published chart from the wild and work it through the course
-pipeline: \emph{see} what it claims, \emph{repair} it with the Visual
-Vocabulary, and \emph{verify} a machine's interpretation of its data. The
-first two sessions rehearse every part of this: the Seeing Data studio
-(Critique and Repair sheet, Critique 1) rehearses Parts A and C; the Choosing
-Visual Forms studio (Redesign $\times$3, Chart Choice Decision Record)
-rehearses Part B.
+You will take \textbf{three published charts from the wild — from three
+different domains} — and work them through the course pipeline: \emph{see}
+what each claims, \emph{repair} it with the Visual Vocabulary, and
+\emph{verify} a machine's interpretation of the data. One artefact is your
+\textbf{primary} (full treatment); the other two are \textbf{supporting}
+(compact treatment). The first two sessions rehearse every part of this: the
+Seeing Data studio (Critique and Repair sheet, Critique 1) rehearses Parts A
+and C; the Choosing Visual Forms studio (Redesign $\times$3, Chart Choice
+Decision Record) rehearses Part B.
 
-\subsection*{Part A — Seeing (the critique)}
+\subsection*{Part A — Seeing (the critiques)}
 
-What does the chart show, and what does it claim? Selection, encoding,
-framing, omission — keeping the discipline from Seeing Data: \emph{directly
-visible} vs \emph{interpretation rather than observation}. Ends with a
-repaired caption. \textbf{Drafted by hand in the supervised, AI-restricted
-window on 13 August}, then transcribed into the notebook's
-\labelbox{critique} cell.
+For the \textbf{primary artefact}: the full 9-field critique — what does the
+chart show, and what does it claim? Selection, encoding, framing, omission —
+keeping the discipline from Seeing Data: \emph{directly visible} vs
+\emph{interpretation rather than observation}, ending with a repaired
+caption. \textbf{Drafted by hand in the supervised, AI-restricted window on
+13 August}, then transcribed into the notebook's \labelbox{critique\_1} cell.
+For each \textbf{supporting artefact}: a compact 4-field critique (main
+claim, visible vs interpretation, what misleads, repaired caption).
 
-\subsection*{Part B — Choosing (the repair)}
+\subsection*{Part B — Choosing (the repairs)}
 
-Obtain or faithfully reconstruct the chart's underlying data. Produce
-\textbf{three redesigns}: your \emph{best form} — the chart the original
-should have been — plus \textbf{two alternatives serving different Visual
-Vocabulary tasks}. Defend the best form with a completed \textbf{Chart Choice
-Decision Record} (the same form as the Choosing Visual Forms studio, including
-the rejected alternative and the specific reason). The Decision Record is what
-is marked; the alternatives prove you considered the space.
+For each of the three artefacts: obtain or faithfully reconstruct its
+underlying data and produce \textbf{one redesign} — the chart that original
+should have been. Across the three artefacts the redesigns must serve
+\textbf{three distinct Visual Vocabulary categories}. Defend the primary
+redesign with a full \textbf{Chart Choice Decision Record} (the same form as
+the Choosing Visual Forms studio, including the rejected alternative and the
+specific reason); defend each supporting redesign with its category and a
+one-line justification (\labelbox{WHY\_2}, \labelbox{WHY\_3}).
 
-\subsection*{Part C — Verifying (the claim audit)}
+\subsection*{Part C — Verifying (the claim audit, primary artefact)}
 
-Generate an interpretation of your dataset using the \textbf{supplied prompt}
+Generate an interpretation of your \textbf{primary} dataset using the \textbf{supplied prompt}
 (verbatim, in the template). Classify \textbf{every claim} with the four-way
 taxonomy from the Seeing Data lab:
 
@@ -106,13 +112,15 @@ Probes are zero-argument functions returning the evidence (a filtered or
 aggregated DataFrame/Series) — required for every \labelbox{supported} and
 \labelbox{contradicted} claim. Finish with the five-question AI disclosure.
 
-\section*{Your artefact}
+\section*{Your artefacts}
 
-Choose one artefact from the \textbf{released, verified pool} or propose your
-own found-in-the-wild chart by the end of the Seeing Data session: a real
-published chart, a named publisher and date, and an obtainable or reasonably
-reconstructable data source. Approval is required. Two students may study the
-same source chart, but every submission must be individual and independently
+Choose \textbf{three artefacts from three different domains}: at least two
+from the \textbf{released, verified pool}; at most one may be your own
+found-in-the-wild chart (a real published chart, a named publisher and date,
+and an obtainable or reasonably reconstructable data source — approval
+required). Record your three choices, and which is your \textbf{primary}, by
+\textbf{Monday 10 August 2026} (Canvas). Two students may study the same
+source chart, but every submission must be individual and independently
 produced.
 
 \textbf{Data rule.} If the exact data is not published, reconstruct it
@@ -121,7 +129,8 @@ and say so: set \labelbox{data\_status = "reconstructed"} and write the
 reconstruction note. This is the atlas book's own method — representative
 data, never passed off as the original measurement. Undisclosed reconstruction
 is an academic-integrity issue. Disclosed reconstruction remains eligible for
-full marks; its fidelity and limitations are judged under H2.
+full marks; its fidelity and limitations are judged under H2. The rule
+applies per artefact (\labelbox{data\_status} in each \labelbox{META\_n}).
 
 \textbf{Copyright note.} Include only the chart image needed for criticism and
 review, cite its publisher, creator (where known), date and source URL, and do
@@ -130,7 +139,7 @@ UTS library or copyright guidance supplied with the task.
 
 \section*{AI policy}
 
-Part A is drafted AI-free in the supervised window. An assistant may be used
+Part A's primary critique is drafted AI-free in the supervised window. An assistant may be used
 in Part B under the notebook contract: docstrings first, accept or reject
 completions, and nothing counts until the checks pass. Part C requires an
 assistant-generated interpretation; students who cannot or do not wish to use
@@ -141,9 +150,10 @@ issue.
 
 \section*{Submission contract (read this twice)}
 
-The template notebook defines named variables and functions
-(\labelbox{META}, \labelbox{critique}, \labelbox{original\_data},
-\labelbox{redesign\_best} \dots{} \labelbox{disclosure}). The autograder
+The template notebook defines named variables and functions per artefact
+(\labelbox{META\_1..3}, \labelbox{critique\_1..3}, \labelbox{data\_1..3},
+\labelbox{redesign\_1..3}, \labelbox{decision\_record},
+\labelbox{claims} \dots{} \labelbox{disclosure}). The autograder
 executes your notebook top-to-bottom on a clean machine and inspects those
 names. \textbf{Run the self-check cell before submitting} — it is the same
 code the marker runs. A notebook that does not execute end-to-end scores 0 on
@@ -160,15 +170,15 @@ the automated items until resubmitted (one resubmission, capped at 80\%).
 \midrule
 G0 & Notebook executes end-to-end & 6 & all cells run clean, no errors \\
 \addlinespace[0.35em]
-G1 & Metadata complete and valid & 6 & \labelbox{META} fields present; URL well-formed; \labelbox{data\_status} $\in$ \{obtained, reconstructed\} \\
+G1 & Three artefacts: metadata valid, domains distinct & 6 & \labelbox{META\_1..3} fields present; URLs well-formed; \labelbox{data\_status} valid; three \textbf{distinct} domains \\
 \addlinespace[0.35em]
-G2 & Data provenance & 10 & \labelbox{original\_data} loads; $\geq$ 6 rows $\times$ $\geq$ 2 columns; no empty columns; reconstruction note $\geq$ 30 words when reconstructed \\
+G2 & Data provenance $\times$3 & 9 & each \labelbox{data\_n} loads; $\geq$ 6 rows $\times$ $\geq$ 2 columns; no empty columns; reconstruction note $\geq$ 30 words when reconstructed \\
 \addlinespace[0.35em]
-G3 & Redesign mechanics & 16 & three Axes returned; three \textbf{distinct} Vocabulary categories, all valid; bar-family charts include a zero baseline; every chart titled with $\geq$ 15 characters \\
+G3 & Redesign mechanics $\times$3 & 15 & each redesign returns its Axes; three \textbf{distinct} Vocabulary categories, all valid; bar-family charts include a zero baseline; every chart titled with $\geq$ 15 characters \\
 \addlinespace[0.35em]
-G4 & Claim-audit structure & 14 & interpretation $\geq$ 400 chars from the supplied prompt; $\geq$ 6 claims; every label from the four-way taxonomy; $\geq$ 1 \labelbox{supported}, $\geq$ 1 \labelbox{plausible but unverified}, $\geq$ 1 \labelbox{unsupported} \textbf{or} \labelbox{contradicted}; an executable, non-empty probe for every \labelbox{supported}/\labelbox{contradicted} claim \\
+G4 & Claim-audit structure (primary artefact) & 14 & interpretation $\geq$ 400 chars from the supplied prompt; $\geq$ 6 claims; every label from the four-way taxonomy; $\geq$ 1 \labelbox{supported}, $\geq$ 1 \labelbox{plausible but unverified}, $\geq$ 1 \labelbox{unsupported} \textbf{or} \labelbox{contradicted}; an executable, non-empty probe for every \labelbox{supported}/\labelbox{contradicted} claim \\
 \addlinespace[0.35em]
-G5 & Critique + Decision Record structure & 4 & all 9 critique fields (incl.\ repaired caption) 5–150 words; all 9 Decision Record fields present, defence fields $\geq$ 10 words \\
+G5 & Critiques + Decision Record structure & 6 & full 9-field primary critique, 5–150 words each; compact critiques 2–3 complete; all 9 Decision Record fields, defence fields $\geq$ 10 words; \labelbox{WHY\_2}/\labelbox{WHY\_3} $\geq$ 10 words \\
 \addlinespace[0.35em]
 G6 & Five-question AI disclosure & 4 & all 5 answers completed, none placeholder \\
 \midrule
@@ -184,13 +194,13 @@ Markers read the autograder report first, then judge only these five items.
 \toprule
 \textbf{Item (weight)} & \textbf{0} & \textbf{1} & \textbf{2} \\
 \midrule
-H1 · Critique insight ($\times$5) & Restates the chart & Correctly identifies the claim and one real omission & Also separates \emph{directly visible} from \emph{interpretation}, names the framing device, and the repaired caption actually repairs \\
+H1 · Critique insight, primary ($\times$5) & Restates the chart & Correctly identifies the claim and one real omission & Also separates \emph{directly visible} from \emph{interpretation}, names the framing device, and the repaired caption actually repairs \\
 \addlinespace[0.45em]
-H2 · Reconstruction fidelity ($\times$2.5) & Data unrelated to the original's quantities & Plausible magnitudes and units & Matches the original's visible values, or deviations explicitly disclosed \\
+H2 · Reconstruction fidelity, across artefacts ($\times$2.5) & Data unrelated to the original's quantities & Plausible magnitudes and units & Matches the original's visible values, or deviations explicitly disclosed \\
 \addlinespace[0.45em]
-H3 · Decision Record defence ($\times$5) & No argument, or category label only & Correct task category with a generic justification & Ties audience $\rightarrow$ task $\rightarrow$ channel precision; the rejected alternative is real and the reason specific \\
+H3 · Decision Record + supporting defences ($\times$5) & No argument, or category label only & Correct task category with a generic justification & Ties audience $\rightarrow$ task $\rightarrow$ channel precision; the rejected alternative is real and the reason specific \\
 \addlinespace[0.45em]
-H4 · Redesign craft ($\times$5) & Unreadable or misleading & Honest defaults, readable & Titles state findings; scales honest; labels carry the argument \\
+H4 · Redesign craft, across the three ($\times$5) & Unreadable or misleading & Honest defaults, readable & Titles state findings; scales honest; labels carry the argument \\
 \addlinespace[0.45em]
 H5 · Audit judgement ($\times$2.5) & Classifications mostly wrong & Right labels, thin probes & Probes genuinely discriminate — a \labelbox{contradicted} probe could have exonerated the claim; \labelbox{plausible but unverified} used precisely, not as a dodge \\
 \midrule
@@ -203,8 +213,8 @@ H5 · Audit judgement ($\times$2.5) & Classifications mostly wrong & Right label
 \begin{itemize}[leftmargin=1.4em,itemsep=0.15em]
   \item Part A supervised draft handed in during the 13 August window (paper
         or photo). Missing draft $\rightarrow$ H1 capped at 1.
-  \item Artefact selected from the released pool, or approval recorded for
-        bring-your-own.
+  \item Three artefact choices (and the primary) recorded by Monday
+        10 August; approval recorded for any bring-your-own.
   \item One resubmission permitted for G0 failures, capped at 80\% overall.
 \end{itemize}
 

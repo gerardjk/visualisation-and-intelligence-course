@@ -1,6 +1,11 @@
 """A1 autograder — scores the automated rubric items (60/100) for
 "Critique and Repair" submissions, and doubles as the student self-check.
 
+Structure: THREE artefacts across three distinct domains (artefact 1 primary
+with full critique, Decision Record and claim audit; artefacts 2–3 supporting
+with compact critiques), three redesigns spanning three distinct Visual
+Vocabulary categories.
+
 Marker use:   python a1_autograder.py path/to/submission.ipynb
 Batch use:    python a1_autograder.py path/to/folder/
 Student use:  the template's final cell calls self_check(globals()).
@@ -19,21 +24,25 @@ from pathlib import Path
 VOCAB = {"deviation", "correlation", "ranking", "distribution",
          "change over time", "magnitude", "part-to-whole", "spatial", "flow"}
 
-# The four-way taxonomy taught in the Class 1 lab notebook.
+# The four-way taxonomy taught in the Seeing Data lab notebook.
 CLAIM_LABELS = {"supported", "plausible but unverified", "unsupported",
                 "contradicted"}
 PROBED_LABELS = {"supported", "contradicted"}  # evidence for / evidence against
 
-META_KEYS = ["student_id", "artefact_id", "source_url", "publisher",
+META_KEYS = ["artefact_id", "domain", "source_url", "publisher",
              "publication_date", "data_status"]
 
-# Critique 1 frame + the visible/interpretation split + the repaired caption
-# from the Class 1 Critique and Repair sheet.
+# Full critique (primary): Critique 1 frame + the visible/interpretation split
+# + the repaired caption from the Seeing Data Critique and Repair sheet.
 CRITIQUE_KEYS = ["main_claim", "audience", "visual_task", "directly_visible",
                  "interpretation_not_observation", "what_is_omitted",
                  "what_misleads", "what_needs_verifying", "repaired_caption"]
 
-# The Chart Choice Decision Record from the Class 2 studio, verbatim fields.
+# Compact critique (supporting artefacts 2 and 3).
+COMPACT_KEYS = ["main_claim", "visible_vs_interpretation", "what_misleads",
+                "repaired_caption"]
+
+# The Chart Choice Decision Record from the Choosing Visual Forms studio.
 DECISION_KEYS = ["intended_audience", "question_they_need_answered",
                  "decision_supported", "vocabulary_category",
                  "required_comparison", "selected_form", "why_it_fits",
@@ -45,6 +54,8 @@ DISCLOSURE_KEYS = ["which_assistants", "what_contributed",
                    "limitations_remaining"]
 
 PLACEHOLDERS = ("...", "…", "TODO", "<", "your answer")
+
+ARTEFACTS = (1, 2, 3)
 
 
 def _words(text):
@@ -80,6 +91,14 @@ def _axes_ok(ax, notes, name):
     return ok
 
 
+def _is_df(obj):
+    try:
+        import pandas as pd
+        return isinstance(obj, pd.DataFrame)
+    except ImportError:
+        return obj is not None
+
+
 # ---------------------------------------------------------------- checks
 # Each check: (id, max_points, description, fn(ns, exec_errors) -> (points, notes))
 
@@ -89,77 +108,81 @@ def check_g0(ns, errors):
 
 
 def check_g1(ns, errors):
-    meta = ns.get("META")
-    notes, pts = [], 0
-    if not isinstance(meta, dict):
-        return 0, ["META dict missing"]
-    missing = [k for k in META_KEYS if not _filled(meta.get(k, ""))]
-    if missing:
-        notes.append("META incomplete: " + ", ".join(missing))
+    """6 = three METAs complete and valid (4) + three distinct domains (2)."""
+    notes, complete = [], 0
+    domains = []
+    for n in ARTEFACTS:
+        meta = ns.get(f"META_{n}")
+        if not isinstance(meta, dict):
+            notes.append(f"META_{n} dict missing")
+            continue
+        missing = [k for k in META_KEYS if not _filled(meta.get(k, ""))]
+        bad_url = not str(meta.get("source_url", "")).startswith("http")
+        bad_status = meta.get("data_status") not in {"obtained", "reconstructed"}
+        if missing:
+            notes.append(f"META_{n} incomplete: " + ", ".join(missing))
+        if bad_url:
+            notes.append(f"META_{n}: source_url is not a URL")
+        if bad_status:
+            notes.append(f"META_{n}: data_status must be 'obtained' or 'reconstructed'")
+        if not missing and not bad_url and not bad_status:
+            complete += 1
+        domains.append(str(meta.get("domain", "")).strip().lower())
+    pts = [0, 1, 2, 4][complete]
+    if len([d for d in domains if d]) == 3 and len(set(domains)) == 3:
+        pts += 2
     else:
-        pts += 4
-    if str(meta.get("source_url", "")).startswith("http"):
-        pts += 1
-    else:
-        notes.append("source_url is not a URL")
-    if meta.get("data_status") in {"obtained", "reconstructed"}:
-        pts += 1
-    else:
-        notes.append("data_status must be 'obtained' or 'reconstructed'")
-    return pts, notes
+        notes.append(f"the three artefacts must come from three DISTINCT domains, got: {domains}")
+    return min(pts, 6), notes
 
 
 def check_g2(ns, errors):
+    """9 = 3 marks per artefact: usable data (2) + provenance note/status (1)."""
     notes, pts = [], 0
-    df = ns.get("original_data")
-    try:
-        import pandas as pd
-        good_df = isinstance(df, pd.DataFrame)
-    except ImportError:
-        good_df = df is not None
-    if not good_df:
-        return 0, ["original_data is not a DataFrame"]
-    if len(df) >= 12 and df.shape[1] >= 2:
-        pts += 4
-    else:
-        notes.append(f"original_data too small: {df.shape}")
-    if len(df) > 0 and not df.isna().all().any():
-        pts += 2
-    else:
-        notes.append("original_data is empty or has entirely-empty columns")
-    status = (ns.get("META") or {}).get("data_status")
-    note = ns.get("RECONSTRUCTION_NOTE", "")
-    if status == "reconstructed":
-        if _words(note) >= 30:
-            pts += 4
+    for n in ARTEFACTS:
+        df = ns.get(f"data_{n}")
+        if not _is_df(df):
+            notes.append(f"data_{n} is not a DataFrame")
+            continue
+        if len(df) >= 6 and df.shape[1] >= 2 and not df.isna().all().any():
+            pts += 2
         else:
-            notes.append("reconstructed data requires a reconstruction note ≥ 30 words")
-    else:
-        pts += 4 if _filled(note, 5) or status == "obtained" else 0
-    return pts, notes
+            notes.append(f"data_{n} too small or has empty columns: shape {getattr(df, 'shape', '?')}")
+        status = (ns.get(f"META_{n}") or {}).get("data_status")
+        note = ns.get(f"RECONSTRUCTION_NOTE_{n}", "")
+        if status == "reconstructed":
+            if _words(note) >= 30:
+                pts += 1
+            else:
+                notes.append(f"artefact {n}: reconstructed data requires a note ≥ 30 words")
+        elif status == "obtained":
+            pts += 1
+        # invalid status already flagged by G1
+    return min(pts, 9), notes
 
 
 def check_g3(ns, errors):
+    """15 = axes quality 3×3 (9) + all categories valid (2) + distinct (4)."""
     notes, pts = [], 0
-    axes = [("redesign_best", ns.get("ax_best"), ns.get("BEST_CATEGORY")),
-            ("redesign_alt1", ns.get("ax_alt1"), ns.get("ALT1_CATEGORY")),
-            ("redesign_alt2", ns.get("ax_alt2"), ns.get("ALT2_CATEGORY"))]
-    cats = [str(c).strip().lower() for _, _, c in axes]
-    for name, ax, _ in axes:
-        if _axes_ok(ax, notes, name):
+    cats = []
+    for n in ARTEFACTS:
+        ax = ns.get(f"ax_{n}")
+        if _axes_ok(ax, notes, f"redesign_{n}"):
             pts += 3
+        cats.append(str(ns.get(f"CATEGORY_{n}", "")).strip().lower())
     if all(c in VOCAB for c in cats):
-        pts += 3
+        pts += 2
     else:
         notes.append(f"categories must come from the Vocabulary, got: {cats}")
     if len(set(cats)) == 3:
         pts += 4
     else:
         notes.append("the three redesigns must serve three DISTINCT categories")
-    return min(pts, 16), notes
+    return min(pts, 15), notes
 
 
 def check_g4(ns, errors):
+    """14 — claim audit on the primary artefact's data (unchanged shape)."""
     notes, pts = [], 0
     interp = str(ns.get("generated_interpretation", ""))
     claims = ns.get("claims")
@@ -215,19 +238,34 @@ def check_g4(ns, errors):
 
 
 def check_g5(ns, errors):
+    """6 = full primary critique (2) + compact critiques 2–3 (1 each) +
+    full Decision Record (1) + supporting defences WHY_2/WHY_3 (1)."""
     notes, pts = [], 0
-    critique = ns.get("critique")
+    critique = ns.get("critique_1")
     if isinstance(critique, dict):
         bad = [k for k in CRITIQUE_KEYS
                if not _filled(critique.get(k, ""))
                or not 5 <= _words(critique.get(k, "")) <= 150]
         if bad:
-            notes.append("critique fields missing or outside 5–150 words: "
+            notes.append("critique_1 fields missing or outside 5–150 words: "
                          + ", ".join(bad))
         else:
             pts += 2
     else:
-        notes.append("critique dict missing")
+        notes.append("critique_1 dict missing")
+    for n in (2, 3):
+        c = ns.get(f"critique_{n}")
+        if isinstance(c, dict):
+            bad = [k for k in COMPACT_KEYS
+                   if not _filled(c.get(k, ""))
+                   or not 5 <= _words(c.get(k, "")) <= 150]
+            if bad:
+                notes.append(f"critique_{n} fields missing or outside 5–150 words: "
+                             + ", ".join(bad))
+            else:
+                pts += 1
+        else:
+            notes.append(f"critique_{n} dict missing")
     record = ns.get("decision_record")
     if isinstance(record, dict):
         bad = [k for k in DECISION_KEYS if not _filled(record.get(k, ""))]
@@ -239,10 +277,16 @@ def check_g5(ns, errors):
             if thin:
                 notes.append("decision_record needs ≥ 10 words for: " + ", ".join(thin))
         else:
-            pts += 2
+            pts += 1
     else:
         notes.append("decision_record dict missing")
-    return pts, notes
+    whys_ok = all(_words(ns.get(f"WHY_{n}", "")) >= 10
+                  and _filled(ns.get(f"WHY_{n}", "")) for n in (2, 3))
+    if whys_ok:
+        pts += 1
+    else:
+        notes.append("WHY_2 and WHY_3 must each defend the redesign in ≥ 10 words")
+    return min(pts, 6), notes
 
 
 def check_g6(ns, errors):
@@ -255,19 +299,19 @@ def check_g6(ns, errors):
 
 CHECKS = [
     ("G0", 6, "Notebook executes end-to-end", check_g0),
-    ("G1", 6, "Metadata complete and valid", check_g1),
-    ("G2", 10, "Data provenance", check_g2),
-    ("G3", 16, "Redesign mechanics", check_g3),
-    ("G4", 14, "Claim-audit structure (four-way taxonomy)", check_g4),
-    ("G5", 4, "Critique and Decision Record structure", check_g5),
+    ("G1", 6, "Three artefacts: metadata valid, domains distinct", check_g1),
+    ("G2", 9, "Data provenance ×3", check_g2),
+    ("G3", 15, "Redesign mechanics ×3, categories distinct", check_g3),
+    ("G4", 14, "Claim-audit structure (four-way taxonomy, primary artefact)", check_g4),
+    ("G5", 6, "Critiques (full + 2 compact) and Decision Record", check_g5),
     ("G6", 4, "Five-question AI disclosure", check_g6),
 ]
 
 HUMAN_ITEMS = [
-    ("H1", 10, "Critique insight (0/1/2 × 5)"),
-    ("H2", 5, "Reconstruction fidelity (0/1/2 × 2.5)"),
-    ("H3", 10, "Decision Record defence (0/1/2 × 5)"),
-    ("H4", 10, "Redesign craft (0/1/2 × 5)"),
+    ("H1", 10, "Critique insight, judged on the primary critique (0/1/2 × 5)"),
+    ("H2", 5, "Reconstruction fidelity across artefacts (0/1/2 × 2.5)"),
+    ("H3", 10, "Decision Record + supporting defences (0/1/2 × 5)"),
+    ("H4", 10, "Redesign craft across the three (0/1/2 × 5)"),
     ("H5", 5, "Audit judgement (0/1/2 × 2.5)"),
 ]
 
@@ -321,11 +365,12 @@ def execute_notebook(path):
 def grade(path):
     ns, errors = execute_notebook(path)
     rows, total = run_checks(ns, errors)
-    meta = ns.get("META") or {}
+    meta = ns.get("META_1") or {}
     report = {
         "notebook": str(path),
-        "student_id": meta.get("student_id", "?"),
-        "artefact_id": meta.get("artefact_id", "?"),
+        "student_id": ns.get("STUDENT_ID", "?"),
+        "artefacts": [(ns.get(f"META_{n}") or {}).get("artefact_id", "?")
+                      for n in ARTEFACTS],
         "automated_total": total,
         "automated_max": 60,
         "items": rows,
