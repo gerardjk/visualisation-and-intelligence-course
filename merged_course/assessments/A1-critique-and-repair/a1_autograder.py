@@ -125,6 +125,9 @@ def check_g1(ns, errors):
             notes.append(f"META_{n}: source_url is not a URL")
         if bad_status:
             notes.append(f"META_{n}: data_status must be 'obtained' or 'reconstructed'")
+        if not str(meta.get("artefact_id", "")).strip().upper().startswith("POOL-"):
+            notes.append(f"META_{n}: artefact_id must be a pool ID (POOL-xx)")
+            bad_status = True  # counts against completeness
         if not missing and not bad_url and not bad_status:
             complete += 1
         domains.append(str(meta.get("domain", "")).strip().lower())

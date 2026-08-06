@@ -23,8 +23,8 @@ def meta_cell(n, role):
     return code(f'''\
 # ---- Artefact {n} metadata (G1) — {role} ----
 META_{n} = {{
-    "artefact_id": "...",          # e.g. "POOL-03" or "BYO" for approved own chart
-    "domain": "...",               # the pool domain, e.g. "climate", "transport"
+    "artefact_id": "...",          # from the released pool, e.g. "POOL-03"
+    "domain": "...",               # the pool row's domain, e.g. "energy"
     "source_url": "...",           # where the original chart was published
     "publisher": "...",
     "publication_date": "...",     # as printed on the artefact
@@ -87,9 +87,9 @@ autograder executes it top-to-bottom and inspects the named variables and
 functions below. Do not rename them. Run the self-check cell (last cell)
 before submitting, then Kernel → Restart & Run All one final time.
 
-You work with **three artefacts from three different domains** (at most one
-approved bring-your-own): **artefact 1 is your primary** (full critique,
-full Decision Record, and the Part C claim audit); **artefacts 2 and 3 are
+You work with **three artefacts from the released pool, from three
+different domains**: **artefact 1 is your primary** (full critique, full
+Decision Record, and the Part C claim audit); **artefacts 2 and 3 are
 supporting** (compact critique and one redesign each). Across the three
 redesigns you must cover **three distinct Visual Vocabulary categories**.
 
