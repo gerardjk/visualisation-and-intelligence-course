@@ -16,16 +16,18 @@ from pptx.util import Inches, Pt
 ROOT = Path(__file__).resolve().parents[2]
 FIGURES = ROOT / "quarto-book" / "_book" / "atlas_files" / "figure-html"
 
-NAVY = RGBColor(18, 38, 54)
-BLUE = RGBColor(24, 103, 143)
-CYAN = RGBColor(48, 168, 177)
-CORAL = RGBColor(230, 104, 82)
-CREAM = RGBColor(248, 245, 237)
+# UTS palette (from the 2025 UTS PowerPoint template theme)
+NAVY = RGBColor(10, 10, 10)          # near-black text on white
+BLUE = RGBColor(15, 75, 235)         # UTS blue
+CYAN = RGBColor(0, 183, 224)         # UTS cyan
+CORAL = RGBColor(255, 35, 5)         # UTS red
+CREAM = RGBColor(255, 255, 255)      # white ground
 WHITE = RGBColor(255, 255, 255)
-INK = RGBColor(31, 38, 43)
-MUTED = RGBColor(98, 108, 115)
-PALE = RGBColor(228, 237, 239)
-NAVY_CARD = RGBColor(30, 57, 74)
+INK = RGBColor(10, 10, 10)
+MUTED = RGBColor(90, 95, 99)
+PALE = RGBColor(225, 230, 240)
+UTSBLUE = RGBColor(15, 75, 235)      # statement-slide ground
+NAVY_CARD = RGBColor(11, 56, 185)    # prompt card on UTS blue
 
 HOUR_COLOURS = [CORAL, BLUE, CYAN]
 
@@ -93,7 +95,7 @@ class Deck:
         self.prs.core_properties.author = author
         self.kicker = kicker
         self.footer_left = footer_left
-        self.footer_right = subject
+        self.footer_right = "36104 · UTS CRICOS 00099F · TEQSA PRV12060"
         self.number = 0
 
     def blank(self, background=CREAM):
@@ -125,7 +127,7 @@ class Deck:
         return slide
 
     def statement(self, kicker, statement, prompt=None):
-        slide = self.blank(NAVY)
+        slide = self.blank(UTSBLUE)
         add_text(slide, kicker.upper(), Inches(0.7), Inches(0.55), Inches(6), Inches(0.35),
                  size=12, color=CYAN, bold=True)
         add_text(slide, statement, Inches(0.7), Inches(1.35), Inches(11.6), Inches(3.2),
@@ -140,7 +142,7 @@ class Deck:
         return slide
 
     def title_slide(self, class_label, title, subtitle, question, session_line):
-        slide = self.blank(NAVY)
+        slide = self.blank(UTSBLUE)
         add_rect(slide, Inches(0), Inches(0), Inches(0.22), Inches(7.5), CORAL)
         add_text(slide, class_label, Inches(0.8), Inches(0.75), Inches(6), Inches(0.4),
                  size=13, color=CYAN, bold=True)
@@ -171,7 +173,7 @@ class Deck:
         return slide
 
     def studio_slide(self, studio_label, title, brief, phases):
-        slide = self.blank(NAVY)
+        slide = self.blank(UTSBLUE)
         add_text(slide, studio_label, Inches(0.7), Inches(0.55), Inches(6), Inches(0.35),
                  size=12, color=CYAN, bold=True)
         add_text(slide, title, Inches(0.7), Inches(1.15), Inches(8.5), Inches(0.7),

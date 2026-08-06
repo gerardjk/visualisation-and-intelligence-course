@@ -1,4 +1,4 @@
-"""A1 autograder — scores the automated rubric items (60/100) for
+"""A1 autograder: scores the automated rubric items (60/100) for
 "Critique and Repair" submissions, and doubles as the student self-check.
 
 Structure: THREE artefacts across three distinct domains (artefact 1 primary
@@ -79,7 +79,7 @@ def _axes_ok(ax, notes, name):
         notes.append(f"{name}: did not return a matplotlib Axes")
         return False
     if len(ax.get_title()) < 15:
-        notes.append(f"{name}: title too short — title the finding, not the axes")
+        notes.append(f"{name}: title too short: title the finding, not the axes")
         ok = False
     if len(ax.patches) >= 3:  # bar-family
         if not (ax.get_ylim()[0] <= 0 or ax.get_xlim()[0] <= 0):
@@ -185,7 +185,7 @@ def check_g3(ns, errors):
 
 
 def check_g4(ns, errors):
-    """14 — claim audit on the primary artefact's data (unchanged shape)."""
+    """14: claim audit on the primary artefact's data (unchanged shape)."""
     notes, pts = [], 0
     interp = str(ns.get("generated_interpretation", ""))
     claims = ns.get("claims")
@@ -219,7 +219,7 @@ def check_g4(ns, errors):
     if not isinstance(probes, dict):
         return pts, notes + ["probes dict missing"]
     if not checkable:
-        return pts, notes + ["no supported/contradicted claims — nothing to probe"]
+        return pts, notes + ["no supported/contradicted claims, nothing to probe"]
     probe_pts = 6
     for c in checkable:
         fn = probes.get(c)
@@ -383,7 +383,7 @@ def grade(path):
     }
     out = Path(path).with_suffix(".report.json")
     out.write_text(json.dumps(report, indent=2, default=str))
-    print(f"\n=== {Path(path).name} — automated: {total}/60 ===")
+    print(f"\n=== {Path(path).name}: automated: {total}/60 ===")
     for r in rows:
         flag = "✓" if r["points"] == r["max"] else "✗"
         print(f" {flag} {r['id']} {r['item']}: {r['points']}/{r['max']}")

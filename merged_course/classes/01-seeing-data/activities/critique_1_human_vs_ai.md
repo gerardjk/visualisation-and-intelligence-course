@@ -1,4 +1,4 @@
-# Studio Activity — Critique 1
+# Studio Activity. Critique 1
 
 Compare one human-made chart with one AI-generated chart or generated chart
 interpretation. Work in pairs; 45 minutes.

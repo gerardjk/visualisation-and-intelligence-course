@@ -1,4 +1,4 @@
-# Class 2 — Choosing Visual Forms: Encoding, Tidy Data, and the Visual Vocabulary
+# Choosing Visual Forms: Encoding, Tidy Data, and the Visual Vocabulary
 
 ## Core question
 
@@ -21,7 +21,7 @@ By the end of this session students should be able to:
 4. Reshape wide data to tidy long form, by hand and with an AI assistant.
 5. Verify AI-wrangled data: identifiers, row counts, types, missing values,
    totals.
-6. Compare several valid charts and justify a selection — and a rejection —
+6. Compare several valid charts and justify a selection, and a rejection, 
    for a stated audience.
 
 ## Preparation
@@ -35,7 +35,7 @@ Instructor materials:
 - the lab notebook opened and run once;
 - printed or digital Chart Choice Decision Record and Visual Vocabulary cards
   (`activities/`);
-- selected Atlas figures for magnitude, distribution, correlation, time and
+- selected course figures for magnitude, distribution, correlation, time and
   colour (box plot, Keeling, Hertzsprung–Russell, Minard, climate stripes).
 
 ## Three-hour run sheet
@@ -43,17 +43,18 @@ Instructor materials:
 | Time | Segment | Teaching purpose |
 |---|---|---|
 | 0:00–0:10 | Recap + same data, different question | Exit tickets from last class; chart choice depends on task |
-| 0:10–0:25 | Channel precision | Cleveland & McGill ranking; Mohs as the cautionary tale |
-| 0:25–0:45 | The Vocabulary | Nine families; gallery from the Atlas |
-| 0:45–1:00 | Colour + honesty rules | Sequential/diverging/categorical; baselines and aspect ratio |
+| 0:10–0:22 | Channel precision | Cleveland & McGill ranking; Mohs as the cautionary tale |
+| 0:22–0:32 | Channel sprint: twelve charts, 40 seconds each | Students name the dominant channel per chart; debrief three |
+| 0:32–0:48 | The Vocabulary | Nine families; gallery of canonical forms |
+| 0:48–1:00 | Colour + honesty rules | Sequential/diverging/categorical; baselines and aspect ratio |
 | 1:00–1:15 | Tidy-data worked demonstration | Connect data structure to available charts |
-| 1:15–1:25 | Break | — |
+| 1:15–1:25 | Break |, |
 | 1:25–2:20 | Notebook lab (`notebooks/choosing_visual_forms_lab.ipynb`) | Clean, verify, chart and compare |
-| 2:20–2:45 | Studio: Redesign ×3 + Decision Record | Explicit selection and rejection |
+| 2:20–2:45 | Studio: form cards + Redesign ×3 + Decision Record | Warm-up: each pair draws three cards from `activities/form_cards.pdf` and names the task family and working channel; then explicit selection and rejection |
 | 2:45–2:55 | Gallery walk | Test whether charts answer their stated question |
-| 2:55–3:00 | Quiz + exit ticket | Open book, closed assistant |
+| 2:55–3:00 | Exit ticket | Name the task, selected form, rejected alternative and verification performed |
 
-Timing note: the Vocabulary gallery is deliberately over-provisioned — cut from
+Timing note: the Vocabulary gallery is deliberately over-provisioned, cut from
 the middle (pyramid, Sankey) if discussion runs hot; never cut colour or
 baselines.
 
@@ -61,7 +62,7 @@ baselines.
 
 - visual channels and perceptual precision (Cleveland & McGill ranking)
 - FT Visual Vocabulary: nine task families
-- task-to-chart mapping, illustrated from the Atlas
+- task-to-chart mapping, illustrated with canonical figures
 - colour as encoding: sequential, diverging, categorical
 - tidy data and the wide-to-long reshape
 - AI-assisted wrangling and the five-check verification pass
@@ -79,7 +80,7 @@ baselines.
 ## Notebook
 
 Three tiers in `notebooks/` (lab / starter / instructor; same distribution
-rules as Class 1). Core exercises:
+rules as Seeing Data). Core exercises:
 
 1. Channel precision: the same values in five encodings; judge and compare.
 2. Wide → tidy reshape of the transport table, with the five checks as

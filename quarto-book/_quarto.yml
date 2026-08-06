@@ -34,3 +34,5 @@ format:
     documentclass: scrbook
     pdf-engine: lualatex   # preserves the lualatex/microtype workflow
     keep-tex: true
+    echo: false            # figures only in print; code stays foldable in HTML
+    fig-pos: H             # anchor figures where they appear instead of floating

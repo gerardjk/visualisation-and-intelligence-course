@@ -1,6 +1,6 @@
-# Studio Activity — Visual Vocabulary Sort and Redesign ×3
+# Studio Activity. Visual Vocabulary Sort and Redesign ×3
 
-## Part 1 — Sort (in the notebook, hour 2)
+## Part 1. Sort (in the notebook, hour 2)
 
 Classify each analytical question into one FT Visual Vocabulary category. Then
 choose a likely chart type and identify one risk.
@@ -14,7 +14,7 @@ choose a likely chart type and identify one risk.
 | Where are values concentrated? | | | |
 | How do flows move between locations? | | | |
 
-## Part 2 — Redesign ×3 (studio, hour 3)
+## Part 2. Redesign ×3 (studio, hour 3)
 
 Take the weak chart provided in the notebook. Produce three redesigns, each
 serving a **different** Visual Vocabulary category.

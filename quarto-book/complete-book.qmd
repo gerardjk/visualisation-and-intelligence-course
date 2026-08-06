@@ -1,0 +1,27 @@
+---
+title: "How the World Is Organised"
+subtitle: "A Visual Account"
+author: "Gerard Kelly"
+date: today
+bibliography: references.bib
+toc: true
+format:
+  html:
+    theme: cosmo
+    code-fold: true
+  pdf:
+    documentclass: scrbook
+    pdf-engine: lualatex
+    echo: false
+    fig-pos: H
+execute:
+  freeze: auto
+---
+
+{{< include index.qmd >}}
+
+{{< include intro.qmd >}}
+
+{{< include atlas.qmd >}}
+
+{{< include references.qmd >}}

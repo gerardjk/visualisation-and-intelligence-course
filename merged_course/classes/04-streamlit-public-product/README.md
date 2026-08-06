@@ -1,4 +1,4 @@
-# Class 04 — From Streamlit Prototype to Public Data Product
+# Class 04. From Streamlit Prototype to Public Data Product
 
 ## Core question
 

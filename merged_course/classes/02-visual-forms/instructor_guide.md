@@ -1,4 +1,4 @@
-# Choosing Visual Forms — instructor guide
+# Choosing Visual Forms, instructor guide
 
 ## What makes this a complete three-hour session
 
@@ -27,11 +27,11 @@ Use `worked_demonstration.md` to model a small wide-to-tidy transformation. Narr
 
 | Time | Expected position | Intervention |
 |---|---|---|
-| 15 minutes | Audience, question and expected tidy shape recorded | Challenge questions that already name a chart |
-| 30 minutes | Tidy dataset passes structural assertions | Release the transformation helper from the starter notebook |
-| 45 minutes | Visual-task table complete and first chart visible | Limit struggling students to magnitude and time candidates |
-| 60 minutes | Two candidate charts complete | Stop decorative styling and move to comparison |
-| 75 minutes | Decision and rejected alternative recorded | Begin gallery walk |
+| 10 minutes | Audience, question and expected tidy shape recorded | Challenge questions that already name a chart |
+| 25 minutes | Tidy dataset passes structural assertions | Release the transformation helper from the starter notebook |
+| 38 minutes | Visual-task table complete and first chart visible | Limit struggling students to magnitude and time candidates |
+| 50 minutes | Two candidate charts complete | Stop decorative styling and move to comparison |
+| 55 minutes | Provisional selection recorded | Move everyone to the studio; complete the full Decision Record there |
 
 ## Suggested classifications
 
@@ -71,4 +71,3 @@ Several answers can be valid. Judge whether the stated comparison is supported.
 ## Exit ticket review
 
 Look for answers that name only a chart without explaining the comparison. Return those as prompts for revision before the dashboard session.
-

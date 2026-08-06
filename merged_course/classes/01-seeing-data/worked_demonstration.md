@@ -1,4 +1,4 @@
-# Seeing Data — worked demonstration
+# Seeing Data: worked demonstration
 
 ## Purpose
 
@@ -44,11 +44,11 @@ Present this generated statement:
 
 Ask students to mark each part:
 
-- “all four” — contradicted by the patterns;
-- “strong” — ambiguous without a defined criterion;
-- “consistent linear relationship” — contradicted;
-- “confirming” — overconfident;
-- “reliably predicts” — untested out-of-sample claim.
+- “all four”: contradicted by the patterns;
+- “strong”: ambiguous without a defined criterion;
+- “consistent linear relationship”, contradicted;
+- “confirming”: overconfident;
+- “reliably predicts”: untested out-of-sample claim.
 
 ### Repair
 

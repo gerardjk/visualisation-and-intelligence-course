@@ -58,39 +58,39 @@ Print and cut the question cards and task cards. Give each group the question ca
 
 ---
 
-**Deviation** — compare values with a baseline, target or reference
+**Deviation**: compare values with a baseline, target or reference
 
 ---
 
-**Correlation** — examine whether variables move together
+**Correlation**: examine whether variables move together
 
 ---
 
-**Ranking** — determine order
+**Ranking**: determine order
 
 ---
 
-**Distribution** — examine spread, clusters, gaps and outliers
+**Distribution**: examine spread, clusters, gaps and outliers
 
 ---
 
-**Change over time** — examine temporal pattern
+**Change over time**: examine temporal pattern
 
 ---
 
-**Magnitude** — compare size
+**Magnitude**: compare size
 
 ---
 
-**Part-to-whole** — examine composition
+**Part-to-whole**: examine composition
 
 ---
 
-**Spatial** — examine location and geographic pattern
+**Spatial**: examine location and geographic pattern
 
 ---
 
-**Flow** — trace movement, transfer or connection
+**Flow**: trace movement, transfer or connection
 
 ---
 

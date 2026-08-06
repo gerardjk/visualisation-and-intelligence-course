@@ -1,4 +1,4 @@
-# Choosing Visual Forms — slide content
+# Choosing Visual Forms, slide content
 
 ## Choosing Visual Forms
 
@@ -28,11 +28,11 @@ AUDIENCE → QUESTION → VISUAL TASK → DATA SHAPE → VISUAL FORM
 
 A transport dataset might support:
 
-- Which mode carries the most passengers? — magnitude or ranking
-- How has use changed? — change over time
-- Which modes are most variable? — distribution
-- Do delays rise with passenger volume? — correlation
-- How is the total divided? — part-to-whole
+- Which mode carries the most passengers?, magnitude or ranking
+- How has use changed?, change over time
+- Which modes are most variable?, distribution
+- Do delays rise with passenger volume?, correlation
+- How is the total divided?, part-to-whole
 
 The topic is the same. The visual task changes.
 
@@ -102,7 +102,7 @@ Useful forms:
 - box plot;
 - density or violin plot.
 
-Ask: Which features—centre, spread, clusters or outliers—remain visible?
+Ask: Which features: centre, spread, clusters or outliers, remain visible?
 
 ---
 
@@ -154,7 +154,7 @@ Tidy structure supports reproducible filtering, grouping and chart generation.
 
 ---
 
-## Copilot can transform data—and silently change it
+## Copilot can transform data, and silently change it
 
 After any generated transformation, check:
 
@@ -209,3 +209,5 @@ Complete:
 - I selected ___ because …
 - I rejected ___ because …
 
+Complete the separate open-book diagnostic in Canvas after class. It is
+ungraded and completed without an assistant.

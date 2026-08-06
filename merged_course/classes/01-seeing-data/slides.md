@@ -1,4 +1,4 @@
-# Seeing Data — slide content
+# Seeing Data: slide content
 
 ## Seeing Data
 
@@ -19,7 +19,7 @@ Before group formation, complete the private Canvas survey:
 - A group where AI-assisted recording or transcription tools will not be used
 - No preference
 
-There is no academic advantage or penalty attached to any response. The answer is used only to support compatible group formation and can be changed before groups are finalised.
+There is no academic advantage or penalty attached to any response. The answer is used only to support compatible group formation. To change a submitted preference before groups are finalised, contact the subject coordinator privately.
 
 Choosing an AI-recording-compatible group is not blanket consent to every recording. The group must still agree on the specific tool, purpose, access, retention and deletion arrangements before recording begins.
 
@@ -29,7 +29,7 @@ Speaker direction: allow students to complete the survey privately. Do not ask f
 
 ---
 
-## Authorise the workflow—and name its boundaries
+## Authorise the workflow, and name its boundaries
 
 Subject teaching and assessment instructions should state clearly which AI-assisted coding practices are permitted. Confirm the wording against current UTS and faculty requirements rather than relying on an informal idea of “sanctioned.”
 
@@ -104,6 +104,18 @@ At every transition: selection, comparison, compression, framing and omission.
 
 ---
 
+## Claim sprint
+
+Twelve figures, 40 seconds each, minimal commentary from you, name the form,
+let the room look. Students write one "the chart shows…" sentence for any two.
+Debrief two hands: is the sentence an observation or an interpretation?
+
+Forms in order: bell curve · log-normal · power law · species abundance ·
+S-curve · violin · sea ice · cherry blossom · candlestick · Ngram ·
+gravitational wave · exoplanet transit.
+
+---
+
 ## Observation is not explanation
 
 | Level | Example |
@@ -162,18 +174,6 @@ Mark each sentence:
 **Test:** Does the pattern survive another view?  
 **Bound:** What uncertainty qualifies the claim?  
 **Disclose:** What did the intelligent tool contribute?
-
----
-
-## Representation is governance
-
-Use the AIATSIS acknowledgement discussion.
-
-- Who is represented?
-- Who collected and controls the data?
-- Who benefits from the visualisation?
-- Who could be harmed or misled?
-- What should not be visualised?
 
 ---
 

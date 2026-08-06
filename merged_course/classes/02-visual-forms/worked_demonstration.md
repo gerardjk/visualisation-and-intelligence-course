@@ -1,4 +1,4 @@
-# Choosing Visual Forms — worked demonstration
+# Choosing Visual Forms, worked demonstration
 
 ## Purpose
 

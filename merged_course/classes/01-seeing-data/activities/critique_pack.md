@@ -1,4 +1,4 @@
-# Seeing Data — critique pack
+# Seeing Data: critique pack
 
 ## Artefact
 

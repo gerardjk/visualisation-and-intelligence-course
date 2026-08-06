@@ -1,4 +1,4 @@
-# Seeing Data — instructor guide
+# Seeing Data: instructor guide
 
 ## What makes this a complete three-hour session
 
@@ -17,7 +17,7 @@ The session alternates prediction, explanation, computation and critique. Do not
 - Put the student notebook and starter notebook in the LMS.
 - Print or distribute `critique_pack.md` and `activity_critique_and_repair.md`.
 - Keep the starter notebook available as a recovery route rather than giving it to everyone immediately.
-- Decide whether students may use Copilot during the assessed critique. The notebook assumes permitted, documented use; the critique portfolio may be AI-restricted.
+- State the assessment boundary explicitly: assistants are permitted and documented in the Seeing Data notebook, but A1 Part A is completed without an assistant during the supervised window in the Dashboards session. Parts B and C follow the A1 brief.
 
 ## Worked demonstration
 
@@ -35,11 +35,11 @@ Announce these times relative to the start of the lab:
 
 | Time | Expected position | Intervention |
 |---|---|---|
-| 15 minutes | Data loaded and prediction recorded | Check kernel and imports |
-| 30 minutes | Summary table passes assertions | Release the summary cell from the starter notebook if needed |
-| 45 minutes | Four common-scale panels visible | Pair students who have working plots with those debugging |
-| 55 minutes | Generated claims classified | Stop further chart styling |
-| 65 minutes | Repair and provenance recorded | Move everyone to reflection |
+| 10 minutes | Data loaded and prediction recorded | Check kernel and imports |
+| 25 minutes | Summary table passes assertions | Release the summary cell from the starter notebook if needed |
+| 38 minutes | Four common-scale panels visible | Pair students who have working plots with those debugging |
+| 48 minutes | Generated claims classified | Stop further chart styling |
+| 55 minutes | Repair and provenance recorded | Move everyone to the studio activity |
 
 ## Suggested answers
 
@@ -81,7 +81,7 @@ Announce these times relative to the start of the lab:
 
 ## Assessment connection
 
-This session prepares students for the Studio Critique Portfolio. Make the relationship explicit:
+This session prepares students for A1. Critique and Repair. Make the relationship explicit:
 
 | Session output | Portfolio criterion |
 |---|---|
@@ -98,4 +98,3 @@ Sort responses into:
 - claims students can already support;
 - limitations they recognised;
 - verification needs to revisit in Choosing Visual Forms.
-

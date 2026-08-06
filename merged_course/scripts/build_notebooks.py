@@ -63,7 +63,7 @@ DISCLOSURE_ANSWER = md("""\
 
 
 TRANSPORT_SETUP = '''\
-# Setup — run this cell, no need to edit it.
+# Setup: run this cell, no need to edit it.
 # It builds the synthetic public-transport patronage dataset used across this course:
 # monthly rider counts for six NSW regions and four transport modes, 2019-2025,
 # with a seasonal cycle and a COVID-shaped shock. Teaching data, not real data.
@@ -108,12 +108,12 @@ transport.head()\
 def build_seeing_data():
     cells = [
         md("""\
-# Seeing Data — class notebook
+# Seeing Data: class notebook
 
-**36104 Data Visualisation and Narratives · Class 1**
+**36104 Data Visualisation and Narratives · Week 1**
 
 A chart is a claim about how the world is organised. In this notebook you will
-make charts, let an AI assistant make charts, and — most importantly — verify
+make charts, let an AI assistant make charts, and, most importantly, verify
 the claims both of you produce.
 
 ## How to work in this notebook
@@ -123,7 +123,7 @@ the claims both of you produce.
   the assistant what it needs to draft a useful completion.
 - You may accept, edit, or ignore any suggestion. What you may **not** do is
   submit code that fails its verification cell.
-- A verification cell that fails is a *finding*, not a failure — read the
+- A verification cell that fails is a *finding*, not a failure, read the
   error, work out whether the code or the claim is wrong, and fix it.
 - Keep the **verification ladder** beside you:
   **1 TRACE** what data/transformation produced the chart →
@@ -136,7 +136,7 @@ the claims both of you produce.
 
         # ---- Exercise 1 ----
         md("""\
-## Exercise 1 — The summary is not the shape
+## Exercise 1. The summary is not the shape
 
 Anscombe's quartet: four small datasets constructed so that their summary
 statistics agree almost exactly, while their shapes disagree completely.
@@ -147,7 +147,7 @@ scatterplots. Watch the moment the numbers stop being enough.
 *Copilot works well here if you write the docstring first, then pause.*\
 """),
         code('''\
-# Anscombe's quartet — the classic values (Anscombe, 1973).
+# Anscombe's quartet: the classic values (Anscombe, 1973).
 anscombe = {
     "I":   dict(x=[10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5],
                 y=[8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68]),
@@ -164,9 +164,9 @@ def summarise(name: str) -> dict:
     """Return summary statistics for one Anscombe dataset.
 
     Given the dataset key ("I".."IV"), return a dict with:
-      mean_x, mean_y  — means of x and y
-      var_x, var_y    — sample variances (ddof=1)
-      corr            — Pearson correlation between x and y
+      mean_x, mean_y: means of x and y
+      var_x, var_y: sample variances (ddof=1)
+      corr. Pearson correlation between x and y
     Round every value to 2 decimal places.
     """
     # TODO: implement using numpy (np.mean, np.var with ddof=1, np.corrcoef)
@@ -177,7 +177,7 @@ for name in anscombe:
     print(name, summarise(name))\
 '''),
         code('''\
-# Verification — the whole point of the quartet is that these agree.
+# Verification: the whole point of the quartet is that these agree.
 for name in anscombe:
     s = summarise(name)
     assert abs(s["mean_x"] - 9.0) < 0.01, f"{name}: mean_x should be 9.0, got {s['mean_x']}"
@@ -202,19 +202,19 @@ plot_quartet(anscombe)\
 '''),
         md("""\
 **Reflect** (edit this cell): which panel most changes your interpretation of
-"correlation ≈ 0.82"? What claim would each panel justify — and what claim
+"correlation ≈ 0.82"? What claim would each panel justify, and what claim
 would it forbid?\
 """),
 
         # ---- Exercise 2 ----
         md("""\
-## Exercise 2 — Generate a chart, then interrogate it
+## Exercise 2. Generate a chart, then interrogate it
 
 Now the real dataset. The `transport` DataFrame holds monthly rider counts by
 `region` and `mode`, 2019–2025, including a COVID-shaped collapse and recovery.
 
 **Task.** Ask your assistant to draw *"total monthly riders per mode over
-time"* — write the docstring below and let it draft the body. Then run the
+time"*: write the docstring below and let it draft the body. Then run the
 verification cell, which climbs the first two rungs of the ladder (TRACE and
 CHECK) for you. If verification fails, the bug is somewhere between the
 assistant's idea of the data and the actual data. Find it.\
@@ -237,7 +237,7 @@ plotted = plot_mode_recovery(transport)
 plotted.head()\
 '''),
         code('''\
-# Verification — TRACE and CHECK.
+# Verification. TRACE and CHECK.
 # 1 TRACE: the plotted table must reconcile with the source table.
 assert plotted["riders"].sum() == transport["riders"].sum(), (
     "Aggregation lost or duplicated riders: plotted total != source total")
@@ -251,10 +251,10 @@ jan = pd.Timestamp("2019-01-01")
 jan_train = plotted[(plotted["mode"] == "Train") & (plotted["date"] == jan)]["riders"].iloc[0]
 source_jan_train = transport[(transport["mode"] == "Train") & (transport["date"] == jan)]["riders"].sum()
 assert jan_train == source_jan_train, "Spot total disagrees for Train, Jan 2019"
-print("TRACE ✓  CHECK ✓ — now do TEST yourself: does the recovery story survive a per-region view?")\
+print("TRACE ✓  CHECK ✓, now do TEST yourself: does the recovery story survive a per-region view?")\
 '''),
         code('''\
-# 3 TEST — does the pattern survive another view?
+# 3 TEST: does the pattern survive another view?
 # Draw the same measure faceted by region (small multiples). If the "recovery"
 # claim holds overall but fails for a region, the overall chart compresses that.
 def plot_recovery_by_region(transport: pd.DataFrame) -> None:
@@ -276,7 +276,7 @@ attach before publishing either chart.\
 
         # ---- Exercise 3 ----
         md("""\
-## Exercise 3 — Audit a generated interpretation
+## Exercise 3. Audit a generated interpretation
 
 Below is a fluent, confident, AI-style interpretation of the transport data.
 Some of its claims are supported by the data you have; some are contradicted
@@ -292,9 +292,9 @@ by it; some *cannot be checked from this dataset at all*.
 **Task.** Classify each claim, then *prove* your classification for the
 checkable ones with a query against `transport`.
 
-- `"supported"` — the dataset agrees
-- `"unsupported"` — the dataset disagrees
-- `"unverifiable"` — this dataset cannot answer it either way\
+- `"supported"`: the dataset agrees
+- `"unsupported"`: the dataset disagrees
+- `"unverifiable"`: this dataset cannot answer it either way\
 """),
         code('''\
 claims = {
@@ -311,7 +311,7 @@ claims = {
 # transport[transport["date"] >= pd.Timestamp("2025-01-01")].groupby("mode")["riders"].sum()\
 '''),
         code('''\
-# Verification — classification sanity check.
+# Verification: classification sanity check.
 allowed = {"supported", "unsupported", "unverifiable"}
 assert all(v in allowed for v in claims.values()), (
     "Every claim needs one of: supported / unsupported / unverifiable")
@@ -321,29 +321,29 @@ assert all(v in allowed for v in claims.values()), (
 for motive in ["the recovery is driven by office workers returning to the CBD",
                "commuters strongly prefer rail over road-based transport"]:
     assert claims[motive] == "unverifiable", (
-        f"Re-read this claim: '{motive}' — does ANY column in transport "
+        f"Re-read this claim: '{motive}': does ANY column in transport "
         "record causes or preferences?")
 print("Classification accepted. Bring your probe queries to the studio discussion.")\
 '''),
         md("""\
 **The lesson.** The interpretation reads as insight. Two of its five claims
-could never be checked from this data — yet nothing in the prose marks them as
+could never be checked from this data, yet nothing in the prose marks them as
 different from the rest. That marking is *your* job, every time.\
 """),
 
         # ---- Exercise 4 ----
         md("""\
-## Exercise 4 — Make a true chart lie (then fix it)
+## Exercise 4. Make a true chart lie (then fix it)
 
 Every number in a chart can be correct and the impression still wrong. You will
 now build two misleading-but-accurate charts of Ferry ridership, then the
 honest one. Knowing how the trick is done is the best defence against it.
 
-- **Lie 1, truncated axis** — crop the y-axis so the post-COVID recovery looks
+- **Lie 1, truncated axis**, crop the y-axis so the post-COVID recovery looks
   like an explosion.
-- **Lie 2, cherry-picked window** — show only a window in which ferries appear
+- **Lie 2, cherry-picked window**, show only a window in which ferries appear
   to be in permanent decline.
-- **Honest** — zero baseline, full 2019–2025 window, title stating the finding.
+- **Honest**: zero baseline, full 2019–2025 window, title stating the finding.
 
 Each function must **return the Axes object** so the verification cell can
 inspect what your chart actually asserts.\
@@ -382,7 +382,7 @@ def honest(ferry: pd.Series):
 ax1, ax2, ax3 = lie_truncated(ferry), lie_window(ferry), honest(ferry)\
 '''),
         code('''\
-# Verification — the axes must actually commit each sin, and the honest
+# Verification: the axes must actually commit each sin, and the honest
 # chart must actually be honest.
 assert ax1.get_ylim()[0] > ferry.min() * 0.5, (
     "Lie 1 isn't truncated enough: the y-axis floor should sit well above zero")
@@ -400,7 +400,7 @@ it in a news feed? What single sentence of disclosure would defuse each one?\
 
         # ---- Exercise 5 (stretch) ----
         md("""\
-## Exercise 5 (stretch) — Draw the uncertainty
+## Exercise 5 (stretch). Draw the uncertainty
 
 The recovery chart from Exercise 2 shows one line per mode, each drawn with
 total confidence. But the monthly values wobble. Show the wobble.
@@ -419,7 +419,7 @@ def plot_with_uncertainty(transport: pd.DataFrame, mode: str = "Train"):
 ax_u = plot_with_uncertainty(transport)\
 '''),
         code('''\
-# Verification — a line and a band must both exist.
+# Verification: a line and a band must both exist.
 assert len(ax_u.lines) >= 1, "Where is the rolling-mean line?"
 assert len(ax_u.collections) >= 1, "Where is the shaded uncertainty band (fill_between)?"
 print("Uncertainty drawn rather than suppressed. Rung 4 of the ladder, made visible.")\
@@ -431,7 +431,7 @@ print("Uncertainty drawn rather than suppressed. Rung 4 of the ladder, made visi
 
 
 WEAK_CHART = '''\
-# The weak chart — run, then diagnose. (Deliberately bad. Do not fix this cell.)
+# The weak chart, run, then diagnose. (Deliberately bad. Do not fix this cell.)
 latest = (transport[transport["date"] == pd.Timestamp("2025-12-01")]
           .groupby("region")["riders"].sum())
 fig, ax = plt.subplots(figsize=(7, 7))
@@ -446,9 +446,9 @@ plt.show()\
 def build_visual_forms():
     cells = [
         md("""\
-# Choosing Visual Forms — class notebook
+# Choosing Visual Forms, class notebook
 
-**36104 Data Visualisation and Narratives · Class 2**
+**36104 Data Visualisation and Narratives · Week 2**
 
 Good chart choice begins with the analytical task, not with the visual effect.
 In this notebook you will feel the difference between encodings, reshape data
@@ -457,26 +457,27 @@ redesign a weak chart three ways.
 
 ## How to work in this notebook
 
-Same contract as Class 1: AI assistant on, docstrings first, and **nothing
-counts until its verification cell passes**. The five wrangling checks from
-the lecture — identifiers, row count, types, missing values, spot totals —
+Same contract as Week 1: an AI assistant is available but not required,
+docstrings come first, and **nothing counts until its verification cell
+passes**. The five wrangling checks from
+the lecture: identifiers, row count, types, missing values, spot totals, 
 appear here as executable assertions.\
 """),
         code(TRANSPORT_SETUP),
 
         # ---- Exercise 1 ----
         md("""\
-## Exercise 1 — Channels are read at different precision
+## Exercise 1. Channels are read at different precision
 
-The same five values, encoded five ways. Run the cell, then — *before any
-computation* — estimate the ratio of value B to value D from each panel alone,
+The same five values, encoded five ways. Run the cell, then, *before any
+computation*: estimate the ratio of value B to value D from each panel alone,
 and record your five estimates.
 
 Cleveland & McGill's ranking predicts your position estimate will be sharpest
 and your area/colour estimates worst. Let's test that on you.\
 """),
         code('''\
-# Run, then look — do not read the values from the code before estimating!
+# Run, then look, do not read the values from the code before estimating!
 values = np.array([34, 87, 51, 29, 66])
 labels = list("ABCDE")
 
@@ -506,7 +507,7 @@ my_estimates = {
     "colour value": None,
 }
 
-# Verification — scores your perceptual error per channel.
+# Verification: scores your perceptual error per channel.
 true_ratio = 87 / 29
 assert all(v is not None for v in my_estimates.values()), "Estimate every panel first"
 errors = {k: round(abs(v - true_ratio) / true_ratio * 100) for k, v in my_estimates.items()}
@@ -518,14 +519,14 @@ print(f"\\nTrue ratio B/D = {true_ratio:.2f}. "
 
         # ---- Exercise 2 ----
         md("""\
-## Exercise 2 — Wide to tidy, with the five checks
+## Exercise 2. Wide to tidy, with the five checks
 
 Analysts receive spreadsheets shaped for humans: one row per region, one
 column per year. Charts (and Tableau, and pandas plotting, and AI-generated
 code) want **tidy** data: each variable a column, each observation a row.
 
-**Task.** The cell below builds the wide table. Reshape it to tidy long form —
-ask your assistant, `pd.melt` is the move — then make the five verification
+**Task.** The cell below builds the wide table. Reshape it to tidy long form, 
+ask your assistant, `pd.melt` is the move, then make the five verification
 checks pass. Every assertion is one of the five checks from the lecture.\
 """),
         code('''\
@@ -541,7 +542,7 @@ def make_tidy(wide: pd.DataFrame) -> pd.DataFrame:
     """Reshape the wide region x year table to tidy long form.
 
     Returns a DataFrame with exactly three columns: region (str),
-    year (int), riders (int) — one row per region-year observation.
+    year (int), riders (int), one row per region-year observation.
     """
     # TODO: pd.melt, then fix dtypes
     raise NotImplementedError
@@ -551,27 +552,27 @@ tidy = make_tidy(wide)
 tidy.head()\
 '''),
         code('''\
-# Verification — the five wrangling checks, as assertions.
-# 1 IDENTIFIERS — no regions invented or dropped.
+# Verification: the five wrangling checks, as assertions.
+# 1 IDENTIFIERS: no regions invented or dropped.
 assert set(tidy["region"]) == set(REGIONS), "Region identifiers changed in the reshape"
-# 2 ROW COUNT — 6 regions x 7 years = 42 observations, exactly.
+# 2 ROW COUNT, 6 regions x 7 years = 42 observations, exactly.
 assert len(tidy) == 42, f"Expected 42 rows (6 regions x 7 years), got {len(tidy)}"
-# 3 TYPES — year and riders must be integers, not strings.
+# 3 TYPES: year and riders must be integers, not strings.
 assert tidy["year"].dtype.kind == "i", "year should be an integer column"
 assert tidy["riders"].dtype.kind == "i", "riders should be an integer column"
-# 4 MISSING — the reshape must not create NaNs.
+# 4 MISSING: the reshape must not create NaNs.
 assert tidy.notna().all().all(), "NaNs appeared during the reshape"
-# 5 SPOT TOTAL — one hand-checkable value survives the round trip.
+# 5 SPOT TOTAL, one hand-checkable value survives the round trip.
 spot = tidy.query("region == 'Inner Sydney' and year == 2019")["riders"].iloc[0]
 expected = transport[(transport["region"] == "Inner Sydney")
                      & (transport["date"] < pd.Timestamp("2020-01-01"))]["riders"].sum()
 assert spot == expected, "Inner Sydney 2019 total does not survive the reshape"
-print("IDENTIFIERS ✓ ROWS ✓ TYPES ✓ MISSING ✓ SPOT TOTAL ✓ — tidy and trustworthy")\
+print("IDENTIFIERS ✓ ROWS ✓ TYPES ✓ MISSING ✓ SPOT TOTAL ✓, tidy and trustworthy")\
 '''),
 
         # ---- Exercise 3 ----
         md("""\
-## Exercise 3 — The Visual Vocabulary sort
+## Exercise 3. The Visual Vocabulary sort
 
 Classify each analytical question into **one** FT Visual Vocabulary category:
 
@@ -592,7 +593,7 @@ sort = {
 # TODO: replace each "..." with one category (exact strings listed above).\
 '''),
         code('''\
-# Verification — checks your sort against the answer key (some questions
+# Verification: checks your sort against the answer key (some questions
 # genuinely admit one neighbouring alternative; those are accepted).
 key = {
     "Which regions have the highest ridership?": {"ranking", "magnitude"},
@@ -609,7 +610,7 @@ print("Sort accepted. Now draft one of these charts below.")\
         code('''\
 # Draft one chart for a question of your choice from the sort above.
 # Write the docstring stating the task and the category, then let your
-# assistant draft the body — then apply the verification ladder yourself.
+# assistant draft the body, then apply the verification ladder yourself.
 def chart_for_question() -> None:
     """<state the question>
 
@@ -625,10 +626,10 @@ chart_for_question()\
 
         # ---- Exercise 4 ----
         md("""\
-## Exercise 4 — Aspect ratio and baseline: same data, three impressions
+## Exercise 4. Aspect ratio and baseline: same data, three impressions
 
 The same series drawn in a wide frame, a tall frame, and as bars decides what
-the reader feels before they think. None of these are "lies" — but each frame
+the reader feels before they think. None of these are "lies", but each frame
 privileges a different reading, and one of them is conventional for a reason.
 
 **Task.** Implement one plotting function that honours the `figsize` it is
@@ -658,7 +659,7 @@ ax_tall = plot_series(inner, (4, 6))
 ax_bars = plot_annual_bars(tidy)\
 '''),
         code('''\
-# Verification — the frames must be what they claim, the bars must be honest.
+# Verification: the frames must be what they claim, the bars must be honest.
 assert tuple(ax_wide.get_figure().get_size_inches()) == (12, 2), (
     "plot_series must honour the figsize it is given (wide)")
 assert tuple(ax_tall.get_figure().get_size_inches()) == (4, 6), (
@@ -668,16 +669,16 @@ print("Same data, three impressions. Which frame would each stakeholder choose?"
 '''),
         md("""\
 **Reflect** (edit this cell): the wide frame flattens the COVID collapse; the
-tall frame makes it a cliff. Banking to ~45° is the conventional compromise —
+tall frame makes it a cliff. Banking to ~45° is the conventional compromise, 
 which claim does each frame quietly make?\
 """),
 
         # ---- Exercise 5 ----
         md("""\
-## Exercise 5 — Colour is an encoding
+## Exercise 5. Colour is an encoding
 
 Three datasets, three palette decisions. Classify each scenario into the
-palette family it needs — `sequential`, `diverging`, or `categorical` — then
+palette family it needs, `sequential`, `diverging`, or `categorical`, then
 prove one of them by drawing it.\
 """),
         code('''\
@@ -689,7 +690,7 @@ palette_choice = {
 # TODO: replace each "..." with "sequential", "diverging", or "categorical".\
 '''),
         code('''\
-# Verification — palette families.
+# Verification: palette families.
 palette_key = {
     "monthly ridership totals, low to high": "sequential",
     "percentage change in ridership vs the 2019 baseline (loss or gain)": "diverging",
@@ -711,7 +712,7 @@ def plot_change_heatmap(tidy: pd.DataFrame):
 ax_h = plot_change_heatmap(tidy)\
 '''),
         code('''\
-# Verification — the colormap must actually be diverging and centred.
+# Verification: the colormap must actually be diverging and centred.
 img = ax_h.get_images()[0] if ax_h.get_images() else None
 assert img is not None, "Use imshow/pcolor-style heatmap so the colormap is inspectable"
 assert img.get_cmap().name in {"RdBu", "RdBu_r", "coolwarm", "bwr", "seismic",
@@ -725,7 +726,7 @@ print("Diverging, centred, honest. Loss and gain now read as different direction
 
         # ---- Exercise 6 ----
         md("""\
-## Exercise 6 — Redesign ×3
+## Exercise 6. Redesign ×3
 
 Here is a deliberately weak chart: an exploded, shadowed, rainbow pie of six
 nearly-ordered values, titled with an exclamation mark instead of a claim.
@@ -733,12 +734,12 @@ nearly-ordered values, titled with an exclamation mark instead of a claim.
 **Task.** Diagnose what task the reader actually has, then produce **three
 redesigns, each serving a different Visual Vocabulary category** (for example:
 `ranking`, `change over time`, `part-to-whole` done honestly). This is the
-studio artefact for today — you will present one of the three.\
+studio artefact for today, you will present one of the three.\
 """),
         code(WEAK_CHART),
         code('''\
 def redesign_ranking() -> None:
-    """Redesign 1 — category: ranking.
+    """Redesign 1: category: ranking.
 
     The reader's task: which regions have the most riders, in order?
     Form: sorted horizontal bar chart from a zero baseline, December 2025.
@@ -752,7 +753,7 @@ redesign_ranking()\
 '''),
         code('''\
 def redesign_change_over_time() -> None:
-    """Redesign 2 — category: change over time.
+    """Redesign 2: category: change over time.
 
     The reader's task: how did each region's ridership move through COVID
     and recovery? Form: line chart or small multiples from `transport`.
@@ -765,7 +766,7 @@ redesign_change_over_time()\
 '''),
         code('''\
 def redesign_third(category: str) -> None:
-    """Redesign 3 — category: YOUR CHOICE (not ranking, not change over time).
+    """Redesign 3: category: YOUR CHOICE (not ranking, not change over time).
 
     State the reader's task in one sentence here, choose an honest form,
     and pass the category you chose as `category`.
@@ -778,7 +779,7 @@ chosen_category = "..."  # TODO: e.g. "part-to-whole", "deviation", "distributio
 redesign_third(chosen_category)\
 '''),
         code('''\
-# Verification — three distinct categories, none of them the broken original's crime.
+# Verification: three distinct categories, none of them the broken original's crime.
 assert chosen_category not in {"...", "ranking", "change over time"}, (
     "Redesign 3 must use a category different from redesigns 1 and 2")
 allowed = {"deviation", "correlation", "distribution", "magnitude",

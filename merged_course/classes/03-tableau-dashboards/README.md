@@ -1,4 +1,4 @@
-# Class 03 — Dashboards, Personas, and User Stories — Tableau Public
+# Class 03, Dashboards, Personas, and User Stories, Tableau Public
 
 ## Core question
 

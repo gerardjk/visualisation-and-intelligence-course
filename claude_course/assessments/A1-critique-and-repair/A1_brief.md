@@ -1,3 +1,8 @@
+> **SUPERSEDED:** the canonical A1 now lives in
+> `merged_course/assessments/A1-critique-and-repair/` — reconciled to the
+> merged course conventions (30%, four-way claim taxonomy, Chart Choice
+> Decision Record, five-question disclosure). Do not distribute this copy.
+
 # A1 — Critique and Repair
 
 **Individual assessment · covers Classes 1–2 · suggested weight 20%**

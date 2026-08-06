@@ -23,8 +23,9 @@ dynamic and uncertain territory beyond the static frame (Part C). Entries keep a
 running number from 1 to 103 and sit under unit headings that carry the
 argument. The AIATSIS map of Indigenous Australia stands before them all.
 
-Every figure is redrawn from data or a reproduced model instance; no
-copyrighted original is embedded. The historical image is described in prose and
+Every figure is redrawn from data or a reproduced model instance, with one
+deliberate exception: the AIATSIS map that opens the book is reproduced with
+attribution. Every other historical image is described in prose and
 cited. Reproductions use representative data where the original series is not
 to hand — enough to show the form the field made canonical, never passed off as
 the original measurement.
@@ -33,8 +34,8 @@ the original measurement.
 
 ## AIATSIS Map of Indigenous Australia {#sec-aiatsis}
 
-> **Class:** named first
-> **Canonical introduction:** [@horton1996aiatsis]
+> **Class:** named first \
+> **Canonical introduction:** [@horton1996aiatsis] \
 > **Domain:** country, language and nation groups across the Australian continent
 
 This book was written on Aboriginal land. David Horton's map for the Australian
@@ -43,42 +44,10 @@ locations of more than 250 language, social and nation groups across the
 continent — an attempt to show, on one sheet, that the land was never empty
 [@horton1996aiatsis]. Its boundaries are deliberately soft: they are a general
 guide, contested in places, and explicitly not for use in native-title claims.
-The official image is copyright AIATSIS and is not reproduced here; it should be
-viewed from the source. The panel below is an acknowledgement placeholder, not
-the map, and the problem of drawing a curved continent onto a flat sheet returns
-as a formal question at entry 81.
+The map is reproduced below with attribution; the problem of drawing a curved
+continent onto a flat sheet returns as a formal question at entry 81.
 
-```{python}
-#| label: fig-aiatsis
-#| fig-cap: "Acknowledgement placeholder — not the AIATSIS map. The official copyright image is viewable from AIATSIS. The soft outline stands only for the continent it describes."
-
-import matplotlib.pyplot as plt
-import numpy as np
-
-# A deliberately abstract continent outline — an acknowledgement panel, not a
-# reproduction of the copyrighted AIATSIS map, which cannot be embedded.
-theta = np.linspace(0, 2 * np.pi, 400)
-r = (1.0 + 0.18 * np.sin(3 * theta) + 0.10 * np.cos(5 * theta)
-     + 0.06 * np.sin(7 * theta))
-x, y = r * np.cos(theta), 0.72 * r * np.sin(theta)
-
-fig, ax = plt.subplots(figsize=(6, 4.4))
-ax.fill(x, y, color="#d9c8a9", alpha=0.55, zorder=1)
-ax.plot(x, y, color="#8a7a5c", lw=1.3, zorder=2)
-ax.text(0, 0.08, "Acknowledgement of Country",
-        ha="center", va="center", fontsize=13, weight="bold",
-        color="#5b4b2e")
-ax.text(0, -0.18,
-        "The land shown was cared for by\nhundreds of language and nation groups.\n"
-        "View the official AIATSIS map from its source.",
-        ha="center", va="center", fontsize=8.5, color="#5b4b2e")
-ax.set_xlim(-1.5, 1.5)
-ax.set_ylim(-1.25, 1.25)
-ax.axis("off")
-ax.set_aspect("equal")
-plt.tight_layout()
-plt.show()
-```
+![The AIATSIS map of Indigenous Australia. Aboriginal Australia Wall Map, David R Horton (creator), © Aboriginal Studies Press, AIATSIS and Auslig/Sinclair, Knight, Merz, 1996. The map indicates only the general location of larger groupings of people; boundaries are not intended to be exact, and it is not suitable for use in native title or other land claims.](images/aiatsis-map.jpg){#fig-aiatsis}
 
 # Day One — cold open {#sec-dayone}
 
@@ -91,6 +60,7 @@ argument, and that argument changed what a city did about its water. Both live
 in their proper units below; they are named here because everything between them
 is an elaboration of the same two claims — *look at the data*, and *a good
 picture is a claim about cause*.
+
 # Part A — Encoding & the pre-attentive channels {#sec-part-a}
 
 The pre-attentive channels — position, length, size, colour, orientation — are read before attention lands, and each is read at a sharply different precision. This part walks them one at a time, each illustrated by the canonical figure that made the channel famous.
@@ -101,8 +71,8 @@ The pre-attentive channels — position, length, size, colour, orientation — a
 
 ### 1 — Bertin's visual-variables chart {#sec-bertin}
 
-> **Class:** named first
-> **Canonical introduction:** [@bertin1967semiologie]
+> **Class:** named first \
+> **Canonical introduction:** [@bertin1967semiologie] \
 > **Domain:** the grammar of marks
 
 Every mark on a plane carries information through a fixed set of retinal variables — position, size, value, texture, colour, orientation, shape — and Bertin was the first to name them as a system and rank their perceptual power [@bertin1967semiologie]. The chart holds every variable constant but one, so each row shows a single channel varying in isolation.
@@ -164,8 +134,8 @@ plt.show()
 
 ### 2 — Mohs hardness scale {#sec-mohs}
 
-> **Class:** named first
-> **Canonical introduction:** [@mohs1825treatise]
+> **Class:** named first \
+> **Canonical introduction:** [@mohs1825treatise] \
 > **Domain:** rank as position
 
 Mohs ordered ten reference minerals so that each scratches the one below, giving a clean ordinal ladder from talc to diamond [@mohs1825treatise]. Placed against absolute hardness the ladder betrays itself — the rungs are evenly spaced by rank yet the Vickers numbers explode near the top, so rank is not magnitude.
@@ -206,8 +176,8 @@ plt.show()
 
 ### 3 — Population pyramids {#sec-population-pyramid}
 
-> **Class:** uncertain attribution
-> **Canonical introduction:** [@walker1874statistical]
+> **Class:** uncertain attribution \
+> **Canonical introduction:** [@walker1874statistical] \
 > **Domain:** a distribution split by category
 
 Back-to-back horizontal bars set male against female across age bands, so the shape of a population — youthful and broad, or ageing and top-heavy — is read at a glance. The form appears in Francis Walker's census atlas [@walker1874statistical], though who drew the first such pyramid is not settled.
@@ -245,8 +215,8 @@ plt.show()
 
 ### 4 — Cosmic abundance of the elements {#sec-abundance}
 
-> **Class:** named first
-> **Canonical introduction:** [@suess1956abundances]
+> **Class:** named first \
+> **Canonical introduction:** [@suess1956abundances] \
 > **Domain:** the odd–even sawtooth
 
 Plotting abundance against atomic number on a log scale shows two facts at once: a steep overall decline, and a persistent sawtooth in which even-Z elements sit above their odd neighbours — the Oddo–Harkins rule of nuclear stability. Suess and Urey compiled the reference abundance table that fixed the curve's shape [@suess1956abundances].
@@ -292,8 +262,8 @@ plt.show()
 
 ### 5 — Box plot {#sec-boxplot}
 
-> **Class:** named first
-> **Canonical introduction:** [@tukey1977eda]
+> **Class:** named first \
+> **Canonical introduction:** [@tukey1977eda] \
 > **Domain:** robust summary read by length
 
 The box plot compresses a batch to five robust numbers — median, quartiles, and whiskers — so spread and skew are read from length rather than computed. Tukey introduced it as part of exploratory data analysis [@tukey1977eda]; the runs shown here are representative of Michelson's 1879 speed-of-light experiment.
@@ -330,8 +300,8 @@ plt.show()
 
 ### 6 — Lorenz curve + Gini {#sec-lorenz}
 
-> **Class:** named first
-> **Canonical introduction:** [@lorenz1905methods]
+> **Class:** named first \
+> **Canonical introduction:** [@lorenz1905methods] \
 > **Domain:** inequality as the area between curves
 
 Cumulative income share plotted against cumulative population share bows below the 45° line of equality, and the area of that gap measures concentration. Lorenz proposed the curve to compare distributions of wealth [@lorenz1905methods]; twice the shaded area is the Gini coefficient.
@@ -375,8 +345,8 @@ plt.show()
 
 ### 7 — The bell curve (Gaussian) {#sec-gaussian}
 
-> **Class:** named first + canonical reference (distinct documents)
-> **Canonical introduction:** [@gauss1809theoria]
+> **Class:** named first + canonical reference (distinct documents) \
+> **Canonical introduction:** [@gauss1809theoria] \
 > **Named first:** [@demoivre1733approximatio]
 > **Domain:** additive error
 
@@ -411,8 +381,8 @@ plt.show()
 
 ### 8 — The log-normal {#sec-lognormal}
 
-> **Class:** uncertain attribution
-> **Canonical introduction:** [@aitchison1957lognormal]
+> **Class:** uncertain attribution \
+> **Canonical introduction:** [@aitchison1957lognormal] \
 > **Named first:** [@galton1879geometric]
 > **Domain:** multiplicative processes
 
@@ -450,8 +420,8 @@ plt.show()
 
 ### 9 — The power law / heavy tail {#sec-powerlaw}
 
-> **Class:** named first
-> **Canonical introduction:** [@pareto1896cours]
+> **Class:** named first \
+> **Canonical introduction:** [@pareto1896cours] \
 > **Domain:** the signature of complexity
 
 A power law is a straight line on log-log axes, its slope the exponent, and its tail decays far more slowly than an exponential's. Pareto found the form in the distribution of incomes [@pareto1896cours]; it recurs across city sizes, word frequencies, and network degrees.
@@ -485,8 +455,8 @@ plt.show()
 
 ### 10 — Species-abundance distribution {#sec-sad}
 
-> **Class:** named first
-> **Canonical introduction:** [@fisher1943relation]
+> **Class:** named first \
+> **Canonical introduction:** [@fisher1943relation] \
 > **Domain:** ecology's heavy tail
 
 Binning species by abundance octave yields the hollow curve every community shares: a wall of rare species and a thin scatter of common ones. Fisher, Corbet, and Williams fitted the log-series that made the pattern quantitative [@fisher1943relation].
@@ -518,8 +488,8 @@ plt.show()
 
 ### 11 — The S-curve / logistic {#sec-logistic}
 
-> **Class:** named first
-> **Canonical introduction:** [@verhulst1838notice]
+> **Class:** named first \
+> **Canonical introduction:** [@verhulst1838notice] \
 > **Domain:** bounded growth
 
 Growth that starts exponential but is checked by a ceiling traces an S, accelerating then saturating at the carrying capacity K. Verhulst named the logistic and wrote its closed-form solution [@verhulst1838notice].
@@ -551,8 +521,8 @@ plt.show()
 
 ### 12 — Violin plot {#sec-violin}
 
-> **Class:** named first
-> **Canonical introduction:** [@hintze1998violin]
+> **Class:** named first \
+> **Canonical introduction:** [@hintze1998violin] \
 > **Domain:** a density shape mirrored
 
 The violin mirrors a kernel density estimate about its axis, so multimodality and skew that a box plot hides become visible in the outline. Hintze and Nelson introduced the form and its name [@hintze1998violin].
@@ -590,8 +560,8 @@ plt.show()
 
 ### 13 — Reaction energy-coordinate diagram {#sec-energy-coordinate}
 
-> **Class:** shared genre idiom
-> **Canonical introduction:** [@evans1935applications]
+> **Class:** shared genre idiom \
+> **Canonical introduction:** [@evans1935applications] \
 > **Domain:** an energy landscape
 
 Potential energy plotted against a reaction coordinate shows reactants and products as wells separated by a transition-state hump whose height is the activation energy. Evans and Polanyi gave the profile its canonical thermodynamic reading [@evans1935applications]; the barrier sets the rate, the well depth difference sets the equilibrium.
@@ -633,14 +603,15 @@ ax.set_yticks([])
 plt.tight_layout()
 plt.show()
 ```
+
 ## A3. Position — relating two variables {#sec-unit-a3}
 
 *Cleveland, The Elements of Graphing Data (1985), ranks position along a common scale as the channel the eye decodes most accurately — so relating two variables begins with points in a plane.*
 
 ### 14 — Hertzsprung–Russell diagram {#sec-hr}
 
-> **Class:** named first + canonical reference (distinct documents)
-> **Canonical introduction:** [@russell1914relations]
+> **Class:** named first + canonical reference (distinct documents) \
+> **Canonical introduction:** [@russell1914relations] \
 > **Named first:** [@hertzsprung1911uber]
 > **Domain:** stellar evolution read as a sequence, not a snapshot
 
@@ -690,8 +661,8 @@ plt.show()
 
 ### 15 — Hubble diagram {#sec-hubble}
 
-> **Class:** named first
-> **Canonical introduction:** [@hubble1929relation]
+> **Class:** named first \
+> **Canonical introduction:** [@hubble1929relation] \
 > **Domain:** the expansion of the universe as a straight line
 
 A galaxy's recession velocity rises in proportion to its distance, and the slope of that line is the expansion rate itself. Hubble's 1929 plot fixed the relation with a scatter of a few dozen galaxies through a line near the origin [@hubble1929relation].
@@ -726,8 +697,8 @@ plt.show()
 
 ### 16 — Kleiber's law {#sec-kleiber}
 
-> **Class:** named first
-> **Canonical introduction:** [@kleiber1932body]
+> **Class:** named first \
+> **Canonical introduction:** [@kleiber1932body] \
 > **Domain:** metabolic rate against body mass across the tree of life
 
 On log–log axes the metabolic rates of animals spanning six orders of magnitude in mass fall on a single line of slope three-quarters. Kleiber measured the exponent and named the regularity that carries his name [@kleiber1932body].
@@ -758,8 +729,8 @@ plt.show()
 
 ### 17 — Zipf's law of city sizes {#sec-zipf}
 
-> **Class:** named first + canonical reference (distinct documents)
-> **Canonical introduction:** [@zipf1949human]
+> **Class:** named first + canonical reference (distinct documents) \
+> **Canonical introduction:** [@zipf1949human] \
 > **Named first:** [@auerbach1913gesetz]
 > **Domain:** rank against size in a heavy-tailed population
 
@@ -791,8 +762,8 @@ plt.show()
 
 ### 18 — Anscombe's quartet {#sec-anscombe}
 
-> **Class:** named first
-> **Canonical introduction:** [@anscombe1973graphs]
+> **Class:** named first \
+> **Canonical introduction:** [@anscombe1973graphs] \
 > **Domain:** the argument for plotting the data at all
 
 Four datasets share the same mean, variance, correlation and fitted line $y = 3 + 0.5x$, yet a linear trend, a curve, an outlier-bent line and a single leverage point could not look less alike. This is the book's Day-One cold open — Anscombe built the quartet precisely to show that a summary statistic is no substitute for the picture [@anscombe1973graphs].
@@ -830,8 +801,8 @@ plt.show()
 
 ### 19 — P–T phase diagram {#sec-phase-diagram}
 
-> **Class:** canonical reference
-> **Canonical introduction:** [@gibbs1876equilibrium]
+> **Class:** canonical reference \
+> **Canonical introduction:** [@gibbs1876equilibrium] \
 > **Domain:** the state space of matter
 
 Pressure against temperature carves the plane into solid, liquid and gas, with sublimation, fusion and vaporisation curves meeting at a triple point and the liquid–gas line ending abruptly at a critical point. Gibbs's phase rule gave the diagram its coordinates and its constraints [@gibbs1876equilibrium].
@@ -878,8 +849,8 @@ plt.show()
 
 ### 20 — Ramachandran plot {#sec-ramachandran}
 
-> **Class:** named first
-> **Canonical introduction:** [@ramachandran1963stereochemistry]
+> **Class:** named first \
+> **Canonical introduction:** [@ramachandran1963stereochemistry] \
 > **Domain:** the allowed backbone conformations of a protein
 
 The two backbone dihedral angles $\varphi$ and $\psi$ span a torus, and steric clashes forbid most of it — leaving tight clusters at the $\alpha$-helix and $\beta$-sheet conformations. Ramachandran computed the allowed regions from hard-sphere contacts and gave the plot its name [@ramachandran1963stereochemistry].
@@ -921,8 +892,8 @@ plt.show()
 
 ### 21 — Keeling curve {#sec-keeling}
 
-> **Class:** named first
-> **Canonical introduction:** [@keeling1960concentration]
+> **Class:** named first \
+> **Canonical introduction:** [@keeling1960concentration] \
 > **Domain:** the line that moved climate policy
 
 Atmospheric CO$_2$ climbs from about 315 ppm in 1958 toward 420 ppm, with an annual sawtooth from the breathing of Northern-Hemisphere forests riding the upward trend. Keeling's continuous Mauna Loa record established both the rise and its seasonal signature [@keeling1960concentration].
@@ -951,8 +922,8 @@ plt.show()
 
 ### 22 — Hockey stick {#sec-hockeystick}
 
-> **Class:** named first
-> **Canonical introduction:** [@mann1998global]
+> **Class:** named first \
+> **Canonical introduction:** [@mann1998global] \
 > **Domain:** a millennium of reconstructed temperature
 
 A temperature anomaly reconstructed from proxies stays roughly flat for nine centuries, then bends sharply upward in the twentieth — the blade of the stick. Mann, Bradley and Hughes assembled the multiproxy reconstruction that fixed the shape and its uncertainty band [@mann1998global].
@@ -986,8 +957,8 @@ plt.show()
 
 ### 23 — Sea-ice annual-cycle graph {#sec-seaice}
 
-> **Class:** canonical reference
-> **Canonical introduction:** [@fetterer2017seaice]
+> **Class:** canonical reference \
+> **Canonical introduction:** [@fetterer2017seaice] \
 > **Domain:** one calendar year, a line per year
 
 Drawing sea-ice extent month by month, one line per year, stacks the seasonal max–min cycle and lets a downward drift across decades show as later lines sitting lower. The National Snow and Ice Data Center's sea-ice index is the reference series for this now-standard spaghetti plot [@fetterer2017seaice].
@@ -1027,8 +998,8 @@ plt.show()
 
 ### 24 — Kyoto cherry-blossom bloom dates {#sec-cherry}
 
-> **Class:** named first
-> **Canonical introduction:** [@aono2008phenological]
+> **Class:** named first \
+> **Canonical introduction:** [@aono2008phenological] \
 > **Domain:** twelve centuries of phenology
 
 Kyoto's court diaries record the day of peak cherry bloom back to the ninth century, giving a noisy line that plunges to markedly earlier dates in the warming modern era. Aono and Kazui reconstructed the full-flowering series and the March temperatures behind it [@aono2008phenological].
@@ -1062,8 +1033,8 @@ plt.show()
 
 ### 25 — Candlestick / financial series {#sec-candlestick}
 
-> **Class:** named first
-> **Canonical introduction:** [@nison1991candlestick]
+> **Class:** named first \
+> **Canonical introduction:** [@nison1991candlestick] \
 > **Domain:** four prices per session in one dense mark
 
 Each session becomes a candle: a body from open to close, thin wicks to the high and low, coloured by whether the price rose or fell — four numbers per bar with almost no ink. Nison brought the Japanese rice-trading technique to Western markets and named it for the West [@nison1991candlestick].
@@ -1105,8 +1076,8 @@ plt.show()
 
 ### 26 — Culturomics / Google Books Ngram {#sec-ngram}
 
-> **Class:** named first
-> **Canonical introduction:** [@michel2011quantitative]
+> **Class:** named first \
+> **Canonical introduction:** [@michel2011quantitative] \
 > **Domain:** a word's frequency across centuries
 
 Relative frequency against year traces the life of a word — one term rising as its rival falls, their curves crossing where usage changed hands. Michel and colleagues built the culturomic corpus that made these trajectories a quantitative object [@michel2011quantitative].
@@ -1138,8 +1109,8 @@ plt.show()
 
 ### 27 — LIGO gravitational-wave chirp {#sec-ligo}
 
-> **Class:** named first
-> **Canonical introduction:** [@abbott2016observation]
+> **Class:** named first \
+> **Canonical introduction:** [@abbott2016observation] \
 > **Domain:** a signal in time
 
 The strain from two merging black holes sweeps up in frequency and amplitude — the chirp — then rings down in a few cycles once the horizons fuse. The LIGO collaboration's GW150914 detection was the first direct observation of the waveform [@abbott2016observation].
@@ -1176,8 +1147,8 @@ plt.show()
 
 ### 28 — Exoplanet transit & radial-velocity curves {#sec-exoplanet}
 
-> **Class:** named first
-> **Canonical introduction:** [@charbonneau2000detection]
+> **Class:** named first \
+> **Canonical introduction:** [@charbonneau2000detection] \
 > **Domain:** the dimming and the wobble
 
 A transiting planet cuts a flat-bottomed dip in the star's light while its gravity pulls the star through a radial-velocity sinusoid — two independent curves for one orbit. Charbonneau and colleagues measured the first transit of a known exoplanet, joining the photometric dip to the spectroscopic wobble [@charbonneau2000detection].
@@ -1219,8 +1190,8 @@ plt.show()
 
 ### 29 — Yield curve {#sec-yieldcurve}
 
-> **Class:** shared genre idiom
-> **Canonical introduction:** [@macaulay1938movements]
+> **Class:** shared genre idiom \
+> **Canonical introduction:** [@macaulay1938movements] \
 > **Domain:** a cross-sectional curve read as a signal
 
 Yield against maturity is normally an upward slope; when it flattens or inverts — short rates above long — the shape itself is read as a recession signal. Macaulay's study of interest-rate movements gave the term-structure curve its analytical footing [@macaulay1938movements].
@@ -1258,8 +1229,8 @@ plt.show()
 
 ### 30 — Colour wheel {#sec-colourwheel}
 
-> **Class:** named first
-> **Canonical introduction:** [@newton1704opticks]
+> **Class:** named first \
+> **Canonical introduction:** [@newton1704opticks] \
 > **Domain:** the organisation of colour into a closed ring
 
 Bending the spectrum into a circle joins violet back to red and turns hue into an angle — the first diagram to treat colour as a cyclic quantity. Newton drew the wheel in the *Opticks* [@newton1704opticks]; Dalton's 1798 account of his own colour-blindness stands as the conscience of every palette choice that follows.
@@ -1290,8 +1261,8 @@ plt.show()
 
 ### 31 — Climate stripes {#sec-climatestripes}
 
-> **Class:** named first
-> **Canonical introduction:** [@hawkins2018warming]
+> **Class:** named first \
+> **Canonical introduction:** [@hawkins2018warming] \
 > **Domain:** temperature as pure colour, axes removed
 
 Stripping every axis and label leaves one coloured band per year on a blue-to-red diverging scale — warming shown as colour alone, legible with no training. Hawkins designed the warming-stripes graphic for exactly that reach [@hawkins2018warming].
@@ -1320,8 +1291,8 @@ plt.show()
 
 ### 32 — CMB temperature map {#sec-cmb-map}
 
-> **Class:** named first
-> **Canonical introduction:** [@smoot1992structure]
+> **Class:** named first \
+> **Canonical introduction:** [@smoot1992structure] \
 > **Domain:** the oldest light as a field of fluctuations
 
 Tiny temperature variations across the microwave sky — parts in a hundred thousand — become a field of hot and cold blotches on a diverging colour scale. COBE's DMR, reported by Smoot and colleagues, first resolved the anisotropy [@smoot1992structure].
@@ -1353,8 +1324,8 @@ plt.show()
 
 ### 33 — Ozone hole {#sec-ozone}
 
-> **Class:** named first
-> **Canonical introduction:** [@farman1985large]
+> **Class:** named first \
+> **Canonical introduction:** [@farman1985large] \
 > **Domain:** the Antarctic false-colour map
 
 Total-column ozone mapped over the pole shows a deep central minimum — the hole — rendered in false colour so the depletion reads instantly. Farman, Gardiner and Shanklin's ground measurements first reported the springtime Antarctic loss [@farman1985large].
@@ -1390,8 +1361,8 @@ plt.show()
 
 ### 34 — Choropleth + cartogram {#sec-choropleth}
 
-> **Class:** named first
-> **Canonical introduction:** [@dupin1826carte]
+> **Class:** named first \
+> **Canonical introduction:** [@dupin1826carte] \
 > **Domain:** a value carried by area
 
 A choropleth shades each region by its value; a cartogram resizes the same regions by that value, trading true shape for true magnitude — two answers to the problem that big areas shout and small ones vanish. Dupin's 1826 shaded map of French literacy is the first modern choropleth [@dupin1826carte].
@@ -1437,8 +1408,8 @@ plt.show()
 
 ### 35 — 3D molecular structure {#sec-molecule3d}
 
-> **Class:** shared genre idiom
-> **Canonical introduction:** [@corey1953molecular]
+> **Class:** shared genre idiom \
+> **Canonical introduction:** [@corey1953molecular] \
 > **Domain:** ball-and-stick to space-filling
 
 Atoms drawn as spheres and bonds as sticks make a molecule's geometry legible in three dimensions — here methane's carbon at the centre of a hydrogen tetrahedron. Corey and Pauling's models set the conventions for scaled atomic radii and bond sticks [@corey1953molecular].
@@ -1469,8 +1440,8 @@ plt.show()
 
 ### 36 — DNA double helix {#sec-dna}
 
-> **Class:** named first
-> **Canonical introduction:** [@watson1953molecular]
+> **Class:** named first \
+> **Canonical introduction:** [@watson1953molecular] \
 > **Domain:** 3D structure inferred from diffraction
 
 Two antiparallel strands wind around a common axis, rungs of paired bases holding them at a fixed spacing — a shape that carried its own copying mechanism in plain sight. Watson and Crick proposed the double helix from Franklin's and Wilkins's diffraction data [@watson1953molecular].
@@ -1504,8 +1475,8 @@ plt.show()
 
 ### 37 — Protein ribbon {#sec-ribbon}
 
-> **Class:** named first
-> **Canonical introduction:** [@richardson1981anatomy]
+> **Class:** named first \
+> **Canonical introduction:** [@richardson1981anatomy] \
 > **Domain:** the fold made legible
 
 A single backbone traced as a ribbon coils tightly through a helix, then straightens into a strand — the schematic that lets an eye read secondary structure at a glance. Jane Richardson's *Anatomy and Taxonomy of Protein Structure* introduced the ribbon idiom [@richardson1981anatomy].
@@ -1544,8 +1515,8 @@ plt.show()
 
 ### 38 — Atomic orbitals / probability clouds {#sec-orbitals}
 
-> **Class:** canonical reference
-> **Canonical introduction:** [@white1931pictorial]
+> **Class:** canonical reference \
+> **Canonical introduction:** [@white1931pictorial] \
 > **Domain:** continuous probability in three dimensions
 
 An orbital is a probability density, not an orbit; the hydrogen $2p_z$ state shows as two lobes of $|\psi|^2$ above and below the nucleus, densest where the electron is most likely found. White's *Pictorial Representations of the Electron Cloud* gave these densities their canonical images [@white1931pictorial].
@@ -1578,8 +1549,8 @@ plt.show()
 
 ### 39 — Cosmic web {#sec-cosmicweb}
 
-> **Class:** shared genre idiom
-> **Canonical introduction:** [@delapparent1986slice]
+> **Class:** shared genre idiom \
+> **Canonical introduction:** [@delapparent1986slice] \
 > **Domain:** large-scale structure as filaments and voids
 
 Plotting galaxies by redshift and sky angle in a thin wedge reveals that matter is not scattered but strung along filaments around great empty voids. De Lapparent, Geller and Huchra's slice of the CfA survey first showed the frothy structure at this scale [@delapparent1986slice].
@@ -1619,6 +1590,7 @@ ax.set_title("Cosmic web — slice of the universe", pad=16)
 plt.tight_layout()
 plt.show()
 ```
+
 # Part B — Gestalt grouping {#sec-part-b}
 
 Perception does not stop at measuring single marks; it groups them. Marks that connect read as one structure, marks that flow read as a path, marks that sit close or look alike read as a cluster, and a boundary read as enclosure turns empty space into an encoding — these Gestalt principles are the load-bearing walls of the network, the Sankey, the heatmap and the map.
@@ -1629,8 +1601,8 @@ Perception does not stop at measuring single marks; it groups them. Marks that c
 
 ### 40 — Food web {#sec-foodweb}
 
-> **Class:** uncertain attribution
-> **Canonical introduction:** [@elton1927animal]
+> **Class:** uncertain attribution \
+> **Canonical introduction:** [@elton1927animal] \
 > **Named first:** [@summerhayes1923contribution]
 > **Domain:** when connection is the data
 
@@ -1683,8 +1655,8 @@ plt.tight_layout(); plt.show()
 
 ### 41 — Connectome {#sec-connectome}
 
-> **Class:** named first
-> **Canonical introduction:** [@sporns2005human]
+> **Class:** named first \
+> **Canonical introduction:** [@sporns2005human] \
 > **Domain:** the brain as a network
 
 The connectome renders the brain as a graph — regions as nodes, tracts or correlations as edges — whose modular community structure is the finding, not the layout. Sporns, Tononi and Kötter named the human connectome and set the network agenda for neuroscience [@sporns2005human].
@@ -1720,8 +1692,8 @@ plt.tight_layout(); plt.show()
 
 ### 42 — Artificial neural network {#sec-ann}
 
-> **Class:** canonical reference
-> **Canonical introduction:** [@mcculloch1943logical]
+> **Class:** canonical reference \
+> **Canonical introduction:** [@mcculloch1943logical] \
 > **Domain:** the engineered twin
 
 An artificial neural network diagram stacks layers of units with full connections between adjacent layers, the engineered mirror of the biological graph. McCulloch and Pitts gave the first formal model of a neuron as a logical threshold unit [@mcculloch1943logical].
@@ -1763,8 +1735,8 @@ plt.tight_layout(); plt.show()
 
 ### 43 — Airline / transport network {#sec-airline}
 
-> **Class:** shared genre idiom
-> **Canonical introduction:** [@guimera2005worldwide]
+> **Class:** shared genre idiom \
+> **Canonical introduction:** [@guimera2005worldwide] \
 > **Domain:** a spatial graph
 
 A transport network embeds nodes at their geographic coordinates and draws routes as edges, so hubs surface as high-degree points. Guimerà and colleagues analysed the worldwide airport network and exposed its scale-free, community-structured form [@guimera2005worldwide].
@@ -1804,8 +1776,8 @@ plt.tight_layout(); plt.show()
 
 ### 44 — Feynman diagram {#sec-feynman}
 
-> **Class:** named first
-> **Canonical introduction:** [@feynman1949spacetime]
+> **Class:** named first \
+> **Canonical introduction:** [@feynman1949spacetime] \
 > **Domain:** a graph that is also physics
 
 A Feynman diagram is a graph whose edges are particle worldlines and whose vertices are interactions, at once a bookkeeping device and a term in a perturbation series. Feynman introduced the space-time diagrams in his 1949 formulation of quantum electrodynamics [@feynman1949spacetime].
@@ -1854,8 +1826,8 @@ plt.tight_layout(); plt.show()
 
 ### 45 — Logic gate / transistor {#sec-logicgate}
 
-> **Class:** shared genre idiom
-> **Canonical introduction:** [@shannon1938symbolic]
+> **Class:** shared genre idiom \
+> **Canonical introduction:** [@shannon1938symbolic] \
 > **Domain:** the unit of computation
 
 A logic-circuit schematic wires gate glyphs into a combinational function, each gate a node and each wire an edge carrying a Boolean value. Shannon's thesis established that switching circuits realise Boolean algebra [@shannon1938symbolic].
@@ -1919,8 +1891,8 @@ plt.tight_layout(); plt.show()
 
 ### 46 — Character co-occurrence network {#sec-lesmis}
 
-> **Class:** canonical reference
-> **Canonical introduction:** [@knuth1993stanford]
+> **Class:** canonical reference \
+> **Canonical introduction:** [@knuth1993stanford] \
 > **Domain:** narrative as a graph
 
 A co-occurrence network turns a narrative into a graph — characters as nodes, shared scenes as weighted edges — and lets community structure stand in for plot. The Les Misérables graph enters the canon through Knuth's Stanford GraphBase [@knuth1993stanford].
@@ -1956,8 +1928,8 @@ plt.tight_layout(); plt.show()
 
 ### 47 — Tree of life / phylogeny {#sec-treeoflife}
 
-> **Class:** named first
-> **Canonical introduction:** [@darwin1859origin]
+> **Class:** named first \
+> **Canonical introduction:** [@darwin1859origin] \
 > **Domain:** the dendrogram archetype
 
 A phylogenetic tree draws descent as a rooted branching diagram, sister clades meeting at common ancestors. The sole illustration in Darwin's Origin was such a tree of divergence [@darwin1859origin].
@@ -1987,8 +1959,8 @@ plt.tight_layout(); plt.show()
 
 ### 48 — Molecular-clock divergence tree {#sec-molclock}
 
-> **Class:** named first
-> **Canonical introduction:** [@zuckerkandl1965evolutionary]
+> **Class:** named first \
+> **Canonical introduction:** [@zuckerkandl1965evolutionary] \
 > **Domain:** branch length as time
 
 A phylogram lets horizontal branch length encode divergence time, turning a bare topology into a datable chronology. Zuckerkandl and Pauling proposed the molecular clock, reading sequence differences as elapsed time [@zuckerkandl1965evolutionary].
@@ -2034,8 +2006,8 @@ plt.tight_layout(); plt.show()
 
 ### 49 — Language family tree {#sec-langtree}
 
-> **Class:** named first
-> **Canonical introduction:** [@schleicher1863darwinsche]
+> **Class:** named first \
+> **Canonical introduction:** [@schleicher1863darwinsche] \
 > **Domain:** descent of languages
 
 A Stammbaum draws languages as a descent tree from a reconstructed proto-language, the dendrogram idiom borrowed for historical linguistics. Schleicher imported Darwin's branching diagram to model language families [@schleicher1863darwinsche].
@@ -2089,8 +2061,8 @@ plt.tight_layout(); plt.show()
 
 ### 50 — The Tonnetz {#sec-tonnetz}
 
-> **Class:** named first
-> **Canonical introduction:** [@euler1739tentamen]
+> **Class:** named first \
+> **Canonical introduction:** [@euler1739tentamen] \
 > **Domain:** a designed lattice for pitch
 
 The Tonnetz lays pitch classes on a triangular lattice whose three axes are the perfect fifth, the major third and the minor third, so consonant triads become adjacent triangles. Euler drew the first such tone-network [@euler1739tentamen].
@@ -2136,8 +2108,8 @@ plt.tight_layout(); plt.show()
 
 ### 51 — cGh cube {#sec-cghcube}
 
-> **Class:** shared genre idiom
-> **Canonical introduction:** [@okun1991fundamental]
+> **Class:** shared genre idiom \
+> **Canonical introduction:** [@okun1991fundamental] \
 > **Domain:** physical theories placed by their constants
 
 The cGh cube places physical theories at the vertices of a cube whose axes are the constants c, G and h, so each theory is fixed by which constants it takes seriously. Okun popularised the cube as a map of the fundamental theories [@okun1991fundamental].
@@ -2180,8 +2152,8 @@ plt.tight_layout(); plt.show()
 
 ### 52 — Standard Model double simplex {#sec-standardmodel}
 
-> **Class:** canonical reference
-> **Canonical introduction:** [@workman2022review]
+> **Class:** canonical reference \
+> **Canonical introduction:** [@workman2022review] \
 > **Domain:** particles placed to show interactions
 
 The Standard Model table arranges the fundamental particles as tiles — three generations of quarks and leptons plus the gauge bosons and the Higgs — coloured by kind so the interaction pattern reads off the grid. The Particle Data Group review is the canonical tabulation [@workman2022review].
@@ -2237,8 +2209,8 @@ plt.tight_layout(); plt.show()
 
 ### 53 — Cultural history as a network {#sec-culturenet}
 
-> **Class:** canonical reference
-> **Canonical introduction:** [@schich2014network]
+> **Class:** canonical reference \
+> **Canonical introduction:** [@schich2014network] \
 > **Domain:** 150,000 lives over two millennia
 
 A cultural-history network draws lives as directed edges from birthplace to death-place between geographic centres, edge weight tracing the migration of talent. Schich and colleagues mapped 150,000 notable lives over two millennia this way [@schich2014network].
@@ -2277,14 +2249,15 @@ ax.set_title("Birth-to-death migration of cultural figures")
 ax.grid(True, alpha=0.3)
 plt.tight_layout(); plt.show()
 ```
+
 ## B2. Continuity and flow — directed paths and bands {#sec-unit-b2}
 
 *After Tufte's reading of Minard, The Visual Display of Quantitative Information (1983).*
 
 ### 54 — Water & carbon cycle {#sec-carboncycle}
 
-> **Class:** shared genre idiom  
-> **Canonical introduction:** [@falkowski2000global]  
+> **Class:** shared genre idiom \
+> **Canonical introduction:** [@falkowski2000global] \
 > **Domain:** closed-loop flows  
 
 Reservoirs sit as labelled boxes and fluxes run between them as directed arrows whose width scales with the mass moved per year, so a conserved quantity is tracked around a closed loop. Falkowski and colleagues drew the carbon budget in exactly this box-and-flux idiom to weigh the anthropogenic perturbation against the natural cycle [@falkowski2000global].
@@ -2343,8 +2316,8 @@ plt.show()
 
 ### 55 — Trophic / energy-flow pyramid {#sec-trophic}
 
-> **Class:** named first + canonical reference (distinct documents)  
-> **Canonical introduction:** [@lindeman1942trophic]  
+> **Class:** named first + canonical reference (distinct documents) \
+> **Canonical introduction:** [@lindeman1942trophic] \
 > **Named first:** [@elton1927animal]  
 > **Domain:** energy through an ecosystem  
 
@@ -2389,8 +2362,8 @@ plt.show()
 
 ### 56 — Sankey of energy/material flow {#sec-sankey}
 
-> **Class:** named first  
-> **Canonical introduction:** [@sankey1898thermal]  
+> **Class:** named first \
+> **Canonical introduction:** [@sankey1898thermal] \
 > **Domain:** magnitude along paths  
 
 A Sankey diagram splits one input stream into branches whose widths stay proportional to the quantity carried, so conservation and loss are read directly from band thickness. Sankey drew the first such diagram to account for the energy losses of a steam engine [@sankey1898thermal].
@@ -2419,8 +2392,8 @@ plt.show()
 
 ### 57 — Haber–Bosch / refinery process flow {#sec-processflow}
 
-> **Class:** named first  
-> **Canonical introduction:** [@bosch1932development]  
+> **Class:** named first \
+> **Canonical introduction:** [@bosch1932development] \
 > **Domain:** the industrial transformation  
 
 A process-flow diagram chains unit operations as boxes and connects them with directed material streams, closing the loop where unreacted feed is recycled. Bosch described the high-pressure ammonia synthesis this diagram traces — feed compression, catalytic reaction, condensation, and recycle [@bosch1932development].
@@ -2475,8 +2448,8 @@ plt.show()
 
 ### 58 — Central dogma {#sec-centraldogma}
 
-> **Class:** named first + canonical reference (distinct documents)  
-> **Canonical introduction:** [@crick1970central]  
+> **Class:** named first + canonical reference (distinct documents) \
+> **Canonical introduction:** [@crick1970central] \
 > **Named first:** [@crick1958protein]  
 > **Domain:** directional flow of information  
 
@@ -2521,8 +2494,8 @@ plt.show()
 
 ### 59 — Shannon channel + entropy {#sec-shannon}
 
-> **Class:** named first  
-> **Canonical introduction:** [@shannon1948mathematical]  
+> **Class:** named first \
+> **Canonical introduction:** [@shannon1948mathematical] \
 > **Domain:** information through noise  
 
 The communication system is drawn as a chain — source, encoder, noisy channel, decoder, destination — and the amount of information is measured by an entropy that peaks when outcomes are equiprobable. Shannon set out both the block diagram and the entropy function in one paper [@shannon1948mathematical].
@@ -2575,8 +2548,8 @@ plt.show()
 
 ### 60 — Greenhouse / energy-balance (Trenberth) diagram {#sec-energybudget}
 
-> **Class:** shared genre idiom  
-> **Canonical introduction:** [@trenberth2009earth]  
+> **Class:** shared genre idiom \
+> **Canonical introduction:** [@trenberth2009earth] \
 > **Named first:** [@kiehl1997earth]  
 > **Domain:** the energy budget  
 
@@ -2619,8 +2592,8 @@ plt.show()
 
 ### 61 — Out-of-Africa migration map {#sec-outofafrica}
 
-> **Class:** shared genre idiom  
-> **Canonical introduction:** [@cann1987mitochondrial]  
+> **Class:** shared genre idiom \
+> **Canonical introduction:** [@cann1987mitochondrial] \
 > **Domain:** movement across space  
 
 Arrows radiate from East Africa across an abstracted world, each annotated with an approximate arrival date, turning a genealogy into a route across space and time. Cann, Stoneking, and Wilson's mitochondrial coalescence placed the common ancestor in Africa and set this migration narrative going [@cann1987mitochondrial].
@@ -2668,8 +2641,8 @@ plt.show()
 
 ### 62 — Minard's march on Moscow {#sec-minard}
 
-> **Class:** named first  
-> **Canonical introduction:** [@minard1869carte]  
+> **Class:** named first \
+> **Canonical introduction:** [@minard1869carte] \
 > **Domain:** six variables, one frame  
 
 A band whose width tracks the surviving army thins along the advance and thins again on the retreat, while a linked panel below plots the falling temperature against longitude — six variables held in one frame. Minard's flow map of Napoleon's 1812 campaign is the canonical instance [@minard1869carte].
@@ -2724,8 +2697,8 @@ plt.show()
 
 ### 63 — Clustered expression heatmap {#sec-heatmap}
 
-> **Class:** named first  
-> **Canonical introduction:** [@eisen1998cluster]  
+> **Class:** named first \
+> **Canonical introduction:** [@eisen1998cluster] \
 > **Domain:** reorder, and clusters appear  
 
 Permuting the rows and columns of an expression matrix by hierarchical clustering pulls co-regulated genes into contiguous blocks that a random ordering hides. Eisen and colleagues introduced the clustered heatmap with its red–green diverging map for genome-wide expression [@eisen1998cluster].
@@ -2774,8 +2747,8 @@ plt.show()
 
 ### 64 — Correlation heatmap / scatter-matrix {#sec-splom}
 
-> **Class:** uncertain attribution  
-> **Canonical introduction:** [@chambers1983graphical]  
+> **Class:** uncertain attribution \
+> **Canonical introduction:** [@chambers1983graphical] \
 > **Domain:** relationships at scale  
 
 A scatterplot matrix lays every pairwise plot in a grid so structure and correlation across many variables are scanned at once, off-diagonal cells mirroring about the diagonal. Chambers and colleagues codified the scatterplot matrix as a standard tool of graphical analysis [@chambers1983graphical].
@@ -2822,8 +2795,8 @@ plt.show()
 
 ### 65 — Cosine similarity {#sec-cosine}
 
-> **Class:** canonical reference  
-> **Canonical introduction:** [@salton1975vector]  
+> **Class:** canonical reference \
+> **Canonical introduction:** [@salton1975vector] \
 > **Domain:** the angle between vectors  
 
 Documents become vectors and their similarity is the cosine of the angle between them, so length drops out and only direction — shared term profile — counts. Salton's vector space model made cosine similarity the standard measure for information retrieval [@salton1975vector].
@@ -2867,8 +2840,8 @@ plt.show()
 
 ### 66 — t-SNE / UMAP projection {#sec-tsne}
 
-> **Class:** named first  
-> **Canonical introduction:** [@vandermaaten2008visualizing]  
+> **Class:** named first \
+> **Canonical introduction:** [@vandermaaten2008visualizing] \
 > **Domain:** high dimensions flattened to 2D  
 
 A nonlinear embedding places high-dimensional points on the plane so that neighbours stay near and distinct groups fall into separated islands. van der Maaten and Hinton introduced t-SNE, whose crisply separated clusters became the signature look of embedding plots [@vandermaaten2008visualizing].
@@ -2901,8 +2874,8 @@ plt.show()
 
 ### 67 — Word embeddings {#sec-embeddings}
 
-> **Class:** named first  
-> **Canonical introduction:** [@mikolov2013efficient]  
+> **Class:** named first \
+> **Canonical introduction:** [@mikolov2013efficient] \
 > **Domain:** semantics as geometry  
 
 Words map to vectors whose differences encode relations, so an analogy becomes a parallelogram: king − man + woman lands near queen. Mikolov and colleagues' word2vec produced these linear analogy structures [@mikolov2013efficient].
@@ -2946,8 +2919,8 @@ plt.show()
 
 ### 68 — Art embedding map {#sec-artmap}
 
-> **Class:** uncertain attribution  
-> **Canonical introduction:** [@karayev2014recognizing]  
+> **Class:** uncertain attribution \
+> **Canonical introduction:** [@karayev2014recognizing] \
 > **Domain:** a collection placed by visual similarity  
 
 Every artwork becomes a point in a plane and visual style pulls similar works together, so a collection self-organises into style neighbourhoods. Karayev and colleagues learned image-style features whose embeddings cluster paintings and photographs by their look [@karayev2014recognizing].
@@ -2981,8 +2954,8 @@ plt.show()
 
 ### 69 — Stylometry / Burrows's Delta {#sec-delta}
 
-> **Class:** named first  
-> **Canonical introduction:** [@burrows2002delta]  
+> **Class:** named first \
+> **Canonical introduction:** [@burrows2002delta] \
 > **Domain:** authorship as distance in style-space  
 
 Each text becomes a vector of z-scored frequencies of common words, and the mean absolute difference between two such vectors — Delta — clusters texts by author. Burrows defined the Delta measure for authorship attribution [@burrows2002delta].
@@ -3027,8 +3000,8 @@ plt.show()
 
 ### 70 — Topic model (LDA) {#sec-lda}
 
-> **Class:** named first  
-> **Canonical introduction:** [@blei2003latent]  
+> **Class:** named first \
+> **Canonical introduction:** [@blei2003latent] \
 > **Domain:** latent themes as a reduced basis  
 
 Latent Dirichlet allocation represents each document as a mixture over a few latent topics, so a stacked bar reads off how much of every theme a document holds. Blei, Ng, and Jordan introduced LDA and its document-as-topic-mixture representation [@blei2003latent].
@@ -3067,8 +3040,8 @@ plt.show()
 
 ### 71 — Emotional arcs of stories {#sec-arcs}
 
-> **Class:** named first  
-> **Canonical introduction:** [@reagan2016emotional]  
+> **Class:** named first \
+> **Canonical introduction:** [@reagan2016emotional] \
 > **Domain:** six narrative shapes from SVD  
 
 Tracking sentiment across narrative time yields a small set of recurring shapes — steady rise, fall-then-rise, rise-then-fall — that a singular value decomposition of many stories reduces to a handful of archetypes. Reagan and colleagues extracted six such emotional arcs from thousands of texts [@reagan2016emotional].
@@ -3101,14 +3074,15 @@ ax.grid(True, alpha=0.3)
 plt.tight_layout()
 plt.show()
 ```
+
 ## B4. Enclosure, maps, and spatial reasoning {#sec-unit-b4}
 
 *After Bertin on maps and Cairo, The Truthful Art (2016).*
 
 ### 72 — Periodic table {#sec-periodic}
 
-> **Class:** named first
-> **Canonical introduction:** [@mendeleev1869beziehungen]
+> **Class:** named first \
+> **Canonical introduction:** [@mendeleev1869beziehungen] \
 > **Domain:** periodicity by atomic number
 
 A tiled grid indexed by group and period turns the chemistry of an element into a position, and neighbours in a column share properties. Mendeleev arranged the known elements so that the periodic recurrence fell into columns and left gaps for elements not yet found [@mendeleev1869beziehungen].
@@ -3208,8 +3182,8 @@ plt.show()
 
 ### 73 — Origin-of-the-elements table {#sec-nucleosynthesis}
 
-> **Class:** shared genre idiom
-> **Canonical introduction:** [@burbidge1957synthesis]
+> **Class:** shared genre idiom \
+> **Canonical introduction:** [@burbidge1957synthesis] \
 > **Domain:** the grid recoloured by process
 
 The same tiled grid, recoloured by where each nucleus is forged, turns the table into a map of cosmic history — hydrogen from the Big Bang, iron from exploding stars, the heaviest nuclei from merging neutron stars. Burbidge, Burbidge, Fowler, and Hoyle set out the stellar processes that build the elements beyond hydrogen and helium [@burbidge1957synthesis].
@@ -3317,8 +3291,8 @@ plt.show()
 
 ### 74 — Genetic code wheel {#sec-codonwheel}
 
-> **Class:** shared genre idiom
-> **Canonical introduction:** [@nirenberg1961dependence]
+> **Class:** shared genre idiom \
+> **Canonical introduction:** [@nirenberg1961dependence] \
 > **Domain:** codon to amino acid
 
 Three concentric rings — first, second, third base — read from centre outward resolve each of the 64 codons to one amino acid, with synonymous codons falling into the same wedge. Nirenberg and Matthaei cracked the first codon by showing that a poly-uracil template directs synthesis of phenylalanine [@nirenberg1961dependence].
@@ -3398,8 +3372,8 @@ plt.show()
 
 ### 75 — Leontief input–output matrix {#sec-leontief}
 
-> **Class:** named first
-> **Canonical introduction:** [@leontief1936quantitative]
+> **Class:** named first \
+> **Canonical introduction:** [@leontief1936quantitative] \
 > **Domain:** an economy as a matrix
 
 Laying every sector along both axes and filling cell (i, j) with the flow of output from sector i into sector j renders a whole economy as one matrix, its diagonal thick with intra-industry use. Leontief built the first such input–output table for the United States and solved it as a linear system [@leontief1936quantitative].
@@ -3442,8 +3416,8 @@ plt.show()
 
 ### 76 — Planetary interior cross-sections {#sec-planetinterior}
 
-> **Class:** shared genre idiom
-> **Canonical introduction:** [@dziewonski1981preliminary]
+> **Class:** shared genre idiom \
+> **Canonical introduction:** [@dziewonski1981preliminary] \
 > **Domain:** layered structure
 
 Concentric shells drawn to scale expose a planet's radial structure — a solid inner core, a liquid outer core, the mantle, and a thin crust — with the density jumping at each boundary. Dziewonski and Anderson fixed the reference radii and densities of Earth's layers in the Preliminary Reference Earth Model [@dziewonski1981preliminary].
@@ -3504,8 +3478,8 @@ plt.show()
 
 ### 77 — Biogeography map / Wallace line {#sec-wallace}
 
-> **Class:** named first
-> **Canonical introduction:** [@wallace1876geographical]
+> **Class:** named first \
+> **Canonical introduction:** [@wallace1876geographical] \
 > **Domain:** boundaries in space
 
 A single line drawn between adjacent islands can separate two faunas that never mixed, making a deep-water barrier legible as a border on the map. Wallace traced the sharp zoological divide running between Bali and Lombok that splits Asian from Australian animals [@wallace1876geographical].
@@ -3556,8 +3530,8 @@ plt.show()
 
 ### 78 — John Snow's cholera map {#sec-snow}
 
-> **Class:** named first
-> **Canonical introduction:** [@snow1855mode]
+> **Class:** named first \
+> **Canonical introduction:** [@snow1855mode] \
 > **Domain:** spatial pattern as causal argument
 
 Plotting each death as a dot turns a street into an argument: the cases pile up around one water pump and thin with distance from it, so the spatial pattern itself names the cause. Snow mapped the 1854 Soho outbreak and traced it to the Broad Street pump [@snow1855mode] — the second beat of the Day-One pairing, where a map, not a table, carries the inference.
@@ -3599,8 +3573,8 @@ plt.show()
 
 ### 79 — Gerrymander / districting {#sec-gerrymander}
 
-> **Class:** named first
-> **Canonical introduction:** [@griffith1907rise]
+> **Class:** named first \
+> **Canonical introduction:** [@griffith1907rise] \
 > **Domain:** how boundaries manufacture outcomes
 
 Holding the votes fixed and redrawing the district lines changes who wins, so the partition — not the electorate — sets the seat count. Griffith gave the first systematic geometric analysis of how district shape converts votes into representation [@griffith1907rise].
@@ -3651,8 +3625,8 @@ plt.show()
 
 ### 80 — Minkowski / light cone {#sec-lightcone}
 
-> **Class:** named first
-> **Canonical introduction:** [@minkowski1909raum]
+> **Class:** named first \
+> **Canonical introduction:** [@minkowski1909raum] \
 > **Domain:** the cone partitions spacetime
 
 Drawing space against time and marking the 45° paths of light carves spacetime into a causal future, a causal past, and an unreachable "elsewhere". Minkowski recast special relativity as geometry on this four-dimensional continuum, with the cone dividing what an event can and cannot influence [@minkowski1909raum].
@@ -3704,8 +3678,8 @@ plt.show()
 
 ### 81 — Map projection problem {#sec-projection}
 
-> **Class:** shared genre idiom
-> **Canonical introduction:** [@tissot1881memoire]
+> **Class:** shared genre idiom \
+> **Canonical introduction:** [@tissot1881memoire] \
 > **Domain:** every map distorts
 
 No flat map preserves both shape and area; placing a small circle at each graticule node makes the distortion visible as the circles swell or stretch toward the poles. Tissot formalised this indicatrix as the general measure of a projection's local error [@tissot1881memoire] — the same tension the AIATSIS prelude raised, that no single frame renders the whole faithfully.
@@ -3776,8 +3750,8 @@ plt.show()
 
 ### 82 — Blackbody curve + spectral lines {#sec-blackbody}
 
-> **Class:** named first
-> **Canonical introduction:** [@planck1901gesetz]
+> **Class:** named first \
+> **Canonical introduction:** [@planck1901gesetz] \
 > **Domain:** lines pop against the continuum
 
 The smooth Planck continuum sets the backdrop against which sharp absorption lines read as notches — closure fills the missing light, so the eye completes the curve and the dark lines stand out. Planck derived the radiance law by quantising the oscillators of the cavity wall [@planck1901gesetz], and its peak shifts to shorter wavelengths as temperature climbs.
@@ -3820,8 +3794,8 @@ plt.show()
 
 ### 83 — CMB angular power spectrum {#sec-cmbspectrum}
 
-> **Class:** named first
-> **Canonical introduction:** [@debernardis2000flat]
+> **Class:** named first \
+> **Canonical introduction:** [@debernardis2000flat] \
 > **Domain:** the acoustic peaks
 
 Power plotted against multipole rises to a first acoustic peak near ℓ ≈ 200 and then rings down in damped harmonics — a single wave train the eye groups by common fate. The BOOMERANG flight resolved that first peak and pinned the geometry of the universe to flat [@debernardis2000flat].
@@ -3857,8 +3831,8 @@ plt.show()
 
 ### 84 — Higgs discovery bump {#sec-higgs}
 
-> **Class:** named first
-> **Canonical introduction:** [@aad2012observation]
+> **Class:** named first \
+> **Canonical introduction:** [@aad2012observation] \
 > **Domain:** a particle as a bump
 
 A new particle announces itself as a small Gaussian bump riding on a smooth falling background in the invariant-mass spectrum; closure separates the excess from the continuum the eye extrapolates beneath it. The ATLAS collaboration reported such an excess near 125 GeV, the signature of the Higgs boson [@aad2012observation].
@@ -3897,8 +3871,8 @@ plt.show()
 
 ### 85 — Double-slit interference {#sec-doubleslit}
 
-> **Class:** canonical reference
-> **Canonical introduction:** [@young1804bakerian]
+> **Class:** canonical reference \
+> **Canonical introduction:** [@young1804bakerian] \
 > **Domain:** the wave pattern itself
 
 Two slits produce a cosine fringe pattern modulated by a single-slit envelope, and the regular banding is read as one continuous wave field. Young's Bakerian lecture argued from exactly this pattern that light interferes, and so behaves as a wave [@young1804bakerian].
@@ -3939,8 +3913,8 @@ plt.show()
 
 ### 86 — Fourier decomposition + spectrogram {#sec-fourier}
 
-> **Class:** named first
-> **Canonical introduction:** [@fourier1822theorie]
+> **Class:** named first \
+> **Canonical introduction:** [@fourier1822theorie] \
 > **Domain:** signal as frequency
 
 A tangled time signal resolves into a handful of sharp lines once redrawn against frequency, each peak a sinusoidal component the ear and eye recover as one tone. Fourier proved that any such signal decomposes into a sum of sines and cosines [@fourier1822theorie].
@@ -3981,8 +3955,8 @@ plt.show()
 
 ### 87 — Plate tectonics + seafloor-age stripes {#sec-seafloor}
 
-> **Class:** named first
-> **Canonical introduction:** [@vine1963magnetic]
+> **Class:** named first \
+> **Canonical introduction:** [@vine1963magnetic] \
 > **Domain:** the symmetric stripes as one pattern
 
 Magnetic anomalies recorded in new crust form a barcode of normal and reversed stripes that mirrors exactly across the ridge axis, and the symmetry reads as a single pattern generated by spreading. Vine and Matthews argued that these matched stripes record seafloor spreading writing the field's reversals into the rock [@vine1963magnetic].
@@ -4022,6 +3996,7 @@ ax2.grid(True, alpha=0.3)
 plt.tight_layout()
 plt.show()
 ```
+
 # Part C — Beyond the static frame {#sec-part-c}
 
 The static frame is left behind here — systems that move over time, figures whose whole point is animation, and the honest depiction of what is not known. Uncertainty is drawn rather than suppressed; where a form is genuinely animated, a print or HTML book shows it as one representative still or a short small-multiple sequence.
@@ -4032,8 +4007,8 @@ The static frame is left behind here — systems that move over time, figures wh
 
 ### 88 — Lotka–Volterra phase portrait {#sec-lotkavolterra}
 
-> **Class:** named first  
-> **Canonical introduction:** [@lotka1925elements]  
+> **Class:** named first \
+> **Canonical introduction:** [@lotka1925elements] \
 > **Domain:** predator–prey limit cycle  
 
 Predator and prey abundances chase each other around a closed orbit rather than settling to a point, and plotting one against the other turns a pair of coupled rate equations into a family of nested loops. Lotka set out the equations in 1925 [@lotka1925elements]; each initial condition traces its own conserved cycle, and the inset time series shows the same motion as the out-of-phase peaks familiar from population records.
@@ -4081,8 +4056,8 @@ plt.show()
 
 ### 89 — The strange attractor {#sec-attractor}
 
-> **Class:** named first  
-> **Canonical introduction:** [@lorenz1963deterministic]  
+> **Class:** named first \
+> **Canonical introduction:** [@lorenz1963deterministic] \
 > **Domain:** deterministic chaos with structure  
 
 A deterministic system with no noise can still be unpredictable, and its trajectory need not wander freely — it settles onto a set with fixed geometry that it never leaves and never repeats. Lorenz found this in a three-variable convection model in 1963 [@lorenz1963deterministic]; the x–z projection is the double-lobed butterfly whose two wings the state orbits in an order no forecast can pin down.
@@ -4117,8 +4092,8 @@ plt.show()
 
 ### 90 — The bifurcation diagram {#sec-bifurcation}
 
-> **Class:** named first  
-> **Canonical introduction:** [@may1976simple]  
+> **Class:** named first \
+> **Canonical introduction:** [@may1976simple] \
 > **Domain:** the road to chaos  
 
 Raising a single control parameter takes a system from one stable state, to an oscillation between two, then four, then a cascade of doublings that ends in chaos. May's 1976 review made the logistic map the emblem of this route [@may1976simple]; iterating x = r·x(1−x) and scattering the settled values against r draws the period-doubling tree with its self-similar windows of order inside the chaos.
@@ -4151,8 +4126,8 @@ plt.show()
 
 ### 91 — Double pendulum {#sec-doublependulum}
 
-> **Class:** shared genre idiom  
-> **Canonical introduction:** [@shinbrot1992chaos]  
+> **Class:** shared genre idiom \
+> **Canonical introduction:** [@shinbrot1992chaos] \
 > **Domain:** sensitive dependence you can watch  
 
 Two double pendulums released from all-but-identical angles keep step for a moment and then swing wildly apart, making sensitive dependence on initial conditions visible without any equations on the page. Shinbrot and colleagues used exactly this apparatus to demonstrate chaos in a table-top mechanical system [@shinbrot1992chaos]; the tip traces below start 0.01 radians apart and diverge within seconds. The physical form is animated — a single still stands in for the motion.
@@ -4213,8 +4188,8 @@ plt.show()
 
 ### 92 — The Mandelbrot set / fractal {#sec-mandelbrot}
 
-> **Class:** named first  
-> **Canonical introduction:** [@mandelbrot1982fractal]  
+> **Class:** named first \
+> **Canonical introduction:** [@mandelbrot1982fractal] \
 > **Domain:** self-similarity at every scale  
 
 The boundary of the Mandelbrot set has detail at every magnification, an infinitely intricate coastline generated by iterating one quadratic map. Mandelbrot's 1982 book gave fractal geometry its name and this figure its icon [@mandelbrot1982fractal]; colouring each point c by how fast z = z² + c escapes to infinity draws the familiar bulbed body and its filigree edge.
@@ -4257,8 +4232,8 @@ plt.show()
 
 ### 93 — Reaction–diffusion (Turing) patterns {#sec-turing}
 
-> **Class:** named first  
-> **Canonical introduction:** [@turing1952chemical]  
+> **Class:** named first \
+> **Canonical introduction:** [@turing1952chemical] \
 > **Domain:** pattern self-organising  
 
 Two chemicals that react and diffuse at different rates can break a uniform field into spots and stripes on their own, no template required. Turing proposed this mechanism for biological pattern in 1952 [@turing1952chemical]; a short Gray–Scott simulation started from a small seed self-organises into the maze of blobs shown here.
@@ -4305,8 +4280,8 @@ plt.show()
 
 ### 94 — Flocking / boids {#sec-boids}
 
-> **Class:** named first  
-> **Canonical introduction:** [@reynolds1987flocks]  
+> **Class:** named first \
+> **Canonical introduction:** [@reynolds1987flocks] \
 > **Domain:** emergence from local rules  
 
 Coherent flocking needs no leader and no global plan — three local rules, keep apart, match your neighbours' heading, steer toward their centre, are enough for a crowd to move as one. Reynolds introduced this model of "boids" in 1987 [@reynolds1987flocks]; after a few hundred steps the velocity arrows below have aligned into a common drift.
@@ -4365,8 +4340,8 @@ plt.show()
 
 ### 95 — SIR epidemic curve {#sec-sir}
 
-> **Class:** named first  
-> **Canonical introduction:** [@kermack1927contribution]  
+> **Class:** named first \
+> **Canonical introduction:** [@kermack1927contribution] \
 > **Domain:** contagion dynamics  
 
 Splitting a population into susceptible, infective, and recovered compartments and letting infection flow between them produces the single-humped epidemic curve, with its peak and its burnt-out tail. Kermack and McKendrick set out the compartmental equations in 1927 [@kermack1927contribution]; the infective fraction rises, crests when the susceptible pool runs thin, and decays.
@@ -4409,8 +4384,8 @@ plt.show()
 
 ### 96 — Gapminder bubbles {#sec-gapminder}
 
-> **Class:** named first  
-> **Canonical introduction:** [@rosling2007visual]  
+> **Class:** named first \
+> **Canonical introduction:** [@rosling2007visual] \
 > **Domain:** wealth vs health vs time, animated  
 
 Four variables ride on one scatter — income on a log x-axis, life expectancy on y, population as bubble area, region as colour — and running it across years turns development into visible motion. Rosling's Gapminder presentations made this the definitive animated statistical graphic [@rosling2007visual]; the frame below is one representative year, since the animation over time collapses to a single still in print.
@@ -4455,8 +4430,8 @@ plt.show()
 
 ### 97 — Sequence alignment / genome browser {#sec-genomebrowser}
 
-> **Class:** named first  
-> **Canonical introduction:** [@kent2002human]  
+> **Class:** named first \
+> **Canonical introduction:** [@kent2002human] \
 > **Domain:** zoom from chromosome to base  
 
 A genome browser stacks heterogeneous data on a shared coordinate axis — gene models, read coverage, conservation — so that any locus can be read across all tracks at once and zoomed from whole chromosome down to single base. Kent's UCSC browser fixed this track layout for genomics in 2002 [@kent2002human]; genes appear as exon boxes joined by intron lines above histogram and conservation tracks.
@@ -4509,8 +4484,8 @@ plt.show()
 
 ### 98 — Geologic time spiral / stratigraphic column {#sec-geotime}
 
-> **Class:** canonical reference  
-> **Canonical introduction:** [@smith1815delineation]  
+> **Class:** canonical reference \
+> **Canonical introduction:** [@smith1815delineation] \
 > **Domain:** deep time compressed  
 
 A stratigraphic column stacks the eons and eras vertically with thickness scaled to duration, compressing four and a half billion years into a single legible strip that reads oldest at the bottom. William Smith's 1815 geological map established stratigraphic order as the organising principle of deep time [@smith1815delineation]; the column below colours each interval and sizes it by the span it covers.
@@ -4558,8 +4533,8 @@ plt.show()
 
 ### 99 — Confidence / credible intervals, error bars, fan charts {#sec-intervals}
 
-> **Class:** shared genre idiom  
-> **Canonical introduction:** [@neyman1937outline]  
+> **Class:** shared genre idiom \
+> **Canonical introduction:** [@neyman1937outline] \
 > **Domain:** uncertainty made visible  
 
 An estimate without its interval is half a statement; error bars and shaded bands attach the range of plausible values to every point and every fitted curve. Neyman's 1937 paper defined the confidence interval that these bars most often carry [@neyman1937outline]; a wide bar and a narrow one side by side say directly how much a number can be trusted.
@@ -4602,8 +4577,8 @@ plt.show()
 
 ### 100 — Poll-of-polls fan chart {#sec-fanchart}
 
-> **Class:** canonical reference  
-> **Canonical introduction:** [@britton1998inflation]  
+> **Class:** canonical reference \
+> **Canonical introduction:** [@britton1998inflation] \
 > **Domain:** uncertainty as the message  
 
 A fan chart puts uncertainty at the centre of the graphic: a central projection surrounded by nested predictive bands that fan wider the further ahead the forecast reaches. Britton, Fisher and Whitley described the Bank of England's inflation fan in 1998 [@britton1998inflation]; the darkening-to-lightening bands say plainly that the future is a distribution, not a line.
@@ -4643,8 +4618,8 @@ plt.show()
 
 ### 101 — Bayesian updating {#sec-bayes}
 
-> **Class:** canonical reference  
-> **Canonical introduction:** [@bayes1763essay]  
+> **Class:** canonical reference \
+> **Canonical introduction:** [@bayes1763essay] \
 > **Domain:** prior to posterior  
 
 Bayesian updating is one picture: a prior belief, multiplied by the likelihood of the data, renormalised into a posterior that is sharper than either. The rule traces to Bayes's essay published in 1763 [@bayes1763essay]; a Beta prior times a binomial likelihood gives a Beta posterior, and plotting all three on one axis shows belief concentrating as evidence arrives.
@@ -4684,8 +4659,8 @@ plt.show()
 
 ### 102 — ROC curve + confusion matrix {#sec-roc}
 
-> **Class:** named first  
-> **Canonical introduction:** [@green1966signal]  
+> **Class:** named first \
+> **Canonical introduction:** [@green1966signal] \
 > **Domain:** decision under a threshold  
 
 Any classifier that scores cases trades false alarms against missed hits as its threshold slides, and the ROC curve plots that whole trade-off while the confusion matrix pins down one chosen operating point. Green and Swets brought signal-detection theory and the ROC curve into psychophysics in 1966 [@green1966signal]; the area under the curve summarises separability, and the 2×2 grid counts the four outcomes at the threshold picked.
@@ -4741,8 +4716,8 @@ plt.show()
 
 ### 103 — Null distribution / permutation test {#sec-permutation}
 
-> **Class:** canonical reference  
-> **Canonical introduction:** [@fisher1935design]  
+> **Class:** canonical reference \
+> **Canonical introduction:** [@fisher1935design] \
 > **Domain:** what "significant" means  
 
 A permutation test makes the null hypothesis concrete: shuffle the group labels many times, recompute the statistic each time, and the spread of those values is the distribution to beat. Fisher set out this logic of randomisation in 1935 [@fisher1935design]; marking the observed difference against the shuffled histogram turns the p-value into a visible tail fraction.

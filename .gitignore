@@ -1,9 +1,12 @@
 .venv/
+.pptx-deps/
 __pycache__/
 *.pyc
 .DS_Store
 .streamlit/secrets.toml
 .env
+UTS_CANVAS_TOKEN
+.secrets/
 
 /.quarto/
 **/*.quarto_ipynb
@@ -17,3 +20,13 @@ _book/
 # Keep the one hand-authored example that is a real source file.
 *.html
 !examples/javascript_literacy/minimal_svg_chart.html
+
+# Office lock files and LaTeX build artifacts
+~$*
+*.aux
+*.nav
+*.snm
+*.toc
+*.synctex.gz
+texput.log
+*.report.json

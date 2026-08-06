@@ -1,4 +1,4 @@
-# Class 05 — Web Visualisation Studio — Maps, Flows, Animation, 3D, and JavaScript Literacy
+# Class 05, Web Visualisation Studio, Maps, Flows, Animation, 3D, and JavaScript Literacy
 
 ## Core question
 

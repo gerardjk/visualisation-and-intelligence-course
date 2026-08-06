@@ -1,4 +1,4 @@
-# Class 06 — Responsible Interpretation, Quality Review, Present and Defend
+# Class 06. Responsible Interpretation, Quality Review, Present and Defend
 
 ## Core question
 

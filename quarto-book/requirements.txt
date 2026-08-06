@@ -5,3 +5,5 @@ pandas
 squarify
 scipy
 networkx
+python-pptx
+qrcode
