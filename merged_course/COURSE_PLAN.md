@@ -63,7 +63,7 @@ structure.
 | Assessment | Weight | Type | AI status | Timing |
 |---|---:|---|---|---|
 | **A1. Critique and Repair portfolio** | 30% | Individual | Part A supervised & AI-restricted; Part C AI-integrated with a supplied-text fallback | Released in Seeing Data; supervised window at the start of Week 4; due Friday 28 August |
-| **A2. User Stories & UX Pivot** (exploratory → explanatory build) | 30% | Individual | Allowed with declaration | Assigned in the Dashboards session; due after the Streamlit session |
+| **A2. User Stories & UX Pivot** (exploratory → explanatory build) | 30% | Individual | Allowed with declaration | Assigned in the Dashboards session; due Friday 4 September 2026, 11:59pm |
 | **A3. The Rise of AI: Data Narrative Studio** | 40% | Group | AI-integrated; provenance matrix, disclosure and revision log required | Proposal after the Streamlit session; presentation and portfolio in the final session |
 
 **A1. Critique and Repair.** Each student selects three artefacts from the
@@ -92,7 +92,12 @@ autograder: in `assessments/A1-critique-and-repair/`.
 an approved dataset), define a persona and user stories, and build the
 explanatory pivot as a Tableau Public dashboard plus a short justification
 report. Individual rehearsal of the full persona → user story → task → form
-chain before group work begins.
+chain before group work begins. Due a clear week after A1 so the two 30%
+tasks never overlap.
+
+**Staged release.** Assessment details go out one at a time: A1 is published
+first and is the only brief students see initially; the A2 brief follows once
+A1 is underway, and the A3 brief once groups form.
 
 **A3. The Rise of AI.** Groups build a deployed interactive narrative
 (Streamlit or Tableau + GitHub) answering one arguable question inside the
