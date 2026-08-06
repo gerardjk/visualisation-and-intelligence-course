@@ -1,0 +1,227 @@
+% A1 — Critique and Repair: student handout.
+% Build: lualatex A1_brief.tex  (run twice)
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,urlcolor=coral,linkcolor=ink]{hyperref}
+\usepackage{fancyhdr}
+
+\definecolor{ink}{HTML}{23272B}
+\definecolor{coral}{HTML}{E8543F}
+\definecolor{mist}{HTML}{6B7480}
+\definecolor{panel}{HTML}{F4F1EA}
+
+\renewcommand{\familydefault}{\sfdefault}
+\color{ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\bfseries\color{ink}}
+\sectionfont{\Large\sffamily\bfseries\color{ink}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\color{mist}\footnotesize 36104 Data Visualisation and Narratives · Spring 2026}
+\fancyhead[R]{\color{mist}\footnotesize A1 · Critique and Repair}
+\fancyfoot[C]{\color{mist}\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\newcommand{\labelbox}[1]{\colorbox{panel}{\texttt{\small #1}}}
+
+\begin{document}
+
+% ---------------- title block ----------------
+{\color{coral}\bfseries\small 36104 · ASSESSMENT 1}\\[0.2em]
+{\fontsize{26}{30}\selectfont\bfseries Critique and Repair}\\[0.4em]
+{\large\color{mist} See what a chart claims · repair it with the Visual Vocabulary · verify a machine's reading of its data}
+
+\vspace{0.9em}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Weight} & 30\% of the subject · individual \\
+\textbf{Covers} & Sessions 1–2: \emph{Seeing Data} and \emph{Choosing Visual Forms} \\
+\textbf{Released} & Seeing Data session — Thursday 30 July 2026 \\
+\textbf{Supervised component} & 25-minute AI-restricted window at the start of the Dashboards-session studio — Thursday 13 August 2026 \\
+\textbf{Due} & \textbf{Monday 24 August 2026, 11:59\,pm} (Sydney time) \\
+\textbf{Submit} & One completed \labelbox{A1\_template.ipynb} · your data file(s) in \labelbox{data/} · a PNG/screenshot of the original chart \\
+\bottomrule
+\end{tabularx}
+
+\section*{The task}
+
+You will take one published chart from the wild and work it through the course
+pipeline: \emph{see} what it claims, \emph{repair} it with the Visual
+Vocabulary, and \emph{verify} a machine's interpretation of its data. The
+first two sessions rehearse every part of this: the Seeing Data studio
+(Critique and Repair sheet, Critique 1) rehearses Parts A and C; the Choosing
+Visual Forms studio (Redesign $\times$3, Chart Choice Decision Record)
+rehearses Part B.
+
+\subsection*{Part A — Seeing (the critique)}
+
+What does the chart show, and what does it claim? Selection, encoding,
+framing, omission — keeping the discipline from Seeing Data: \emph{directly
+visible} vs \emph{interpretation rather than observation}. Ends with a
+repaired caption. \textbf{Drafted by hand in the supervised, AI-restricted
+window on 13 August}, then transcribed into the notebook's
+\labelbox{critique} cell.
+
+\subsection*{Part B — Choosing (the repair)}
+
+Obtain or faithfully reconstruct the chart's underlying data. Produce
+\textbf{three redesigns}: your \emph{best form} — the chart the original
+should have been — plus \textbf{two alternatives serving different Visual
+Vocabulary tasks}. Defend the best form with a completed \textbf{Chart Choice
+Decision Record} (the same form as the Choosing Visual Forms studio, including
+the rejected alternative and the specific reason). The Decision Record is what
+is marked; the alternatives prove you considered the space.
+
+\subsection*{Part C — Verifying (the claim audit)}
+
+Generate an interpretation of your dataset using the \textbf{supplied prompt}
+(verbatim, in the template). Classify \textbf{every claim} with the four-way
+taxonomy from the Seeing Data lab:
+
+\begin{center}
+\begin{tabularx}{0.92\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Label} & \textbf{Meaning} \\
+\midrule
+\labelbox{supported} & the data directly backs it — attach an evidence probe \\
+\labelbox{plausible but unverified} & sounds right; this dataset cannot settle it \\
+\labelbox{unsupported} & asserted with no evidence in this data either way \\
+\labelbox{contradicted} & the data shows otherwise — attach an evidence probe \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Probes are zero-argument functions returning the evidence (a filtered or
+aggregated DataFrame/Series) — required for every \labelbox{supported} and
+\labelbox{contradicted} claim. Finish with the five-question AI disclosure.
+
+\section*{Your artefact}
+
+Choose one artefact from the \textbf{released, verified pool} or propose your
+own found-in-the-wild chart by the end of the Seeing Data session: a real
+published chart, a named publisher and date, and an obtainable or reasonably
+reconstructable data source. Approval is required. Two students may study the
+same source chart, but every submission must be individual and independently
+produced.
+
+\textbf{Data rule.} If the exact data is not published, reconstruct it
+faithfully (digitise, or synthesise to match the chart's visible quantities)
+and say so: set \labelbox{data\_status = "reconstructed"} and write the
+reconstruction note. This is the atlas book's own method — representative
+data, never passed off as the original measurement. Undisclosed reconstruction
+is an academic-integrity issue. Disclosed reconstruction remains eligible for
+full marks; its fidelity and limitations are judged under H2.
+
+\textbf{Copyright note.} Include only the chart image needed for criticism and
+review, cite its publisher, creator (where known), date and source URL, and do
+not republish the assessment beyond the subject site. Follow any additional
+UTS library or copyright guidance supplied with the task.
+
+\section*{AI policy}
+
+Part A is drafted AI-free in the supervised window. An assistant may be used
+in Part B under the notebook contract: docstrings first, accept or reject
+completions, and nothing counts until the checks pass. Part C requires an
+assistant-generated interpretation; students who cannot or do not wish to use
+an assistant can request a course-supplied generated interpretation. The
+disclosure block is assessed: report use accurately, including legitimate
+non-use in Part B. False or misleading disclosure is an academic-integrity
+issue.
+
+\section*{Submission contract (read this twice)}
+
+The template notebook defines named variables and functions
+(\labelbox{META}, \labelbox{critique}, \labelbox{original\_data},
+\labelbox{redesign\_best} \dots{} \labelbox{disclosure}). The autograder
+executes your notebook top-to-bottom on a clean machine and inspects those
+names. \textbf{Run the self-check cell before submitting} — it is the same
+code the marker runs. A notebook that does not execute end-to-end scores 0 on
+the automated items until resubmitted (one resubmission, capped at 80\%).
+
+\newpage
+\section*{Rubric — 100 marks (scaled to 30\% of the subject)}
+
+\subsection*{Automated (60 marks, scored by \texttt{a1\_autograder.py})}
+
+\begin{tabularx}{\textwidth}{@{}l >{\raggedright\arraybackslash}p{4.1cm} c X@{}}
+\toprule
+\textbf{ID} & \textbf{Item} & \textbf{Marks} & \textbf{Check} \\
+\midrule
+G0 & Notebook executes end-to-end & 6 & all cells run clean, no errors \\
+\addlinespace[0.35em]
+G1 & Metadata complete and valid & 6 & \labelbox{META} fields present; URL well-formed; \labelbox{data\_status} $\in$ \{obtained, reconstructed\} \\
+\addlinespace[0.35em]
+G2 & Data provenance & 10 & \labelbox{original\_data} loads; $\geq$ 6 rows $\times$ $\geq$ 2 columns; no empty columns; reconstruction note $\geq$ 30 words when reconstructed \\
+\addlinespace[0.35em]
+G3 & Redesign mechanics & 16 & three Axes returned; three \textbf{distinct} Vocabulary categories, all valid; bar-family charts include a zero baseline; every chart titled with $\geq$ 15 characters \\
+\addlinespace[0.35em]
+G4 & Claim-audit structure & 14 & interpretation $\geq$ 400 chars from the supplied prompt; $\geq$ 6 claims; every label from the four-way taxonomy; $\geq$ 1 \labelbox{supported}, $\geq$ 1 \labelbox{plausible but unverified}, $\geq$ 1 \labelbox{unsupported} \textbf{or} \labelbox{contradicted}; an executable, non-empty probe for every \labelbox{supported}/\labelbox{contradicted} claim \\
+\addlinespace[0.35em]
+G5 & Critique + Decision Record structure & 4 & all 9 critique fields (incl.\ repaired caption) 5–150 words; all 9 Decision Record fields present, defence fields $\geq$ 10 words \\
+\addlinespace[0.35em]
+G6 & Five-question AI disclosure & 4 & all 5 answers completed, none placeholder \\
+\midrule
+ & \textbf{Total} & \textbf{60} & \\
+\bottomrule
+\end{tabularx}
+
+\subsection*{Human-marked (40 marks, anchored 0/1/2 per item)}
+
+Markers read the autograder report first, then judge only these five items.
+
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.9cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Item (weight)} & \textbf{0} & \textbf{1} & \textbf{2} \\
+\midrule
+H1 · Critique insight ($\times$5) & Restates the chart & Correctly identifies the claim and one real omission & Also separates \emph{directly visible} from \emph{interpretation}, names the framing device, and the repaired caption actually repairs \\
+\addlinespace[0.45em]
+H2 · Reconstruction fidelity ($\times$2.5) & Data unrelated to the original's quantities & Plausible magnitudes and units & Matches the original's visible values, or deviations explicitly disclosed \\
+\addlinespace[0.45em]
+H3 · Decision Record defence ($\times$5) & No argument, or category label only & Correct task category with a generic justification & Ties audience $\rightarrow$ task $\rightarrow$ channel precision; the rejected alternative is real and the reason specific \\
+\addlinespace[0.45em]
+H4 · Redesign craft ($\times$5) & Unreadable or misleading & Honest defaults, readable & Titles state findings; scales honest; labels carry the argument \\
+\addlinespace[0.45em]
+H5 · Audit judgement ($\times$2.5) & Classifications mostly wrong & Right labels, thin probes & Probes genuinely discriminate — a \labelbox{contradicted} probe could have exonerated the claim; \labelbox{plausible but unverified} used precisely, not as a dodge \\
+\midrule
+\multicolumn{4}{@{}l}{\textbf{Total: 40 marks} (weights $\times$ anchor score; maximum $2\times(5+2.5+5+5+2.5)=40$)} \\
+\bottomrule
+\end{tabularx}
+
+\subsection*{Process requirements (not marked, but gates)}
+
+\begin{itemize}[leftmargin=1.4em,itemsep=0.15em]
+  \item Part A supervised draft handed in during the 13 August window (paper
+        or photo). Missing draft $\rightarrow$ H1 capped at 1.
+  \item Artefact selected from the released pool, or approval recorded for
+        bring-your-own.
+  \item One resubmission permitted for G0 failures, capped at 80\% overall.
+\end{itemize}
+
+\section*{What good looks like}
+
+A strong A1 reads like the class notebooks: the critique names the claim in
+one sentence and the repaired caption says what the original's should have
+said; the Decision Record argues from the reader's task rather than from
+taste, and its rejected alternative is one you genuinely considered; the
+reconstruction note is boringly specific; at least one probe shows a
+fluent-sounding claim to be \labelbox{contradicted}; and the disclosure says
+exactly what the assistant drafted, what you rejected, and how you caught its
+mistakes.
+
+\vspace{1em}
+{\color{mist}\footnotesize Questions: raise them in the studio or contact the
+subject coordinator. AI use in this assessment is governed by the AI policy
+above; unauthorised use is academic misconduct under UTS rules.}
+
+\end{document}

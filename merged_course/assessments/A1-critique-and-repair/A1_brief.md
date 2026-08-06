@@ -1,36 +1,38 @@
 # A1 — Critique and Repair
 
-**Individual assessment · 30% · covers Classes 1–2**
-**Assigned:** Class 1 (artefact allocated). **Supervised component:** 25-minute
-window at the start of the Class 3 studio. **Due:** end of the week after
-Class 3. **Submit:** one completed `A1_template.ipynb`, your data file(s) in
+**Individual assessment · 30% · covers Weeks 1–2**
+**Released:** in the Seeing Data session (Thursday 30 July 2026).
+**Supervised component:** 25-minute window at the start of the
+Dashboards-session studio (Thursday 13 August 2026).
+**Due:** **Monday 24 August 2026, 11:59pm** (Sydney time).
+**Submit:** one completed `A1_template.ipynb`, your data file(s) in
 `data/`, and a PNG/screenshot of the original chart.
 
 ## The task
 
 You will take one published chart from the wild and work it through the course
 pipeline: *see* what it claims, *repair* it with the Visual Vocabulary, and
-*verify* a machine's interpretation of its data. Classes 1 and 2 rehearse
-every part of this: the Class 1 studio (Critique and Repair sheet, Critique 1)
-rehearses Parts A and C; the Class 2 studio (Redesign ×3, Chart Choice
+*verify* a machine's interpretation of its data. The first two sessions rehearse
+every part of this: the Seeing Data studio (Critique and Repair sheet, Critique 1)
+rehearses Parts A and C; the Choosing Visual Forms studio (Redesign ×3, Chart Choice
 Decision Record) rehearses Part B.
 
 - **Part A — Seeing (the critique).** What does the chart show, and what does
   it claim? Selection, encoding, framing, omission — keeping the discipline
-  from Class 1: *directly visible* vs *interpretation rather than
+  from Seeing Data: *directly visible* vs *interpretation rather than
   observation*. Ends with a repaired caption. **Drafted by hand in the
-  supervised, AI-restricted window in Class 3**, then transcribed into the
+  supervised, AI-restricted window in the Dashboards session**, then transcribed into the
   notebook's `critique` cell.
 - **Part B — Choosing (the repair).** Obtain or faithfully reconstruct the
   chart's underlying data. Produce **three redesigns**: your *best form* —
   the chart the original should have been — plus **two alternatives serving
   different Visual Vocabulary tasks**. Defend the best form with a completed
-  **Chart Choice Decision Record** (the same form as the Class 2 studio,
+  **Chart Choice Decision Record** (the same form as the Choosing Visual Forms studio,
   including the rejected alternative and the specific reason). The Decision
   Record is what is marked; the alternatives prove you considered the space.
 - **Part C — Verifying (the claim audit).** Generate an interpretation of
   your dataset using the **supplied prompt** (verbatim, in the template).
-  Classify **every claim** with the four-way taxonomy from the Class 1 lab:
+  Classify **every claim** with the four-way taxonomy from the Seeing Data lab:
 
   | Label | Meaning |
   |---|---|
@@ -45,29 +47,35 @@ Decision Record) rehearses Part B.
 
 ## Your artefact
 
-You will be assigned one artefact from the pool (`artefact_pool.md`), unique
-within your tutorial. Alternatively, propose your own found-in-the-wild chart
-by the end of Class 1: a real published chart, a named publisher and date, and
-an obtainable or reasonably reconstructable data source. Approval is required
-— the approval conversation is itself a provenance exercise.
+Choose one artefact from the **released, verified** pool or propose your own
+found-in-the-wild chart by the end of the Seeing Data session: a real published chart, a named
+publisher and date, and an obtainable or reasonably reconstructable data
+source. Approval is required. Two students may study the same source chart,
+but every submission must be individual and independently produced.
 
 **Data rule.** If the exact data is not published, reconstruct it faithfully
 (digitise, or synthesise to match the chart's visible quantities) and say so:
 set `data_status = "reconstructed"` and write the reconstruction note. This is
 the atlas book's own method — representative data, never passed off as the
 original measurement. Undisclosed reconstruction is an academic-integrity
-issue; disclosed reconstruction is full marks.
+issue. Disclosed reconstruction remains eligible for full marks; its fidelity
+and limitations are judged under H2.
 
-**Copyright note.** Including the original chart image in your submission for
-the purpose of criticism and review is permitted use. Cite publisher and date.
+**Copyright note.** Include only the chart image needed for criticism and
+review, cite its publisher, creator (where known), date and source URL, and do
+not republish the assessment beyond the subject site. Follow any additional
+UTS library or copyright guidance supplied with the task.
 
 ## AI policy
 
-Part A is drafted AI-free in the supervised window. Parts B and C expect
-assistant use — the notebook contract is the same as class: docstrings first,
-accept or reject completions, and nothing counts until the checks pass. The
-disclosure block is assessed; "no AI was used" in a notebook full of idiomatic
-generated code will be treated as a disclosure failure, not a virtue.
+Part A is drafted AI-free in the supervised window. An assistant may be used
+in Part B under the notebook contract: docstrings first, accept or reject
+completions, and nothing counts until the checks pass. Part C requires an
+assistant-generated interpretation; students who cannot or do not wish to use
+an assistant can request a course-supplied generated interpretation. The
+disclosure block is assessed: report use accurately, including legitimate
+non-use in Part B. False or misleading disclosure is an academic-integrity
+issue.
 
 ## Submission contract (read this twice)
 
@@ -88,7 +96,7 @@ the automated items until resubmitted (one resubmission, capped at 80%).
 |---|---|---|---|
 | G0 | Notebook executes end-to-end, no errors | 6 | all cells run clean |
 | G1 | Metadata complete and valid | 6 | `META` fields present; URL well-formed; `data_status` ∈ {obtained, reconstructed} |
-| G2 | Data provenance | 10 | `original_data` loads; ≥ 12 rows × ≥ 2 columns; no empty columns; reconstruction note ≥ 30 words when reconstructed |
+| G2 | Data provenance | 10 | `original_data` loads; ≥ 6 rows × ≥ 2 columns; no empty columns; reconstruction note ≥ 30 words when reconstructed |
 | G3 | Redesign mechanics | 16 | three Axes returned; three **distinct** Vocabulary categories, all valid; bar-family charts include a zero baseline; every chart titled with ≥ 15 characters |
 | G4 | Claim-audit structure | 14 | interpretation ≥ 400 chars from the supplied prompt; ≥ 6 claims; every label from the four-way taxonomy; ≥ 1 `supported`, ≥ 1 `plausible but unverified`, ≥ 1 `unsupported` **or** `contradicted`; an executable, non-empty probe for every `supported`/`contradicted` claim |
 | G5 | Critique + Decision Record structure | 4 | all 9 critique fields (incl. repaired caption) 5–150 words; all 9 Decision Record fields present, defence fields ≥ 10 words |
@@ -113,9 +121,9 @@ counts so the human never hunts through cells.
 
 ### Process requirements (not marked, but gates)
 
-- Part A supervised draft handed in during the Class 3 window (paper or
+- Part A supervised draft handed in during the Dashboards-session window (paper or
   photo). Missing draft → H1 capped at 1.
-- Artefact unique in tutorial; approval recorded for bring-your-own.
+- Artefact selected from the released pool or approval recorded for bring-your-own.
 - One resubmission permitted for G0 failures, capped at 80% overall.
 
 ## What good looks like
