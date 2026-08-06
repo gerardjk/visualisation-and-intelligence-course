@@ -29,16 +29,25 @@ complete it before submitting or sharing.
 
 ## Rebuilding decks and notebooks
 
+Class 1's canonical deck is LaTeX/Beamer, mixing public-domain originals
+(Nightingale 1858, Snow 1854), the attributed AIATSIS map, and course-atlas
+reproductions:
+
+```bash
+cd merged_course/classes/01-seeing-data/beamer
+lualatex seeing-data.tex && lualatex seeing-data.tex   # → seeing-data.pdf
+```
+
+Class 2 still uses the python-pptx pipeline (to be migrated to Beamer):
+
 ```bash
 cd merged_course/scripts
-python build_class01_deck.py     # writes classes/01-seeing-data/Seeing-Data.pptx
 python build_class02_deck.py     # writes classes/02-visual-forms/Choosing-Visual-Forms.pptx
 python build_notebooks.py        # optional single-notebook variants (notebooks/)
 ```
 
-Decks embed figures rendered by the atlas book at
-`quarto-book/_book/atlas_files/figure-html/` — run `quarto render` in
-`quarto-book/` first if figures are missing.
+Atlas reproductions come from `quarto-book/_book/atlas_files/figure-html/` —
+run `quarto render` in `quarto-book/` first if figures are missing.
 
 ## Provenance
 

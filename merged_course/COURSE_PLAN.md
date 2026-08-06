@@ -69,11 +69,18 @@ structure.
 **A1 — Critique and Repair.** Each student takes one published chart from a
 curated multi-domain pool (news, government, climate, health, housing, sport,
 culture — never the same artefact twice in a tutorial group). Part A: critique —
-what the chart shows vs what it claims (supervised studio component). Part B:
-repair — rebuild the data in a notebook and redesign the chart three ways, one
-Visual Vocabulary task per redesign, with justification. Part C: verification —
-an AI assistant interprets the data; every claim is classified supported /
-unsupported / unverifiable, with evidence and the disclosure block.
+what the chart shows vs what it claims, drafted in a supervised AI-restricted
+window (Class 3), ending with a repaired caption. Part B: repair — rebuild the
+data in a notebook and produce three redesigns: the best form the original
+should have been, defended with a Chart Choice Decision Record (including the
+rejected alternative and specific reason), plus two alternatives serving
+different Visual Vocabulary tasks. Part C: verification — an AI assistant
+interprets the data via a supplied prompt; every claim is classified with the
+four-way taxonomy from the Class 1 lab (supported / plausible but unverified /
+unsupported / contradicted), with evidence probes for supported and
+contradicted claims, and the five-question disclosure. Full package — brief,
+rubric (60 of 100 marks autograded), artefact pool, template notebook and
+autograder — in `assessments/A1-critique-and-repair/`.
 
 **A2 — User Stories & UX Pivot.** Take an exploratory artefact (Tableau VOTD or
 an approved dataset), define a persona and user stories, and build the
