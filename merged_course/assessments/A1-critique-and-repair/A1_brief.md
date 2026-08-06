@@ -57,10 +57,12 @@ sheet, Critique 1) rehearses Parts A and C; the Choosing Visual Forms studio
 
 Choose **three artefacts from the released pool, from three different
 domains** — the pool has twelve entries across twelve domains, each shipped
-with its chart screenshot and data. There is no bring-your-own option and no
-approval step. Record your three choices, and which is your **primary**, by
-**Monday 10 August 2026** (Canvas). Two students may study the same source
-chart, but every submission must be individual and independently produced.
+with its chart screenshot and data. There is no sign-up, no approval step and
+no deadline for choosing: pick your three whenever you like. Your **primary**
+is locked in the supervised window (13 August): you write its pool ID on the
+supervised sheet, and the notebook's `META_1` must match that sheet. Two
+students may study the same source chart, but every submission must be
+individual and independently produced.
 
 **Data rule.** If the exact data is not published, reconstruct it faithfully
 (digitise, or synthesise to match the chart's visible quantities) and say so:
@@ -134,8 +136,8 @@ counts so the human never hunts through cells.
 
 - Part A supervised draft handed in during the Dashboards-session window (paper or
   photo). Missing draft → H1 capped at 1.
-- Three artefact choices (and the primary), all from the pool, recorded by
-  Monday 10 August.
+- The primary's pool ID is written on the supervised sheet (13 August);
+  `META_1` must match it.
 - One resubmission permitted for G0 failures, capped at 80% overall.
 
 ## What good looks like

@@ -13,11 +13,12 @@ dataset as CSV into `pool_data/<id>.csv`, and screenshot each chart into
 `pool_charts/<id>.png` — the pool ships with its data so no student inherits
 a six-hour digitisation job.
 
-**Selection rule (no approvals, no bring-your-own):** each student selects
-**three artefacts from this pool, from three different domains**, nominating
-one as their **primary**, by Monday 10 August 2026 (Canvas). More than one
-student may use the same artefact; their critiques, reconstructions,
-redesigns and claim audit remain individual.
+**Selection rule (no sign-up, no approvals, no bring-your-own):** each
+student selects **three artefacts from this pool, from three different
+domains**, one as their **primary**. The primary is locked in the supervised
+window: its pool ID goes on the supervised sheet, and `META_1` must match.
+More than one student may use the same artefact; their critiques,
+reconstructions, redesigns and claim audit remain individual.
 
 Release only rows that pass this checklist:
 
