@@ -1,5 +1,5 @@
 """Generate the A1 submission template notebook (merged-course conventions:
-three artefacts across three domains — one primary, two supporting —
+three artefacts across three domains, one primary, two supporting, 
 four-way claim taxonomy, Chart Choice Decision Record, five-question
 disclosure)."""
 
@@ -21,7 +21,7 @@ def code(source):
 
 def meta_cell(n, role):
     return code(f'''\
-# ---- Artefact {n} metadata (G1) — {role} ----
+# ---- Artefact {n} metadata (G1), {role} ----
 META_{n} = {{
     "artefact_id": "...",          # from the released pool, e.g. "POOL-03"
     "domain": "...",               # the pool row's domain, e.g. "energy"
@@ -80,7 +80,7 @@ WHY_{n} = "..."   # ≥ 10 words: why this form fits this audience and task\
 
 cells = [
     md("""\
-# A1 — Critique and Repair
+# A1. Critique and Repair
 
 **Before you start:** read `A1_brief.md`. This notebook is a *contract*: the
 autograder executes it top-to-bottom and inspects the named variables and
@@ -105,7 +105,7 @@ import pandas as pd
 STUDENT_ID = "..."\
 '''),
     md("""\
-## Artefact 1 — primary
+## Artefact 1: primary
 
 Full pipeline: metadata, data, full critique (transcribed from your
 **supervised draft**), best-form redesign, full Chart Choice Decision Record.\
@@ -114,11 +114,11 @@ Full pipeline: metadata, data, full critique (transcribed from your
     md("""\
 ### Critique (G5 structure, H1 insight)
 
-Transcribe your **supervised draft** (supervised Dashboards-session window,
+Transcribe your **supervised draft** (supervised Week 4 window,
 AI-restricted) into the dict below. Keep the Seeing Data discipline:
 `directly_visible` is what is literally encoded;
 `interpretation_not_observation` is the leap the design invites. Finish with
-the repaired caption — the caption the original *should* have carried.\
+the repaired caption: the caption the original *should* have carried.\
 """),
     code('''\
 # ---- Full critique, artefact 1 (G5 structure, H1 insight) ----
@@ -159,7 +159,7 @@ charts start at zero; and the three categories (artefacts 1–3) are
     md("""\
 ### Chart Choice Decision Record (G5 structure, H3 defence)
 
-The same form as the Choosing Visual Forms studio — this is what is marked.
+The same form as the Choosing Visual Forms studio, this is what is marked.
 Argue from the audience's task, and be honest: the rejected alternative must
 be one you genuinely considered, with a specific reason.\
 """),
@@ -177,26 +177,26 @@ decision_record = {
 }\
 '''),
     md("""\
-## Artefact 2 — supporting
+## Artefact 2: supporting
 
 Compact critique, data, and one redesign in a **different Vocabulary
 category** (and from a **different domain**).\
 """),
     meta_cell(2, "SUPPORTING"),
     data_cell(2),
-    redesign_cell(2, "Redesign of artefact 2 — a second Vocabulary category."),
+    redesign_cell(2, "Redesign of artefact 2, a second Vocabulary category."),
     compact_critique_cell(2),
     md("""\
-## Artefact 3 — supporting
+## Artefact 3: supporting
 
 As artefact 2: third domain, third Vocabulary category.\
 """),
     meta_cell(3, "SUPPORTING"),
     data_cell(3),
-    redesign_cell(3, "Redesign of artefact 3 — a third Vocabulary category."),
+    redesign_cell(3, "Redesign of artefact 3, a third Vocabulary category."),
     compact_critique_cell(3),
     md("""\
-## Part C — Verifying (the claim audit, on your PRIMARY artefact)
+## Part C. Verifying (the claim audit, on your PRIMARY artefact)
 
 Generate an interpretation of **artefact 1's** dataset with your AI assistant
 using this prompt **verbatim** (paste `data_1.head()` and `data_1.describe()`
@@ -210,10 +210,10 @@ where indicated):
 Paste the response into `generated_interpretation`, then classify **every**
 claim with the four-way taxonomy from the Seeing Data lab:
 
-- `supported` — the data directly backs it → write an evidence probe
-- `plausible but unverified` — sounds right; this dataset cannot settle it
-- `unsupported` — asserted with no evidence in this data either way
-- `contradicted` — the data shows otherwise → write an evidence probe
+- `supported`: the data directly backs it → write an evidence probe
+- `plausible but unverified`, sounds right; this dataset cannot settle it
+- `unsupported`: asserted with no evidence in this data either way
+- `contradicted`: the data shows otherwise → write an evidence probe
 
 Probes are zero-argument functions returning the evidence (a filtered or
 aggregated DataFrame/Series). You need ≥ 6 claims, with at least one
@@ -254,7 +254,7 @@ disclosure = {
 }\
 '''),
     md("""\
-## Self-check — run before submitting
+## Self-check: run before submitting
 
 This is the same code the marker runs. Fix everything it flags, then
 Kernel → Restart & Run All.\

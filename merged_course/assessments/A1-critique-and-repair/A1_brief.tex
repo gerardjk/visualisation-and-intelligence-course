@@ -1,4 +1,4 @@
-% A1 — Critique and Repair: student handout.
+% A1. Critique and Repair: student handout.
 % Build: lualatex A1_brief.tex  (run twice)
 \documentclass[11pt,a4paper]{article}
 
@@ -47,18 +47,18 @@
 \toprule
 \textbf{Weight} & 30\% of the subject · individual \\
 \textbf{Covers} & Sessions 1–2: \emph{Seeing Data} and \emph{Choosing Visual Forms} \\
-\textbf{Artefacts} & Three charts from the released pool (twelve entries, twelve domains), from three different domains — one \textbf{primary}, two \textbf{supporting}. No sign-up, no approvals; the primary is locked on the supervised sheet \\
-\textbf{Released} & Seeing Data session — Thursday 30 July 2026 \\
-\textbf{Supervised component} & 25-minute AI-restricted window at the start of the Dashboards-session studio — Thursday 13 August 2026 \\
-\textbf{Due} & \textbf{Monday 24 August 2026, 11:59\,pm} (Sydney time) \\
+\textbf{Artefacts} & Three charts from the released pool (twelve entries, twelve domains), from three different domains, one \textbf{primary}, two \textbf{supporting}. No sign-up, no approvals; the primary is locked on the supervised sheet \\
+\textbf{Released} & Seeing Data session. Thursday 30 July 2026 \\
+\textbf{Supervised component} & 25-minute AI-restricted window at the start of the Week 4 session. Thursday 20 August 2026 \\
+\textbf{Due} & \textbf{Friday 28 August 2026, 11:59\,pm} (Sydney time) \\
 \textbf{Submit} & One completed \labelbox{A1\_template.ipynb} · your data files in \labelbox{data/} · a PNG/screenshot of each original chart \\
 \bottomrule
 \end{tabularx}
 
 \section*{The task}
 
-You will take \textbf{three published charts from the wild — from three
-different domains} — and work them through the course pipeline: \emph{see}
+You will take \textbf{three published charts from the wild, from three
+different domains}, and work them through the course pipeline: \emph{see}
 what each claims, \emph{repair} it with the Visual Vocabulary, and
 \emph{verify} a machine's interpretation of the data. One artefact is your
 \textbf{primary} (full treatment); the other two are \textbf{supporting}
@@ -67,21 +67,21 @@ Seeing Data studio (Critique and Repair sheet, Critique 1) rehearses Parts A
 and C; the Choosing Visual Forms studio (Redesign $\times$3, Chart Choice
 Decision Record) rehearses Part B.
 
-\subsection*{Part A — Seeing (the critiques)}
+\subsection*{Part A. Seeing (the critiques)}
 
-For the \textbf{primary artefact}: the full 9-field critique — what does the
-chart show, and what does it claim? Selection, encoding, framing, omission —
+For the \textbf{primary artefact}: the full 9-field critique, what does the
+chart show, and what does it claim? Selection, encoding, framing, omission, 
 keeping the discipline from Seeing Data: \emph{directly visible} vs
 \emph{interpretation rather than observation}, ending with a repaired
 caption. \textbf{Drafted by hand in the supervised, AI-restricted window on
-13 August}, then transcribed into the notebook's \labelbox{critique\_1} cell.
+20 August}, then transcribed into the notebook's \labelbox{critique\_1} cell.
 For each \textbf{supporting artefact}: a compact 4-field critique (main
 claim, visible vs interpretation, what misleads, repaired caption).
 
-\subsection*{Part B — Choosing (the repairs)}
+\subsection*{Part B. Choosing (the repairs)}
 
 For each of the three artefacts: obtain or faithfully reconstruct its
-underlying data and produce \textbf{one redesign} — the chart that original
+underlying data and produce \textbf{one redesign}, the chart that original
 should have been. Across the three artefacts the redesigns must serve
 \textbf{three distinct Visual Vocabulary categories}. Defend the primary
 redesign with a full \textbf{Chart Choice Decision Record} (the same form as
@@ -89,7 +89,7 @@ the Choosing Visual Forms studio, including the rejected alternative and the
 specific reason); defend each supporting redesign with its category and a
 one-line justification (\labelbox{WHY\_2}, \labelbox{WHY\_3}).
 
-\subsection*{Part C — Verifying (the claim audit, primary artefact)}
+\subsection*{Part C. Verifying (the claim audit, primary artefact)}
 
 Generate an interpretation of your \textbf{primary} dataset using the \textbf{supplied prompt}
 (verbatim, in the template). Classify \textbf{every claim} with the four-way
@@ -100,25 +100,25 @@ taxonomy from the Seeing Data lab:
 \toprule
 \textbf{Label} & \textbf{Meaning} \\
 \midrule
-\labelbox{supported} & the data directly backs it — attach an evidence probe \\
+\labelbox{supported} & the data directly backs it, attach an evidence probe \\
 \labelbox{plausible but unverified} & sounds right; this dataset cannot settle it \\
 \labelbox{unsupported} & asserted with no evidence in this data either way \\
-\labelbox{contradicted} & the data shows otherwise — attach an evidence probe \\
+\labelbox{contradicted} & the data shows otherwise, attach an evidence probe \\
 \bottomrule
 \end{tabularx}
 \end{center}
 
 Probes are zero-argument functions returning the evidence (a filtered or
-aggregated DataFrame/Series) — required for every \labelbox{supported} and
+aggregated DataFrame/Series): required for every \labelbox{supported} and
 \labelbox{contradicted} claim. Finish with the five-question AI disclosure.
 
 \section*{Your artefacts}
 
 Choose \textbf{three artefacts from the released pool, from three different
-domains} — the pool has twelve entries across twelve domains, each shipped
+domains}: the pool has twelve entries across twelve domains, each shipped
 with its chart screenshot and data. There is no sign-up, no approval step and
 no deadline for choosing: pick your three whenever you like. Your
-\textbf{primary} is locked in the supervised window (13 August): you write
+\textbf{primary} is locked in the supervised window (20 August): you write
 its pool ID on the supervised sheet, and the notebook's \labelbox{META\_1}
 must match that sheet. Two students may study the same source chart, but
 every submission must be individual and independently produced.
@@ -126,7 +126,7 @@ every submission must be individual and independently produced.
 \textbf{Data rule.} If the exact data is not published, reconstruct it
 faithfully (digitise, or synthesise to match the chart's visible quantities)
 and say so: set \labelbox{data\_status = "reconstructed"} and write the
-reconstruction note. This is the atlas book's own method — representative
+reconstruction note. This is the atlas book's own method, representative
 data, never passed off as the original measurement. Undisclosed reconstruction
 is an academic-integrity issue. Disclosed reconstruction remains eligible for
 full marks; its fidelity and limitations are judged under H2. The rule
@@ -155,12 +155,12 @@ The template notebook defines named variables and functions per artefact
 \labelbox{redesign\_1..3}, \labelbox{decision\_record},
 \labelbox{claims} \dots{} \labelbox{disclosure}). The autograder
 executes your notebook top-to-bottom on a clean machine and inspects those
-names. \textbf{Run the self-check cell before submitting} — it is the same
+names. \textbf{Run the self-check cell before submitting}, it is the same
 code the marker runs. A notebook that does not execute end-to-end scores 0 on
 the automated items until resubmitted (one resubmission, capped at 80\%).
 
 \newpage
-\section*{Rubric — 100 marks (scaled to 30\% of the subject)}
+\section*{Rubric, 100 marks (scaled to 30\% of the subject)}
 
 \subsection*{Automated (60 marks, scored by \texttt{a1\_autograder.py})}
 
@@ -202,7 +202,7 @@ H3 · Decision Record + supporting defences ($\times$5) & No argument, or catego
 \addlinespace[0.45em]
 H4 · Redesign craft, across the three ($\times$5) & Unreadable or misleading & Honest defaults, readable & Titles state findings; scales honest; labels carry the argument \\
 \addlinespace[0.45em]
-H5 · Audit judgement ($\times$2.5) & Classifications mostly wrong & Right labels, thin probes & Probes genuinely discriminate — a \labelbox{contradicted} probe could have exonerated the claim; \labelbox{plausible but unverified} used precisely, not as a dodge \\
+H5 · Audit judgement ($\times$2.5) & Classifications mostly wrong & Right labels, thin probes & Probes genuinely discriminate: a \labelbox{contradicted} probe could have exonerated the claim; \labelbox{plausible but unverified} used precisely, not as a dodge \\
 \midrule
 \multicolumn{4}{@{}l}{\textbf{Total: 40 marks} (weights $\times$ anchor score; maximum $2\times(5+2.5+5+5+2.5)=40$)} \\
 \bottomrule
@@ -211,10 +211,10 @@ H5 · Audit judgement ($\times$2.5) & Classifications mostly wrong & Right label
 \subsection*{Process requirements (not marked, but gates)}
 
 \begin{itemize}[leftmargin=1.4em,itemsep=0.15em]
-  \item Part A supervised draft handed in during the 13 August window (paper
+  \item Part A supervised draft handed in during the 20 August window (paper
         or photo). Missing draft $\rightarrow$ H1 capped at 1.
   \item The primary's pool ID is written on the supervised sheet
-        (13 August); \labelbox{META\_1} must match it.
+        (20 August); \labelbox{META\_1} must match it.
   \item One resubmission permitted for G0 failures, capped at 80\% overall.
 \end{itemize}
 
@@ -224,7 +224,7 @@ A strong A1 reads like the class notebooks: the critique names the claim in
 one sentence and the repaired caption says what the original's should have
 said; the Decision Record argues from the reader's task rather than from
 taste, and its rejected alternative is one you genuinely considered; the
-reconstruction note is boringly specific; at least one probe shows a
+reconstruction note is specific; at least one probe shows a
 fluent-sounding claim to be \labelbox{contradicted}; and the disclosure says
 exactly what the assistant drafted, what you rejected, and how you caught its
 mistakes.
