@@ -1,13 +1,13 @@
 # Session 1 — Asynchronous exercises: instructor solutions
 
 Instructor reference for the exercises on the student site
-(https://dvn36104.github.io/exercises). **Note on visibility:** every
-exercise on the site already exposes its own worked solution to students
-behind Hint 1 → Hint 2 → "Show Solution" buttons (the quarto-live
-pattern). This document collects them in one place with expected outputs
-and marking notes. If solutions should be hidden from students, the
-`::: {.solution}` blocks must be stripped from the `student-site/session1/*.qmd`
-sources and the site republished.
+(https://dvn36104.github.io/exercises). **Visibility policy (17 Aug
+2026):** the *mid-part* exercises (A-1 `ex_wing`, B-1 `ex_carnivora`,
+C-1 `ex_density`) show students a worked solution behind Hint → Hint →
+"Show Solution" buttons. The **final exercise of each part** (A-2
+`ex_family`, B-2 `ex_split`, C-2 `ex_hubble`) has **no solution on the
+site** — students get two non-code hints plus a "how to know you got it"
+self-check, and the full solutions below are instructor-only.
 
 Source of truth: `student-site/session1/part-{a,b,c}.qmd`.
 
