@@ -1,0 +1,24 @@
+::: {.content-visible when-profile="instructor"}
+::: {.callout-important title="Instructor-only solution (not on the student site)"}
+```python
+def divergence(root, a, b):
+    set_depths(root)
+    root_age = max(l.depth for l in root.leaves())
+    return root_age - clade(root, [a, b]).depth
+
+split = divergence(euk, "Mammalia", "Aves")
+print(f"Mammalia-Aves split in the eukaryote class tree: {split:.1f} Mya")
+print(f"Amniote root in the family-level file:           319.0 Mya")
+```
+
+Expected: both lines read 319.0 Mya. The mammal–bird split *is* the
+amniote root — mammals sit on one side of the first amniote fork, birds
+on the other, so the two questions are the same question. The files
+agree to the decimal because both are views of TimeTree's single
+consensus: consistency, not independent confirmation. Independence would
+require dates derived from different data and methods (different
+calibrating fossils, different genes/studies). Common error: returning
+`clade(...).depth` directly (depth-since-root instead of age-before-
+present).
+:::
+:::

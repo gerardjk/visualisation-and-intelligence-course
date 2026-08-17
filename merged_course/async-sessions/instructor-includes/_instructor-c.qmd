@@ -1,0 +1,25 @@
+::: {.content-visible when-profile="instructor"}
+::: {.callout-important title="Instructor-only solution (not on the student site)"}
+```python
+r_H   = c / H0
+rho_c = 3 * H0**2 / (8 * np.pi * G)
+m_U   = 4/3 * np.pi * r_H**3 * rho_c
+
+r_s = 2 * G * m_U / c**2
+print(f"r_H = {r_H:.2e} cm   m_U = {m_U:.2e} g")
+print(f"Schwarzschild radius of the Universe's mass: {r_s:.2e} cm")
+print(f"ratio r_s / r_H = {r_s / r_H:.3f}")
+```
+
+Expected: r_H ≈ 1.32e28 cm, m_U ≈ 8.8e55 g, ratio = **1.000** exactly.
+The algebra behind the exactness:
+
+$$r_s = \frac{2G}{c^2}\cdot\frac{4}{3}\pi r_H^3 \cdot \frac{3H_0^2}{8\pi G}
+     = \frac{r_H^3 H_0^2}{c^2}
+     = r_H \left(\frac{r_H H_0}{c}\right)^2 = r_H.$$
+
+Every constant cancels: a critical-density universe must sit on the
+black-hole line for any value of $H_0$. Common error: forgetting to cube
+$r_H$ in the volume (ratio comes out ~$10^{-57}$, instantly visible).
+:::
+:::

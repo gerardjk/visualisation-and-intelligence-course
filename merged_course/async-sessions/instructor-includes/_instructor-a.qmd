@@ -1,0 +1,30 @@
+::: {.content-visible when-profile="instructor"}
+::: {.callout-important title="Instructor-only solution (not on the student site)"}
+```python
+families = (pair
+            .groupby(["class", "family"])[["log_mass", "log_longevity"]]
+            .mean()
+            .reset_index())
+
+fig, ax = plt.subplots(figsize=(9, 6))
+for cls, grp in families.groupby("class"):
+    ax.scatter(grp["log_mass"], grp["log_longevity"],
+               s=18, alpha=0.7, color=class_colours[cls], label=cls)
+ax.set_xlabel("family mean log10 adult body mass (g)")
+ax.set_ylabel("family mean log10 maximum longevity (years)")
+r_fam = np.corrcoef(families["log_mass"], families["log_longevity"])[0, 1]
+ax.set_title(f"One rank up: {len(families)} families, r = {r_fam:.3f}")
+ax.legend(frameon=False)
+plt.show()
+```
+
+Expected: 327 families, r ≈ 0.65 (vs 0.52 at species level). Aggregation
+tightens the cloud by averaging away the species-level eccentrics (naked
+mole-rats, bats, seabirds). The load-bearing step is averaging *logged*
+values — the mean of logs is the log of the geometric mean, the right
+average for ratio-scale traits; in raw grams one elephant drags its
+whole family across the plot. Common errors: grouping by `family` alone
+(loses `class` for colouring; need the two-key groupby + `reset_index`),
+and averaging raw mass before logging.
+:::
+:::
