@@ -1,7 +1,7 @@
 # Session 1 — Asynchronous exercises: instructor solutions
 
 Instructor reference for the exercises on the student site
-(https://dvn36104.github.io/exercises). **Visibility policy (17 Aug
+(https://dvn36104.github.io). **Visibility policy (17 Aug
 2026):** the *mid-part* exercises (A-1 `ex_wing`, B-1 `ex_carnivora`,
 C-1 `ex_density`, D-1 `ex_radius`) show students a worked solution behind Hint → Hint →
 "Show Solution" buttons. The **final exercise of each part** (A-2
