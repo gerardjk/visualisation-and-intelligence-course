@@ -45,6 +45,10 @@ plt.show()
 **Expected output / checks.** Wing length is missing in only ~1,100 rows,
 so `clean_w` keeps far more data (~89,000 rows) than the beak comparison
 did (69,509). The wing–tarsus cloud is visibly tighter than beak–tarsus.
+Five points sit stranded at log10(wing) ≈ −1: the five kiwi species,
+whose wing length is coded 0.1 mm (a placeholder, not a measurement) —
+the solution block now uses this as a sentinel-value teaching point
+(dropna cannot catch missingness written down as a fake number).
 
 **Marking notes.** The key error to look for: dropping on the *beak*
 column (or reusing `clean`) instead of requiring exactly the columns the
@@ -113,7 +117,8 @@ plt.show()
 **Expected output.** 16 families, common ancestor ~55.4 Myr ago.
 
 **Discussion points (in the student-visible solution).** Cats' closest
-relatives in the clade are hyaenas and mongooses, not dogs; dogs sit on
+relatives in the clade are the civets (Viverridae-2, MRCA 33.3 Mya),
+then hyaenas and mongooses — not dogs; dogs sit on
 the other side of the first split, nearer bears and seals. "Cats and
 dogs" have been separate lineages roughly since the dinosaurs left.
 
