@@ -1,0 +1,41 @@
+::: {.content-visible when-profile="instructor"}
+::: {.callout-important title="Instructor-only solution (not on the student site)"}
+```python
+def cell_position(i):
+    if group[i] is not None:
+        return group[i], period[i]
+    if 57 <= Z[i] <= 71:
+        return 3 + (Z[i] - 57), 9      # lanthanide footnote row
+    return 3 + (Z[i] - 89), 10         # actinide footnote row
+
+fig, ax = plt.subplots(figsize=(12, 7.2))
+for i in range(118):
+    x, y = cell_position(i)
+    ax.add_patch(plt.Rectangle((x - 0.47, -y - 0.47), 0.94, 0.94,
+                               facecolor=cat_colours[category[i]],
+                               edgecolor="#777777", lw=0.6))
+    ax.text(x, -y, symbol[i], ha="center", va="center", fontsize=8.5)
+handles = [plt.Rectangle((0, 0), 1, 1, facecolor=c, edgecolor="#777777")
+           for c in cat_colours.values()]
+ax.legend(handles, cat_colours.keys(), loc="upper center", ncol=5,
+          bbox_to_anchor=(0.55, 1.02), frameon=False, fontsize=7.5)
+ax.set_xlim(0, 19); ax.set_ylim(-11, 0)
+ax.set_aspect("equal"); ax.axis("off")
+plt.show()
+```
+
+Expected: the standard 18-column table — 7 main rows, footnote rows of
+15 at y = 9 and 10 (any y below 8 with a separator gap is acceptable),
+H top-left, He above Ne, solid colour blocks. Marking notes: the only
+genuinely hard part is `cell_position` — accept any footnote column
+constant that keeps the 15-element rows inside x ∈ [1, 18] (3 → columns
+3–17 is the common convention; 4 → 4–18 equally fine). Common errors:
+forgetting `-y` sign flips (table renders upside-down — instantly
+visible); placing La–Lu by `group` (crashes on None — the point of the
+three-case function); footnote rows overlapping row 7 (no separator).
+Students who additionally draw the legend, Z numbers in cells, or a
+32-column no-footnote variant have gone beyond the brief — the
+32-column variant is exactly the "design option" conversation Section 6
+invites, so reward it.
+:::
+:::

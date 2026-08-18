@@ -207,3 +207,47 @@ a data point lands exactly on a theory line, check whether both were
 computed from the same ingredients. Common student error: forgetting to
 cube r_H, which makes the ratio come out ~1e-57 and is immediately
 visible.
+
+---
+
+## Part D · The Periodic Spiral
+
+### D-1 `ex_radius` — The size of atoms (mid-part, solution ON the site)
+
+**Task.** Plot covalent radius vs Z for all 118 elements, highlighting
+alkali metals and noble gases.
+
+**Solution.** Three scatter layers over a faint line (full code in the
+site's solution block). Expected: sawtooth with peaks at alkali metals —
+Ar 96 pm jumps to K 196 pm at the shell closure.
+
+**Marking notes.** Watch for off-by-one indexing (`radius[z]` instead of
+`radius[z - 1]`).
+
+### D-2 `ex_table` — The whole thing (FINAL, instructor-only solution)
+
+**Task.** Build the full canonical 118-element table: main grid from
+`group`/`period`, lanthanides and actinides in two footnote rows of 15,
+cells coloured by category.
+
+**Solution.**
+
+```python
+def cell_position(i):
+    if group[i] is not None:
+        return group[i], period[i]
+    if 57 <= Z[i] <= 71:
+        return 3 + (Z[i] - 57), 9      # lanthanide footnote row
+    return 3 + (Z[i] - 89), 10         # actinide footnote row
+```
+
+then the Rectangle/text loop from the exercise scaffold. Expected: the
+standard 18-column table — H top-left, He above Ne, solid colour blocks,
+two footnote rows separated from row 7 by a blank row.
+
+**Marking notes.** The whole exercise is `cell_position`'s three cases.
+Accept any footnote column constant keeping x within 1–18. Common
+errors: crashing on `group = None` (missed the f-block case); upside-down
+table (sign of y); footnote rows touching row 7. Reward extensions:
+legend, Z labels, or a 32-column no-footnote variant (that variant is
+exactly Section 6's design conversation).
