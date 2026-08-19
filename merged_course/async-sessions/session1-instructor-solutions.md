@@ -55,40 +55,18 @@ column (or reusing `clean`) instead of requiring exactly the columns the
 comparison uses. The point of the exercise is that n depends on the
 comparison chosen, and that cleaning is per-question, not per-dataset.
 
-### A-2 `ex_family` — One taxonomic rank up (family means)
+### A-2 (replaced 19 Aug): Part II open investigation on the amniote database
 
-**Task.** Collapse the mass–longevity species table to family means and
-redraw, averaging the *logged* values, keeping class for colouring.
-
-**Solution.**
-
-```python
-families = (pair
-            .groupby(["class", "family"])[["log_mass", "log_longevity"]]
-            .mean()
-            .reset_index())
-
-fig, ax = plt.subplots(figsize=(9, 6))
-for cls, grp in families.groupby("class"):
-    ax.scatter(grp["log_mass"], grp["log_longevity"],
-               s=18, alpha=0.7, color=class_colours[cls], label=cls)
-ax.set_xlabel("family mean log10 adult body mass (g)")
-ax.set_ylabel("family mean log10 maximum longevity (years)")
-r_fam = np.corrcoef(families["log_mass"], families["log_longevity"])[0, 1]
-ax.set_title(f"One rank up: {len(families)} families, r = {r_fam:.3f}")
-ax.legend(frameon=False)
-plt.show()
-```
-
-**Expected output.** 327 families; r ≈ 0.65 at family level vs ≈ 0.52 at
-species level.
-
-**Marking notes.** Two traps: (1) grouping by `family` alone loses the
-class column needed for colour — must group by `["class", "family"]` and
-`reset_index()`; (2) averaging raw grams instead of logs — the mean of
-logs is the log of the geometric mean, the right average for ratio-scale
-traits. Averaging raw mass first is the substantive error; mention the
-elephant-drags-the-family failure mode.
+The guided Amniote section and `ex_family` were replaced by a five-stage
+student-owned investigation (expectations/structure, unit of analysis,
+validation, row accounting, final chart + one rank up). Full instructor
+guide with verified numbers and the two planted defects (4 rows with
+maturity <= 0 days; 35 rows with maturity > longevity after the days/years
+unit conversion) lives in `student-site/session1/_instructor-a.qmd`
+(instructor build only). Key anchors: classes 9,802/6,567/4,953; 465
+families, Scincidae largest (1,351); mass-longevity pair 5,122 (24%),
+r 0.519 at species level, 327 families and r 0.649 at family level with
+logged means.
 
 ---
 
