@@ -13,6 +13,13 @@ Source of truth: `student-site/session1/part-{a,b,c,d}.qmd`.
 
 ---
 
+> **Page evolution note (21 Aug):** the Part I EDA extras added on 18 Aug
+> (named validation rules, external handbook validation, measurer
+> digit-heaping) were later removed from the student page during
+> streamlining. The concepts survive where they matter: Part II's amniote
+> investigation still requires students to write validation rules and do
+> an external check themselves, with the -999 discovery chain intact.
+
 ## Part A · Allometry
 
 ### A-1 `ex_wing` — A different trait pair (wing vs tarsus)
