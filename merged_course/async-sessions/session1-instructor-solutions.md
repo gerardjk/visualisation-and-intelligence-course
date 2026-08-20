@@ -58,12 +58,14 @@ comparison chosen, and that cleaning is per-question, not per-dataset.
 ### A-2 (replaced 19 Aug): Part II open investigation on the amniote database
 
 The guided Amniote section and `ex_family` were replaced by a five-stage
-student-owned investigation (expectations/structure, unit of analysis,
-validation, row accounting, final chart + one rank up). Full instructor
-guide with verified numbers and the two planted defects (4 rows with
-maturity <= 0 days; 35 rows with maturity > longevity after the days/years
-unit conversion) lives in `student-site/session1/_instructor-a.qmd`
-(instructor build only). Key anchors: classes 9,802/6,567/4,953; 465
+student-owned investigation. As of 20 Aug the served CSV ships the
+archive's RAW values: missing data is coded -999 (mass 4,645; longevity
+15,822; maturity 17,849; litter 8,244; birth weight 17,779), nothing on
+the student page discloses it, and discovering the convention is the
+core planted lesson. Second-layer defects: 4 rows with maturity <= 0
+days; 35 rows with maturity > longevity after the days/years unit
+conversion. Full instructor guide in
+`student-site/session1/_instructor-a.qmd` (instructor build only). Key anchors: classes 9,802/6,567/4,953; 465
 families, Scincidae largest (1,351); mass-longevity pair 5,122 (24%),
 r 0.519 at species level, 327 families and r 0.649 at family level with
 logged means.

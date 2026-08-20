@@ -1,44 +1,46 @@
 ::: {.content-visible when-profile="instructor"}
 ::: {.callout-important title="Instructor-only guide to Part II (not on the student site)"}
-Model milestones and verified numbers for the amniote investigation.
+Model milestones and verified numbers for the amniote investigation. The
+served file now ships the archive's raw values, sentinel codes included;
+nothing on the student page discloses this. The discovery is the point.
 
-**Stage 1 (structure).** Shape 21,322 x 10. Missingness per trait column:
-mass 21.8%, longevity 74.2%, litter/clutch 38.7%, maturity 83.7%, birth
-weight 83.4%; the four taxonomy columns and species are complete.
-"Missingness is most of the table" is the expected conclusion.
+**Stage 1 (structure).** Shape 21,322 x 10. A naive audit reads every
+column as 100% complete: there are zero true NaNs in the served file.
+Full credit requires noticing this is too good to be true (or discovering
+it at stage 3 and revising).
 
 **Stage 2 (unit of analysis).** Classes: Aves 9,802, Reptilia 6,567,
 Mammalia 4,953 (sums to 21,322). 465 families; largest is Scincidae
 (skinks, 1,351 species), then Gekkonidae (701); 67 families contain a
-single species, so family means will mix n=1 and n>1000 groups.
+single species.
 
-**Stage 3 (validation), the planted findings.** The -999 recode claim
-verifies: zero -999 values remain. Genuine defects to find: **4 rows with
-female maturity <= 0 days** (impossible), and **35 rows where age at
-maturity exceeds maximum longevity** once maturity is converted from days
-to years (of 3,126 rows having both). The unit trap is deliberate:
-students who compare `female_maturity_d` directly against
-`maximum_longevity_y` without converting get nonsense counts. Mass and
-longevity have no nonpositive values. Any external species check against
-a handbook should pass comfortably.
+**Stage 3 (validation), the planted discovery chain.** The archive codes
+missing values as **-999**. Counts per trait column: mass 4,645;
+longevity 15,822; litter/clutch 8,244; maturity 17,849; birth weight
+17,779. Any physical rule fires at these ("mass <= 0" catches 4,645
+rows), and any log transform crashes; the Stage 3 hint ("a rule that
+fires far more often than errors plausibly occur has found a convention")
+points here without naming it. After students recode -999 to NA, the real
+missingness appears (22% to 84% by column: most of the table) and two
+second-layer defects remain: **4 rows with maturity <= 0 days** and **35
+rows where maturity exceeds longevity** once maturity is converted from
+days to years (of 3,126 rows with both observed). The unit trap is
+deliberate. External species checks against a handbook pass comfortably.
 
-**Stages 4 and 5 (the classic pair).** Mass vs longevity: 5,122 species
-have both (24%). Species-level r of the logged traits is 0.519.
-Family-level means of logged values (group by class and family, then
-reset_index): **327 families, r = 0.649**. Aggregation genuinely tightens
-this relationship, unlike the AVONET case in Part I, because it averages
-away species-level eccentrics (naked mole-rats, bats, seabirds). The raw
-grams trap: averaging unlogged mass lets single giants drag family means;
-the mean of logs is the log of the geometric mean, the right average for
-ratio-scale traits.
+**Stages 4 and 5 (the classic pair).** After recoding: mass vs longevity
+gives 5,122 species (24%); species-level r of the logged traits 0.519;
+family means of logged values (group by class and family, reset_index)
+give **327 families, r = 0.649**. The raw grams trap: the mean of logs is
+the log of the geometric mean, the right average for ratio-scale traits;
+averaging unlogged mass lets single giants drag family means.
 
 **Marking guide.** Full credit needs: stated expectations with sources;
-a per-column audit reaching the missingness conclusion; the -999 claim
-verified rather than trusted; at least one of the two planted defect sets
-found with counts; an explicit row-flow for their chosen pair; and a
-final caption naming unit, n, transformations, scales, and drops. Reward
+discovery and explicit handling of the sentinel convention (recode, drop,
+or mask, any is fine if disclosed); at least one second-layer defect
+found with counts; an explicit row-flow for the chosen pair; and a final
+caption naming unit, n, transformations, scales, and drops. Reward
 students who choose a pair other than mass-longevity and reason about its
-much smaller complete-case sample (maturity or birth weight pairs drop to
-a few thousand rows at best).
+much smaller complete-case sample. Students who report "no missing data"
+at stage 1 and never revisit have missed the core lesson.
 :::
 :::
