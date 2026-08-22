@@ -86,10 +86,28 @@ logged means.
 > `clade()` to recover the seven living lineages from Part A's Rowe (2017)
 > figure and colours them on the dated amniote tree: Marsupialia,
 > Placentalia, Monotremata, Lepidosauria, Crocodilia, Aves, Testudines
-> (bottom-to-top tree order). Each lineage is anchored by two families
-> spanning its deepest split; the seven clades tile all 956 families
-> (Aves holds 607), and the uncoloured grey backbone is the Rowe figure's
-> deep structure. No new exercise, no solution implications.
+> (bottom-to-top tree order). Reworked 22 Aug: each group is recovered
+> from Part A's own table (class Aves; orders Testudines, Crocodilia,
+> Squamata, Monotremata), not from hand-picked anchor pairs. Marsupialia
+> and Placentalia, ranks the table lacks, fall out as the two children of
+> the non-monotreme side of Mammalia, labelled by which holds Hominidae.
+> The Squamata query pulls in Sphenodontidae (tuatara), so that block is
+> Lepidosauria. The seven clades tile all 956 families (Aves holds 607),
+> and the uncoloured grey backbone is the Rowe figure's deep structure.
+> No new exercise, no solution implications.
+
+> **Page evolution note (22 Aug, later):** section 5's "Colouring whole
+> clades" was replaced by "Finding animals, fungi and plants". The old
+> version anchored the three kingdoms with curated tip pairs; the pair
+> for fungi was wrong (44 classes, silently missing Blastocladiomycetes
+> and Physodermatomycetes). The new version draws the round tree plain,
+> then walks down from the root one split at a time: the root split puts
+> fungi on the animal side (129 vs 106), the next split isolates fungi
+> (46 classes, all names ending -mycetes), two more splits peel
+> Filasterea, Ichthyosporea and Choanoflagellata off the animals (80),
+> and six splits following Magnoliopsida isolate the green plants (32).
+> Fungi counts on the page changed from 44 to 46. The assert cell was
+> removed (legend shows the counts). No exercise changes.
 
 ### B-1 `ex_carnivora` — The carnivore clade
 
