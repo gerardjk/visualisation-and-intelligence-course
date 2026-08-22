@@ -13,8 +13,9 @@ This session uses repeated classification and comparison rather than a long char
 
 ## Before class
 
-- Open and run the instructor notebook.
-- Put the student and starter notebooks in the LMS.
+- Open and run `notebooks/choosing_visual_forms_solution.ipynb`.
+- Put only `choosing_visual_forms.ipynb` and its `data` folder in the student LMS area;
+  retain the solution for teaching staff.
 - Print one set of `visual_vocabulary_cards.md` per group.
 - Print or distribute `activity_chart_choice.md`.
 - Prepare a board with three headings: audience, question and visual task.
@@ -22,6 +23,15 @@ This session uses repeated classification and comparison rather than a long char
 ## Worked demonstration
 
 Use `worked_demonstration.md` to model a small wide-to-tidy transformation. Narrate the expected row count before writing code. Treat the row-count prediction as part of the analysis, not an afterthought.
+
+Before selecting a form, annotate the fields: `mode` is nominal, `month` is
+temporal and `passengers` is a quantitative ratio measure. Ask which comparisons
+each field supports, then change the question while leaving the fields fixed.
+Use the board chain: question → types/roles → comparison → task → channel → form.
+
+For the colour sequence, do not spend time naming hues on a wheel. Ask what
+happens when the swatches are printed in greyscale, then require students to
+identify the palette family, its ordering or midpoint, and one redundant cue.
 
 ## Notebook checkpoints
 
@@ -50,12 +60,15 @@ Several answers can be valid. Judge whether the stated comparison is supported.
 | Misconception | Instructor response |
 |---|---|
 | “The dataset determines the chart.” | Ask what the audience must compare; the same data supports several tasks. |
+| “It is numeric, so arithmetic is valid.” | Ask whether it is a measure or an identifier, and whether zero and ratios are meaningful. |
+| “Ordinal categories are equally spaced.” | Higher/lower is valid; the distance between adjacent labels is not established. |
 | “Tidy means no missing values.” | Tidy describes structure. Missingness may remain meaningful and must not be silently erased. |
 | “A more complex chart contains more insight.” | Ask whether the additional encoding supports a required task. |
 | “Pie charts are always wrong.” | Ask what comparison is required and whether angle or area supports it well enough. |
 | “A line chart is always appropriate for months.” | A line implies an ordered, connected sequence; ask whether that implication fits. |
 | “Copilot cleaning is correct if the code runs.” | Require invariants: expected rows, modes, missingness, types and totals. |
-| “Colourful means accessible.” | Test contrast, colour-blind distinction and redundant encoding. |
+| “Colourful means accessible.” | Test contrast, common colour-vision deficiencies and redundant encoding. |
+| “A diverging palette looks balanced, so zero belongs in the middle.” | The midpoint must come from the measure: zero, target, average or another defensible reference. |
 
 ## Assessment connection
 

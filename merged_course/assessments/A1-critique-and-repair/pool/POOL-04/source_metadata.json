@@ -1,0 +1,14 @@
+{
+  "id": "POOL-04",
+  "domain": "wellbeing",
+  "category": "Ranking",
+  "title": "Country rankings by life evaluation, 2021\u20132023",
+  "publisher": "World Happiness Report",
+  "chart_page": "https://worldhappiness.report/ed/2024/",
+  "chart_asset": "pdf:https://files.worldhappiness.report/WHR24.pdf#page=17",
+  "source_data": "https://files.worldhappiness.report/WHR24_Data_Figure_2.1.xls",
+  "publication": "2024",
+  "downloaded": "2026-08-12",
+  "chart_sha256": "15b6160ad38f2c5cd94bebf4ff14864bcdd594bea17ec9102d3d056bcbdc735f",
+  "source_sha256": "5e3b77bc0323c9158c8a4a768f9217a21012845c5090bec6070f27fe1f9af55e"
+}

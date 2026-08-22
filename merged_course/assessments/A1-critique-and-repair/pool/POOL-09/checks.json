@@ -1,0 +1,13 @@
+{
+  "id": "POOL-09",
+  "domain": "astronomy",
+  "category": "Magnitude",
+  "publisher": "NASA Imagine the Universe / HEASARC",
+  "rows": 83,
+  "columns": 4,
+  "chart_sha256": "b536a9e656652a6735ef8d34f7ade1442e7c83474de731d35e557fff092d01f4",
+  "student_csv_sha256": "4d0f3827ff95512cfef37294f773bb0056fb109ea21c0770554f9165bc25850d",
+  "source_sha256": "b7cd0123ddcdbfc8d2772a983cebb00753e62e23b88f028df6c091ae374f9d82",
+  "exact_match_in_published_week_1_or_2_decks": false,
+  "chart_card_exception_allowed": false
+}

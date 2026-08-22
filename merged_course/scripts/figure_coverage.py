@@ -19,7 +19,7 @@ FIGS = ROOT.parent / "quarto-book" / "_book" / "atlas_files" / "figure-html"
 
 SOURCES = {
     "Seeing Data: deck": ROOT / "classes" / "01-seeing-data" / "beamer" / "seeing-data.tex",
-    "Choosing Visual Forms: deck": ROOT / "scripts" / "build_class02_deck.py",
+    "Choosing Visual Forms: deck": ROOT / "classes" / "02-visual-forms" / "beamer" / "choosing-visual-forms.tex",
     "card packs": ROOT / "scripts" / "build_figure_cards.py",
 }
 

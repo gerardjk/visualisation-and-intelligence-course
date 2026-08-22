@@ -1,0 +1,13 @@
+{
+  "id": "POOL-02",
+  "domain": "public health",
+  "category": "Correlation",
+  "publisher": "Our World in Data",
+  "rows": 57,
+  "columns": 6,
+  "chart_sha256": "324186a6336553a3931345fdb0bcfc46be07028b6782f82598f47e602118319c",
+  "student_csv_sha256": "a03e43f26b599adf2561b72f5cc08459997bdef93f3ba717713ab5904788794a",
+  "source_sha256": "b4068f050ef220dac8751ec61ab5254c953a5677d27830fd797e311aede868a5",
+  "exact_match_in_published_week_1_or_2_decks": false,
+  "chart_card_exception_allowed": false
+}

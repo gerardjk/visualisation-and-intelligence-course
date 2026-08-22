@@ -1,0 +1,13 @@
+{
+  "id": "POOL-06",
+  "domain": "energy",
+  "category": "Flow",
+  "publisher": "Lawrence Livermore National Laboratory / US Department of Energy",
+  "rows": 43,
+  "columns": 3,
+  "chart_sha256": "440d148d9a45e980c62b2f77a46f839fb799af46bf27d307f05fa0957043bb41",
+  "student_csv_sha256": "8aabb132ee28c875ab894984f04192853b9fd137ce6170edb9ede389c3a27a12",
+  "source_sha256": "eb5fd258cc2494d0238d5bd1d082a6d6ede43cc5a7e1735a208803742b9684dc",
+  "exact_match_in_published_week_1_or_2_decks": false,
+  "chart_card_exception_allowed": true
+}

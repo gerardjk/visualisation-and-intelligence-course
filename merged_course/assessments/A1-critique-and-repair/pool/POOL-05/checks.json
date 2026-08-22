@@ -1,0 +1,13 @@
+{
+  "id": "POOL-05",
+  "domain": "economics",
+  "category": "Distribution",
+  "publisher": "OpenStax",
+  "rows": 6,
+  "columns": 3,
+  "chart_sha256": "2f9d79a0ad28fbecdc52a989ce61192d50fd5197ee2f6f6417d7270dfaa45ada",
+  "student_csv_sha256": "69b47ba1fffabd4fec0bb9addb6c80378975d2ead6186ea4d0d67d5e0a0f88e7",
+  "source_sha256": "8c6c5c64ba35b420a4fe55ea96cd06e775edd77bcc65a1ffcbdca3fc54f15a8d",
+  "exact_match_in_published_week_1_or_2_decks": false,
+  "chart_card_exception_allowed": true
+}

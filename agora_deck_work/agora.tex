@@ -1,0 +1,1615 @@
+\documentclass[aspectratio=169,12pt]{beamer}
+% ============================================================================
+% THE SOVEREIGN LEDGER — reworked edition, 5 August 2026
+% Compile with: latexmk -xelatex sovereign-ledger.tex
+%
+% TIMING PLAN (~90 minutes total; per-section timings in section-frame notes):
+%   Framing 12' | I 10' | II 10' | III 11' | IV 12' | V 12' | VI 11'
+%   VII 9' | VIII 12' | Close 1'   — appendix not presented.
+% Slides marked "% FAST" are 30–45 second glance slides.
+%
+% SPEAKER NOTES: every frame carries a \note. To render them, uncomment ONE of:
+% \setbeameroption{show notes on second screen=right}   % dual-screen (pgfpages)
+% \setbeameroption{show notes}                          % interleaved pages
+% ============================================================================
+
+\usepackage{fontspec}
+\setsansfont{Latin Modern Sans}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{pgfpages} % required only if a show-notes option above is enabled
+
+\definecolor{Ink}{HTML}{17242D}
+\definecolor{Paper}{HTML}{F5F1E8}
+\definecolor{Rust}{HTML}{B94E35}
+\definecolor{Ocean}{HTML}{2F6B84}
+\definecolor{Sage}{HTML}{6D806F}
+\definecolor{Gold}{HTML}{B68A3E}
+\definecolor{Mist}{HTML}{DDE5E6}
+\definecolor{Soft}{HTML}{E9E3D8}
+\definecolor{Quiet}{HTML}{5E6B73}
+\definecolor{White}{HTML}{FFFFFF}
+
+\hypersetup{colorlinks=true,urlcolor=Ocean,linkcolor=Ink,citecolor=Ocean}
+
+\setbeamercolor{normal text}{fg=Ink,bg=Paper}
+\setbeamercolor{structure}{fg=Rust}
+\setbeamercolor{frametitle}{fg=Ink,bg=Paper}
+\setbeamercolor{title}{fg=White}
+\setbeamercolor{subtitle}{fg=Mist}
+\setbeamercolor{footline}{fg=Quiet,bg=Paper}
+\setbeamercolor{block title}{fg=White,bg=Ocean}
+\setbeamercolor{block body}{fg=Ink,bg=Mist}
+
+\setbeamerfont{title}{size=\fontsize{30}{33},series=\bfseries}
+\setbeamerfont{subtitle}{size=\fontsize{13.5}{16}}
+\setbeamerfont{frametitle}{size=\fontsize{21}{24},series=\bfseries}
+\setbeamerfont{normal text}{size=\fontsize{11.2}{13.5}}
+\setbeamerfont{itemize/enumerate body}{size=\fontsize{11.2}{13.5}}
+\setbeamerfont{itemize/enumerate subbody}{size=\fontsize{9.5}{11.5}}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}{\raisebox{0.15ex}{\color{Rust}\rule{0.55ex}{0.55ex}}}
+\setbeamertemplate{itemize subitem}{\raisebox{0.15ex}{\color{Ocean}\rule{0.42ex}{0.42ex}}}
+\setbeamersize{text margin left=0.62cm,text margin right=0.62cm}
+
+\setbeamertemplate{frametitle}{%
+  \vspace{0.22cm}%
+  \begin{beamercolorbox}[wd=\paperwidth,leftskip=0.62cm,rightskip=0.62cm]{frametitle}%
+    \usebeamerfont{frametitle}\hyphenpenalty=10000\exhyphenpenalty=10000 \insertframetitle\par
+    \vspace{0.12cm}\color{Rust}\rule{1.25cm}{1.6pt}
+  \end{beamercolorbox}%
+}
+
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.78\paperwidth,ht=2.65ex,dp=1.1ex,leftskip=.62cm]{footline}%
+      \fontsize{6}{7}\selectfont THE SOVEREIGN LEDGER \quad | \quad 5 AUGUST 2026
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.22\paperwidth,ht=2.65ex,dp=1.1ex,rightskip=.62cm plus1fil]{footline}%
+      \hfill\fontsize{6}{7}\selectfont \insertframenumber~/~\inserttotalframenumber
+    \end{beamercolorbox}%
+  }%
+}
+
+\newcommand{\rust}[1]{\textcolor{Rust}{\textbf{#1}}}
+\newcommand{\blue}[1]{\textcolor{Ocean}{\textbf{#1}}}
+\newcommand{\muted}[1]{\textcolor{Quiet}{#1}}
+\newcommand{\claim}[1]{\begin{center}\fontsize{16}{19}\selectfont\bfseries #1\end{center}}
+\newcommand{\source}[1]{\vfill\par\fontsize{5.4}{6.5}\selectfont\color{Quiet}Sources: #1}
+\newcommand{\smallsource}[1]{\par\fontsize{5}{6}\selectfont\color{Quiet}Sources: #1}
+\newcommand{\tightitems}{\setlength{\itemsep}{0.42em}\setlength{\parskip}{0pt}}
+\newcommand{\verytightitems}{\setlength{\itemsep}{0.22em}\setlength{\parskip}{0pt}}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+
+% Layer tag (refers to the eight-layer control framework)
+\newcommand{\lyr}[1]{\textcolor{Gold}{\fontsize{7.3}{8.4}\selectfont\bfseries L#1}}
+% Evidence tiers (defined on the roadmap slide; used in all assessments)
+\newcommand{\tdoc}{\textcolor{Sage}{\bfseries documented}}
+\newcommand{\tinf}{\textcolor{Ocean}{\bfseries inference}}
+\newcommand{\tunp}{\textcolor{Quiet}{\bfseries unproven}}
+
+\newenvironment{statement}{%
+  \begin{beamercolorbox}[sep=.18cm,rounded=false,wd=\linewidth]{block body}%
+  \fontsize{13}{15.5}\selectfont\bfseries
+}{\end{beamercolorbox}}
+
+% \sectionframe[strapline]{kicker}{title}{timing note}
+\newcommand{\sectionframe}[4][Payments, clearing, title and programmable finance]{%
+  \begingroup
+  \setbeamercolor{background canvas}{bg=Ink}
+  \begin{frame}[plain]
+    \vspace{1.05cm}
+    {\color{Gold}\fontsize{10}{12}\selectfont\bfseries #2\par}
+    \vspace{0.36cm}
+    {\color{White}\fontsize{26}{30}\selectfont\bfseries\hyphenpenalty=10000 #3\par}
+    \vfill
+    {\color{Mist}\rule{2.1cm}{2pt}}\par
+    \vspace{0.28cm}
+    {\color{Mist}\fontsize{8.5}{10.5}\selectfont #1}
+    \note{[Timing] #4. [Sources] Section transition; no external claim.}
+  \end{frame}
+  \endgroup
+}
+
+\title{Project Agor\'a}
+\subtitle{Payments, clearing and securities registries in the programmable transition}
+\date{5 August 2026}
+
+\begin{document}
+
+% ============================ TITLE ============================
+\begingroup
+\setbeamercolor{background canvas}{bg=Ink}
+\begin{frame}[plain]
+  \vspace{0.62cm}
+  {\color{Gold}\fontsize{10}{12}\selectfont\bfseries CONTROL, DEPENDENCE AND CAPTURE\par}
+  \vspace{0.28cm}
+  {\usebeamerfont{title}\color{White}\inserttitle\par}
+  \vspace{0.32cm}
+  {\usebeamerfont{subtitle}\color{Mist}\insertsubtitle\par}
+  \vfill
+  {\color{White}\fontsize{9.6}{11.5}\selectfont Global architecture, with Australia as the worked example\par}
+  \vspace{0.12cm}
+  {\color{Mist}\fontsize{7.8}{9.5}\selectfont Integrated briefing current to \insertdate\ \textperiodcentered\ approx.\ 90 minutes}
+  \note{[Timing] Framing block: 12 minutes including this slide. [Sources] Companion to The Sovereign Ledger integrated briefing, 5 August 2026.}
+\end{frame}
+\endgroup
+
+% ============================ FRAMING ============================
+\begin{frame}{The question is not who moves the last dollar}
+  \claim{Who controls the path that determines whether the dollar can reach the final ledger?}
+  \vspace{0.22cm}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+      \rust{Formal authority}
+      \begin{itemize}\tightitems
+        \item Central bank issues the settlement asset
+        \item Domestic law defines finality
+        \item RTGS records the final debit and credit
+      \end{itemize}
+    \column{0.48\textwidth}
+      \blue{Operational authority}
+      \begin{itemize}\tightitems
+        \item Identity and admission
+        \item Routing, sequencing and liquidity locks
+        \item Code, keys, data, recovery and exit
+      \end{itemize}
+  \end{columns}
+  \source{RBA, \href{https://www.rba.gov.au/payments-and-infrastructure/rits/about.html}{RITS overview}; Bank of England, \href{https://www.bankofengland.co.uk/payment-and-settlement/a-brief-introduction-to-the-real-time-gross-settlement-system-and-chaps}{RTGS overview}.}
+  \note{[Sources] RBA RITS overview; Bank of England RTGS overview.}
+\end{frame}
+
+\begin{frame}{Orders of magnitude} % FAST
+  \begin{itemize}\tightitems
+    \item \rust{Swift} moves value equivalent to world GDP every two to three days.
+    \item \rust{CLS} handles FX settlement values on the order of US\$7 trillion on an average day.
+    \item \rust{LCH SwapClear} clears about 95\% of vanilla OTC interest-rate swaps globally, in 28 currencies.
+    \item \rust{Indeval's DAL\'I} settles over US\$250 billion of Mexican securities daily.
+    \item \rust{Kinexys} (J.P.\ Morgan) reports over US\$4 trillion processed since inception.
+  \end{itemize}
+  \vspace{0.22cm}
+  \begin{statement}
+    These layers govern flow, not stock. Small design choices compound across these volumes daily.
+  \end{statement}
+  \source{Swift, July 2026 ledger announcement; CLS; LSEG SwapClear; Indeval/INFORMS; J.P.\ Morgan Kinexys.}
+  \note{[Sources] Swift 9 July 2026 release (world-GDP claim); CLS published averages; LSEG SwapClear service page; Indeval Edelman materials; J.P. Morgan Kinexys newsroom.}
+\end{frame}
+
+\begin{frame}{Control of a settlement system is an eight-layer capability}
+  \begin{tabularx}{\textwidth}{L{0.48cm}Y L{0.48cm}Y}
+    \textcolor{Rust}{\textbf{1}} & Law and finality & \textcolor{Rust}{\textbf{5}} & Code, keys and specialist knowledge \\
+    \addlinespace[0.35em]
+    \textcolor{Rust}{\textbf{2}} & Rules, access and pricing & \textcolor{Rust}{\textbf{6}} & Connectivity, identity and certificates \\
+    \addlinespace[0.35em]
+    \textcolor{Rust}{\textbf{3}} & Authoritative money or title record & \textcolor{Rust}{\textbf{7}} & Data, routing and optimisation \\
+    \addlinespace[0.35em]
+    \textcolor{Rust}{\textbf{4}} & Live operations and recovery & \textcolor{Rust}{\textbf{8}} & Credible exit and substitution \\
+  \end{tabularx}
+  \vspace{0.30cm}
+  \begin{statement}
+    A jurisdiction can retain layers 1--3 while conceding layers 4--8 to external vendors and international utilities.
+  \end{statement}
+  \vspace{0.12cm}
+  \muted{\fontsize{9.2}{11}\selectfont Layer tags \lyr{1}--\lyr{8} recur on the dependency and jurisdiction tables that follow.}
+  \note{[Sources] Analytical framework developed in The Sovereign Ledger. The layer tags are reused on the dependency and jurisdiction tables so the framework does analytic work rather than decorating the introduction.}
+\end{frame}
+
+\begin{frame}{One payment contains several control events} % FAST
+  \vspace{0.18cm}
+  \begin{center}
+    \fontsize{12}{14.5}\selectfont
+    Initiate \quad $\rightarrow$ \quad authenticate \quad $\rightarrow$ \quad route \\
+    \vspace{0.25cm}
+    $\rightarrow$ \quad clear / optimise \quad $\rightarrow$ \quad reserve liquidity \\
+    \vspace{0.25cm}
+    $\rightarrow$ \quad \rust{settle in central-bank money}
+  \end{center}
+  \vspace{0.36cm}
+  \begin{statement}
+    The final RTGS entry can remain publicly operated even when every economically important choice was made upstream.
+  \end{statement}
+  \source{BIS CPMI, payment-system concepts; RBA RITS; Swift shared-ledger publications.}
+  \note{[Sources] BIS CPMI conceptual framework; RBA RITS; Swift shared-ledger announcements.}
+\end{frame}
+
+\begin{frame}{Tokenisation adds records without removing law}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.47\textwidth}
+      \rust{Four records are called ``the ledger''}
+      \begin{itemize}\tightitems
+        \item Central-bank money ledger
+        \item Securities or fund ownership record
+        \item Commercial-bank liability ledger
+        \item Coordination / orchestration ledger
+      \end{itemize}
+    \column{0.49\textwidth}
+      \blue{The decisive questions}
+      \begin{itemize}\tightitems
+        \item Which record is legally authoritative?
+        \item Who can upgrade or pause it?
+        \item What happens in insolvency?
+        \item Can the market operate without it?
+      \end{itemize}
+  \end{columns}
+  \source{BIS Project Agor\'a final report; central-bank and FMI rulebooks surveyed in the companion report.}
+  \note{[Sources] BIS Project Agorá final report; RBA, BoE, ECB, BOJ, SNB and FMI materials.}
+\end{frame}
+
+\begin{frame}{The central risk is a private constitution}
+  \claim{A shared technical layer can become the place where market access, liquidity and permissible behaviour are actually governed.}
+  \vspace{0.28cm}
+  \begin{itemize}\tightitems
+    \item No conspiracy is required: institutions rationally join every credible network.
+    \item Network effects make the chosen identity, token and messaging standards difficult to escape.
+    \item The result can resemble coordination because the same firms occupy every architecture.
+  \end{itemize}
+  \source{Ownership and participation analysis in The Sovereign Ledger; public corporate and FMI disclosures.}
+  \note{[Sources] Companion report ownership atlas and participant mapping. This is an analytical inference, not an allegation of conspiracy.}
+\end{frame}
+
+\begin{frame}{Roadmap, method and a disclaimer}
+  \begin{tabularx}{\textwidth}{L{0.62cm}Y L{0.62cm}Y}
+    \textcolor{Rust}{\textbf{I}} & What the core already looks like & \textcolor{Rust}{\textbf{V}} & Swift and competing networks \\
+    \addlinespace[0.28em]
+    \textcolor{Rust}{\textbf{II}} & Australia's current position & \textcolor{Rust}{\textbf{VI}} & Technology and company lineage \\
+    \addlinespace[0.28em]
+    \textcolor{Rust}{\textbf{III}} & Eight Agor\'a jurisdictions & \textcolor{Rust}{\textbf{VII}} & ASX: failure and consequence \\
+    \addlinespace[0.28em]
+    \textcolor{Rust}{\textbf{IV}} & Agor\'a and its lineage & \textcolor{Rust}{\textbf{VIII}} & The test for any jurisdiction \\
+  \end{tabularx}
+  \vspace{0.22cm}
+  \muted{\fontsize{9.4}{11.2}\selectfont Method: every assessment is tagged \tdoc, \tinf{} or \tunp.}
+  \vspace{0.16cm}
+  \begin{statement}
+    This is not an argument for autarky: shared infrastructure is desirable --- on inspectable, substitutable, contestable terms.
+  \end{statement}
+  \note{[Timing] End of framing block at ~12 minutes. [Sources] Evidence-tier framework from The Sovereign Ledger companion report.}
+\end{frame}
+
+% ============================ PART I ============================
+\sectionframe{PART I}{What the core already looks like}{10 minutes}
+
+\begin{frame}{FMI ownership follows four recurring models}
+  \begin{tabularx}{\textwidth}{L{2.55cm}Y Y}
+    \toprule
+    \textbf{Model} & \textbf{Examples} & \textbf{Primary capture risk} \\
+    \midrule
+    Public operator & RITS, Fedwire, RT2 & procurement and capability dependence \\
+    \addlinespace[0.25em]
+    User-owned utility & Swift, CLS, SIX, TCH & incumbent admission and rulebook power \\
+    \addlinespace[0.25em]
+    Listed FMI group & ASX, LSEG, Deutsche B\"orse, TMX & shareholder returns over resilience \\
+    \addlinespace[0.25em]
+    Venture-backed platform & Digital Asset, R3, Fireblocks & vendor, investor and exit concentration \\
+    \bottomrule
+  \end{tabularx}
+  \source{Operator governance and shareholder disclosures cited in the companion report.}
+  \note{[Sources] Swift, CLS, SIX, TCH, ASX, LSEG, Deutsche Börse, TMX, Digital Asset and R3 disclosures.}
+\end{frame}
+
+\begin{frame}{Securities control is not exchange ownership}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+      \rust{Trading venue}
+      \begin{itemize}\tightitems
+        \item Matches buyers and sellers
+        \item Can be competitively duplicated
+      \end{itemize}
+      \vspace{0.25cm}
+      \rust{CCP}
+      \begin{itemize}\tightitems
+        \item Novates and nets obligations
+        \item Controls margin and default management
+      \end{itemize}
+    \column{0.48\textwidth}
+      \blue{CSD / registry}
+      \begin{itemize}\tightitems
+        \item Establishes or supports legal title
+        \item Coordinates securities settlement
+        \item Much harder to substitute in crisis
+      \end{itemize}
+  \end{columns}
+  \source{CPMI-IOSCO PFMI; ASX CHESS; Euroclear CREST materials.}
+  \note{[Sources] CPMI-IOSCO Principles for FMIs; ASX and Euroclear descriptions.}
+\end{frame}
+
+\begin{frame}{Commercial-bank money already settles at the core}
+  \begin{itemize}\tightitems
+    \item \rust{Euroclear Bank}, the world's largest international CSD, settles the cash leg in commercial-bank money: claims on Euroclear Bank itself.
+    \item \rust{CLS}: funding and defunding move through central-bank RTGS accounts, but settlement occurs across accounts on the books of CLS Bank; CLSNet nets outside central-bank money.
+    \item \rust{Correspondent banking} discharges cross-border obligations in commercial-bank money by construction.
+  \end{itemize}
+  \vspace{0.12cm}
+  \begin{statement}
+    The pure central-bank-money story was already porous. Tokenisation does not introduce commercial-bank settlement money; it makes it programmable. \hfill\tdoc
+  \end{statement}
+  \source{Euroclear Bank service descriptions; CLS settlement and CLSNet materials; BIS CPMI correspondent-banking reports.}
+  \note{[Sources] Euroclear Bank (ICSD settlement in Euroclear Bank money); CLS settlement mechanics; CPMI. This slide answers the objection that commercial-bank settlement money is novel.}
+\end{frame}
+
+\begin{frame}{Message-layer control is demonstrated power}
+  \begin{itemize}\tightitems
+    \item 2022: EU sanctions disconnected major Russian banks from Swift --- the messaging layer used, openly, as a policy instrument.
+    \item CIPS (2015) and the e-CNY are the most developed state-built responses; mBridge (Part IV) is the multi-central-bank variant.
+    \item Every jurisdiction absorbed the same lesson: whoever operates the coordination layer can exclude.
+  \end{itemize}
+  \vspace{0.28cm}
+  \begin{statement}
+    No further proof is required that the layers above final settlement carry decisive power. The only open question is who holds them next. \hfill\tdoc
+  \end{statement}
+  \source{EU Council sanctions decisions (2022); PBoC CIPS materials; BIS mBridge documentation.}
+  \note{[Sources] EU Council Regulation amendments removing named Russian banks from Swift-provided messaging; CIPS; PBoC. Framed as a design lesson shared by all jurisdictions, not a bloc-specific grievance.}
+\end{frame}
+
+\begin{frame}{The physical layer concentrates as well}
+  \begin{itemize}\tightitems
+    \item FMIs and their vendors increasingly run on a small set of hyperscalers and shared software supply chains --- layers \lyr{4} and \lyr{6} in practice.
+    \item 19 July 2024: a single faulty CrowdStrike update simultaneously disrupted airlines, banks and exchanges worldwide --- one vendor, global propagation.
+    \item Cloud regions, HSM fleets, certificate authorities and privileged tooling sit outside most jurisdictions' practical reach.
+  \end{itemize}
+  \vspace{0.28cm}
+  \begin{statement}
+    Layer analysis must include hosting, keys and endpoint software --- not only rulebooks. \hfill\tdoc
+  \end{statement}
+  \source{Public incident reporting, July 2024; FSB third-party dependency workstream.}
+  \note{[Sources] Widely documented 19 July 2024 CrowdStrike outage; FSB and national-regulator third-party risk publications.}
+\end{frame}
+
+% ============================ PART II ============================
+\sectionframe{PART II}{Australia's current position}{10 minutes}
+
+\begin{frame}{Australia owns the monetary core}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.52\textwidth}
+      \begin{itemize}\tightitems
+        \item RBA owns and operates \rust{RITS}
+        \item ESA transfers provide final wholesale AUD settlement
+        \item FSS supplies 24/7 central-bank settlement for NPP
+        \item CHESS remains the legal-title and equity-settlement spine
+      \end{itemize}
+    \column{0.44\textwidth}
+      \begin{statement}
+        Australia issues, records and finally settles its own currency. That does not by itself confer end-to-end operational control.
+      \end{statement}
+  \end{columns}
+  \source{RBA, \href{https://www.rba.gov.au/payments-and-infrastructure/rits/about.html}{RITS}; RBA, \href{https://www.rba.gov.au/publications/bulletin/2018/sep/the-new-payments-platform-and-fast-settlement-service.html}{FSS}; ASX, CHESS settlement.}
+  \note{[Sources] RBA RITS and FSS publications; ASX CHESS settlement description.}
+\end{frame}
+
+\begin{frame}{Australia depends above the final ledger}
+  \begin{tabularx}{\textwidth}{L{2.25cm}Y Y L{0.95cm}}
+    \toprule
+    \textbf{Layer} & \textbf{Important provider} & \textbf{Dependency} & \textbf{Tags} \\
+    \midrule
+    High-value messaging & Swift & standards, connectivity, certificates & \lyr{6} \\
+    Retail fast payments & AP+ / Swift / FSS & scheme, gateway and settlement integration & \lyr{2}\,\lyr{6} \\
+    COIN connectivity & TNS & network operations and support & \lyr{6} \\
+    Equity replacement & TCS BaNCS & foreign product and specialist capability & \lyr{5} \\
+    Future orchestration & undecided & routing, locks, data and workflow authority & \lyr{2}\,\lyr{7} \\
+    \bottomrule
+  \end{tabularx}
+  \source{RBA, AusPayNet, AP+, Swift, TNS, ASX and TCS disclosures.}
+  \note{[Sources] RBA; AusPayNet COIN; TNS; ASX CHESS replacement; TCS BaNCS. Layer tags refer to the eight-layer framework.}
+\end{frame}
+
+\begin{frame}{The largest concession already happened}
+  \begin{itemize}\tightitems
+    \item The large majority of AUD OTC interest-rate derivatives clears at \rust{LCH SwapClear} in London ($\sim$95\% of vanilla OTC swaps globally).
+    \item The CFR's 2012--2015 location-policy debate settled on overseas clearing under safeguards (licensing, RBA standards, Bank of England cooperation).
+    \item ASX Clear (Futures) offers a domestic AUD/NZD OTC service; the global liquidity pool sits offshore.
+  \end{itemize}
+  \vspace{0.10cm}
+  \begin{statement}
+    Margin, default management and crisis decisions for the core AUD rates market already sit with a London CCP. The tokenisation debate starts here, not from autonomy. \hfill\tdoc
+  \end{statement}
+  \source{CFR, \href{https://www.cfr.gov.au/publications/policy-statements-and-other-reports/2013/report-on-the-australian-otc-derivatives-market-july/}{OTC derivatives reports}; RBA Bulletin (2018); LSEG, \href{https://www.lseg.com/en/post-trade/clearing/lch-services/swapclear}{SwapClear}; ASX OTC clearing.}
+  \note{[Sources] CFR OTC derivatives market reports; RBA 2018 Bulletin on trade-repository data; LSEG SwapClear; ASX OTC clearing service page. Supports the second-edition thesis: tokenisation reveals existing external dependence rather than creating it.}
+\end{frame}
+
+\begin{frame}{RITS modernisation is the live decision}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+      \rust{Opportunity}
+      \begin{itemize}\tightitems
+        \item Modern interfaces and data
+        \item Longer operating hours
+        \item More settlement in central-bank money
+        \item Multiple synchronisers, not one franchise
+      \end{itemize}
+    \column{0.48\textwidth}
+      \blue{Present weakness}
+      \begin{itemize}\tightitems
+        \item Three PFMI principles partly observed
+        \item Core Modernisation delays
+        \item Congested change portfolio
+        \item Scarce specialist capacity
+      \end{itemize}
+  \end{columns}
+  \source{RBA, \href{https://www.rba.gov.au/payments-and-infrastructure/rits/self-assessments/2026/ratings-and-recommendations.html}{2026 ratings} and \href{https://www.rba.gov.au/payments-and-infrastructure/rits/self-assessments/2026/material-developments.html}{material developments}.}
+  \note{[Sources] RBA 2026 RITS assessment, ratings and material developments.}
+\end{frame}
+
+% ============================ PART III ============================
+\sectionframe{PART III}{Eight Agor\'a jurisdictions}{11 minutes}
+
+\begin{frame}{The euro area: public anchor, private machinery}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.54\textwidth}
+      \rust{Existing stack}
+      \begin{itemize}\tightitems
+        \item T2 / T2S / TIPS central-bank services
+        \item Euroclear and Clearstream post-trade groups
+        \item Eurex and LCH clearing power
+      \end{itemize}
+      \blue{Tokenisation route}
+      \begin{itemize}\tightitems
+        \item 2024 trials: Bundesbank Trigger, Banque de France DL3S, TIPS Hash-Link
+        \item \rust{Pontes} bridges market DLTs to TARGET; \rust{Appia} is the integrated long run
+      \end{itemize}
+    \column{0.42\textwidth}
+      \begin{statement}
+        The euro's monetary anchor is public; much of its collateral and securities machinery is not.
+      \end{statement}
+  \end{columns}
+  \source{ECB TARGET, \href{https://www.ecb.europa.eu/paym/target/pontes/html/index.en.html}{Pontes} and Appia; Euroclear and Deutsche B\"orse disclosures.}
+  \note{[Sources] ECB exploratory-work report, Pontes and Appia roadmap; Euroclear; Deutsche Börse/Clearstream. Merges the two euro slides from the earlier edition.}
+\end{frame}
+
+\begin{frame}{Japan separates bank money from orchestration}
+  \begin{itemize}\tightitems
+    \item BOJ-NET settles central-bank money and JGBs; Zengin-Net clears retail/interbank payments.
+    \item DCJPY is live with one issuing bank: GMO Aozora.
+    \item DCP transmits instructions; the issuing bank's Financial Zone record is characterised as the deposit.
+    \item Multi-bank interbank settlement remained an FSA-supported proof of concept in April 2026.
+  \end{itemize}
+  \begin{statement}
+    Public evidence does not establish Article 73 insolvency protection for DCP-level netting. \hfill\tinf
+  \end{statement}
+  \source{BOJ; DCP legal/product disclosures; Japan Payment Services Act arts 64, 71, 73.}
+  \note{[Sources] BOJ; DCP about/eps/company pages and April 2026 PoC; Japan Payment Services Act. Qualification: unpublished agreements could route positions into a protected mechanism.}
+\end{frame}
+
+\begin{frame}{Korea is testing tokenised deposits under a public core} % FAST
+  \begin{itemize}\tightitems
+    \item BOK-Wire+ remains the high-value central-bank-money system.
+    \item The Bank of Korea has explored wholesale CBDC and deposit-token architectures.
+    \item Six Korean banks in Agor\'a provide broad domestic coverage: Hana, IBK, KB, NongHyup, Shinhan and Woori.
+    \item The policy question is whether a shared platform complements BOK-Wire+ or becomes the indispensable access layer above it.
+  \end{itemize}
+  \source{Bank of Korea speeches and Agor\'a participant package.}
+  \note{[Sources] Bank of Korea Governor speeches; BIS/IIF Agorá participant list.}
+\end{frame}
+
+\begin{frame}{Mexico tests cross-border reach without surrendering SPEI}
+  \begin{itemize}\tightitems
+    \item Banco de M\'exico operates SPEI and the account system SIAC; SPID handles USD payments between legal entities.
+    \item \rust{Indeval}, the private CSD, operates the DAL\'I securities-settlement system, linked to Banco de M\'exico's systems.
+    \item Banorte supplies a domestic bank perspective; Monex adds specialist FX and direct CLS participation.
+    \item BBVA connects the peso domain to a global group and published Agor\'a validation work.
+  \end{itemize}
+  \begin{statement}
+    The test is whether domestic peso discharge remains anchored to Banco de M\'exico money.
+  \end{statement}
+  \source{Banco de M\'exico system descriptions; \href{https://www.indeval.com.mx/en/product?p=clearing-settlement}{Indeval, DAL\'I}; BBVA; BIS/IIF Agor\'a participant list.}
+  \note{[Sources] Banco de México (SPEI, SIAC, SPID); Indeval (DALÍ operator); BBVA Agorá publication; BIS/IIF list. Corrects the earlier edition, which attributed DALÍ's operation to Banco de México.}
+\end{frame}
+
+\begin{frame}{Switzerland operates both public and private models}
+  \begin{itemize}\tightitems
+    \item SIC is operated by SIX under the SNB mandate.
+    \item SNB wholesale CBDC has settled live transactions on SDX since 2023.
+    \item Helvetia now compares integrated wCBDC with a production RTGS link.
+    \item Fnality-like private settlement and multi-bank deposit tokens remain legally distinct from SNB money.
+  \end{itemize}
+  \begin{statement}
+    Switzerland is testing architecture without pretending every Swiss-franc token is the same liability.
+  \end{statement}
+  \source{SNB Project Helvetia; SIX/SDX; Swiss multi-bank deposit-token PoC.}
+  \note{[Sources] SNB Helvetia pages and extension release; SIX/SDX; Sygnum deposit-token PoC.}
+\end{frame}
+
+\begin{frame}{The UK renewed the core and made synchronisation a role}
+  \begin{itemize}\tightitems
+    \item The Bank of England's \rust{RT2} went live in April 2025.
+    \item Mastercard's VocaLink runs key retail infrastructure; Euroclear UK \& International operates CREST.
+    \item The Synchronisation Lab formalises external operators coordinating RTGS with asset ledgers.
+    \item Fnality supplies reserve-backed settlement tokens; Lloyds and NatWest link deposit-token work to Agor\'a.
+  \end{itemize}
+  \begin{statement}
+    A synchronisation operator need not own RTGS to control when an instruction is released. Its power lies in conditions, timing and earmarks.
+  \end{statement}
+  \source{Bank of England RT2 and Synchronisation Lab; Mastercard/VocaLink; Euroclear EUI; Fnality; Lloyds and NatWest materials.}
+  \note{[Sources] Bank of England RT2 launch and Synchronisation Lab; Mastercard acquisition; Euroclear EUI annual report; Fnality; Lloyds tokenised deposit/gilt transaction. Merges the two UK slides from the earlier edition.}
+\end{frame}
+
+\begin{frame}{The United States privatises dollar governance}
+  \begin{itemize}\tightitems
+    \item Fedwire and FedNow provide public settlement rails.
+    \item TCH owns CHIPS, RTP and EPN on behalf of the large US commercial banks that own it.
+    \item DTCC controls the central US securities post-trade chain.
+    \item Kinexys, Citi and BNY operate proprietary commercial-bank-money ledgers.
+  \end{itemize}
+  \begin{statement}
+    The dollar's monetary anchor is secure; access to programmable dollars may still be governed through private tollbooths.
+  \end{statement}
+  \source{Federal Reserve; TCH; DTCC; JPMorgan, Citi and BNY token-service disclosures.}
+  \note{[Sources] Federal Reserve; TCH (owner count varies with membership --- verify against the current shareholder page before quoting a number); DTCC; JPMorgan/Citi/BNY.}
+\end{frame}
+
+\begin{frame}{Canada combines a public core with imported optimisation}
+  \begin{itemize}\tightitems
+    \item Payments Canada owns Lynx; settlement occurs in Bank of Canada money.
+    \item TMX owns CDS and CDCC.
+    \item TMX and Clearstream jointly operate the Canadian Collateral Management Service.
+    \item Canada joined Agor\'a in May 2026, after the seven-currency prototype.
+  \end{itemize}
+  \begin{statement}
+    CCMS shows how a foreign-controlled optimiser can shape domestic repo without owning the central bank or CSD.
+  \end{statement}
+  \source{Payments Canada; Bank of Canada Agor\'a announcement; TMX/Clearstream CCMS.}
+  \note{[Sources] Payments Canada Lynx; Bank of Canada (May 2026 accession alongside the 27 May findings report); TMX/Clearstream CCMS launch.}
+\end{frame}
+
+\begin{frame}{Eight jurisdictions, eight constitutional positions}
+  \fontsize{8.0}{9.6}\selectfont
+  \begin{tabularx}{\textwidth}{L{1.28cm}L{1.95cm}Y Y L{1.12cm}}
+    \toprule
+    \textbf{Area} & \textbf{Public anchor} & \textbf{Tokenisation path} & \textbf{Main exposure} & \textbf{Tags} \\
+    \midrule
+    Euro & TARGET & Pontes / Appia & private post-trade concentration & \lyr{3}\,\lyr{7} \\
+    Japan & BOJ-NET & DCJPY / sandbox & multi-bank discharge & \lyr{1}\,\lyr{3} \\
+    Korea & BOK-Wire+ & CBDC/deposit tests & access-layer dependence & \lyr{2}\,\lyr{8} \\
+    Mexico & SPEI & Agor\'a / bank tokens & peso settlement anchor & \lyr{1}\,\lyr{3} \\
+    Switzerland & SIC / SNB wCBDC & Helvetia / SDX & SIX and platform control & \lyr{2}\,\lyr{4} \\
+    UK & RT2 & sync / Fnality & external operator and earmarks & \lyr{4}\,\lyr{7} \\
+    US & Fedwire & TCH / Kinexys / DTCC & private dollar governance & \lyr{2} \\
+    Canada & Lynx & Agor\'a / CCMS & imported collateral optimisation & \lyr{7} \\
+    \bottomrule
+  \end{tabularx}
+  \source{Central-bank and FMI sources summarised on preceding slides.}
+  \note{[Sources] Preceding jurisdiction slides and companion report. Layer tags map each exposure back to the eight-layer framework.}
+\end{frame}
+
+% ============================ PART IV ============================
+\sectionframe{PART IV}{Agor\'a and its experimental lineage}{12 minutes}
+
+\begin{frame}{Agor\'a joins bank deposits to reserve domains}
+  \begin{center}
+    \fontsize{13}{15.5}\selectfont
+    Tokenised commercial-bank deposits \\
+    \vspace{0.18cm}
+    $\downarrow$ \quad shared payment contracts and atomic conditions \quad $\downarrow$ \\
+    \vspace{0.18cm}
+    Separate currency-specific central-bank reserve domains
+  \end{center}
+  \vspace{0.32cm}
+  \begin{itemize}\tightitems
+    \item Seven original currency areas; Canada joined in May 2026 after the completed prototype.
+    \item Besu-based experimental architecture with ISO 20022 and legal-entity identity.
+    \item July 2026 real-value phase: 17 scenarios, about CHF800,000 aggregate value, roughly 80 seconds average initiation-to-settlement.
+  \end{itemize}
+  \source{BIS, \href{https://www.bis.org/publ/othp110.pdf}{Agor\'a final report} (27 May 2026); BIS, \href{https://www.bis.org/about/bisih/topics/fmis/agora/rvt.htm}{real-value testing summary}.}
+  \note{[Sources] BIS Project Agorá findings report of 27 May 2026 and July 2026 real-value testing summary (published 30 July 2026).}
+\end{frame}
+
+\begin{frame}{Agor\'a proved mechanics, not a constitution}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.47\textwidth}
+      \rust{What it demonstrated}
+      \begin{itemize}\tightitems
+        \item Atomic multi-currency transactions
+        \item Shared programmable workflows
+        \item Technical operation across institutions
+        \item Real-value test execution
+      \end{itemize}
+    \column{0.49\textwidth}
+      \blue{What remains open}
+      \begin{itemize}\tightitems
+        \item Production owner and operator
+        \item Rulebook and legal designation
+        \item Loss allocation and insolvency
+        \item Validator control, recovery and exit
+      \end{itemize}
+  \end{columns}
+  \source{BIS Agor\'a final report and real-value testing documentation.}
+  \note{[Sources] BIS Project Agorá final report; BIS real-value testing page.}
+\end{frame}
+
+\begin{frame}{The common ledger does not erase RTGS}
+  \begin{itemize}\tightitems
+    \item Reserve tokens must be funded from, and redeemable into, the relevant central-bank accounts.
+    \item Commercial-bank tokens remain claims on named banks.
+    \item Cross-currency atomicity can occur on the shared platform while domestic finality remains anchored to each jurisdiction's money.
+    \item A production design could nevertheless make the common layer operationally indispensable.
+  \end{itemize}
+  \begin{statement}
+    A currency authority keeps control only if it can isolate its domain and continue settlement without the shared layer.
+  \end{statement}
+  \source{BIS Agor\'a architecture and companion-report legal analysis.}
+  \note{[Sources] BIS Project Agorá final report. Last sentence is the report's control test.}
+\end{frame}
+
+\begin{frame}{Forty-two firms shaped the prototype}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+      \rust{Concentrated capabilities}
+      \begin{itemize}\tightitems
+        \item Global correspondents and FX dealers
+        \item Japanese and Korean domestic bank clusters
+        \item Custodians and tokenised-deposit operators
+        \item Eurex, Euroclear and SIX Digital Exchange
+        \item Visa, Mastercard and Swift
+      \end{itemize}
+    \column{0.48\textwidth}
+      \blue{Under-represented interests}
+      \begin{itemize}\tightitems
+        \item End users and corporates
+        \item Smaller-bank associations
+        \item Independent competition voices
+        \item Public-interest and civil-society representatives
+      \end{itemize}
+  \end{columns}
+  \source{BIS/IIF private-sector participation package and final participant list.}
+  \note{[Sources] BIS/IIF Agorá application package; final report participant list.}
+\end{frame}
+
+\begin{frame}{Participation is not ownership}
+  \claim{The 42 firms were a design and testing coalition---not shareholders in a disclosed production utility.}
+  \vspace{0.25cm}
+  \begin{itemize}\tightitems
+    \item Real-value testing was conducted by 28 institutions on behalf of all participants, in transactions of CHF 9,000--125,000.
+    \item Project status therefore proves workstream access, not execution of a real-value transaction --- and not endorsement of every design conclusion.
+    \item Only a few specialised roles were uniquely disclosed: Eurex as sole CCP; SIX and Kaleido in later test roles.
+    \item The future operator, ownership and governance remain undecided.
+  \end{itemize}
+  \source{BIS/IIF application package; BIS Agor\'a final and \href{https://www.bis.org/about/bisih/topics/fmis/agora/rvt.htm}{real-value testing} reports.}
+  \note{[Sources] BIS/IIF participation package; BIS Project Agorá reports; RVT summary (28 institutions, CHF 9k–125k values).}
+\end{frame}
+
+\begin{frame}{Dunbar tested one multi-CBDC platform} % FAST
+  \begin{itemize}\tightitems
+    \item RBA, Bank Negara Malaysia, MAS and South African Reserve Bank.
+    \item Two prototypes: \rust{Corda/R3} and \blue{Quorum/Partior}.
+    \item Direct cross-border transactions in several hypothetical CBDCs.
+    \item Governance, non-resident access and central-bank autonomy were the hard problems.
+  \end{itemize}
+  \begin{statement}
+    Dunbar asked whether several national monies could inhabit one platform without a platform super-user overruling the issuers.
+  \end{statement}
+  \source{BIS, \href{https://www.bis.org/publ/othp47.htm}{Project Dunbar final report}.}
+  \note{[Sources] BIS Project Dunbar final report.}
+\end{frame}
+
+\begin{frame}{Jura put real central-bank money on Corda} % FAST
+  \begin{itemize}\tightitems
+    \item Banque de France, SNB and BIS with SIX, UBS, Credit Suisse, Natixis, R3 and Accenture.
+    \item Real-value euro and Swiss-franc wCBDC plus tokenised commercial paper.
+    \item Subnetworks and dual-notary signing preserved currency-specific vetoes.
+  \end{itemize}
+  \begin{statement}
+    A central bank can retain issuance authority while depending on a third-party platform for availability and software evolution.
+  \end{statement}
+  \source{BIS, \href{https://www.bis.org/publ/othp44.htm}{Project Jura report}.}
+  \note{[Sources] BIS Project Jura report.}
+\end{frame}
+
+\begin{frame}{mBridge is the central-bank-built alternative}
+  \begin{itemize}\tightitems
+    \item Hong Kong, Thailand, China, UAE and later Saudi Arabia.
+    \item Custom mBridge Ledger with a validating node for each founding authority.
+    \item Real-value bank participation; MVP reached in 2024; BIS handed the project to participating authorities in October 2024.
+    \item The handover followed public debate about whether multi-CBDC platforms could route around established payment controls. \tinf
+  \end{itemize}
+  \begin{statement}
+    mBridge can reduce dependence on correspondent chains and Swift---but validator control does not resolve sanctions, admission or rulebook politics.
+  \end{statement}
+  \source{BIS, \href{https://www.bis.org/about/bisih/topics/cbdc/mcbdc_bridge.htm}{mBridge project page} and 2022 report.}
+  \note{[Sources] BIS mBridge project page, 2022 report and 2024 handover announcement; contemporaneous public commentary on the exit (tagged inference: motives were not fully disclosed).}
+\end{frame}
+
+\begin{frame}{Three constitutional models are competing}
+  \fontsize{9.6}{11.4}\selectfont
+  \begin{tabularx}{\textwidth}{L{2.05cm}Y Y}
+    \toprule
+    \textbf{Model} & \textbf{Examples} & \textbf{Concentration danger} \\
+    \midrule
+    Common multi-issuer platform & Dunbar, mBridge & common governance and validator layer \\
+    Shared bank/public workflow & Agor\'a, Swift ledger & incumbent orchestration and identity \\
+    Interlinked national ledgers & Cedar--Ubin+, Pontes, Meridian FX, Helvetia & bridge, oracle and synchroniser power \\
+    \bottomrule
+  \end{tabularx}
+  \begin{statement}
+    There is no inevitable one-ledger future. The contest is where coordination authority sits.
+  \end{statement}
+  \source{BIS Innovation Hub project reports; ECB Pontes; SNB Helvetia; New York Fed Cedar. Project-by-project control questions in the appendix.}
+  \note{[Sources] Comparative synthesis of BIS, central-bank and Swift project documentation. The per-project mechanism table (Mariana, Cedar–Ubin+, Helvetia, Pontes, Meridian FX) moved to the appendix.}
+\end{frame}
+
+% ============================ PART V ============================
+\sectionframe{PART V}{Swift and competing networks}{12 minutes}
+
+\begin{frame}{Swift is moving from messages to commitments}
+  \begin{itemize}\tightitems
+    \item September 2025: shared-ledger plan designed with more than 30 institutions.
+    \item March 2026: Besu-based MVP records and validates interbank payment commitments.
+    \item Swift operates the ledger; banks retain keys, deposit assets, compliance and ultimate funding.
+    \item July 2026: controlled initial-use phase announced with 17 banks.
+  \end{itemize}
+  \begin{statement}
+    Swift is not becoming the settlement asset. It is trying to become the trusted workflow through which settlement is arranged.
+  \end{statement}
+  \source{Swift, shared-ledger announcements of September 2025, March 2026 and 9 July 2026.}
+  \note{[Sources] Swift shared-ledger announcement; MVP architecture; 17-bank initial-use cohort.}
+\end{frame}
+
+\begin{frame}{The 17-bank cohort is globally distributed} % FAST
+  \fontsize{10.3}{12.4}\selectfont
+  \begin{columns}[T,onlytextwidth]
+    \column{0.32\textwidth}
+      \rust{Europe / Americas}
+      \begin{itemize}\verytightitems
+        \item BNP Paribas
+        \item BNY
+        \item Citi
+        \item HSBC
+        \item Ita\'u
+        \item Lloyds
+        \item UBS
+        \item Wells Fargo
+      \end{itemize}
+    \column{0.32\textwidth}
+      \blue{Asia-Pacific}
+      \begin{itemize}\verytightitems
+        \item ANZ
+        \item DBS
+        \item MUFG
+        \item OCBC
+        \item UOB
+      \end{itemize}
+    \column{0.32\textwidth}
+      \rust{Middle East / Africa}
+      \begin{itemize}\verytightitems
+        \item First Abu Dhabi Bank
+        \item FirstRand
+        \item Mashreq
+        \item Standard Chartered
+      \end{itemize}
+  \end{columns}
+  \source{Swift, \href{https://www.swift.com/news-events/press-releases/swifts-blockchain-ledger-ready-use-17-banks-set-pioneer-tokenised-cross-border-payments-trusted-global-infrastructure}{9 July 2026 initial-use announcement}.}
+  \note{[Sources] Swift 9 July 2026 press release.}
+\end{frame}
+
+\begin{frame}{JPMorgan is absent from 17, not from the strategy}
+  \begin{itemize}\tightitems
+    \item JPMorgan was in Swift's earlier design group, but not the July 2026 cohort of 17.
+    \item It is an Agor\'a participant and owns \rust{Kinexys}.
+    \item Kinexys operates payments, tokenised assets and information networks.
+    \item JPM Coin has operated on proprietary infrastructure and Base; native Canton issuance is planned.
+  \end{itemize}
+  \begin{statement}
+    JPMorgan is hedging architectures, not choosing one.
+  \end{statement}
+  \source{Swift design and cohort releases; JPMorgan Kinexys/JPM Coin; Canton deployment announcement.}
+  \note{[Sources] Swift; JPMorgan Kinexys and JPM Coin; Canton/JPM Coin January 2026 announcement.}
+\end{frame}
+
+\begin{frame}{CLS is the mature comparator}
+  \begin{itemize}\tightitems
+    \item Bank-owned cross-border utility with powerful network effects.
+    \item Payment-versus-payment settlement eliminates principal risk for eligible FX.
+    \item Funding moves through each currency's central-bank RTGS account; settlement itself occurs across accounts on the books of CLS Bank.
+    \item Swift provides connectivity; cooperation is public, not evidence of merger.
+  \end{itemize}
+  \begin{statement}
+    CLS shows how a private utility can become indispensable without replacing national central-bank money.
+  \end{statement}
+  \source{CLSSettlement, shareholder and third-party materials; Swift/CLS connectivity.}
+  \note{[Sources] CLS product, shareholder and group-structure pages; Swift and CLS page. The books-of-CLS-Bank mechanics echo the Part I commercial-bank-money slide.}
+\end{frame}
+
+\begin{frame}{TCH proposes bank-owned tokenised deposits}
+  \begin{itemize}\tightitems
+    \item June 2026 proposal backed by 17 named financial institutions.
+    \item On-chain clearing and settlement of tokenised bank deposits.
+    \item Intended connectivity to CHIPS and RTP.
+    \item TCH is owned by its large US member banks.
+  \end{itemize}
+  \begin{statement}
+    The bank branch of programmable dollars preserves deposit franchises and owner-bank governance.
+  \end{statement}
+  \source{The Clearing House, \href{https://www.theclearinghouse.org/payment-systems/Articles/2026/06/Major-Financial-Institutions-Unveil-Bank-Led-On-Chain-Money-Initiative}{5 June 2026 initiative}.}
+  \note{[Sources] TCH bank-led on-chain money initiative. Owner count varies with membership; verify against the current shareholder page before quoting a figure.}
+\end{frame}
+
+\begin{frame}{Open USD proposes a distribution coalition}
+  \begin{itemize}\tightitems
+    \item Announced June 2026 by Open Standard / OnePay; more than 140 businesses named, not yet a live stablecoin at the cutoff.
+    \item Fee-free uncapped mint and redemption proposed; reserve earnings shared with participating distributors after a management fee.
+    \item Context: the GENIUS Act (July 2025) bars paying yield to stablecoin holders --- revenue-sharing with \emph{distributors} is the compliant substitute.
+  \end{itemize}
+  \begin{statement}
+    Open USD competes by paying platforms for distribution; TCH competes by preserving bank deposits.
+  \end{statement}
+  \source{\href{https://joinopenstandard.com/}{Open Standard}; \href{https://www.onepay.com/newsroom/introducing-open-usd}{OnePay launch announcement}; GENIUS Act (2025).}
+  \note{[Sources] Open Standard site and OnePay announcement; GENIUS Act statutory text on holder yield.}
+\end{frame}
+
+\begin{frame}{Tokenised MMFs become payment-adjacent collateral} % FAST
+  \begin{itemize}\tightitems
+    \item BUIDL, BENJI/FOBXX and USYC combine fund claims with transferable tokens.
+    \item They can accelerate subscription, redemption and collateral mobility.
+    \item They are securities/fund interests---not bank deposits or central-bank money.
+    \item NAV, gates, official ownership records and eligible-investor restrictions remain decisive.
+  \end{itemize}
+  \begin{statement}
+    A token can trade like cash operationally while retaining investment and insolvency risk legally.
+  \end{statement}
+  \source{Franklin Templeton BENJI; Circle USYC; Securitize/BlackRock BUIDL materials.}
+  \note{[Sources] Franklin Templeton; Circle; Securitize/BlackRock.}
+\end{frame}
+
+\begin{frame}{ERC standards solve interfaces, not finality} % FAST
+  \begin{tabularx}{\textwidth}{L{2.1cm}Y Y}
+    \toprule
+    \textbf{Standard} & \textbf{Function} & \textbf{Does not establish} \\
+    \midrule
+    ERC-20 & fungible token interface & legal title or redemption \\
+    ERC-4626 & synchronous tokenised vaults & investor eligibility or NAV certainty \\
+    ERC-7540 & asynchronous request lifecycle & settlement asset or insolvency priority \\
+    ERC-7575 & multi-asset vault extensions & authoritative registry status \\
+    \bottomrule
+  \end{tabularx}
+  \source{Ethereum Improvement Proposals 20, 4626, 7540 and 7575.}
+  \note{[Sources] Official Ethereum Improvement Proposals.}
+\end{frame}
+
+\begin{frame}{Identity is the quiet gatekeeper}
+  \fontsize{9.7}{11.6}\selectfont
+  \begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+      \rust{Architectures}
+      \begin{itemize}\tightitems
+        \item Central registry: one provider owns eligibility data
+        \item Reusable issuer-signed credentials
+        \item Federated multi-authority verification
+        \item Zero-knowledge proofs of eligibility
+      \end{itemize}
+    \column{0.48\textwidth}
+      \blue{Securitize, the live instantiation}
+      \begin{itemize}\tightitems
+        \item Transfer agent, broker-dealer/ATS, fund admin
+        \item Allowlists encode jurisdiction and eligibility
+        \item BlackRock: 2024 round and a board seat
+        \item Listed as SECZ, July 2026 (Cantor-sponsored)
+      \end{itemize}
+  \end{columns}
+  \vspace{0.08cm}
+  \begin{statement}
+    Whoever controls the identity-to-wallet mapping can become the private gatekeeper to tokenised markets.
+  \end{statement}
+  \source{W3C Verifiable Credentials 2.0; Securitize corporate and investor releases; SEC filings.}
+  \note{[Sources] W3C VC Data Model 2.0; Securitize BlackRock-led round and July 2026 listing; SEC filings. Merges the earlier identity and Securitize slides. Companion point: portability matters only if credentials, revocation and recovery remain contestable.}
+\end{frame}
+
+% ============================ PART VI ============================
+\sectionframe{PART VI}{Technology and company lineage}{11 minutes}
+
+\begin{frame}{Technology choice is constitutional choice}
+  \fontsize{9.1}{10.9}\selectfont
+  \begin{tabularx}{\textwidth}{L{1.5cm}Y Y Y}
+    \toprule
+    & \textbf{Data model} & \textbf{Strongest feature} & \textbf{Capture point} \\
+    \midrule
+    Besu & shared EVM state & standards and labour pool & validators, privacy, upgrades \\
+    Canton & party-specific contracts & privacy and cross-app atomicity & synchroniser, validators, Daml \\
+    Corda & shared bilateral states & regulated workflows & notary and network manager \\
+    Fabric & channels / private data & modular enterprise control & ordering and membership service \\
+    Public chain & replicated state & reach and composability & validators, bridges, RPC, custody \\
+    \bottomrule
+  \end{tabularx}
+  \source{LF Decentralized Trust; Digital Asset; R3; Ethereum documentation.}
+  \note{[Sources] Besu, Fabric, Canton, Corda and Ethereum official documentation.}
+\end{frame}
+
+\begin{frame}{Besu is the institutional common denominator}
+  \begin{itemize}\tightitems
+    \item Apache-2.0 Ethereum client under LF Decentralized Trust.
+    \item Public Ethereum or permissioned QBFT/IBFT networks.
+    \item EVM compatibility exposes mature tools and token standards.
+    \item Used differently by Agor\'a, Swift, Fnality, DTCC and JSCC.
+  \end{itemize}
+  \begin{statement}
+    Open code reduces code lock-in; it does not eliminate control over validators, hosting, privacy services, keys or releases.
+  \end{statement}
+  \source{LF Decentralized Trust, \href{https://www.lfdecentralizedtrust.org/projects/besu}{Hyperledger Besu}; operator disclosures.}
+  \note{[Sources] LF Decentralized Trust Besu; BIS Agorá; Swift; Fnality; DTCC; JSCC.}
+\end{frame}
+
+\begin{frame}{Fnality proves Besu can settle regulated value} % FAST
+  \begin{itemize}\tightitems
+    \item Sterling Fnality uses permissioned Ethereum/Besu.
+    \item Tokens are fully backed through a Bank of England omnibus-account arrangement.
+    \item The system is recognised and designated for settlement finality.
+    \item Twenty-four banks/FMIs publicly described as backing the group.
+  \end{itemize}
+  \begin{statement}
+    Production technology does not make the token central-bank money; each currency needs its own legal and central-bank arrangement.
+  \end{statement}
+  \source{Fnality; Bank of England RTGS/CHAPS annual report and recognition materials.}
+  \note{[Sources] Fnality system descriptions; Bank of England treatment of Fnality.}
+\end{frame}
+
+\begin{frame}{Digital Asset came from the DRW orbit}
+  \begin{center}
+    \fontsize{11.5}{14}\selectfont
+    DRW / Don Wilson \\
+    \vspace{0.16cm}
+    $\swarrow$ \hspace{2.2cm} $\searrow$ \\
+    \vspace{0.12cm}
+    Cumberland crypto liquidity \hspace{0.8cm} DRW investment activity \\
+    \vspace{0.16cm}
+    Eric Saraniecki \hspace{2.0cm} Yuval Rooz \\
+    \vspace{0.23cm}
+    $\searrow$ \hspace{2.0cm} $\swarrow$ \\
+    \vspace{0.10cm}
+    \rust{Digital Asset} \quad + \quad Sunil Hirani \quad + \quad Shaul Kfir
+  \end{center}
+  \vspace{0.25cm}
+  \begin{itemize}\verytightitems
+    \item Trading and crypto-market liquidity
+    \item Derivatives workflow and clearing
+    \item Research cryptography
+  \end{itemize}
+  \source{Digital Asset founder biographies and March 2015 launch; DRW, Don Wilson profile.}
+  \note{[Sources] Digital Asset about page; 11 March 2015 launch release; DRW Don Wilson profile.}
+\end{frame}
+
+\begin{frame}{Founding record and the Masters era}
+  \fontsize{10.2}{12.2}\selectfont
+  \begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+      \rust{March 2015 announcement}
+      \begin{itemize}\tightitems
+        \item Founders: Don Wilson and Sunil Hirani
+        \item Technology described as their brainchild
+        \item Both joined the board
+      \end{itemize}
+    \column{0.48\textwidth}
+      \blue{Current corporate history}
+      \begin{itemize}\tightitems
+        \item Co-founders: Yuval Rooz, Eric Saraniecki, Shaul Kfir
+        \item Masters: CEO from the March 2015 launch; not an original founder
+        \item Reframed DLT as regulated-market infrastructure; led the ASX relationship
+      \end{itemize}
+  \end{columns}
+  \vspace{0.08cm}
+  \begin{statement}
+    Best reconstruction: Wilson/Hirani financial founders; Rooz/Saraniecki/Kfir the operating-technical founding group; Masters supplied institutional access and legitimacy. \hfill\tinf
+  \end{statement}
+  \source{Digital Asset launch release, 2016 financing release and current corporate biographies.}
+  \note{[Sources] Digital Asset 11 March 2015 release; current about page; 2016 financing announcement. Interpretation is clearly labelled reconstruction (inference tier).}
+\end{frame}
+
+\begin{frame}{Technology assembled by acquisition}
+  \fontsize{9.9}{11.8}\selectfont
+  \begin{tabularx}{\textwidth}{L{1.55cm}L{2.55cm}Y}
+    \toprule
+    \textbf{Date} & \textbf{Acquisition} & \textbf{Capability added} \\
+    \midrule
+    June 2015 & Hyperledger Inc. & permissioned ledger, team and trademark \\
+    June 2015 & Bits of Proof & Bitcoin and enterprise-ledger engineering \\
+    2015/16 & Blockstack.io & private-blockchain services; unrelated to Stacks \\
+    April 2016 & Elevence & contractual modelling language that became Daml \\
+    2023 onward & Canton network & interoperable private Daml applications \\
+    \bottomrule
+  \end{tabularx}
+  \vspace{0.14cm}
+  \muted{\fontsize{9.0}{10.8}\selectfont Hyperledger mark and code were donated to the Linux Foundation (2015--16); Fabric is IBM lineage, Besu is Consensys lineage --- Digital Asset owns neither.}
+  \vspace{0.10cm}
+  \begin{statement}
+    Canton should not be projected backwards into the platform ASX selected in 2016.
+  \end{statement}
+  \source{Digital Asset corporate milestones; acquisition announcements; Linux Foundation formation and 2016 code-proposal announcements.}
+  \note{[Sources] Digital Asset about/milestones; contemporaneous acquisition releases; LF Decentralized Trust 17 Dec 2015 and 9 Feb 2016 announcements. Absorbs the earlier Hyperledger-ownership slide.}
+\end{frame}
+
+\begin{frame}{The Ethereum lineage is separate}
+  \fontsize{9.8}{11.8}\selectfont
+  \begin{tabularx}{\textwidth}{L{2.15cm}Y Y}
+    \toprule
+    \textbf{Date} & \textbf{Ethereum} & \textbf{Digital Asset} \\
+    \midrule
+    Nov 2013 & white paper & -- \\
+    Jan--Sep 2014 & announced, specified, funded & organised later in 2014 \\
+    Mar 2015 & prototypes & public company launch \\
+    Jul 2015 & mainnet launch & operating and acquiring teams \\
+    \bottomrule
+  \end{tabularx}
+  \begin{statement}
+    Digital Asset predates the Ethereum mainnet, not the Ethereum project. Later overlap came through JPMorgan, Consensys, Hyperledger and shared investors---not a common founding team.
+  \end{statement}
+  \source{Ethereum official history; Digital Asset March 2015 launch.}
+  \note{[Sources] Ethereum.org history; Digital Asset launch release. Merges the earlier chronology and founder-overlap slides; full founder lists remain in the companion report.}
+\end{frame}
+
+\begin{frame}{The 2016 coalition changed the company, and kept paying}
+  \fontsize{9.6}{11.4}\selectfont
+  \begin{columns}[T,onlytextwidth]
+    \column{0.50\textwidth}
+      \rust{US\$50m+ strategic investors (2016)}
+      \begin{itemize}\verytightitems
+        \item ABN AMRO, BNP Paribas, Citi, JPMorgan, PNC, Santander
+        \item ASX, CME, Deutsche B\"orse, DTCC, ICAP
+        \item Accenture and Broadridge
+      \end{itemize}
+    \column{0.46\textwidth}
+      \blue{Board representation}
+      \begin{itemize}\verytightitems
+        \item BNP Paribas
+        \item Deutsche B\"orse
+        \item JPMorgan
+        \item DTCC
+      \end{itemize}
+  \end{columns}
+  \vspace{0.22cm}
+  \begin{tabularx}{\textwidth}{L{1.0cm}L{2.1cm}Y}
+    \toprule
+    2016 & US\$50m+ & banks, exchanges, CSD/clearing and integrators \\
+    2025 & US\$135m & Tradeweb/DRW plus dealers, DTCC and crypto firms \\
+    2026 & US\$355m & a16z, ADIA, banks, brokers, exchanges and crypto investors \\
+    \bottomrule
+  \end{tabularx}
+  \vspace{0.14cm}
+  \muted{\fontsize{9}{10.8}\selectfont 700+ Canton ecosystem participants reported June 2026; the 2026 round disclosed no valuation.}
+  \source{Digital Asset/Broadridge 21 January 2016 financing announcement; 2025 and 11 June 2026 financing releases.}
+  \note{[Sources] Digital Asset financing releases. No undisclosed valuation is inferred. Merges the earlier coalition and capital slides. Statement point: customers, infrastructure owners and potential competitors financed and governed the vendor.}
+\end{frame}
+
+\begin{frame}{Canton coordinates private applications} % FAST
+  \begin{itemize}\tightitems
+    \item Participants hold party-specific contract views rather than one public payload ledger.
+    \item Synchronisers sequence encrypted messages.
+    \item Mediators coordinate atomic commit across applications.
+    \item Global Synchronizer governance uses Foundation and super-validator voting.
+  \end{itemize}
+  \begin{statement}
+    Canton distributes data but can still concentrate operational power in synchronisation, validation, hosting and Daml expertise.
+  \end{statement}
+  \source{Digital Asset Canton participant architecture; Canton Foundation governance.}
+  \note{[Sources] Digital Asset Canton documentation; Canton Foundation.}
+\end{frame}
+
+\begin{frame}{Institutions hedge every architecture}
+  \begin{itemize}\tightitems
+    \item JPMorgan: Agor\'a, Swift design, TCH, Kinexys, Partior and Canton.
+    \item DTCC: Digital Asset investor; Canton and Besu deployments.
+    \item Euroclear: Agor\'a, Fnality and Canton collateral network.
+    \item Visa and Mastercard: Agor\'a, Swift/Besu groups and Open USD.
+    \item Tradeweb: Digital Asset and Securitize; majority owned by LSEG.
+  \end{itemize}
+  \begin{statement}
+    Strategic optionality lets incumbent institutions shape the winner whichever stack prevails.
+  \end{statement}
+  \source{Corporate investment, participant and partnership disclosures mapped in the companion report.}
+  \note{[Sources] JPMorgan, DTCC, Euroclear, Visa, Mastercard, Tradeweb/LSEG and project disclosures.}
+\end{frame}
+
+% ============================ PART VII ============================
+\sectionframe{PART VII}{ASX: failure, conflict and consequence}{9 minutes}
+
+\begin{frame}{ASX made the market a proving ground}
+  \begin{itemize}\tightitems
+    \item January 2016: exploratory Digital Asset work plus 5\% equity stake; June 2016: 8.5\% and a board seat.
+    \item 2017: commitment to DLT-based CHESS replacement.
+    \item November 2022: project paused; A\$245--255 million written off.
+    \item November 2023: TCS BaNCS selected for a staged replacement.
+    \item 20 April 2026: Release 1 (clearing) goes live; Release 2 (settlement and subregister) is projected toward the end of the decade.
+  \end{itemize}
+  \begin{statement}
+    Vendor selection, venture investment, product development and critical-system replacement became inseparable.
+  \end{statement}
+  \source{ASX announcements; ASIC inquiry and Federal Court penalty materials.}
+  \note{[Sources] ASX project history; ASIC 2026 inquiry and penalty; ASX Release 1 go-live announcements (April 2026).}
+\end{frame}
+
+\begin{frame}{Four risks were accepted together}
+  \begin{tabularx}{\textwidth}{L{2.2cm}Y}
+    \toprule
+    \textbf{Risk} & \textbf{Why it was foreseeable} \\
+    \midrule
+    Technology & no equivalent national production deployment \\
+    Integration & acquired teams and components still forming one stack \\
+    Governance & ASX was buyer, investor and board participant \\
+    Disclosure & admitting failure damaged both infrastructure and investment narratives \\
+    \bottomrule
+  \end{tabularx}
+  \begin{statement}
+    ``Incompetence'' is incomplete: this was a foreseeable institutional-design failure. \hfill\tinf
+  \end{statement}
+  \source{ASX chronology; Digital Asset acquisition/funding history; ASIC findings.}
+  \note{[Sources] ASX, Digital Asset and ASIC materials. Final sentence is an analytical conclusion (inference tier).}
+\end{frame}
+
+\begin{frame}{The conflict was real}
+  \begin{itemize}\tightitems
+    \item ASX had a financial and reputational interest in vendor success.
+    \item CME, Deutsche B\"orse, DTCC and major banks invested alongside it.
+    \item Those firms gained exposure to reusable post-trade technology and requirements knowledge.
+    \item Digital Asset lacked an equivalent live national-market deployment.
+  \end{itemize}
+  \begin{statement}
+    Conflict establishes a duty for exceptional independence. It does not by itself establish corrupt action.
+  \end{statement}
+  \source{Digital Asset 2016 investor/board release; ASX disclosures; ASIC inquiry.}
+  \note{[Sources] Digital Asset/Broadridge financing release; ASX; ASIC.}
+\end{frame}
+
+\begin{frame}{The official findings are already severe}
+  \begin{itemize}\tightitems
+    \item ASIC inquiry: resilience compromised in pursuit of high shareholder returns; governance, capability and stewardship failures identified.
+    \item ASX admitted its 10 February 2022 ``progressing well'' statement was misleading --- contravening ss 12DA and 12DB(1)(a) and (e) of the ASIC Act.
+    \item July 2026: the Federal Court imposed a A\$20.5 million penalty plus A\$3 million towards ASIC's costs.
+  \end{itemize}
+  \begin{statement}
+    The public record establishes conflicted and misleading stewardship of critical infrastructure. \hfill\tdoc
+  \end{statement}
+  \source{ASIC, \href{https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2026-releases/26-059mr-asic-publishes-asx-inquiry-panel-final-report-and-acknowledges-observations/}{April 2026 inquiry findings}; ASIC, \href{https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2026-releases/26-143mr-asx-ordered-to-pay-20-5-million-penalty-for-misleading-conduct-relating-to-chess-replacement-project/}{July 2026 CHESS penalty}.}
+  \note{[Sources] ASIC 26-059MR and 26-143MR; ASIC 26-119MR (admission, statutory provisions, costs order).}
+\end{frame}
+
+\begin{frame}{The sabotage hypotheses rank differently}
+  \fontsize{9.8}{11.8}\selectfont
+  \begin{tabularx}{\textwidth}{L{0.55cm}Y L{3.0cm}}
+    \toprule
+    & \textbf{Hypothesis} & \textbf{Assessment} \\
+    \midrule
+    1 & governance failure and shareholder capture & \tdoc \\
+    2 & reckless experimentation in conflicted procurement & \tdoc \\
+    3 & ecosystem enclosure without central conspiracy & \tinf, partly evidenced \\
+    4 & tacit tolerance of failure by beneficiaries & \tinf, weak \\
+    5 & coordinated sabotage for a foreign takeover & \tunp \\
+    \bottomrule
+  \end{tabularx}
+  \source{Evidence ledger and counterfactual assessment in the companion report.}
+  \note{[Sources] ASIC/ASX record plus documented ownership and chronology. Assessments now use the deck's evidence tiers directly.}
+\end{frame}
+
+\begin{frame}{Later benefit is not proof of authorship}
+  \begin{itemize}\tightitems
+    \item Digital Asset gained requirements knowledge, credibility and a flagship narrative.
+    \item Its investors gained option value across post-trade architectures.
+    \item ASX sold its remaining 5.4\% stake in 2025 for about A\$57 million.
+    \item ASX reported only about A\$10 million pre-tax gain over acquisition cost---far below the project write-off.
+  \end{itemize}
+  \begin{statement}
+    The strategic springboard is credible; a disclosed ASX investment-profit motive is not. \hfill\tinf
+  \end{statement}
+  \source{ASX 2025 sale announcement and project write-off disclosures.}
+  \note{[Sources] ASX 2025 sale announcement and historical project cost disclosures.}
+\end{frame}
+
+\begin{frame}{Cboe and TMX did not replace CHESS}
+  \begin{itemize}\tightitems
+    \item ASIC introduced competition rules limiting misuse of ASX monopoly power.
+    \item ASIC approved Cboe Australia as a listing venue in October 2025.
+    \item TMX agreed in 2026 to buy Cboe Australia and Canada, subject to approval.
+    \item ASX---not Clearstream or TMX---selected TCS BaNCS and remains the CHESS operator.
+  \end{itemize}
+  \begin{statement}
+    De-monopolisation is real; the claim that Clearstream ``swooped in and took CHESS'' is \tunp.
+  \end{statement}
+  \source{ASIC competition/listing releases; TMX/Cboe transaction; ASX TCS selection.}
+  \note{[Sources] ASIC 25-019MR and 25-227MR; TMX/Cboe; ASX.}
+\end{frame}
+
+% ============================ PART VIII ============================
+\sectionframe{PART VIII}{The test for any jurisdiction}{12 minutes}
+
+\begin{frame}{Dominance without issuing AUD}
+  \begin{itemize}\tightitems
+    \item Select correspondents and executable FX paths.
+    \item Determine collateral eligibility and substitution.
+    \item Sequence obligations and reserve liquidity.
+    \item Encode identity, sanctions and market-access rules.
+    \item Send only the final net or gross instruction to RITS.
+  \end{itemize}
+  \begin{statement}
+    RITS could retain legal finality while becoming the last actuator of decisions made elsewhere.
+  \end{statement}
+  \source{Agor\'a, Swift, CLS, Meridian FX and synchronisation architectures analysed in the companion report.}
+  \note{[Sources] BIS Agorá and Meridian FX; Swift ledger; CLS; central-bank synchronisation work.}
+\end{frame}
+
+\begin{frame}{A CLS-style utility can capture workflow}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.47\textwidth}
+      \rust{What Australia keeps}
+      \begin{itemize}\tightitems
+        \item AUD issuance
+        \item ESA balances
+        \item RITS finality
+        \item domestic emergency law
+      \end{itemize}
+    \column{0.49\textwidth}
+      \blue{What it could lose}
+      \begin{itemize}\tightitems
+        \item price discovery and routing
+        \item collateral allocation
+        \item transaction data
+        \item operational continuity
+      \end{itemize}
+  \end{columns}
+  \begin{statement}
+    Final settlement in public money can coexist with dependence everywhere else.
+  \end{statement}
+  \note{[Sources] Analytical synthesis based on CLS and proposed orchestration models.}
+\end{frame}
+
+\begin{frame}{The case for conceding layers}
+  \begin{itemize}\tightitems
+    \item \rust{Scale economics}: duplicating clearing, identity and orchestration nationally is expensive; global pools price and net better.
+    \item \rust{Capability scarcity}: the RBA's own partly-observed PFMI ratings show that public operation is not automatically resilient.
+    \item \rust{Standardisation}: common rails reduce fragmentation, error rates and compliance cost for every participant.
+  \end{itemize}
+  \vspace{0.26cm}
+  \begin{statement}
+    The efficiency case is real. It argues for shared layers on contestable terms --- not for uninspectable, unsubstitutable ones. The dispute is about terms, not participation.
+  \end{statement}
+  \source{RBA 2026 RITS self-assessment; CPMI-IOSCO efficiency principles; companion-report counterarguments chapter.}
+  \note{[Sources] RBA RITS ratings; PFMI. Steelman slide: pre-empts the efficiency objection before the policy asks.}
+\end{frame}
+
+\begin{frame}{Australia is already piloting the future stack}
+  \begin{itemize}\tightitems
+    \item \rust{Project Acacia}: RBA and DFCRC wholesale tokenisation programme, spanning the A\$350 billion-plus repo market and other asset classes.
+    \item CBA--J.P.\ Morgan (Kinexys)--ASX--HQLAx use case, with Deutsche B\"orse Group as HQLAx's trusted third party; completed May 2026.
+    \item \rust{Repo transactions settled using a CBA deposit token} alongside a pilot wholesale CBDC; the securities leg ran on HQLAx with tokenised assets held at ASX.
+  \end{itemize}
+  \vspace{0.24cm}
+  \begin{statement}
+    The domestic pilot already contains every element of this briefing: commercial-bank settlement money, a US bank's platform and a Deutsche B\"orse-linked collateral layer above local assets.\\\hspace*{\fill}\tdoc
+  \end{statement}
+  \source{RBA, \href{https://www.rba.gov.au/media-releases/2024/mr-24-25.html}{Project Acacia}; CBA, \href{https://www.commbank.com.au/articles/newsroom/2026/05/rba-wholesale-funding-markets-trial.html}{May 2026 completion}; J.P.\ Morgan, \href{https://www.jpmorgan.com/payments/newsroom/kinexys-project-acacia-tokenization-trial-australia}{Kinexys trial}.}
+  \note{[Sources] RBA/DFCRC Project Acacia; CBA and J.P. Morgan May 2026 releases. Key fact: settlement occurred in commercial-bank money (CBA deposit token) as well as pilot wCBDC --- the settlement-asset question is live domestically, now.}
+\end{frame}
+
+\begin{frame}{The tests map onto existing law}
+  \fontsize{9.2}{10.9}\selectfont
+  \begin{tabularx}{\textwidth}{L{3.25cm}Y}
+    \toprule
+    \textbf{Instrument} & \textbf{What it reaches} \\
+    \midrule
+    Payment Systems (Regulation) Act, as amended & ministerial designation reaches orchestration layers and foreign operators \\
+    \addlinespace[0.16em]
+    RBA financial stability / CS-facility standards & binding conditions on licensed facilities, incl.\ overseas licensees such as LCH \\
+    \addlinespace[0.16em]
+    APRA CPS 230 & material-service-provider obligations: the home for rehearsed substitution and exit \\
+    \addlinespace[0.16em]
+    Security of Critical Infrastructure Act & obligations and assistance powers for designated financial assets \\
+    \bottomrule
+  \end{tabularx}
+  \vspace{0.10cm}
+  \begin{statement}
+    The machinery exists. The unfinished work is applying it deliberately to layers 4--8.
+  \end{statement}
+  \source{Treasury payments-licensing reforms; RBA standards; APRA CPS 230; SOCI Act.}
+  \note{[Sources] Amended PSRA and designation power; RBA FSS/CS-facility standards; APRA CPS 230; SOCI Act. Converts the policy asks from aspiration to mechanism.}
+\end{frame}
+
+\begin{frame}{The trusted optimiser must pass seven tests}
+  \fontsize{10.3}{12.4}\selectfont
+  \begin{enumerate}\tightitems
+    \item Can the RBA inspect and reproduce every material decision?
+    \item Are liquidity locks participant-authorised and bounded?
+    \item Can the RBA revoke them during an emergency?
+    \item Is there a direct route that bypasses the optimiser?
+    \item Can another operator substitute without data loss?
+    \item Does Australia retain keys, telemetry and recovery authority?
+    \item Can the AUD domain isolate and continue domestically?
+  \end{enumerate}
+  \note{[Sources] Control tests developed in the companion report.}
+\end{frame}
+
+\begin{frame}{The settlement rule must be explicit}
+  \begin{statement}
+    A net interbank obligation denominated in Australian dollars is finally discharged only in RBA money, unless the RBA expressly authorises another settlement asset for a defined use case.
+  \end{statement}
+  \vspace{0.42cm}
+  \begin{itemize}\tightitems
+    \item Token movement is not enough.
+    \item Contractual netting is not enough.
+    \item A foreign operator's commitment record is not enough.
+  \end{itemize}
+  \note{[Sources] Policy recommendation from The Sovereign Ledger. Lands directly after Acacia: the pilot's commercial-bank-money settlement is exactly the case the rule must anticipate.}
+\end{frame}
+
+\begin{frame}{External ESA locks need emergency limits}
+  \begin{statement}
+    External ESA locks must be capped, participant-authorised and revocable under RBA emergency rules.
+  \end{statement}
+  \vspace{0.42cm}
+  \begin{itemize}\tightitems
+    \item Maximum amount and duration set ex ante
+    \item Explicit participant consent for every reservation class
+    \item RBA visibility and unilateral crisis release authority
+    \item No permanent exclusive synchroniser
+    \item Tested fallback to direct RITS submission
+  \end{itemize}
+  \note{[Sources] Policy recommendation from The Sovereign Ledger.}
+\end{frame}
+
+\begin{frame}{Continuity requires rehearsed exit}
+  \begin{itemize}\tightitems
+    \item Domestic copies of authoritative data and audit trails
+    \item Source, build, key and privileged-access arrangements
+    \item Operator substitution and manual contingency modes
+    \item Publicly funded engineering capability inside Australia
+    \item Crisis exercises that assume the external layer is unavailable
+  \end{itemize}
+  \begin{statement}
+    Exit that has never been rehearsed is not an exit plan.
+  \end{statement}
+  \note{[Sources] Policy synthesis from the companion report and PFMI operational-resilience principles.}
+\end{frame}
+
+\begin{frame}{The conclusion is adversarial, not conspiratorial}
+  \claim{Retaining the last ledger entry is insufficient if private institutions control every condition that precedes it.}
+  \vspace{0.30cm}
+  \begin{itemize}\tightitems
+    \item Assume every actor will exploit lawful control and switching costs.
+    \item Demand transparent optimisation and public emergency authority.
+    \item Preserve multiple routes, domestic competence and credible substitution.
+    \item Distinguish documented conflict from unproved coordination.
+  \end{itemize}
+  \source{The Sovereign Ledger integrated briefing, 5 August 2026.}
+  \note{[Sources] Synthesis of the full companion report.}
+\end{frame}
+
+% ============================ CLOSE ============================
+\begingroup
+\setbeamercolor{background canvas}{bg=Ink}
+\begin{frame}[plain]
+  \vspace{0.95cm}
+  {\color{Gold}\fontsize{10}{12}\selectfont\bfseries FINAL PRINCIPLE\par}
+  \vspace{0.45cm}
+  {\color{White}\fontsize{24}{28}\selectfont\bfseries
+    No private owner, foreign parent, bank club or technology supplier should be able to hold the continuity of money and title hostage.\par}
+  \vfill
+  {\color{Mist}\fontsize{10.3}{12.8}\selectfont Contestable control is the operational meaning of sovereignty.}
+  \note{[Sources] Closing conclusion of The Sovereign Ledger. The single deliberate use of the word.}
+\end{frame}
+\endgroup
+
+% ============================ APPENDIX ============================
+\appendix
+\sectionframe[Reference material]{APPENDIX}{Participants, ownership and sources}{not presented}
+
+\begin{frame}{Agor\'a participants: global banks}
+  \fontsize{10}{12}\selectfont
+  \begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+      \begin{itemize}\verytightitems
+        \item BNP Paribas
+        \item BNY
+        \item Citi
+        \item Cr\'edit Agricole CIB
+        \item Deutsche Bank
+        \item HSBC
+        \item JPMorgan Chase
+        \item Standard Chartered
+        \item UBS
+      \end{itemize}
+    \column{0.48\textwidth}
+      \begin{itemize}\verytightitems
+        \item Santander
+        \item BBVA
+        \item CaixaBank
+        \item Commerzbank
+        \item Groupe BPCE
+        \item Lloyds
+        \item NatWest
+        \item FNBO
+        \item TD Bank N.A.
+      \end{itemize}
+  \end{columns}
+  \source{BIS/IIF Agor\'a final participant list.}
+  \note{[Sources] BIS/IIF participant list.}
+\end{frame}
+
+\begin{frame}{Agor\'a participants: Japan and Korea}
+  \fontsize{10.3}{12.4}\selectfont
+  \begin{columns}[T,onlytextwidth]
+    \column{0.46\textwidth}
+      \rust{Japan}
+      \begin{itemize}\verytightitems
+        \item Mizuho
+        \item MUFG
+        \item SBI Shinsei
+        \item SMBC
+      \end{itemize}
+    \column{0.50\textwidth}
+      \blue{Korea}
+      \begin{itemize}\verytightitems
+        \item Hana
+        \item Industrial Bank of Korea
+        \item KB Kookmin
+        \item NongHyup
+        \item Shinhan
+        \item Woori
+      \end{itemize}
+  \end{columns}
+  \source{BIS/IIF Agor\'a final participant list.}
+  \note{[Sources] BIS/IIF participant list.}
+\end{frame}
+
+\begin{frame}{Agor\'a participants: specialist banks}
+  \fontsize{10}{12}\selectfont
+  \begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+      \rust{Mexico / Latin America}
+      \begin{itemize}\verytightitems
+        \item Banorte
+        \item Monex
+        \item Banco BV
+      \end{itemize}
+      \vspace{0.22cm}
+      \rust{Switzerland}
+      \begin{itemize}\verytightitems
+        \item AMINA
+        \item BCV
+        \item Basler Kantonalbank
+      \end{itemize}
+    \column{0.48\textwidth}
+      \blue{Switzerland continued}
+      \begin{itemize}\verytightitems
+        \item PostFinance
+        \item Sygnum
+      \end{itemize}
+      \vspace{0.22cm}
+      \muted{These institutions add regional, crypto-bank, cooperative and specialist-FX perspectives.}
+  \end{columns}
+  \source{BIS/IIF Agor\'a final participant list.}
+  \note{[Sources] BIS/IIF participant list.}
+\end{frame}
+
+\begin{frame}{Agor\'a participants: FMIs and networks}
+  \begin{itemize}\tightitems
+    \item \rust{Eurex Clearing} --- sole CCP
+    \item \rust{Euroclear} --- CSD/ICSD, custody and collateral
+    \item \rust{SIX Digital Exchange} --- regulated DLT CSD/exchange
+    \item \rust{Mastercard} --- network rules, identity and distribution
+    \item \rust{Visa} --- network/risk rules and bank-token platform
+    \item \rust{Swift} --- ISO 20022, connectivity and competing ledger strategy
+  \end{itemize}
+  \source{BIS/IIF participant list; participant corporate disclosures.}
+  \note{[Sources] BIS/IIF list; Eurex, Euroclear, SIX, Mastercard, Visa and Swift.}
+\end{frame}
+
+\begin{frame}{Other projects test different control points}
+  \fontsize{9.8}{11.8}\selectfont
+  \begin{tabularx}{\textwidth}{L{1.95cm}Y Y}
+    \toprule
+    \textbf{Project} & \textbf{Mechanism} & \textbf{Control question} \\
+    \midrule
+    Mariana & AMM for wCBDC FX & who sets curves and supplies liquidity? \\
+    Cedar--Ubin+ & atomic links across separate ledgers & can interoperability avoid a central platform? \\
+    Helvetia & live wCBDC versus RTGS link & integrated token or synchronised conventional money? \\
+    Pontes & DLT-to-TARGET bridge & how does market DLT reach public money? \\
+    Meridian FX & external queue and liquidity saving & can an optimiser shape settlement before RTGS? \\
+    \bottomrule
+  \end{tabularx}
+  \source{BIS Innovation Hub project reports; ECB Pontes; SNB Helvetia; New York Fed Cedar.}
+  \note{[Sources] BIS Mariana and Meridian; NY Fed Cedar; ECB Pontes; SNB Helvetia. Moved from Part IV.}
+\end{frame}
+
+\begin{frame}{Ownership atlas: incumbent infrastructure}
+  \fontsize{8.8}{10.5}\selectfont
+  \begin{tabularx}{\textwidth}{L{1.65cm}Y Y}
+    \toprule
+    \textbf{Institution} & \textbf{Ownership} & \textbf{Control point} \\
+    \midrule
+    Swift & financial-institution cooperative & messaging and future ledger \\
+    CLS & large financial institutions & FX acceptance and netting \\
+    TCH & large US member banks & CHIPS, RTP and token proposal \\
+    DTCC & user/industry owned & US post-trade chain \\
+    Clearstream & Deutsche B\"orse subsidiary & CSD/ICSD and collateral \\
+    Euroclear & mixed private, public and sovereign holders & CSD/ICSD and collateral \\
+    ASX & listed company & Australian clearing and CHESS \\
+    \bottomrule
+  \end{tabularx}
+  \note{[Sources] Corporate governance and shareholder disclosures in companion report.}
+\end{frame}
+
+\begin{frame}{Ownership atlas: emerging infrastructure}
+  \fontsize{8.8}{10.5}\selectfont
+  \begin{tabularx}{\textwidth}{L{1.75cm}Y Y}
+    \toprule
+    \textbf{Institution} & \textbf{Ownership / governance} & \textbf{Control point} \\
+    \midrule
+    Digital Asset & private strategic/venture coalition & Daml/Canton software and ecosystem \\
+    Canton Foundation & member/super-validator voting & Global Synchronizer governance \\
+    Fnality & 24 banks/FMIs & reserve-backed Besu payment systems \\
+    R3 & private strategic investors & Corda product and expertise \\
+    Consensys & private founder/venture group & Ethereum tools, Infura, Besu lineage \\
+    Fireblocks & private venture-backed vendor & keys, policy engine and nodes \\
+    Securitize & NYSE-listed SECZ & KYC, transfer agent, ATS and funds \\
+    \bottomrule
+  \end{tabularx}
+  \note{[Sources] Corporate and foundation disclosures cited in companion report.}
+\end{frame}
+
+\begin{frame}{Primary sources: public-money architecture}
+  \fontsize{8.1}{9.7}\selectfont
+  \begin{itemize}\verytightitems
+    \item \href{https://www.rba.gov.au/payments-and-infrastructure/rits/about.html}{Reserve Bank of Australia --- RITS}
+    \item \href{https://www.bankofengland.co.uk/payment-and-settlement/a-brief-introduction-to-the-real-time-gross-settlement-system-and-chaps}{Bank of England --- RTGS and CHAPS}
+    \item \href{https://www.ecb.europa.eu/paym/target/html/index.en.html}{ECB --- TARGET Services}
+    \item \href{https://www.snb.ch/en/the-snb/mandates-goals/payment-transactions/projekt_helvetia}{SNB --- Project Helvetia}
+    \item \href{https://www.payments.ca/systems-services/payment-systems/high-value-payment-system-lynx}{Payments Canada --- Lynx}
+    \item \href{https://www.bis.org/publ/othp110.pdf}{BIS --- Project Agor\'a final report}
+  \end{itemize}
+  \note{[Sources] Links shown on slide.}
+\end{frame}
+
+\begin{frame}{Primary sources: projects and ledgers}
+  \fontsize{8.1}{9.7}\selectfont
+  \begin{itemize}\verytightitems
+    \item \href{https://www.bis.org/publ/othp47.htm}{BIS --- Project Dunbar}
+    \item \href{https://www.bis.org/publ/othp44.htm}{BIS --- Project Jura}
+    \item \href{https://www.bis.org/about/bisih/topics/cbdc/mcbdc_bridge.htm}{BIS --- Project mBridge}
+    \item \href{https://www.bis.org/about/bisih/topics/fmis/agora/rvt.htm}{BIS --- Agor\'a real-value testing}
+    \item \href{https://www.newyorkfed.org/aboutthefed/nyic/project-cedar}{New York Fed --- Project Cedar}
+    \item \href{https://www.swift.com/news-events/press-releases/swifts-blockchain-ledger-ready-use-17-banks-set-pioneer-tokenised-cross-border-payments-trusted-global-infrastructure}{Swift --- 17-bank ledger cohort}
+    \item \href{https://www.theclearinghouse.org/payment-systems/Articles/2026/06/Major-Financial-Institutions-Unveil-Bank-Led-On-Chain-Money-Initiative}{TCH --- bank-led on-chain money}
+  \end{itemize}
+  \note{[Sources] Links shown on slide.}
+\end{frame}
+
+\begin{frame}{Primary sources: technology lineage}
+  \fontsize{8.1}{9.7}\selectfont
+  \begin{itemize}\verytightitems
+    \item \href{https://www.prnewswire.com/news-releases/digital-asset-holdings-delivers-first-of-its-kind-technology-to-bridge-the-gap-between-crypto-and-mainstream-assets-300048767.html}{Digital Asset --- March 2015 launch}
+    \item \href{https://www.digitalasset.com/about}{Digital Asset --- milestones and founders}
+    \item \href{https://www.broadridge.com/press-release/2016/digital-asset-closes-funding-round-exceeding-50-million}{Digital Asset --- 2016 institutional round}
+    \item \href{https://www.lfdecentralizedtrust.org/announcements/2015/12/17/linux-foundation-unites-industry-leaders-to-advance-blockchain-technology}{Linux Foundation --- Hyperledger formation}
+    \item \href{https://www.lfdecentralizedtrust.org/projects/besu}{LF Decentralized Trust --- Besu}
+    \item \href{https://ethereum.org/en/ethereum-history-founder-and-ownership/}{Ethereum --- official history}
+  \end{itemize}
+  \note{[Sources] Links shown on slide.}
+\end{frame}
+
+\begin{frame}{Primary sources: ASX and ownership}
+  \fontsize{8.1}{9.7}\selectfont
+  \begin{itemize}\verytightitems
+    \item \href{https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2026-releases/26-059mr-asic-publishes-asx-inquiry-panel-final-report-and-acknowledges-observations/}{ASIC --- ASX inquiry findings}
+    \item \href{https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2026-releases/26-143mr-asx-ordered-to-pay-20-5-million-penalty-for-misleading-conduct-relating-to-chess-replacement-project/}{ASIC --- CHESS penalty}
+    \item \href{https://www.swift.com/about-us/organisation-governance/swift-governance}{Swift --- cooperative governance}
+    \item \href{https://www.cls-group.com/about/shareholders/}{CLS --- shareholders}
+    \item \href{https://www.euroclear.com/investorrelations/en/top-10-shareholders-Euroclear-Holding-SA-NV.html}{Euroclear --- major shareholders}
+    \item \href{https://deutsche-boerse.com/dbg-en/media/news-stories/press-releases/Clearstream-Unveils-Next-Generation-Digital-Securities-Infrastructure-5318978}{Deutsche B\"orse / Clearstream}
+  \end{itemize}
+  \note{[Sources] Links shown on slide.}
+\end{frame}
+
+\begin{frame}{Primary sources: Australia and clearing}
+  \fontsize{8.1}{9.7}\selectfont
+  \begin{itemize}\verytightitems
+    \item \href{https://www.rba.gov.au/media-releases/2024/mr-24-25.html}{RBA --- Project Acacia}
+    \item \href{https://www.commbank.com.au/articles/newsroom/2026/05/rba-wholesale-funding-markets-trial.html}{CBA --- Acacia repo trial completion (May 2026)}
+    \item \href{https://www.jpmorgan.com/payments/newsroom/kinexys-project-acacia-tokenization-trial-australia}{J.P.\ Morgan --- Kinexys Acacia trial}
+    \item \href{https://www.cfr.gov.au/publications/policy-statements-and-other-reports/2013/report-on-the-australian-otc-derivatives-market-july/}{CFR --- Australian OTC derivatives market reports}
+    \item \href{https://www.lseg.com/en/post-trade/clearing/lch-services/swapclear}{LSEG --- LCH SwapClear}
+    \item \href{https://www.indeval.com.mx/en/product?p=clearing-settlement}{Indeval --- DAL\'I clearing and settlement}
+  \end{itemize}
+  \note{[Sources] Links shown on slide.}
+\end{frame}
+
+\end{document}

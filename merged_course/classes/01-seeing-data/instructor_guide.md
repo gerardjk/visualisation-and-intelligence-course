@@ -17,7 +17,7 @@ The session alternates prediction, explanation, computation and critique. Do not
 - Put the student notebook and starter notebook in the LMS.
 - Print or distribute `critique_pack.md` and `activity_critique_and_repair.md`.
 - Keep the starter notebook available as a recovery route rather than giving it to everyone immediately.
-- State the assessment boundary explicitly: assistants are permitted and documented in the Seeing Data notebook, but A1 Part A is completed without an assistant during the supervised window in the Dashboards session. Parts B and C follow the A1 brief.
+- State the assessment boundary explicitly: assistants are permitted and documented in the Seeing Data notebook, but A1 Part A is completed without an assistant during the supervised window at the start of the fourth live session (27 August). Parts B and C follow the A1 brief.
 
 ## Worked demonstration
 

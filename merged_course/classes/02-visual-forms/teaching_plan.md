@@ -15,13 +15,17 @@ By the end of this session students should be able to:
 
 1. Rank visual channels by the precision with which readers decode them, and
    explain why position and length usually beat area and colour.
-2. Translate an analytical question into a visual task and classify it with
+2. Classify fields as nominal, ordinal, interval, ratio, temporal, spatial or
+   relational, and state which comparisons those types and roles permit.
+3. Translate an analytical question into a visual task and classify it with
    the FT Visual Vocabulary.
-3. Map a visual task to candidate chart forms and name each form's risks.
-4. Reshape wide data to tidy long form, by hand and with an AI assistant.
-5. Verify AI-wrangled data: identifiers, row counts, types, missing values,
+4. Map a visual task to candidate chart forms and name each form's risks.
+5. Choose a categorical, sequential or diverging palette from the data
+   semantics, and add redundant cues for accessibility.
+6. Reshape wide data to tidy long form, by hand and with an AI assistant.
+7. Verify AI-wrangled data: identifiers, row counts, types, missing values,
    totals.
-6. Compare several valid charts and justify a selection, and a rejection, 
+8. Compare several valid charts and justify a selection, and a rejection,
    for a stated audience.
 
 ## Preparation
@@ -31,39 +35,48 @@ deliberately messy transport dataset so it does not depend on network access.
 
 Instructor materials:
 
-- the Choosing Visual Forms deck (`Choosing-Visual-Forms.pptx`) and `slides.md`;
-- the lab notebook opened and run once;
+- the Choosing Visual Forms deck (`beamer/choosing-visual-forms.pdf`) and `slides.md`;
+- the student notebook, `notebooks/choosing_visual_forms.ipynb`, and the matching
+  `notebooks/choosing_visual_forms_solution.ipynb`, opened and run once;
 - printed or digital Chart Choice Decision Record and Visual Vocabulary cards
   (`activities/`);
-- selected course figures for magnitude, distribution, correlation, time and
-  colour (box plot, Keeling, Hertzsprung–Russell, Minard, climate stripes).
+- the nine original examples used in the task-family sequence. None is drawn
+  from the released A1 pool.
 
 ## Three-hour run sheet
 
 | Time | Segment | Teaching purpose |
 |---|---|---|
-| 0:00–0:10 | Recap + same data, different question | Exit tickets from last class; chart choice depends on task |
-| 0:10–0:22 | Channel precision | Cleveland & McGill ranking; Mohs as the cautionary tale |
-| 0:22–0:32 | Channel sprint: twelve charts, 40 seconds each | Students name the dominant channel per chart; debrief three |
-| 0:32–0:48 | The Vocabulary | Nine families; gallery of canonical forms |
-| 0:48–1:00 | Colour + honesty rules | Sequential/diverging/categorical; baselines and aspect ratio |
-| 1:00–1:15 | Tidy-data worked demonstration | Connect data structure to available charts |
-| 1:15–1:25 | Break |, |
-| 1:25–2:20 | Notebook lab (`notebooks/choosing_visual_forms_lab.ipynb`) | Clean, verify, chart and compare |
-| 2:20–2:45 | Studio: form cards + Redesign ×3 + Decision Record | Warm-up: each pair draws three cards from `activities/form_cards.pdf` and names the task family and working channel; then explicit selection and rejection |
-| 2:45–2:55 | Gallery walk | Test whether charts answer their stated question |
-| 2:55–3:00 | Exit ticket | Name the task, selected form, rejected alternative and verification performed |
+| 0:00–0:10 | Premise and goals | Chart choice depends on the required comparison |
+| 0:10–0:25 | Data types and field roles | Nominal, ordinal, interval, ratio, temporal, spatial and relational fields |
+| 0:25–0:35 | Field combinations | Connect field combinations to comparisons and task families |
+| 0:35–0:47 | Channel precision | Position, length, angle, area and colour |
+| 0:47–1:15 | Visual Vocabulary | Nine families; one original example per family |
+| 1:15–1:30 | Colour as data | Hue/lightness/chroma; categorical/sequential/diverging; accessibility and redundant cues |
+| 1:30–1:40 | Tidy-data worked demonstration | Connect field types, data structure and available charts |
+| 1:40–1:50 | Break | — |
+| 1:50–2:25 | Notebook (`notebooks/choosing_visual_forms.ipynb`) | Reconstruct, clean, verify, chart and compare |
+| 2:25–2:50 | Studio: claim → candidates → Decision Record | Each pair frames a supported claim, sketches two plausible forms, selects one, rejects one and compares the alternative with the original |
+| 2:50–2:57 | Gallery walk | Test whether charts answer their stated question |
+| 2:57–3:00 | Exit ticket | Name the task, selected form, rejected alternative and verification performed |
 
-Timing note: the Vocabulary gallery is deliberately over-provisioned, cut from
-the middle (pyramid, Sankey) if discussion runs hot; never cut colour or
-baselines.
+Timing note: the Vocabulary gallery is deliberately over-provisioned. Cut from
+the middle if discussion runs hot, but preserve the data-type bridge, colour
+sequence, A1 pipeline and baseline discussion. This class now carries the
+course's core colour theory; later classes should apply and revisit it rather
+than assuming a separate colour unit.
 
 ## Content topics
 
 - visual channels and perceptual precision (Cleveland & McGill ranking)
+- measurement types and semantic roles: nominal, ordinal, interval, ratio,
+  temporal, spatial and relational
+- question → field types/roles → required comparison → task → channel → form
 - FT Visual Vocabulary: nine task families
 - task-to-chart mapping, illustrated with canonical figures
-- colour as encoding: sequential, diverging, categorical
+- colour dimensions: hue, lightness/value and chroma/saturation
+- palette semantics: categorical, sequential, diverging and highlight/context
+- colour accessibility: contrast, colour-vision checks and redundant encoding
 - tidy data and the wide-to-long reshape
 - AI-assisted wrangling and the five-check verification pass
 
@@ -73,39 +86,45 @@ baselines.
 - Accept that several charts may be defensible; assess the reasoning rather
   than a single canonical answer.
 - Ask students to name the visual channel, not just the chart type.
+- When a student says a column is “numeric,” ask whether it is an identifier,
+  interval measure or ratio measure and which operations are meaningful.
+- Do not let field type become a chart lookup table: ask for the audience's
+  required comparison before accepting the Visual Vocabulary category.
+- For every palette, ask which data semantics justify its order or midpoint
+  and how the reading survives without hue.
 - Require a check after every assistant-proposed data transformation.
 - If the assistant suggests a pie chart or dual axis, use it as a comparison
   opportunity rather than banning it without analysis.
 
 ## Notebook
 
-Three tiers in `notebooks/` (lab / starter / instructor; same distribution
-rules as Seeing Data). Core exercises:
+The class uses one student notebook, `choosing_visual_forms.ipynb`, with a
+section-matched instructor solution, `choosing_visual_forms_solution.ipynb`.
+Core exercises:
 
-1. Channel precision: the same values in five encodings; judge and compare.
+1. Reconstruct the nine original examples in Visual Vocabulary order.
 2. Wide → tidy reshape of the transport table, with the five checks as
    assertions.
-3. Vocabulary sort: classify six analytical questions, draft one chart.
-4. Aspect ratio and baseline: same data, three impressions; assertions inspect
-   the axes.
-5. Colour: classify three palette scenarios, then prove the diverging one with
-   a centred heatmap.
-6. Redesign a deliberately weak chart three ways, one category per redesign
-   (doubles as the studio artefact).
+3. Classify analytical questions from their field types and required comparisons.
+4. Compare candidate views that answer different questions from the same tidy
+   transport data.
+5. Select one claim-led alternative, reject one plausible form and explain what
+   becomes easier and harder to see than in the starting view.
 
 ## Studio
 
-**Visual Vocabulary sort and Redesign ×3**
+**Visual Vocabulary sort and claim-led alternative view**
 (`activities/activity_visual_vocabulary_sort.md`, with
 `activities/visual_vocabulary_cards.md`), closed out with the **Chart Choice
 Decision Record** (`activities/activity_chart_choice.md`): an explicit
-selection and one rejected alternative with a specific reason. This is the
-direct rehearsal for A1 part B.
+selection and one rejected alternative with a specific reason. Students also
+compare the selected view with the original. This is a direct rehearsal for
+A1 Part B using a synthetic transport artefact rather than an A1 pool chart.
 
 ## Evidence of learning
 
-Collect: verified tidy dataset; three candidate charts; completed Chart Choice
-Decision Record; one rejected alternative with a specific reason; exit ticket.
+Collect: verified tidy dataset; candidate charts; completed full Chart Choice
+Decision Record; comparison with the original; exit ticket.
 
 ## Exit ticket
 

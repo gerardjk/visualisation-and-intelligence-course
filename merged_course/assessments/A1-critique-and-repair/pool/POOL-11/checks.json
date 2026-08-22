@@ -1,0 +1,13 @@
+{
+  "id": "POOL-11",
+  "domain": "geophysics",
+  "category": "Spatial",
+  "publisher": "US Geological Survey",
+  "rows": 623,
+  "columns": 6,
+  "chart_sha256": "06a4b465f352d23b0df7380c79cec9c51663621ca3a7ede8a46450e64cb2cef4",
+  "student_csv_sha256": "bff1b802ed148777a58a7dd0f6382a696991dc59bde57a65cbb84194994e7b5f",
+  "source_sha256": "848060f8d02292f6a7474e0ec03b784517b08e24b5d2f2c45db270f44315ef43",
+  "exact_match_in_published_week_1_or_2_decks": false,
+  "chart_card_exception_allowed": false
+}

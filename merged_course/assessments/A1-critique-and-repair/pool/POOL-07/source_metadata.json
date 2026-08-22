@@ -1,0 +1,14 @@
+{
+  "id": "POOL-07",
+  "domain": "economics",
+  "category": "Change over time",
+  "title": "Measures of underlying inflation",
+  "publisher": "Reserve Bank of Australia",
+  "chart_page": "https://www.rba.gov.au/chart-pack/aus-inflation.html",
+  "chart_asset": "https://www.rba.gov.au/chart-pack/images/aus-inflation/underlying-inflation.svg",
+  "source_data": "https://www.rba.gov.au/statistics/tables/csv/g1-data.csv",
+  "publication": "Updated monthly (Chart Pack); table G1 quarterly",
+  "downloaded": "2026-08-12",
+  "chart_sha256": "25c56f0cfab022ff5c25842101c370c710becaf03cb5ff5cf80c3658225be2fd",
+  "source_sha256": "c0e8846641eae45a22bca9ede5bbafde11403b608d5ef2e7ab0d38d6be6a8300"
+}

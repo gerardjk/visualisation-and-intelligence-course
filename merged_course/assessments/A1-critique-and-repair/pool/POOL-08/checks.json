@@ -1,0 +1,13 @@
+{
+  "id": "POOL-08",
+  "domain": "ecology",
+  "category": "Correlation",
+  "publisher": "San Diego State University (J. M. Mahaffy)",
+  "rows": 21,
+  "columns": 3,
+  "chart_sha256": "67e2af3a6fd60a082571450e201475e1362a93186c4ad1c007e2d58a625951be",
+  "student_csv_sha256": "c1dda27bb635e2839e4200f8d58815a6eeefb3b7e1674b07586da937a1da3d15",
+  "source_sha256": "3b20846d1115789a92fc22b7d13bc6397bff71a8c6b46a408e5f096cee1391c9",
+  "exact_match_in_published_week_1_or_2_decks": false,
+  "chart_card_exception_allowed": false
+}

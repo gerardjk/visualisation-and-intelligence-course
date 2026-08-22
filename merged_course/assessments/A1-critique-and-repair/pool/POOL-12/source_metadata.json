@@ -1,0 +1,14 @@
+{
+  "id": "POOL-12",
+  "domain": "transportation",
+  "category": "Flow",
+  "title": "Worldwide airline route network",
+  "publisher": "OpenFlights",
+  "chart_page": "https://openflights.org/data.php",
+  "chart_asset": "https://openflights.org/demo/openflights-routedb-2048.png",
+  "source_data": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+  "publication": "OpenFlights route database snapshot (historical, June 2014)",
+  "downloaded": "2026-08-12",
+  "chart_sha256": "fd339491fedbef77d99dc3021efc099da2637d483b772d7c4028b56c9839999e",
+  "source_sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390"
+}

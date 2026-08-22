@@ -1,0 +1,14 @@
+{
+  "id": "POOL-02",
+  "domain": "public health",
+  "category": "Correlation",
+  "title": "Life expectancy vs health expenditure",
+  "publisher": "Our World in Data",
+  "chart_page": "https://ourworldindata.org/grapher/life-expectancy-vs-health-expenditure",
+  "chart_asset": "https://ourworldindata.org/grapher/life-expectancy-vs-health-expenditure.png",
+  "source_data": "https://ourworldindata.org/grapher/life-expectancy-vs-health-expenditure.csv",
+  "publication": "Updated annually",
+  "downloaded": "2026-08-12",
+  "chart_sha256": "324186a6336553a3931345fdb0bcfc46be07028b6782f82598f47e602118319c",
+  "source_sha256": "b4068f050ef220dac8751ec61ab5254c953a5677d27830fd797e311aede868a5"
+}

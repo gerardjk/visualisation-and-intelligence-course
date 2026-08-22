@@ -1,0 +1,14 @@
+{
+  "id": "POOL-09",
+  "domain": "astronomy",
+  "category": "Magnitude",
+  "title": "Cosmic abundance of the elements",
+  "publisher": "NASA Imagine the Universe / HEASARC",
+  "chart_page": "https://imagine.gsfc.nasa.gov/educators/elements/imagine/cosmic_abundances.html",
+  "chart_asset": "https://imagine.gsfc.nasa.gov/Images/educators/posters/elements/booklet/solar_abundances_big.jpg",
+  "source_data": "https://chem.libretexts.org/Bookshelves/General_Chemistry/Interactive_Chemistry_(Moore_Zhou_and_Garand)/06%3A_Appendix/6.02%3A_Elemental_Abundances",
+  "publication": "NASA educational poster; abundance table accessed 2026",
+  "downloaded": "2026-08-12",
+  "chart_sha256": "b536a9e656652a6735ef8d34f7ade1442e7c83474de731d35e557fff092d01f4",
+  "source_sha256": "b7cd0123ddcdbfc8d2772a983cebb00753e62e23b88f028df6c091ae374f9d82"
+}

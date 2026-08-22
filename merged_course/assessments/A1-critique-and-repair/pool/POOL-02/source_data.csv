@@ -1,0 +1,58 @@
+country,code,year,life_expectancy_years,health_exp_per_capita_usd,region
+Albania,ALB,2023,79.602,1224.075,Europe
+Argentina,ARG,2023,77.395,2851.414,South America
+Australia,AUS,2023,83.923,6075.151,Oceania
+Austria,AUT,2023,81.956,6457.345,Europe
+Belgium,BEL,2023,82.115,6150.812,Europe
+Bosnia and Herzegovina,BIH,2023,77.85,1603.904,Europe
+Bulgaria,BGR,2023,75.636,2444.232,Europe
+Canada,CAN,2023,82.63,6145.641,North America
+Chile,CHL,2023,81.167,3003.406,South America
+China,CHN,2023,77.953,1305.46,Asia
+Colombia,COL,2023,77.725,1536.194,South America
+Costa Rica,CRI,2023,80.799,1564.584,North America
+Croatia,HRV,2023,78.58,2544.502,Europe
+Cyprus,CYP,2023,81.648,3589.217,Europe
+Czechia,CZE,2023,79.834,3929.417,Europe
+Denmark,DNK,2023,81.933,5827.024,Europe
+Estonia,EST,2023,79.153,2915.597,Europe
+Finland,FIN,2023,81.91,5399.139,Europe
+France,FRA,2023,83.325,5937.124,Europe
+Georgia,GEO,2023,74.496,1388.976,Asia
+Germany,DEU,2023,81.378,7230.747,Europe
+Greece,GRC,2023,81.857,2962.339,Europe
+Hungary,HUN,2023,77.024,2617.927,Europe
+Iceland,ISL,2023,82.691,5279.945,Europe
+India,IND,2023,72.003,312.491,Asia
+Indonesia,IDN,2023,71.146,375.608,Asia
+Ireland,IRL,2023,82.412,5636.7,Europe
+Israel,ISR,2023,82.408,3144.941,Asia
+Italy,ITA,2023,83.716,4046.861,Europe
+Japan,JPN,2023,84.712,4960.415,Asia
+Latvia,LVA,2023,76.19,2463.881,Europe
+Lithuania,LTU,2023,76.025,3242.39,Europe
+Luxembourg,LUX,2023,82.229,6085.522,Europe
+Malta,MLT,2023,83.299,4623.133,Europe
+Mexico,MEX,2023,75.069,1242.889,North America
+Moldova,MDA,2023,71.198,1077.208,Europe
+Montenegro,MNE,2023,77.087,2535.506,Europe
+Netherlands,NLD,2023,82.158,6293.97,Europe
+New Zealand,NZL,2023,82.088,4973.105,Oceania
+North Macedonia,MKD,2023,77.395,1518.832,Europe
+Norway,NOR,2023,83.308,7539.746,Europe
+Peru,PER,2023,77.74,817.016,South America
+Poland,POL,2023,78.633,3124.894,Europe
+Portugal,PRT,2023,82.36,3916.534,Europe
+Romania,ROU,2023,75.938,2229.057,Europe
+Serbia,SRB,2023,76.769,1900.935,Europe
+Slovakia,SVK,2023,78.341,2682.216,Europe
+Slovenia,SVN,2023,81.603,4123.041,Europe
+South Africa,ZAF,2023,66.139,1228.257,Africa
+South Korea,KOR,2023,84.329,4043.774,Asia
+Spain,ESP,2023,83.67,3902.613,Europe
+Sweden,SWE,2023,83.262,6184.287,Europe
+Switzerland,CHE,2023,83.954,7918.612,Europe
+Thailand,THA,2023,76.412,914.97,Asia
+Turkey,TUR,2023,77.156,1807.58,Asia
+United Kingdom,GBR,2023,81.302,5312.669,Europe
+United States,USA,2023,79.304,12098.848,North America

@@ -1,0 +1,13 @@
+{
+  "id": "POOL-10",
+  "domain": "energy",
+  "category": "Part-to-whole",
+  "publisher": "US Energy Information Administration",
+  "rows": 10,
+  "columns": 6,
+  "chart_sha256": "21bf1ad157635d0ab86440e60e08f27871b64c51926e54d4618b4b568cdbf493",
+  "student_csv_sha256": "92ddc4978213dfc7965010404cb8e2f0d95fd687a61b21df87c474dab6cfaf95",
+  "source_sha256": "848a8a9b3b183de97046395300fc925d86100d8d2c1f1c2ffb550b5aa28cb08a",
+  "exact_match_in_published_week_1_or_2_decks": false,
+  "chart_card_exception_allowed": false
+}

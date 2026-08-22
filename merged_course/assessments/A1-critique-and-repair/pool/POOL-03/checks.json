@@ -1,0 +1,13 @@
+{
+  "id": "POOL-03",
+  "domain": "astronomy",
+  "category": "Correlation",
+  "publisher": "Proceedings of the National Academy of Sciences",
+  "rows": 25,
+  "columns": 6,
+  "chart_sha256": "736779da9c9b8fb8c5d8e5d09cbbc5eb2dd81702c836ca2ccf810f1641a2edab",
+  "student_csv_sha256": "cc25f9de8cba1a877fe1da28881c93ce0d231bd276a98c0d9cc10d2a873c51c9",
+  "source_sha256": "6fb2f23ac93d7c50d48ab3d4436bfaf1e4a9ef1ca249da6faa4742aa31b0b2f9",
+  "exact_match_in_published_week_1_or_2_decks": false,
+  "chart_card_exception_allowed": true
+}

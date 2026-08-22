@@ -37,12 +37,13 @@ cd merged_course/classes/01-seeing-data/beamer
 lualatex seeing-data.tex && lualatex seeing-data.tex   # → seeing-data.pdf
 ```
 
-Choosing Visual Forms still uses the python-pptx pipeline (to be migrated to Beamer):
+Choosing Visual Forms is also LaTeX/Beamer, pairing historical originals with
+canonical atlas forms (deck figures regenerable from the class notebooks and
+the atlas freeze):
 
 ```bash
-cd merged_course/scripts
-python build_class02_deck.py     # writes classes/02-visual-forms/Choosing-Visual-Forms.pptx
-python build_notebooks.py        # optional single-notebook variants (notebooks/)
+cd merged_course/classes/02-visual-forms/beamer
+tectonic choosing-visual-forms.tex             # → choosing-visual-forms.pdf
 ```
 
 Atlas reproductions come from `quarto-book/_book/atlas_files/figure-html/`, 

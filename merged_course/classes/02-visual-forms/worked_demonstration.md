@@ -12,6 +12,19 @@ A transport operations manager asks:
 
 Classify the task as magnitude or ranking. The required comparison is the annual total across modes.
 
+## Name the field types and roles
+
+Before reshaping or choosing a chart, annotate the fields:
+
+| Field | Type or role | Legitimate comparison |
+|---|---|---|
+| `month` | temporal | before/after, interval, sequence |
+| `mode` | nominal | same/different; group membership |
+| `passengers` | quantitative ratio | difference, order, ratio, meaningful zero |
+
+Emphasise that a software dtype is insufficient. A numeric service code is
+still nominal; converting it to an integer does not make averages meaningful.
+
 ## Predict the transformation
 
 The source has twelve monthly rows and three passenger columns. A tidy passenger table should therefore contain:
@@ -56,6 +69,10 @@ Aggregate annual totals and compare:
 
 Ask which form best supports the exact task and why. The answer should refer to position, length and ordering rather than taste.
 
+If colour identifies modes, use a categorical palette of distinct hues and
+also label the modes directly. If a single mode is the claim, mute the others
+in grey and use one accent colour rather than giving every mode equal salience.
+
 ## Change the question
 
 Replace the manager’s question with:
@@ -64,7 +81,13 @@ Replace the manager’s question with:
 
 The topic is unchanged, but the task becomes change over time. The annual aggregation is now harmful because it removes the needed structure.
 
+Complete the chain explicitly for both questions:
+
+```text
+question → field types/roles → required comparison
+→ Visual Vocabulary task → visual channel → form
+```
+
 ## Transition to the lab
 
 Students choose an audience, state a question, predict the tidy result, and only then ask Copilot for transformation or plotting assistance.
-

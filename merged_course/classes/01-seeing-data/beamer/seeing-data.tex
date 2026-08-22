@@ -169,10 +169,6 @@
     regression line    & \multicolumn{4}{c}{$y = 3.00 + 0.50\,x$} \\
     \bottomrule
   \end{tabular}
-  \vspace{1.2em}
-
-  \alert{Prediction:} will the four datasets look essentially the same when plotted?\\
-  Write yes or no, and why, before the next slide.
 \end{frame}
 
 % ---------- 7 · anscombe reveal ----------
@@ -194,14 +190,12 @@
     \item \textbf{insight}: an interpretation that survives verification (``this suggests, because'');
     \item \textbf{narrative}: insights arranged to support a decision.
   \end{itemize}
-  \vspace{0.6em}
-  Every failure we study this semester is a broken link in this chain.
 \end{frame}
 
 % ---------- claim sprint ----------
 \kicker{The claim sprint}{Twelve charts · 40 seconds each.\\[0.35em]
   {\normalsize For any two: write one ``the chart shows\,\dots'' sentence.}\\[0.5em]
-  \credit{All figures: course reproductions, generated from data. We debrief two of them.}}
+  \credit{Six canonical forms, six real datasets (sources in the colophon). We debrief two of them.}}
 
 \newcommand{\sprintframe}[2]{%
   \begin{frame}[plain]\begin{center}
@@ -221,16 +215,16 @@
 \sprintframe{fig-candlestick-output-1.png}{The candlestick chart}
 \sprintframe{fig-ngram-output-1.png}{Google Books Ngram}
 \sprintframe{fig-ligo-output-1.png}{A gravitational wave}
-\sprintframe{fig-exoplanet-output-1.png}{An exoplanet transit}
+\sprintframe{sprint-sunspots.png}{The sunspot record}
 
 % ---------- 9 · snow original ----------
 \begin{frame}[t]{A picture can become an argument}\framesubtitle{Worked example · London, 1854}
   \begin{columns}[T]
-    \begin{column}{0.60\textwidth}
-      \includegraphics[width=\textwidth,height=0.49\textheight,keepaspectratio]{snow-original-1854.jpg}\\[0.2em]
+    \begin{column}{0.44\textwidth}
+      \includegraphics[width=\textwidth,height=0.58\textheight,keepaspectratio]{snow-original-1854.jpg}\\[0.2em]
       \credit{John Snow, cholera deaths in Soho (1854); published 1855. Public domain.}
     \end{column}
-    \begin{column}{0.36\textwidth}
+    \begin{column}{0.52\textwidth}
       \small Each black bar: one death, stacked at an address.\\[0.8em]
       Read it with the chain:
       \begin{itemize}
@@ -245,11 +239,11 @@
 % ---------- 10 · snow pattern vs claim ----------
 \begin{frame}[t]{Pattern, inference, and the missing evidence}\framesubtitle{Worked example · London, 1854}
   \begin{columns}[T]
-    \begin{column}{0.48\textwidth}
-      \includegraphics[width=\textwidth,height=0.50\textheight,keepaspectratio]{fig-snow-output-1.png}\\
+    \begin{column}{0.40\textwidth}
+      \includegraphics[width=\textwidth,keepaspectratio]{fig-snow-output-1.png}\\
       \credit{Course reproduction: deaths cluster on the Broad Street pump.}
     \end{column}
-    \begin{column}{0.48\textwidth}
+    \begin{column}{0.56\textwidth}
       \small
       \begin{itemize}
         \item \textbf{Pattern:} deaths cluster around one pump. Visible.
@@ -300,7 +294,7 @@
 
 % ---------- 12 · window ----------
 \begin{frame}[t]{The window is part of the claim}\framesubtitle{How charts lie}
-  \small Crop either one to 1998–2012 and you can sell a pause. The axis window is an editorial decision.
+  \small The axis window is an editorial decision: where you start the clock decides the story.
   \vspace{0.5em}
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
@@ -358,72 +352,9 @@
   \credit{A fan chart admits what it does not know. Generated interpretations rarely volunteer this, you must ask.}
 \end{frame}
 
-% ---------- 16 · think pair share ----------
-\begin{frame}{Think · pair · share}\framesubtitle{5 minutes solo · 5 in pairs · 5 as a room}
-  Find a chart published \alert{this week}, news, social, a report.
-  \begin{itemize}
-    \item What claim does it make?
-    \item Which of the six mechanisms should worry you?
-    \item What would you need to verify before repeating its claim?
-  \end{itemize}
-  \vspace{0.8em}
-  \textbf{Keep the chart.} It may become your Assessment 1 artefact.
-\end{frame}
-
 % ---------- 17 · break ----------
 \kicker{Break · 10 minutes}{When we return:\\[0.1em] the notebook lab, then the studio.}
 
-% ---------- 20 · lab ----------
-\begin{frame}{Notebook lab · 45 minutes}\framesubtitle{seeing\_data\_lab.ipynb}
-  \begin{enumerate}
-    \item \textbf{Anscombe}: summary statistics vs the picture.
-    \item \textbf{Generate and verify}, assistant-drawn chart of the transport dataset, then the checks: rows, types, missing values, totals.
-    \item \textbf{Claim audit}: a generated interpretation, every sentence classified: supported / plausible but unverified / unsupported / contradicted.
-  \end{enumerate}
-  \vspace{0.6em}
-  The contract: \alert{predict} before you generate · give the assistant a \alert{bounded task} ·
-  \alert{verify} before you accept · \alert{disclose} at the end.\\[0.4em]
-  \credit{Blocked on syntax? Ask for the starter notebook, that is what it is for.}
-\end{frame}
-
-% ---------- 21 · studio ----------
-\begin{frame}{Studio · Critique and Repair · 25 minutes}\framesubtitle{Activity sheet in activities/}
-  \begin{itemize}
-    \item \textbf{Draw three chart cards} (pack in activities/): for each, the claim, the audience, and one way it could mislead.
-    \item \textbf{Read} the satisfaction artefact: main claim, audience, what is directly visible.
-    \item \textbf{Test} the design: encodings, easy comparisons, what is aggregated or hidden.
-    \item \textbf{Verify and repair}: what you would check, an alternative view, a repaired caption.
-    \item \textbf{Responsibility}: who benefits, and who carries the cost if it is wrong?
-  \end{itemize}
-  \vspace{0.6em}
-  Ten minutes solo, ten with a partner, five to revise.
-\end{frame}
-
-% ---------- 22 · pair exchange ----------
-\begin{frame}{Pair exchange · the Critique 1 frame}\framesubtitle{Rehearsal for Assessment 1}
-  Swap artefacts: one \textbf{human-made chart}, one \textbf{AI-generated interpretation}.
-  \begin{itemize}
-    \item Same questions for both: claim, audience, task, comparison, omission.
-    \item Then the AI-specific one: \alert{which claims would survive the ladder?}
-  \end{itemize}
-  \vspace{0.8em}
-  This is exactly Assessment 1, Parts A and C, at rehearsal scale:\\
-  Part A critique (supervised, in studio) · Part B redesign $\times$3 (next class) · Part C claim audit.
-\end{frame}
-
-% ---------- 23 · closing ----------
-\begin{frame}{Close the loop}\framesubtitle{Exit ticket}
-  Look back at your Critique and Repair sheet.\\
-  \alert{Which of your sentences were observations? Which were interpretations?}
-  \vspace{0.8em}
-  \begin{itemize}
-    \item One design decision I made today:
-    \item One risk or limitation I noticed:
-    \item One thing I need to verify before next class:
-  \end{itemize}
-  \vspace{0.8em}
-  \credit{Diagnostic quiz on Canvas after class, open book, closed assistant, ungraded. It calibrates the course, not your mark. Next class: Choosing Visual Forms: what visual task are we performing?}
-\end{frame}
 
 % ---------- 24 · credits ----------
 \begin{frame}{Image credits and reading}\framesubtitle{Colophon}
@@ -431,6 +362,7 @@
   \begin{itemize}
     \item Snow (1855) image: public domain, via Wikimedia Commons.
     \item Warming stripes: Ed Hawkins, Climate Lab Book, CC BY-SA 4.0.
+    \item Sprint data: Google Books Ngram; NSIDC Sea Ice Index; Aono \& Kazui Kyoto series (via NOAA NCEI); ASX 200 daily prices; LIGO GW150914 strain (GWOSC); SILSO sunspot number.
     \item All other figures: course reproductions, generated from data.
   \end{itemize}
   \vspace{0.6em}

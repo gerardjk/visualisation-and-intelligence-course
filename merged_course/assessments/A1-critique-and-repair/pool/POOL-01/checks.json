@@ -1,0 +1,13 @@
+{
+  "id": "POOL-01",
+  "domain": "climate science",
+  "category": "Deviation",
+  "publisher": "NASA Goddard Institute for Space Studies",
+  "rows": 146,
+  "columns": 6,
+  "chart_sha256": "f474e33a9806d641a7085d36f32ce18ec821ff27dd9f60328459427a712dd085",
+  "student_csv_sha256": "9513e0f38fb7c7405440c891d8043297aa6238f7e436e1d726057d7aa0701140",
+  "source_sha256": "f38aa67441e2e24479f5a1deb17e7bea23acfc4fe4a13bb19d074497030754d6",
+  "exact_match_in_published_week_1_or_2_decks": false,
+  "chart_card_exception_allowed": false
+}

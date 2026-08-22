@@ -1,0 +1,14 @@
+{
+  "id": "POOL-06",
+  "domain": "energy",
+  "category": "Flow",
+  "title": "Estimated US energy consumption, 2023",
+  "publisher": "Lawrence Livermore National Laboratory / US Department of Energy",
+  "chart_page": "https://flowcharts.llnl.gov/commodities/energy",
+  "chart_asset": "https://flowcharts.llnl.gov/sites/flowcharts/files/2024-12/energy-2023-united-states.png",
+  "source_data": "https://flowcharts.llnl.gov/commodities/energy",
+  "publication": "2023 data; diagram released October 2024",
+  "downloaded": "2026-08-12",
+  "chart_sha256": "440d148d9a45e980c62b2f77a46f839fb799af46bf27d307f05fa0957043bb41",
+  "source_sha256": "eb5fd258cc2494d0238d5bd1d082a6d6ede43cc5a7e1735a208803742b9684dc"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "POOL-03",
+  "domain": "astronomy",
+  "category": "Correlation",
+  "title": "Hubble's 1929 distance\u2013velocity relation",
+  "publisher": "Proceedings of the National Academy of Sciences",
+  "chart_page": "https://pmc.ncbi.nlm.nih.gov/articles/PMC522427/",
+  "chart_asset": "local:hubble-1929.png",
+  "source_data": "https://apod.nasa.gov/diamond_jubilee/1996/hub_1929.html",
+  "publication": "1929",
+  "downloaded": "2026-08-12",
+  "chart_sha256": "736779da9c9b8fb8c5d8e5d09cbbc5eb2dd81702c836ca2ccf810f1641a2edab",
+  "source_sha256": "6fb2f23ac93d7c50d48ab3d4436bfaf1e4a9ef1ca249da6faa4742aa31b0b2f9"
+}

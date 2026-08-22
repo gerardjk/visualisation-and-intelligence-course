@@ -1,0 +1,14 @@
+{
+  "id": "POOL-08",
+  "domain": "ecology",
+  "category": "Correlation",
+  "title": "Lynx\u2013hare phase portrait (Hudson Bay pelt records)",
+  "publisher": "San Diego State University (J. M. Mahaffy)",
+  "chart_page": "https://jmahaffy.sdsu.edu/courses/f09/math636/lectures/lotka/qualde2.html",
+  "chart_asset": "https://jmahaffy.sdsu.edu/courses/f09/math636/lectures/lotka/images/phaselyhar.jpg",
+  "source_data": "https://jmahaffy.sdsu.edu/courses/f09/math636/lectures/lotka/qualde2.html",
+  "publication": "Course publication; chart data 1900\u20131920",
+  "downloaded": "2026-08-12",
+  "chart_sha256": "67e2af3a6fd60a082571450e201475e1362a93186c4ad1c007e2d58a625951be",
+  "source_sha256": "3b20846d1115789a92fc22b7d13bc6397bff71a8c6b46a408e5f096cee1391c9"
+}

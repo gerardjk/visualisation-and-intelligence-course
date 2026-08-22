@@ -1,0 +1,14 @@
+{
+  "id": "POOL-10",
+  "domain": "energy",
+  "category": "Part-to-whole",
+  "title": "Sources of US electricity generation",
+  "publisher": "US Energy Information Administration",
+  "chart_page": "https://www.eia.gov/energyexplained/electricity/electricity-in-the-us.php",
+  "chart_asset": "https://www.eia.gov/energyexplained/electricity/images/outlet-graph-large.jpg",
+  "source_data": "https://www.eia.gov/energyexplained/electricity/electricity-in-the-us.php",
+  "publication": "2025 data; page updated 2026",
+  "downloaded": "2026-08-12",
+  "chart_sha256": "21bf1ad157635d0ab86440e60e08f27871b64c51926e54d4618b4b568cdbf493",
+  "source_sha256": "848a8a9b3b183de97046395300fc925d86100d8d2c1f1c2ffb550b5aa28cb08a"
+}

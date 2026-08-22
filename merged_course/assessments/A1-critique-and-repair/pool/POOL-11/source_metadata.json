@@ -1,0 +1,14 @@
+{
+  "id": "POOL-11",
+  "domain": "geophysics",
+  "category": "Spatial",
+  "title": "Seismicity of the Earth 1900\u20132007",
+  "publisher": "US Geological Survey",
+  "chart_page": "https://pubs.usgs.gov/sim/3064/",
+  "chart_asset": "pdf:https://pubs.usgs.gov/sim/3064/pdf/SIM3064.pdf#page=1",
+  "source_data": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=1900-01-01&endtime=2008-01-01&minmagnitude=7.3&orderby=time",
+  "publication": "2010 (map); catalogue extract 1900\u20132007, M \u2265 7.3",
+  "downloaded": "2026-08-12",
+  "chart_sha256": "06a4b465f352d23b0df7380c79cec9c51663621ca3a7ede8a46450e64cb2cef4",
+  "source_sha256": "848060f8d02292f6a7474e0ec03b784517b08e24b5d2f2c45db270f44315ef43"
+}

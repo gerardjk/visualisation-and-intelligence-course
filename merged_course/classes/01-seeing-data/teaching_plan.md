@@ -52,14 +52,13 @@ Instructor materials:
 | 0:30–0:38 | Vocabulary: data → encoding → observation → insight → narrative | 10 | Establish shared vocabulary |
 | 0:38–0:50 | Claim sprint: twelve charts, 40 seconds each | 11–23 | Every chart is a claim; students write two "the chart shows…" sentences; debrief two |
 | 0:50–1:05 | Snow worked example + the shows/suggests debrief | 24–26 | Separate spatial pattern, inference and causal evidence |
-| 1:05–1:13 | Six ways a true chart misleads | 27–28 | Accurate charts can still deceive; the window is part of the claim |
-| 1:13–1:22 | AI interpretation and the verification ladder | 29–32 | Fluency does not guarantee validity |
-| 1:22–1:30 | Think · pair · share | 33 | A found chart against the six mechanisms |
-| 1:30–1:40 | Break | 34 |, |
-| 1:40–2:30 | Notebook lab (`notebooks/seeing_data_lab.ipynb`) | 35 | Calculate, plot, generate, verify, repair |
-| 2:30–2:50 | Studio: chart cards + Critique and Repair | 36 | Three cards per pair: claim, audience, what could mislead; then the repair artefact |
-| 2:50–2:55 | Pair exchange (Critique 1 frame) | 37 | Test whether claims are supported and specific |
-| 2:55–3:00 | Close the loop + exit ticket | 38 | Record a decision, a risk and a verification need |
+| 1:05–1:15 | Six ways a true chart misleads | 27–28 | Accurate charts can still deceive; the window is part of the claim |
+| 1:15–1:28 | AI interpretation and the verification ladder | 29–32 | Fluency does not guarantee validity |
+| 1:28–1:38 | Break | 33 | |
+| 1:38–2:30 | Notebook lab (`notebooks/seeing_data_lab.ipynb`) | (no slide) | Calculate, plot, generate, verify, repair |
+| 2:30–2:50 | Studio: chart cards + Critique and Repair | (no slide) | Three cards per pair: claim, audience, what could mislead; then the repair artefact |
+| 2:50–2:55 | Pair exchange (Critique 1 frame) | (no slide) | Test whether claims are supported and specific |
+| 2:55–3:00 | Close the loop + exit ticket | (no slide) | Record a decision, a risk and a verification need |
 
 The diagnostic quiz runs on Canvas after class, open book, closed assistant,
 ungraded; it calibrates the cohort, not marks.

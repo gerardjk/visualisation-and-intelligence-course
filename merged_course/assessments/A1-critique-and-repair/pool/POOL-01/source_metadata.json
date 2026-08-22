@@ -1,0 +1,16 @@
+{
+  "id": "POOL-01",
+  "domain": "climate science",
+  "category": "Deviation",
+  "title": "Global mean temperature anomaly",
+  "publisher": "NASA Goddard Institute for Space Studies",
+  "chart_page": "https://data.giss.nasa.gov/gistemp/graphs_v4/",
+  "chart_asset": "https://data.giss.nasa.gov/gistemp/graphs_v4/graph_data/Global_Mean_Estimates_based_on_Land_and_Ocean_Data/graph.png",
+  "source_data": "https://data.giss.nasa.gov/gistemp/graphs_v4/graph_data/Global_Mean_Estimates_based_on_Land_and_Ocean_Data/graph.csv",
+  "publication": "Updated annually",
+  "downloaded": "2026-08-12",
+  "chart_sha256": "f474e33a9806d641a7085d36f32ce18ec821ff27dd9f60328459427a712dd085",
+  "source_sha256": "f38aa67441e2e24479f5a1deb17e7bea23acfc4fe4a13bb19d074497030754d6",
+  "supplementary_source_data": "https://data.giss.nasa.gov/gistemp/uncertainty/v1.2.1/totalCI_ERA.csv",
+  "supplementary_source_sha256": "6d8d6e3437a885829a93486b6b95d20438d4d3722a62d55d0426a30f54a0feef"
+}

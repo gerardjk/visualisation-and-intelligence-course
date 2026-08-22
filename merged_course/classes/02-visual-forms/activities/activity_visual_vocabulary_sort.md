@@ -1,4 +1,4 @@
-# Studio Activity. Visual Vocabulary Sort and Redesign ×3
+# Studio Activity. Visual Vocabulary Sort and Alternative-View Decision
 
 ## Part 1. Sort (in the notebook, hour 2)
 
@@ -14,22 +14,29 @@ choose a likely chart type and identify one risk.
 | Where are values concentrated? | | | |
 | How do flows move between locations? | | | |
 
-## Part 2. Redesign ×3 (studio, hour 3)
+## Part 2. Claim → candidates → decision (studio, hour 3)
 
-Take the weak chart provided in the notebook. Produce three redesigns, each
-serving a **different** Visual Vocabulary category.
+Use the transport artefact provided in the notebook. State one claim supported
+by its data for a clearly identified audience. Sketch two plausible candidate
+forms for that same claim, then select one alternative view.
 
-**Phases:** Diagnose (10 min) → Redesign (15 min) → Classify (10 min) → Share (10 min).
+**Phases:** Frame (8 min) → Candidates (12 min) → Decide (15 min) → Compare (10 min).
 
-For each redesign record:
+Complete the full Chart Choice Decision Record:
 
 ```text
-FT Visual Vocabulary category:
-Chosen visual form:
-Why this fits the task:
-What could mislead:
-Simpler alternative considered:
+Intended audience:
+Question they need answered:
+Decision supported:
+Visual Vocabulary category:
+Required comparison:
+Selected form:
+Why it fits:
+Rejected alternative:
+Specific reason for rejection:
 ```
 
-Then the responsibility prompt: does the selected visual form fit the task, or
-does it encourage an easier but wrong interpretation?
+Compare the selected alternative with the original: what does it make easier to
+see, what does it make harder to see, and how do those differences follow from
+the stated claim? This directly rehearses A1 Part B without using an A1 pool
+artefact.

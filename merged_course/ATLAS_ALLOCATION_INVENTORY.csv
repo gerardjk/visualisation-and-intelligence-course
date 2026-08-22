@@ -1,0 +1,104 @@
+atlas_no,atlas_title,figure_label,lesson_1_slides_released,lesson_1_workbook_released,lesson_1_activity_unreleased,lesson_2_slides_local,lesson_2_slides_canvas_unreleased,lesson_2_workbook,lesson_2_activity_local,a1_released_analogue,planned_status
+1,Bertin's visual-variables chart,fig-bertin,,,,yes,yes,,,,allocated
+2,Mohs hardness scale,fig-mohs,,,,yes,yes,,,,allocated
+3,Population pyramids,fig-population-pyramid,,,,yes,yes,,,,allocated
+4,Cosmic abundance of the elements,fig-abundance,,,yes,,,,,POOL-09,allocated
+5,Box plot,fig-boxplot,,,,yes,yes,,,,allocated
+6,Lorenz curve + Gini,fig-lorenz,,,yes,,,,,POOL-05,allocated
+7,The bell curve (Gaussian),fig-gaussian,yes,,,,,,,,allocated
+8,The log-normal,fig-lognormal,yes,,,,,,,,allocated
+9,The power law / heavy tail,fig-powerlaw,yes,,,,,,,,allocated
+10,Species-abundance distribution,fig-sad,yes,,,,,,,,allocated
+11,The S-curve / logistic,fig-logistic,yes,,,,,,,,allocated
+12,Violin plot,fig-violin,yes,,,,,,,,allocated
+13,Reaction energy-coordinate diagram,fig-energy-coordinate,,,yes,,,,,,allocated
+14,Hertzsprung–Russell diagram,fig-hr,,,,yes,yes,,,,allocated
+15,Hubble diagram,fig-hubble,,,yes,,,,,POOL-03,allocated
+16,Kleiber's law,fig-kleiber,,,yes,,,,,,allocated
+17,Zipf's law of city sizes,fig-zipf,,,,yes,yes,,,,allocated
+18,Anscombe's quartet,fig-anscombe,yes,yes,,,,,,,allocated
+19,P–T phase diagram,fig-phase-diagram,,,yes,,,,,,allocated
+20,Ramachandran plot,fig-ramachandran,,,yes,,,,,,allocated
+21,Keeling curve,fig-keeling,,,,yes,yes,,,,allocated
+22,Hockey stick,fig-hockeystick,yes,,,,,,,,allocated
+23,Sea-ice annual-cycle graph,fig-seaice,yes,,,,,,,,allocated
+24,Kyoto cherry-blossom bloom dates,fig-cherry,yes,,,,,,,,allocated
+25,Candlestick / financial series,fig-candlestick,yes,,,yes,,,,,allocated
+26,Culturomics / Google Books Ngram,fig-ngram,yes,,,,,,,,allocated
+27,LIGO gravitational-wave chirp,fig-ligo,yes,,,,,,,,allocated
+28,Exoplanet transit & radial-velocity curves,fig-exoplanet,,,,,,,,,unallocated
+29,Yield curve,fig-yieldcurve,,,yes,,,,,,allocated
+30,Colour wheel,fig-colourwheel,,,,,yes,,,,unallocated
+31,Climate stripes,fig-climatestripes,yes,,,yes,yes,,,,allocated
+32,CMB temperature map,fig-cmb-map,,,,yes,yes,,,,allocated
+33,Ozone hole,fig-ozone,,,,yes,yes,,,,allocated
+34,Choropleth + cartogram,fig-choropleth,,,,yes,yes,,,,allocated
+35,3D molecular structure,fig-molecule3d,,,,yes,yes,,,,allocated
+36,DNA double helix,fig-dna,,,,yes,yes,,,,allocated
+37,Protein ribbon,fig-ribbon,,,,yes,yes,,,,allocated
+38,Atomic orbitals / probability clouds,fig-orbitals,,,,yes,yes,,,,allocated
+39,Cosmic web,fig-cosmicweb,,,,yes,yes,,,,allocated
+40,Food web,fig-foodweb,,,,,,,yes,,allocated
+41,Connectome,fig-connectome,,,,,,,,,unallocated
+42,Artificial neural network,fig-ann,,,,,,,,,unallocated
+43,Airline / transport network,fig-airline,,,,,,,yes,POOL-12,allocated
+44,Feynman diagram,fig-feynman,,,,,,,,,unallocated
+45,Logic gate / transistor,fig-logicgate,,,,,,,,,unallocated
+46,Character co-occurrence network,fig-lesmis,,,,,,,yes,,allocated
+47,Tree of life / phylogeny,fig-treeoflife,,,,,,,,,unallocated
+48,Molecular-clock divergence tree,fig-molclock,,,,,,,,,unallocated
+49,Language family tree,fig-langtree,,,,,,,,,unallocated
+50,The Tonnetz,fig-tonnetz,,,,,,,yes,,allocated
+51,cGh cube,fig-cghcube,,,,,,,,,unallocated
+52,Standard Model double simplex,fig-standardmodel,,,,,,,,,unallocated
+53,Cultural history as a network,fig-culturenet,,,,,,,yes,,allocated
+54,Water & carbon cycle,fig-carboncycle,,,,,,,yes,,allocated
+55,Trophic / energy-flow pyramid,fig-trophic,,,,,,,yes,,allocated
+56,Sankey of energy/material flow,fig-sankey,,,,,yes,,,POOL-06,allocated
+57,Haber–Bosch / refinery process flow,fig-processflow,,,,yes,,,,,allocated
+58,Central dogma,fig-centraldogma,,,,,,,,,unallocated
+59,Shannon channel + entropy,fig-shannon,,,,,,,,,unallocated
+60,Greenhouse / energy-balance (Trenberth) diagram,fig-energybudget,,,,,,,,,unallocated
+61,Out-of-Africa migration map,fig-outofafrica,,,,,,,yes,,allocated
+62,Minard's march on Moscow,fig-minard,,,,yes,yes,,,,allocated
+63,Clustered expression heatmap,fig-heatmap,,,yes,,,,,,allocated
+64,Correlation heatmap / scatter-matrix,fig-splom,,,yes,,,,,,allocated
+65,Cosine similarity,fig-cosine,,,yes,,,,,,allocated
+66,t-SNE / UMAP projection,fig-tsne,,,,,,,yes,,allocated
+67,Word embeddings,fig-embeddings,,,,,,,yes,,allocated
+68,Art embedding map,fig-artmap,,,,,,,yes,,allocated
+69,Stylometry / Burrows's Delta,fig-delta,,,,,,,yes,,allocated
+70,Topic model (LDA),fig-lda,,,,,,,yes,,allocated
+71,Emotional arcs of stories,fig-arcs,,,,,,,yes,,allocated
+72,Periodic table,fig-periodic,,,,yes,yes,,,,allocated
+73,Origin-of-the-elements table,fig-nucleosynthesis,,,,,,,,,unallocated
+74,Genetic code wheel,fig-codonwheel,,,,yes,yes,,,,allocated
+75,Leontief input–output matrix,fig-leontief,,,,,,,,,unallocated
+76,Planetary interior cross-sections,fig-planetinterior,,,,,,,,,unallocated
+77,Biogeography map / Wallace line,fig-wallace,,,,yes,yes,,,,allocated
+78,John Snow's cholera map,fig-snow,yes,,,,,,,,allocated
+79,Gerrymander / districting,fig-gerrymander,,,,,,,yes,,allocated
+80,Minkowski / light cone,fig-lightcone,,,,,,,,,unallocated
+81,Map projection problem,fig-projection,,,,yes,yes,,,,allocated
+82,Blackbody curve + spectral lines,fig-blackbody,,,,,,,,,unallocated
+83,CMB angular power spectrum,fig-cmbspectrum,,,,,,,,,unallocated
+84,Higgs discovery bump,fig-higgs,,,,,,,,,unallocated
+85,Double-slit interference,fig-doubleslit,,,,,,,,,unallocated
+86,Fourier decomposition + spectrogram,fig-fourier,,,,,,,,,unallocated
+87,Plate tectonics + seafloor-age stripes,fig-seafloor,,,,,,,,,unallocated
+88,Lotka–Volterra phase portrait,fig-lotkavolterra,,,,,,,,POOL-08,allocated
+89,The strange attractor,fig-attractor,,,,,,,,,unallocated
+90,The bifurcation diagram,fig-bifurcation,,,,,,,,,unallocated
+91,Double pendulum,fig-doublependulum,,,,,,,,,unallocated
+92,The Mandelbrot set / fractal,fig-mandelbrot,,,,,,,,,unallocated
+93,Reaction–diffusion (Turing) patterns,fig-turing,,,,,,,,,unallocated
+94,Flocking / boids,fig-boids,,,,,,,,,unallocated
+95,SIR epidemic curve,fig-sir,,,,,,,,,unallocated
+96,Gapminder bubbles,fig-gapminder,,,yes,,,,,POOL-02,allocated
+97,Sequence alignment / genome browser,fig-genomebrowser,,,,,,,,,unallocated
+98,Geologic time spiral / stratigraphic column,fig-geotime,,,,,,,,,unallocated
+99,"Confidence / credible intervals, error bars, fan charts",fig-intervals,,,yes,,,,,,allocated
+100,Poll-of-polls fan chart,fig-fanchart,yes,,,,,,,,allocated
+101,Bayesian updating,fig-bayes,,,,,,,,,unallocated
+102,ROC curve + confusion matrix,fig-roc,,,yes,,,,,,allocated
+103,Null distribution / permutation test,fig-permutation,,,yes,,,,,,allocated

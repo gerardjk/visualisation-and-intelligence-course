@@ -1,0 +1,13 @@
+{
+  "id": "POOL-07",
+  "domain": "economics",
+  "category": "Change over time",
+  "publisher": "Reserve Bank of Australia",
+  "rows": 174,
+  "columns": 4,
+  "chart_sha256": "25c56f0cfab022ff5c25842101c370c710becaf03cb5ff5cf80c3658225be2fd",
+  "student_csv_sha256": "d653f9ef0c6a548580744cc2ac6749d01b2f0f85c09fae3d14db6a34509f96d1",
+  "source_sha256": "c0e8846641eae45a22bca9ede5bbafde11403b608d5ef2e7ab0d38d6be6a8300",
+  "exact_match_in_published_week_1_or_2_decks": false,
+  "chart_card_exception_allowed": false
+}

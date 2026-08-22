@@ -7,6 +7,7 @@ __pycache__/
 .env
 UTS_CANVAS_TOKEN
 .secrets/
+/.canvas-downloads/
 
 /.quarto/
 **/*.quarto_ipynb
@@ -30,3 +31,4 @@ _book/
 *.synctex.gz
 texput.log
 *.report.json
+student-site/

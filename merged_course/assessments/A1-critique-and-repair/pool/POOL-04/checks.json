@@ -1,0 +1,13 @@
+{
+  "id": "POOL-04",
+  "domain": "wellbeing",
+  "category": "Ranking",
+  "publisher": "World Happiness Report",
+  "rows": 143,
+  "columns": 5,
+  "chart_sha256": "15b6160ad38f2c5cd94bebf4ff14864bcdd594bea17ec9102d3d056bcbdc735f",
+  "student_csv_sha256": "f096dd0a5c957bd790f1ba2995a171eca93a1174ce7cb8f4f2db60abde863e95",
+  "source_sha256": "5e3b77bc0323c9158c8a4a768f9217a21012845c5090bec6070f27fe1f9af55e",
+  "exact_match_in_published_week_1_or_2_decks": false,
+  "chart_card_exception_allowed": false
+}

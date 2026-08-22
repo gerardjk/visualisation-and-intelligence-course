@@ -1,0 +1,14 @@
+{
+  "id": "POOL-05",
+  "domain": "economics",
+  "category": "Distribution",
+  "title": "Lorenz curves for US family income",
+  "publisher": "OpenStax",
+  "chart_page": "https://openstax.org/books/principles-economics-3e/pages/15-4-income-inequality-measurement-and-causes",
+  "chart_asset": "https://openstax.org/apps/archive/20260604.144757/resources/7173a2545e7c437dcbd9f62692b185b1d9718eb8",
+  "source_data": "https://openstax.org/books/principles-economics-3e/pages/15-4-income-inequality-measurement-and-causes",
+  "publication": "2022",
+  "downloaded": "2026-08-12",
+  "chart_sha256": "2f9d79a0ad28fbecdc52a989ce61192d50fd5197ee2f6f6417d7270dfaa45ada",
+  "source_sha256": "8c6c5c64ba35b420a4fe55ea96cd06e775edd77bcc65a1ffcbdca3fc54f15a8d"
+}

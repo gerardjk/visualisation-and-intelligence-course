@@ -1,0 +1,73 @@
+% Asynchronous Session 1. Build with Tectonic or lualatex (run twice).
+\documentclass[aspectratio=169,11pt]{beamer}
+
+\usepackage{graphicx}
+\graphicspath{{figs/}}
+
+% ---- UTS look: white ground, UTS blue and red accents (matches Seeing Data) ----
+\usepackage{fontspec}
+\setsansfont{Arial}
+\definecolor{utsblue}{HTML}{0F4BEB}
+\definecolor{utsred}{HTML}{FF2305}
+\definecolor{utscyan}{HTML}{00B7E0}
+\definecolor{utspale}{HTML}{C8D4F8}
+\definecolor{ink}{HTML}{0A0A0A}
+\definecolor{ground}{HTML}{FFFFFF}
+\definecolor{mist}{HTML}{5A5F63}
+
+\usetheme{default}
+\renewcommand{\familydefault}{\sfdefault}
+\setbeamertemplate{navigation symbols}{}
+\setbeamercolor{background canvas}{bg=ground}
+\setbeamercolor{normal text}{fg=ink}
+\setbeamercolor{frametitle}{fg=ink}
+\setbeamercolor{structure}{fg=utsblue}
+\setbeamercolor{alerted text}{fg=utsred}
+\setbeamertemplate{itemize item}{\color{utsred}\rule[0.45ex]{0.6em}{0.12em}}
+\setbeamertemplate{itemize subitem}{\color{mist}\rule[0.45ex]{0.4em}{0.12em}}
+\setbeamertemplate{frametitle}{%
+  \vspace*{1.2em}%
+  {\LARGE\bfseries\insertframetitle}\\[0.2em]
+  {\color{utsred}\rule{3em}{0.18em}}%
+}
+\setbeamertemplate{footline}{%
+  \hspace*{1.5em}{\color{mist}\tiny 36104 · Asynchronous Session 1}\hfill
+  {\color{mist}\tiny UTS CRICOS 00099F · TEQSA PRV12060}\hfill
+  {\color{mist}\tiny\insertframenumber}\hspace*{1.5em}\vspace*{0.8em}}
+
+\title{Asynchronous Session 1}
+\author{36104 Data Visualisation and Narratives}
+
+\begin{document}
+
+% ---------- shared course cover ----------
+\begin{frame}[plain]
+  \includegraphics[width=\paperwidth,height=\paperheight]{../../../../cover.pdf}
+\end{frame}
+
+% ---------- topic title ----------
+\begingroup
+\setbeamercolor{background canvas}{bg=utsblue}
+\setbeamercolor{normal text}{fg=white}
+\begin{frame}[plain]
+  \color{white}%
+  \vspace*{0.9em}\noindent\hspace*{1.2em}%
+  \includegraphics[height=2.0em]{uts-logo-white.png}\par
+  \vspace*{\fill}
+  \hspace*{1.2em}{\color{utspale}\bfseries\scriptsize 36104 · DATA VISUALISATION AND NARRATIVES}\\[0.6em]
+  \hspace*{1.2em}{\fontsize{28}{32}\selectfont\bfseries Asynchronous Session~1}
+  \vspace*{\fill}
+\end{frame}
+\endgroup
+
+% ---------- the one instruction ----------
+\begin{frame}{This session}
+  \vspace*{\fill}
+  \begin{center}
+    {\Large Complete the Session 1 activities at}\\[0.8em]
+    {\LARGE\bfseries\color{utsblue}\href{https://dvn36104.github.io/}{https://dvn36104.github.io/}}
+  \end{center}
+  \vspace*{\fill}
+\end{frame}
+
+\end{document}

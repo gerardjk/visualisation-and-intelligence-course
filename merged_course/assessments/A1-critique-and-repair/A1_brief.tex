@@ -1,5 +1,5 @@
-% A1. Critique and Repair: student handout.
-% Build: lualatex A1_brief.tex  (run twice)
+% A1. Reading Claims and Designing Alternatives: student handout.
+% Build: tectonic A1_brief.tex
 \documentclass[11pt,a4paper]{article}
 
 \usepackage[margin=2.3cm]{geometry}
@@ -29,69 +29,95 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\color{mist}\footnotesize 36104 Data Visualisation and Narratives · Spring 2026}
-\fancyhead[R]{\color{mist}\footnotesize A1 · Critique and Repair}
+\fancyhead[R]{\color{mist}\footnotesize A1 · Reading Claims and Designing Alternatives}
 \fancyfoot[C]{\color{mist}\footnotesize\thepage}
 \renewcommand{\headrulewidth}{0pt}
 
 \newcommand{\labelbox}[1]{\colorbox{panel}{\texttt{\small #1}}}
+\newcommand{\poolartefact}[7]{%
+  {\large\bfseries #1 · #2}\par
+  {\color{mist}\small Domain: #3 · #4 · #5}\par\vspace{0.35em}
+  \begin{center}
+    \includegraphics[width=0.94\textwidth,height=0.31\textheight,keepaspectratio]{#6}
+  \end{center}
+  {\footnotesize\textbf{Source:} \href{#7}{Open the chart and source page}\par}
+}
 
 \begin{document}
 
 % ---------------- title block ----------------
 {\color{coral}\bfseries\small 36104 · ASSESSMENT 1}\\[0.2em]
-{\fontsize{26}{30}\selectfont\bfseries Critique and Repair}\\[0.4em]
-{\large\color{mist} See what a chart claims · repair it with the Visual Vocabulary · verify a machine's reading of its data}
+\resizebox{\textwidth}{!}{\bfseries Reading Claims and Designing Alternatives}\\[0.4em]
+{\large\color{mist} See what a chart claims, create an alternative view, and verify a machine's reading of its data.}
 
 \vspace{0.9em}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \toprule
 \textbf{Weight} & 30\% of the subject · individual \\
-\textbf{Covers} & Sessions 1–2: \emph{Seeing Data} and \emph{Choosing Visual Forms} \\
-\textbf{Artefacts} & Three charts from the released pool (twelve entries, twelve domains), from three different domains, one \textbf{primary}, two \textbf{supporting}. No sign-up, no approvals; the primary is locked on the supervised sheet \\
-\textbf{Released} & Seeing Data session. Thursday 30 July 2026 \\
-\textbf{Supervised component} & 25-minute AI-restricted window at the start of the Week 4 session. Thursday 20 August 2026 \\
+\textbf{Covers} & Sessions 1-3 \\
+\textbf{Artefacts} & Three charts from the released pool (twelve entries across varied domains), from three different domains. Artefact 1 is the \textbf{primary artefact} used for the supervised critique. \\
+\textbf{Released} & August 8 \\
+\textbf{Supervised component} & 25-minute AI-restricted window at the start of the fourth live session (Week 5). Thursday 27 August 2026 \\
 \textbf{Due} & \textbf{Friday 28 August 2026, 11:59\,pm} (Sydney time) \\
-\textbf{Submit} & One completed \labelbox{A1\_template.ipynb} · your data files in \labelbox{data/} · a PNG/screenshot of each original chart \\
+\textbf{Submit} & One ZIP: \labelbox{A1\_template.ipynb} · the \labelbox{data/} folder · the three supplied chart images renamed \labelbox{original\_chart\_1.png} to \labelbox{original\_chart\_3.png} \\
 \bottomrule
 \end{tabularx}
 
 \section*{The task}
 
-You will take \textbf{three published charts from the wild, from three
-different domains}, and work them through the course pipeline: \emph{see}
-what each claims, \emph{repair} it with the Visual Vocabulary, and
-\emph{verify} a machine's interpretation of the data. One artefact is your
-\textbf{primary} (full treatment); the other two are \textbf{supporting}
-(compact treatment). The first two sessions rehearse every part of this: the
-Seeing Data studio (Critique and Repair sheet, Critique 1) rehearses Parts A
-and C; the Choosing Visual Forms studio (Redesign $\times$3, Chart Choice
-Decision Record) rehearses Part B.
+You will take \textbf{three sourced chart artefacts from the released pool,
+from three different domains}, and work them through the course pipeline: \emph{see}
+what each claims, develop an alternative view with the Visual Vocabulary, and
+\emph{verify} a machine's interpretation of the data. For \textbf{each artefact},
+complete a full 9-field critique, an alternative view, a full Chart Choice
+Decision Record, and a claim audit. Artefact 1 is the \textbf{primary artefact}:
+the one whose critique is completed in the supervised, AI-restricted window.
+That supervised critique is the only requirement that differs across the three.
 
 \subsection*{Part A. Seeing (the critiques)}
 
-For the \textbf{primary artefact}: the full 9-field critique, what does the
-chart show, and what does it claim? Selection, encoding, framing, omission, 
-keeping the discipline from Seeing Data: \emph{directly visible} vs
-\emph{interpretation rather than observation}, ending with a repaired
-caption. \textbf{Drafted by hand in the supervised, AI-restricted window on
-20 August}, then transcribed into the notebook's \labelbox{critique\_1} cell.
-For each \textbf{supporting artefact}: a compact 4-field critique (main
-claim, visible vs interpretation, what misleads, repaired caption).
+For each artefact, complete the full 9-field critique:
+main claim; audience; visual task; directly visible; interpretation rather
+than observation; what is omitted; what misleads; what needs verifying; and
+a repaired caption. For artefact 1---the \textbf{primary artefact}---address all
+nine fields by hand in the supervised, AI-restricted window on 27 August, then
+transcribe and edit them for clarity without AI in \labelbox{critique\_1}.
+Complete \labelbox{critique\_2} and \labelbox{critique\_3} outside that window.
 
-\subsection*{Part B. Choosing (the repairs)}
+\textbf{Critique field guide.} \emph{Main claim}: the one-sentence message the
+chart advances. \emph{Audience}: the intended reader or user. \emph{Visual
+task}: what the reader must do---for example compare, rank, locate or track
+change. \emph{Directly visible}: what is literally encoded in marks, labels and
+scales. \emph{Interpretation rather than observation}: what the design invites
+you to infer but does not directly show. \emph{What is omitted}: relevant data,
+context, uncertainty or comparison left out. \emph{What misleads}: how selection,
+encoding or framing---including title, caption, annotation or baseline---could
+create an unjustified impression. \emph{What needs verifying}: the source,
+calculation or inference that requires checking. \emph{Repaired caption}: a
+caption that states the supported finding and its important limit.
 
-For each of the three artefacts: obtain or faithfully reconstruct its
-underlying data and produce \textbf{one redesign}, the chart that original
-should have been. Across the three artefacts the redesigns must serve
-\textbf{three distinct Visual Vocabulary categories}. Defend the primary
-redesign with a full \textbf{Chart Choice Decision Record} (the same form as
-the Choosing Visual Forms studio, including the rejected alternative and the
-specific reason); defend each supporting redesign with its category and a
-one-line justification (\labelbox{WHY\_2}, \labelbox{WHY\_3}).
+\subsection*{Part B. Choosing (the alternative views)}
 
-\subsection*{Part C. Verifying (the claim audit, primary artefact)}
+For each artefact, use the supplied source-data extract and state a claim that
+can be supported by that data. Create an alternative view designed to
+communicate that claim. Across the three artefacts, the alternatives must use
+valid Visual Vocabulary categories and represent \textbf{at least two different
+categories}. If you use the same category more than once, explain in each
+Decision Record why it is the best fit for that artefact's claim. Explain what each design
+makes easier and harder to see than the published original and how those
+differences follow from the stated claim. Complete the full \textbf{Chart
+Choice Decision Record} for each artefact
+(\labelbox{decision\_record\_1..3}).
 
-Generate an interpretation of your \textbf{primary} dataset using the \textbf{supplied prompt}
+\textbf{Decision Record field guide.} Identify the intended audience; the
+question they need answered; the decision the view supports; the Visual
+Vocabulary category; the comparison the reader must make; and the selected
+chart form. Then explain why that form fits, name one genuine alternative you
+considered, and give a specific reason for rejecting it.
+
+\subsection*{Part C. Verifying (three claim audits)}
+
+Generate an interpretation of each dataset using the \textbf{supplied prompt}
 (verbatim, in the template). Classify \textbf{every claim} with the four-way
 taxonomy from the Seeing Data lab:
 
@@ -110,27 +136,90 @@ taxonomy from the Seeing Data lab:
 
 Probes are zero-argument functions returning the evidence (a filtered or
 aggregated DataFrame/Series): required for every \labelbox{supported} and
-\labelbox{contradicted} claim. Finish with the five-question AI disclosure.
+\labelbox{contradicted} claim. Each audit must contain at least one claim that
+can be tested with a probe; do not manufacture other claim types simply to
+fill a quota. Finish with the five-question AI disclosure.
+
+In the notebook, each claim is a short paraphrase used as the matching key in
+both the classification dictionary and, when required, the probe dictionary.
 
 \section*{Your artefacts}
 
 Choose \textbf{three artefacts from the released pool, from three different
-domains}: the pool has twelve entries across twelve domains, each shipped
-with its chart screenshot and data. There is no sign-up, no approval step and
-no deadline for choosing: pick your three whenever you like. Your
-\textbf{primary} is locked in the supervised window (20 August): you write
-its pool ID on the supervised sheet, and the notebook's \labelbox{META\_1}
-must match that sheet. Two students may study the same source chart, but
+domains}. Each of the twelve entries contains a published or source-linked
+chart, corresponding tidy source-data extract, data dictionary and provenance
+sheet. The approved printable chart-card examples are the only course-reproduction
+exception. Use the supplied data rather than digitising the image. Choose your primary before the
+supervised session and complete the data preparation, alternative view and other
+preparation in advance. On 27 August, record its pool ID on the supervised
+sheet. The pool ID entered for artefact 1 in the notebook---for example,
+\labelbox{POOL-03}---must match the pool ID written on that sheet. Two students
+may study the same source chart, but
 every submission must be individual and independently produced.
 
-\textbf{Data rule.} If the exact data is not published, reconstruct it
-faithfully (digitise, or synthesise to match the chart's visible quantities)
-and say so: set \labelbox{data\_status = "reconstructed"} and write the
-reconstruction note. This is the atlas book's own method, representative
-data, never passed off as the original measurement. Undisclosed reconstruction
-is an academic-integrity issue. Disclosed reconstruction remains eligible for
-full marks; its fidelity and limitations are judged under H2. The rule
-applies per artefact (\labelbox{data\_status} in each \labelbox{META\_n}).
+Use the following canonical domain labels exactly in \labelbox{META\_n}:
+
+\begin{center}
+\begin{tabular}{@{}ll ll@{}}
+\toprule
+\textbf{Pool ID} & \textbf{Domain} & \textbf{Pool ID} & \textbf{Domain} \\
+\midrule
+POOL-01 & climate science & POOL-07 & economics \\
+POOL-02 & public health & POOL-08 & ecology \\
+POOL-03 & astronomy & POOL-09 & astronomy \\
+POOL-04 & wellbeing & POOL-10 & energy \\
+POOL-05 & economics & POOL-11 & geophysics \\
+POOL-06 & energy & POOL-12 & transportation \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Known source limitations.} POOL-04's chart card shows ranks 1--48
+while the supplied source contains all 143 ranked countries and does not
+contain the simultaneous rank intervals drawn in the chart. In POOL-06, a few
+published Sankey component labels do not add exactly to the displayed node
+totals; treat this as a documented source-chart limitation, not as a student
+calculation error. POOL-12 contains undirected historical airport-pair
+records: its two endpoints are alphabetically ordered, and
+\labelbox{airline\_record\_count} is neither passenger nor flight volume. The
+individual provenance sheets repeat these details.
+
+\textbf{Background research and domain knowledge.} The chart, source data and
+pool notes are starting points, not a complete package of everything you may
+need. Answering some questions well may require modest background reading about
+the topic, measures and context represented in the visualisation. You are not
+expected to become a domain expert, but you should learn enough to engage
+intelligently with the chart's claims, assumptions and limitations. You may use
+web search, library resources, reports and other credible sources for this
+purpose. If you use an AI system to locate or explain background information,
+independently verify its factual claims against credible sources. Keep a record
+of the sources that inform your analysis and cite them where relevant.
+You should also search for other visualisations of the same or closely related
+data to see how other designers have framed, filtered and encoded it and to
+develop ideas for your own alternative. Do not copy a design. If another
+visualisation materially influences your choices, identify it briefly in the
+relevant Decision Record---normally under
+\labelbox{why\_it\_fits} or \labelbox{reason\_for\_rejection}---and provide a
+working URL. A separate reference list is not required.
+Background research should support your own analysis of the chart; it does not
+replace close examination of the visualisation and its data.
+
+\textbf{Data-use rule.} Copy the supplied CSV for each chosen chart into the
+submission's \labelbox{data/} folder, rename it with its pool ID, and load that
+filename in \labelbox{data\_n}. Copy the publisher, publication value and
+source URL from the provenance sheet into the corresponding
+identifying-information block (\labelbox{META\_n}). Keep \labelbox{data\_n} as
+the unchanged DataFrame loaded from that exact file. You may create separately
+named filtered, reshaped or derived variables, but must preserve the source
+fields and document every transformation. Do not add values inferred
+from the image or present derived values as source measurements. Data handling
+and disclosure are judged under H2.
+
+\textbf{Reconstruction limit.} The supplied extract may not reproduce every
+detail of the published original. Establish which components are supported by
+the supplied fields and which depend on unavailable data, transformations,
+modelling, annotations or design assets. Use this judgement when critiquing the
+original and explaining your alternative.
 
 \textbf{Copyright note.} Include only the chart image needed for criticism and
 review, cite its publisher, creator (where known), date and source URL, and do
@@ -139,28 +228,40 @@ UTS library or copyright guidance supplied with the task.
 
 \section*{AI policy}
 
-Part A's primary critique is drafted AI-free in the supervised window. An assistant may be used
-in Part B under the notebook contract: docstrings first, accept or reject
-completions, and nothing counts until the checks pass. Part C requires an
-assistant-generated interpretation; students who cannot or do not wish to use
-an assistant can request a course-supplied generated interpretation. The
-disclosure block is assessed: report use accurately, including legitimate
-non-use in Part B. False or misleading disclosure is an academic-integrity
-issue.
+Part A's primary critique is drafted AI-free in the supervised window and may
+be edited for clarity without AI after transcription. An assistant may be
+used for Part B's coding and alternative-view work; you remain responsible for
+checking and accepting or rejecting its output. Part C requires three
+assistant-generated interpretations. Report your use or non-use of AI
+accurately. False or misleading disclosure is an academic-integrity issue.
 
-\section*{Submission contract (read this twice)}
+\section*{Submission requirements}
 
-The template notebook defines named variables and functions per artefact
-(\labelbox{META\_1..3}, \labelbox{critique\_1..3}, \labelbox{data\_1..3},
-\labelbox{redesign\_1..3}, \labelbox{decision\_record},
-\labelbox{claims} \dots{} \labelbox{disclosure}). The autograder
-executes your notebook top-to-bottom on a clean machine and inspects those
-names. \textbf{Run the self-check cell before submitting}, it is the same
-code the marker runs. A notebook that does not execute end-to-end scores 0 on
-the automated items until resubmitted (one resubmission, capped at 80\%).
+The template notebook contains a set of required named variables and functions
+for each artefact. These include the identifying-information blocks
+(\labelbox{META\_1}, \labelbox{META\_2}, and \labelbox{META\_3}), critiques
+(\labelbox{critique\_1} to \labelbox{critique\_3}), datasets
+(\labelbox{data\_1} to \labelbox{data\_3}), alternative views
+(\labelbox{redesign\_1} to \labelbox{redesign\_3}), Decision Records, claim
+audits, evidence probes, and the AI disclosure. \textbf{Do not rename these
+items}, because the autograder checks them directly. The autograder executes
+your notebook top-to-bottom on a clean machine. \textbf{Run the self-check cell
+before submitting}: it runs the
+marker's G1--G6 checks (54 marks). G0's remaining 6 marks are awarded only
+after a clean top-to-bottom execution on the marking system. An execution
+error loses the G0 marks and may also prevent checks that depend on the
+affected code; it does not automatically erase otherwise verifiable marks.
+If an execution failure prevents fair assessment, the marker may allow one
+technical resubmission within 48 hours of notification. Only changes needed
+to restore execution are permitted; the analytical content must remain
+unchanged.
 
-\newpage
-\section*{Rubric, 100 marks (scaled to 30\% of the subject)}
+\section*{Rubric, 100 marks (worth 30\% of the subject)}
+
+The rubric maximum is the sum of the criterion maxima: 60 automated marks plus
+40 human-marked marks equals 100. Canvas records both the assignment and rubric
+out of 100. The Assignment 1 group contributes 30\% of the subject, so no
+manual score conversion is required.
 
 \subsection*{Automated (60 marks, scored by \texttt{a1\_autograder.py})}
 
@@ -170,17 +271,17 @@ the automated items until resubmitted (one resubmission, capped at 80\%).
 \midrule
 G0 & Notebook executes end-to-end & 6 & all cells run clean, no errors \\
 \addlinespace[0.35em]
-G1 & Three artefacts: metadata valid, domains distinct & 6 & \labelbox{META\_1..3} fields present; URLs well-formed; \labelbox{data\_status} valid; three \textbf{distinct} domains \\
+G1 & Three artefacts: identity and files valid & 6 & \labelbox{STUDENT\_ID} and all identifying-information blocks complete; three distinct IDs from \labelbox{POOL-01..12}; the corresponding canonical domains are distinct; URLs and \labelbox{data\_status} valid; each supplied original chart matches its selected pool item \\
 \addlinespace[0.35em]
-G2 & Data provenance $\times$3 & 9 & each \labelbox{data\_n} loads; $\geq$ 6 rows $\times$ $\geq$ 2 columns; no empty columns; reconstruction note $\geq$ 30 words when reconstructed \\
+G2 & Data provenance $\times$3 & 9 & each exact supplied \labelbox{data/POOL-XX\_source\_data.csv} loads unchanged into \labelbox{data\_n}; $\geq$ 6 rows $\times$ $\geq$ 2 columns; no empty columns; source identifying information and transformations documented \\
 \addlinespace[0.35em]
-G3 & Redesign mechanics $\times$3 & 15 & each redesign returns its Axes; three \textbf{distinct} Vocabulary categories, all valid; bar-family charts include a zero baseline; every chart titled with $\geq$ 15 characters \\
+G3 & Alternative-view mechanics $\times$3 & 15 & each alternative view (\labelbox{redesign\_n}) returns its Axes; all categories are valid and at least two different Vocabulary categories are represented across the three artefacts; bar-family charts include a zero baseline; every chart title has at least 15 characters \\
 \addlinespace[0.35em]
-G4 & Claim-audit structure (primary artefact) & 14 & interpretation $\geq$ 400 chars from the supplied prompt; $\geq$ 6 claims; every label from the four-way taxonomy; $\geq$ 1 \labelbox{supported}, $\geq$ 1 \labelbox{plausible but unverified}, $\geq$ 1 \labelbox{unsupported} \textbf{or} \labelbox{contradicted}; an executable, non-empty probe for every \labelbox{supported}/\labelbox{contradicted} claim \\
+G4 & Claim-audit structure $\times3$ & 14 & for each artefact: a 150--250-word interpretation from the supplied prompt; $\geq$ 4 validly labelled claims; at least one \labelbox{supported} or \labelbox{contradicted} claim; an executable, non-empty probe for every such claim \\
 \addlinespace[0.35em]
-G5 & Critiques + Decision Record structure & 6 & full 9-field primary critique, 5–150 words each; compact critiques 2–3 complete; all 9 Decision Record fields, defence fields $\geq$ 10 words; \labelbox{WHY\_2}/\labelbox{WHY\_3} $\geq$ 10 words \\
+G5 & Critiques + Decision Records $\times3$ & 6 & all three 9-field critiques and all three 9-field Decision Records are complete; each \labelbox{vocabulary\_category} matches \labelbox{CATEGORY\_n} \\
 \addlinespace[0.35em]
-G6 & Five-question AI disclosure & 4 & all 5 answers completed, none placeholder \\
+G6 & Five-question AI disclosure & 4 & all 5 answers completed; each answer has at least 3 words and is not a placeholder \\
 \midrule
  & \textbf{Total} & \textbf{60} & \\
 \bottomrule
@@ -188,21 +289,19 @@ G6 & Five-question AI disclosure & 4 & all 5 answers completed, none placeholder
 
 \subsection*{Human-marked (40 marks, anchored 0/1/2 per item)}
 
-Markers read the autograder report first, then judge only these five items.
-
 \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.9cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
 \toprule
 \textbf{Item (weight)} & \textbf{0} & \textbf{1} & \textbf{2} \\
 \midrule
-H1 · Critique insight, primary ($\times$5) & Restates the chart & Correctly identifies the claim and one real omission & Also separates \emph{directly visible} from \emph{interpretation}, names the framing device, and the repaired caption actually repairs \\
+H1 · Critique insight across three ($\times$5) & Restates the charts & Correctly identifies claims and real omissions & Also separates \emph{directly visible} from \emph{interpretation}, explains how title, caption, annotation or baseline frames the claim where relevant, and the repaired captions actually repair \\
 \addlinespace[0.45em]
-H2 · Reconstruction fidelity, across artefacts ($\times$2.5) & Data unrelated to the original's quantities & Plausible magnitudes and units & Matches the original's visible values, or deviations explicitly disclosed \\
+H2 · Data handling, across artefacts ($\times$2.5) & Source data misread or transformations undisclosed & Units and transformations mostly correct & Source fields preserved; transformations correct, reproducible and disclosed \\
 \addlinespace[0.45em]
-H3 · Decision Record + supporting defences ($\times$5) & No argument, or category label only & Correct task category with a generic justification & Ties audience $\rightarrow$ task $\rightarrow$ channel precision; the rejected alternative is real and the reason specific \\
+H3 · Decision Records across three ($\times$5) & No argument, or category labels only & Correct task categories with generic justifications & Ties audience $\rightarrow$ task $\rightarrow$ channel precision; rejected alternatives are real and reasons specific \\
 \addlinespace[0.45em]
-H4 · Redesign craft, across the three ($\times$5) & Unreadable or misleading & Honest defaults, readable & Titles state findings; scales honest; labels carry the argument \\
+H4 · Alternative-view craft, across the three ($\times$5) & Unreadable or misleading & Honest defaults, readable & Titles state findings; scales honest; labels carry the argument \\
 \addlinespace[0.45em]
-H5 · Audit judgement ($\times$2.5) & Classifications mostly wrong & Right labels, thin probes & Probes genuinely discriminate: a \labelbox{contradicted} probe could have exonerated the claim; \labelbox{plausible but unverified} used precisely, not as a dodge \\
+H5 · Audit judgement across three ($\times$2.5) & Classifications mostly wrong & Labels mostly appropriate, but probes are weak & Labels distinguish evidence from plausibility precisely; every required probe directly tests the claim \\
 \midrule
 \multicolumn{4}{@{}l}{\textbf{Total: 40 marks} (weights $\times$ anchor score; maximum $2\times(5+2.5+5+5+2.5)=40$)} \\
 \bottomrule
@@ -211,27 +310,58 @@ H5 · Audit judgement ($\times$2.5) & Classifications mostly wrong & Right label
 \subsection*{Process requirements (not marked, but gates)}
 
 \begin{itemize}[leftmargin=1.4em,itemsep=0.15em]
-  \item Part A supervised draft handed in during the 20 August window (paper
-        or photo). Missing draft $\rightarrow$ H1 capped at 1.
-  \item The primary's pool ID is written on the supervised sheet
-        (20 August); \labelbox{META\_1} must match it.
-  \item One resubmission permitted for G0 failures, capped at 80\% overall.
+  \item Part A supervised notes handed in during the 27 August window.
+        Missing notes $\rightarrow$ H1 capped at 0.
+  \item The pool ID entered for artefact 1 in the notebook must match the pool
+        ID written on the supervised sheet (27 August).
 \end{itemize}
 
-\section*{What good looks like}
+\clearpage
+\section*{Artefact pool: charts and sources}
 
-A strong A1 reads like the class notebooks: the critique names the claim in
-one sentence and the repaired caption says what the original's should have
-said; the Decision Record argues from the reader's task rather than from
-taste, and its rejected alternative is one you genuinely considered; the
-reconstruction note is specific; at least one probe shows a
-fluent-sounding claim to be \labelbox{contradicted}; and the disclosure says
-exactly what the assistant drafted, what you rejected, and how you caught its
-mistakes.
+The twelve chart images are reproduced below for assignment reference. The
+downloadable pool supplies the corresponding chart image, CSV, data dictionary
+and provenance sheet for each entry.
 
-\vspace{1em}
-{\color{mist}\footnotesize Questions: raise them in the studio or contact the
-subject coordinator. AI use in this assessment is governed by the AI policy
-above; unauthorised use is academic misconduct under UTS rules.}
+\poolartefact{POOL-01}{Deviation}{climate science}{Global mean temperature anomaly}{NASA Goddard Institute for Space Studies}{pool/POOL-01/original_chart.png}{https://data.giss.nasa.gov/gistemp/graphs_v4/}
+{\footnotesize\textbf{Data:} \href{https://data.giss.nasa.gov/gistemp/graphs_v4/graph_data/Global_Mean_Estimates_based_on_Land_and_Ocean_Data/graph.csv}{Download the publisher's source data}\par}
+\vfill
+\poolartefact{POOL-02}{Correlation}{public health}{Life expectancy vs health expenditure}{Our World in Data}{pool/POOL-02/original_chart.png}{https://ourworldindata.org/grapher/life-expectancy-vs-health-expenditure}
+{\footnotesize\textbf{Data:} \href{https://ourworldindata.org/grapher/life-expectancy-vs-health-expenditure.csv}{Download the publisher's source data}\par}
+
+\clearpage
+\poolartefact{POOL-03}{Correlation}{astronomy}{Hubble's 1929 distance--velocity relation}{Proceedings of the National Academy of Sciences}{pool/POOL-03/original_chart.png}{https://pmc.ncbi.nlm.nih.gov/articles/PMC522427/}
+{\footnotesize\textbf{Data:} \href{https://apod.nasa.gov/diamond_jubilee/1996/hub_1929.html}{Open the published tabulated observations}\par}
+\vfill
+\poolartefact{POOL-04}{Ranking}{wellbeing}{Country rankings by life evaluation, 2021--2023}{World Happiness Report}{pool/POOL-04/original_chart.png}{https://worldhappiness.report/ed/2024/}
+{\footnotesize\textbf{Data:} \href{https://files.worldhappiness.report/WHR24_Data_Figure_2.1.xls}{Download the report's supporting data}\par}
+
+\clearpage
+\poolartefact{POOL-05}{Distribution}{economics}{Lorenz curves for US family income}{OpenStax}{pool/POOL-05/original_chart.png}{https://openstax.org/books/principles-economics-3e/pages/15-4-income-inequality-measurement-and-causes}
+{\footnotesize\textbf{Data:} \href{https://openstax.org/books/principles-economics-3e/pages/15-4-income-inequality-measurement-and-causes}{Open the publisher's chart and source table}\par}
+\vfill
+\poolartefact{POOL-06}{Flow}{energy}{Estimated US energy consumption, 2023}{Lawrence Livermore National Laboratory / US Department of Energy}{pool/POOL-06/original_chart.png}{https://flowcharts.llnl.gov/commodities/energy}
+{\footnotesize\textbf{Data:} \href{https://flowcharts.llnl.gov/commodities/energy}{Open the published diagram; flow values are printed on the chart}\par}
+
+\clearpage
+\poolartefact{POOL-07}{Change over time}{economics}{Measures of underlying inflation}{Reserve Bank of Australia}{pool/POOL-07/original_chart.png}{https://www.rba.gov.au/chart-pack/aus-inflation.html}
+{\footnotesize\textbf{Data:} \href{https://www.rba.gov.au/statistics/tables/csv/g1-data.csv}{Download RBA table G1 data}\par}
+\vfill
+\poolartefact{POOL-08}{Correlation}{ecology}{Lynx--hare phase portrait}{San Diego State University (J. M. Mahaffy)}{pool/POOL-08/original_chart.png}{https://jmahaffy.sdsu.edu/courses/f09/math636/lectures/lotka/qualde2.html}
+{\footnotesize\textbf{Data:} \href{https://jmahaffy.sdsu.edu/courses/f09/math636/lectures/lotka/qualde2.html}{Open the published observations}\par}
+
+\clearpage
+\poolartefact{POOL-09}{Magnitude}{astronomy}{Cosmic abundance of the elements}{NASA Imagine the Universe / HEASARC}{pool/POOL-09/original_chart.png}{https://imagine.gsfc.nasa.gov/educators/elements/imagine/cosmic_abundances.html}
+{\footnotesize\textbf{Data:} \href{https://chem.libretexts.org/Bookshelves/General_Chemistry/Interactive_Chemistry_(Moore_Zhou_and_Garand)/06\%3A_Appendix/6.02\%3A_Elemental_Abundances}{Open the referenced abundance table}\par}
+\vfill
+\poolartefact{POOL-10}{Part-to-whole}{energy}{Sources of US electricity generation}{US Energy Information Administration}{pool/POOL-10/original_chart.png}{https://www.eia.gov/energyexplained/electricity/electricity-in-the-us.php}
+{\footnotesize\textbf{Data:} \href{https://www.eia.gov/energyexplained/electricity/electricity-in-the-us.php}{Open the publisher's chart and source values}\par}
+
+\clearpage
+\poolartefact{POOL-11}{Spatial}{geophysics}{Seismicity of the Earth 1900--2007}{US Geological Survey}{pool/POOL-11/original_chart.png}{https://pubs.usgs.gov/sim/3064/}
+{\footnotesize\textbf{Data:} \href{https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv\&starttime=1900-01-01\&endtime=2008-01-01\&minmagnitude=7.3\&orderby=time}{Download the documented USGS catalogue extract (1900--2007, M\,$\geq$\,7.3)}\par}
+\vfill
+\poolartefact{POOL-12}{Flow}{transportation}{Worldwide airline route network}{OpenFlights}{pool/POOL-12/original_chart.png}{https://openflights.org/data.php}
+{\footnotesize\textbf{Data:} \href{https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat}{Download the OpenFlights route data}\par}
 
 \end{document}

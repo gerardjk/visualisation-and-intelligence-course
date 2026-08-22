@@ -443,7 +443,8 @@ plt.show()\
 '''
 
 
-def build_visual_forms():
+def build_visual_forms_legacy():
+    """Legacy activity notebook retained in source only; no longer generated."""
     cells = [
         md("""\
 # Choosing Visual Forms, class notebook
@@ -807,4 +808,7 @@ Simpler alternative considered:
 
 if __name__ == "__main__":
     build_seeing_data()
-    build_visual_forms()
+    # Choosing Visual Forms has one canonical notebook built by its dedicated
+    # generator; do not recreate the former activity/starter/instructor set.
+    from build_choosing_visual_forms_notebook import build as build_visual_forms_notebook
+    build_visual_forms_notebook()

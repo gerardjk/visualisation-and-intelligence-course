@@ -1,0 +1,13 @@
+{
+  "id": "POOL-12",
+  "domain": "transportation",
+  "category": "Flow",
+  "publisher": "OpenFlights",
+  "rows": 250,
+  "columns": 9,
+  "chart_sha256": "fd339491fedbef77d99dc3021efc099da2637d483b772d7c4028b56c9839999e",
+  "student_csv_sha256": "96482ea9d23f0726495388c44c1bfbefcff8d8fe388e7046cecf5276b735d3dd",
+  "source_sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+  "exact_match_in_published_week_1_or_2_decks": false,
+  "chart_card_exception_allowed": true
+}
