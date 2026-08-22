@@ -81,6 +81,16 @@ logged means.
 
 ## Part B · Tree of Life
 
+> **Page evolution note (22 Aug):** section 4 gained a short worked
+> subsection, "Back to Part A's seven lineages". A non-exercise cell uses
+> `clade()` to recover the seven living lineages from Part A's Rowe (2017)
+> figure and colours them on the dated amniote tree: Marsupialia,
+> Placentalia, Monotremata, Lepidosauria, Crocodilia, Aves, Testudines
+> (bottom-to-top tree order). Each lineage is anchored by two families
+> spanning its deepest split; the seven clades tile all 956 families
+> (Aves holds 607), and the uncoloured grey backbone is the Rowe figure's
+> deep structure. No new exercise, no solution implications.
+
 ### B-1 `ex_carnivora` — The carnivore clade
 
 **Task.** Extract the clade containing Canidae and Felidae from the
