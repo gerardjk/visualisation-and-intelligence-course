@@ -293,7 +293,7 @@
   \definecolor{cssyellowgreen}{HTML}{9ACD32}%
   {\small The 148 CSS colour keywords, inherited from the graphical display protocol X11 (recognised by matplotlib).\par}
   \vspace{0.6em}
-  {\ttfamily\bfseries\tiny\raggedright
+  {\ttfamily\bfseries\fontsize{6.8}{7.6}\selectfont\raggedright
   \textcolor{cssaliceblue}{aliceblue}
   \textcolor{cssantiquewhite}{antiquewhite}
   \textcolor{cssaqua}{aqua}
@@ -443,8 +443,6 @@
   \textcolor{cssyellow}{yellow}
   \textcolor{cssyellowgreen}{yellowgreen}
   \par}
-  \vspace{0.4em}
-  \credit{X11 (1987) shipped rgb.txt, a file mapping colour names to values; CSS adopted the list and matplotlib followed.}
 \end{frame}
 
 \begin{frame}{English has eleven basic colour terms}
@@ -461,9 +459,6 @@
 
   A basic term is a single word, not derived from an object (unlike
   ``gold'' or ``turquoise''), and applies to a broad class of things.
-  \vspace{0.6em}
-
-  \credit{Berlin and Kay (1969), Basic Color Terms.}
 \end{frame}
 
 \begin{frame}{Priority of Colour Words}
@@ -491,8 +486,8 @@
 \end{frame}
 
 \begin{frame}[t]{The classic 64-colour Crayola box}
-  \hspace*{0.03\textwidth}%
-  \begin{minipage}{0.97\textwidth}
+  \hspace*{0.05\textwidth}%
+  \begin{minipage}{0.95\textwidth}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.34\textwidth}
       \centering
@@ -612,8 +607,7 @@
     \end{column}
     \begin{column}{0.50\textwidth}
       \centering
-      \includegraphics[height=0.60\textheight,keepaspectratio]{newton-colour-circle.png}\\[0.2em]
-      \credit{Newton's colour circle, Opticks, Book I, Part II. Public domain.}
+      \includegraphics[height=0.60\textheight,keepaspectratio]{newton-colour-circle.png}
     \end{column}
   \end{columns}
 \end{frame}
@@ -629,8 +623,7 @@
 
 \begin{frame}[t]{Spectral recipes of common lights}
   \centering
-  \includegraphics[width=0.88\textwidth,height=0.59\textheight,keepaspectratio]{fig-spectral-recipes.png}\\[-0.1em]
-  \credit{Course calculation. Black-body curves are illustrative; the display curve is modelled on a white-LED LCD.}
+  \includegraphics[width=0.88\textwidth,height=0.59\textheight,keepaspectratio]{fig-spectral-recipes.png}
 \end{frame}
 
 \begin{frame}[t]{Light and surfaces}
@@ -676,8 +669,7 @@
 
 \begin{frame}[t]{Three cone classes sample overlapping ranges}
   \centering
-  \includegraphics[width=0.88\textwidth,height=0.64\textheight,keepaspectratio]{fig-cone-sensitivities.png}\\[-0.1em]
-  \credit{Schematic curves for teaching. S, M, and L mean short-, middle-, and long-wavelength sensitive.}
+  \includegraphics[width=0.88\textwidth,height=0.64\textheight,keepaspectratio]{fig-cone-sensitivities.png}
 \end{frame}
 
 \begin{frame}[t]{A spectrum is compressed to three responses}
@@ -769,8 +761,7 @@
       colour circle presented in full hue in \emph{The Natural System of
       Colours}. The plate was coloured by hand. Red, yellow and blue sit at
       the centre as the ``grand or principal'' colours, with mixtures grading
-      around the circle.\\[0.6em]
-      \credit{M. Harris, The Natural System of Colours (c.\,1766). Public domain.}
+      around the circle.
     \end{column}
   \end{columns}
 \end{frame}
@@ -786,8 +777,7 @@
       \vspace{1.5em}
       Goethe's watercolour wheel assigns qualities to colour sectors.
       As physics it failed; as a record of how colours are experienced and
-      opposed in pairs, it anticipated opponent descriptions of appearance.\\[0.6em]
-      \credit{J. W. von Goethe, 1809 watercolour. Public domain, via Wikimedia Commons.}
+      opposed in pairs, it anticipated opponent descriptions of appearance.
     \end{column}
   \end{columns}
 \end{frame}
@@ -796,8 +786,7 @@
   \begin{columns}[T]
     \begin{column}{0.30\textwidth}
       \centering
-      \includegraphics[height=0.62\textheight,keepaspectratio]{hering-portrait.jpg}\\[0.2em]
-      \credit{Photograph, public domain, via Wikimedia Commons.}
+      \includegraphics[height=0.62\textheight,keepaspectratio]{hering-portrait.jpg}
     \end{column}
     \begin{column}{0.64\textwidth}
       \small
@@ -844,8 +833,7 @@
   \begin{columns}[T]
     \begin{column}{0.55\textwidth}
       \centering
-      \includegraphics[width=\textwidth,height=0.70\textheight,keepaspectratio]{munsell-atlas-plate.jpg}\\[0.2em]
-      \credit{A. H. Munsell, Atlas of the Munsell Color System (1907--1915), Chart C. Public domain.}
+      \includegraphics[width=\textwidth,height=0.70\textheight,keepaspectratio]{munsell-atlas-plate.jpg}
     \end{column}
     \begin{column}{0.40\textwidth}
       \small
@@ -855,9 +843,7 @@
       branches. Steps were chosen to look equal to observers.\\[0.6em]
       The branches have unequal lengths because pigments reach different
       maximum chroma at each hue and value: on this chart red extends ten
-      steps, blue only six.\\[0.6em]
-      Soil science still uses it; later ``perceptually uniform'' colour
-      spaces descend from it.
+      steps, blue only six.
     \end{column}
   \end{columns}
 \end{frame}
@@ -1158,8 +1144,7 @@
 
 \begin{frame}[t]{Three physical primaries make a triangle}
   \centering
-  \includegraphics[width=0.64\textwidth,height=0.64\textheight,keepaspectratio]{fig-chromaticity-gamuts.png}\\[-0.1em]
-  \credit{CIE 1931 2° data; primary coordinates from sRGB/Rec.709, Display P3, and BT.2020 specifications.}
+  \includegraphics[width=0.64\textwidth,height=0.64\textheight,keepaspectratio]{fig-chromaticity-gamuts.png}
 \end{frame}
 
 \begin{frame}[t]{Colour bars}
@@ -1171,7 +1156,6 @@
     magenta), and all three together (white). Every other colour the screen
     can produce is a mixture of these, inside the triangle.
   \end{flushleft}
-  \credit{Course rendering of the SMPTE colour-bar layout.}
 \end{frame}
 
 \begin{frame}{Five cautions about the xy diagram}
@@ -1217,8 +1201,7 @@
   \begin{columns}[T]
     \begin{column}{0.34\textwidth}
       \centering
-      \includegraphics[height=0.58\textheight,keepaspectratio]{dalton-portrait-turner.jpg}\\[0.2em]
-      \credit{Mezzotint by C. Turner, 1834. Public domain.}
+      \includegraphics[height=0.58\textheight,keepaspectratio]{dalton-portrait-turner.jpg}
     \end{column}
     \begin{column}{0.58\textwidth}
       \small
@@ -1259,7 +1242,6 @@
     Under deuteranopia the green, red and magenta bars converge. A chart
     has to stay readable in all four panels.
   \end{flushleft}
-  \credit{Simulation matrices from Machado, Oliveira and Fernandes (2009).}
 \end{frame}
 
 \kicker{~}{Streamlit}
@@ -1351,8 +1333,6 @@ python -m streamlit run hello_colour.py
     \item Machado, Oliveira and Fernandes (2009), \emph{A physiologically-based model for simulation of color vision deficiency}, IEEE TVCG.
     \item Streamlit, ``Basic concepts'' and API documentation.
   \end{itemize}
-  \vspace{0.5em}
-  \credit{All plotted figures are course calculations. Official CIE data are supplied with their metadata under CC BY-SA 4.0.}
 \end{frame}
 
 \end{document}
