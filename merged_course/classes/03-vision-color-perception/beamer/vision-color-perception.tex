@@ -491,16 +491,54 @@
 \end{frame}
 
 \begin{frame}[t]{The classic 64-colour Crayola box}
-  \centering
-  \includegraphics[width=0.82\textwidth,height=0.54\textheight,keepaspectratio]{fig-crayola-chart.png}\\[0.1em]
-  \begin{flushleft}\small
-    Introduced in 1958 with a built-in sharpener, the 64-count box became
-    Crayola's perennial favourite. Crayon names are commercial labels,
-    mostly based on objects, rather than basic colour terms.
-  \end{flushleft}
-  \credit{Current 64-count box and colour swatches: Crayola product images.}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.34\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{crayola-64-product-source.jpg}
+    \end{column}
+    \begin{column}{0.63\textwidth}
+      \fontsize{5.5}{6.7}\selectfont
+      \setlength{\tabcolsep}{3.2pt}
+      \begin{tabular}{@{}lll@{}}
+        Apricot & Green & Robin's Egg Blue \\
+        Asparagus & Green Yellow & Salmon \\
+        Bittersweet & Indigo & Scarlet \\
+        Black & Lavender & Sea Green \\
+        Blue & Macaroni and Cheese & Sepia \\
+        Blue Green & Magenta & Silver \\
+        Blue Violet & Mahogany & Sky Blue \\
+        Bluetiful & Mauvelous & Spring Green \\
+        Brick Red & Melon & Tan \\
+        Brown & Olive Green & Tickle Me Pink \\
+        Burnt Orange & Orange & Timberwolf \\
+        Burnt Sienna & Orchid & Tumbleweed \\
+        Cadet Blue & Pacific Blue & Turquoise Blue \\
+        Carnation Pink & Peach & Violet (Purple) \\
+        Cerulean & Periwinkle & Violet Red \\
+        Chestnut & Plum & White \\
+        Cornflower & Purple Mountains' Majesty & Wild Strawberry \\
+        Forest Green & Raw Sienna & Wisteria \\
+        Gold & Red & Yellow \\
+        Goldenrod & Red Orange & Yellow Green \\
+        Granny Smith Apple & Red Violet & Yellow Orange \\
+        Gray & &
+      \end{tabular}
+    \end{column}
+  \end{columns}
+  \vspace{0.3em}
+  \credit{Product image: Crayola.}
 \end{frame}
 
+
+\begin{frame}[t]{Colours of the rainbow}
+  \centering
+  \includegraphics[width=0.84\textwidth,height=0.68\textheight,keepaspectratio]{fig-rainbow-versions.png}\\[0.15em]
+  \begin{flushleft}\small
+    The band is continuous; the number of named colours is a choice.
+    Newton first cut it into five, then seven, to match the notes of the
+    musical scale.
+  \end{flushleft}
+\end{frame}
 
 \begin{frame}[t]{Visible light is a narrow band}
   \centering
@@ -881,10 +919,33 @@
       The branches have unequal lengths because pigments reach different
       maximum chroma at each hue and value: on this chart red extends ten
       steps, blue only six.\\[0.6em]
-      Soil science and industrial standards still use the system, and every
-      later ``perceptually uniform'' colour space descends from it.
+      Soil science still uses it; later ``perceptually uniform'' colour
+      spaces descend from it.
     \end{column}
   \end{columns}
+\end{frame}
+
+\begin{frame}{Why a pure cyan cannot be matched}
+  \small
+  \begin{tabular}{@{}lrrr@{}}
+    \toprule
+     & S & M & L \\
+    \midrule
+    target: pure cyan, 490\,nm & 6 & 10 & \textbf{4} \\
+    green lamp, 546\,nm, per unit & 0 & 10 & \textbf{8} \\
+    blue lamp, 436\,nm, per unit & 10 & 1 & 0.5 \\
+    red lamp, 700\,nm, per unit & 0 & 0 & 2 \\
+    \bottomrule
+  \end{tabular}
+  \vspace{0.8em}
+
+  Illustrative numbers. Reaching M = 10 takes one unit of green, and that
+  unit already delivers L = 8. The cyan needs L = 4, with the red knob
+  already at zero. The green lamp is also a red-cone lamp.
+  \vspace{0.5em}
+
+  One move remains: add red to the \emph{test} side until its L rises to
+  meet the mix.
 \end{frame}
 
 \begin{frame}{Colour matching came before direct cone measurement}
