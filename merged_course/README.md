@@ -46,6 +46,15 @@ cd merged_course/classes/02-visual-forms/beamer
 tectonic choosing-visual-forms.tex             # → choosing-visual-forms.pdf
 ```
 
+Vision, Color and Perception uses a Beamer deck plus a generated Jupyter lab
+and Streamlit app:
+
+```bash
+cd merged_course/classes/03-vision-color-perception
+python scripts/build_materials.py
+cd beamer && tectonic vision-color-perception.tex
+```
+
 Atlas reproductions come from `quarto-book/_book/atlas_files/figure-html/`, 
 run `quarto render` in `quarto-book/` first if figures are missing.
 
@@ -54,5 +63,5 @@ run `quarto render` in `quarto-book/` first if figures are missing.
 - Six-class skeleton, assessment anchoring, deck pipeline: `claude_course/`.
 - Three-tier notebooks, worked demonstrations, instructor guides, facilitation
   notes: `codex_course/`.
-- Classes 03–06 are specified in the course plan and follow the same folder
+- Classes 04–06 are specified in the course plan and follow the same folder
   pattern as 01 and 02.
