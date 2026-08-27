@@ -677,30 +677,6 @@
   \includegraphics[width=0.96\textwidth,height=0.72\textheight,keepaspectratio]{fig-spectrum-to-cones.png}
 \end{frame}
 
-\begin{frame}{The bucket analogy}
-  \begin{columns}[T]
-    \begin{column}{0.47\textwidth}
-      \textbf{Useful part}
-      \begin{itemize}
-        \item three buckets have different filters;
-        \item each produces only one total;
-        \item the original spectrum cannot be reconstructed from three totals.
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.47\textwidth}
-      \textbf{Where it breaks}
-      \begin{itemize}
-        \item cone sensitivities overlap broadly;
-        \item responses adapt and saturate;
-        \item later neurons compare cones;
-        \item context and spatial structure alter appearance.
-      \end{itemize}
-    \end{column}
-  \end{columns}
-  \vspace{0.7em}
-  Three cone classes explain the dimensionality of colour \emph{matching}. They do not, by themselves, explain all colour appearance.
-\end{frame}
-
 \begin{frame}[t]{The same code can look different}
   \centering
   \includegraphics[width=0.80\textwidth,height=0.58\textheight,keepaspectratio]{adelson-checkershadow-source.jpg}\\[-0.1em]
@@ -766,47 +742,6 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}[t]{Goethe, Farbenkreis (1809)}
-  \begin{columns}[T]
-    \begin{column}{0.42\textwidth}
-      \centering
-      \includegraphics[height=0.72\textheight,keepaspectratio]{goethe-farbenkreis-1809.jpg}
-    \end{column}
-    \begin{column}{0.52\textwidth}
-      \small
-      \vspace{1.5em}
-      Goethe's watercolour wheel assigns qualities to colour sectors.
-      As physics it failed; as a record of how colours are experienced and
-      opposed in pairs, it anticipated opponent descriptions of appearance.
-    \end{column}
-  \end{columns}
-\end{frame}
-
-\begin{frame}[t]{Hering, 1878}
-  \begin{columns}[T]
-    \begin{column}{0.30\textwidth}
-      \centering
-      \includegraphics[height=0.62\textheight,keepaspectratio]{hering-portrait.jpg}
-    \end{column}
-    \begin{column}{0.64\textwidth}
-      \small
-      \vspace{0.6em}
-      Hering organised appearance around three opponent pairs:
-      black--white, red--green, yellow--blue. The four chromatic poles are
-      the \textbf{unique hues}: a red that looks neither yellowish nor
-      bluish, and likewise green, yellow and blue.\\[0.5em]
-      The test is in experience itself: reddish-yellow and greenish-blue
-      exist, and reddish-green and yellowish-blue never appear.
-      Hurvich and Jameson measured the pairs by hue cancellation in
-      1957.\\[0.5em]
-      The opponent cone combinations shown earlier are related but do not
-      line up exactly with the unique hues; their neural basis is still
-      argued. Hering's six poles are also Berlin and Kay's first six
-      basic colour terms.
-    \end{column}
-  \end{columns}
-\end{frame}
-
 \begin{frame}{Four Unique Hues (Hering, 1878)}
   \begin{center}
     \begin{tikzpicture}
@@ -848,6 +783,34 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}[t]{Additive and subtractive mixing}
+  \centering
+  \includegraphics[width=0.82\textwidth,height=0.59\textheight,keepaspectratio]{fig-additive-subtractive.png}\\[-0.1em]
+  \begin{flushleft}\small
+    Additive mixing combines emitted spectral power. Ideal subtractive mixing
+    multiplies transmissions; real pigments also scatter and interact.
+  \end{flushleft}
+\end{frame}
+
+\begin{frame}{Commission Internationale de l'Éclairage}
+  \small
+  In 1931, the CIE did not perform the first colour-matching experiments. It
+  standardised two independent datasets: W. D. Wright's measurements of ten
+  observers (1928--29) and John Guild's measurements of seven (1931). In each
+  experiment, observers adjusted three primary lights to match a test light.
+  \vspace{0.5em}
+
+  Wright used spectral primaries near 650, 530 and 460\,nm. Guild used red,
+  green and blue filtered lamps. The CIE transformed both sets of results to
+  one common RGB reference: 700, 546.1 and 435.8\,nm.
+  \vspace{0.5em}
+
+  The green and violet-blue references were reproducible lines from a
+  mercury-vapour lamp. The 700\,nm red lay in a region where small wavelength
+  errors make little difference to the perceived hue. These were reference
+  stimuli for the standard, not three lamps shared by both experiments.
+\end{frame}
+
 \begin{frame}{Why a pure cyan cannot be matched}
   \small
   {\centering
@@ -870,23 +833,8 @@
   \vspace{0.5em}
 
   One move remains: add red to the \emph{test} side until its L rises to
-  meet the mix.
-\end{frame}
-
-\begin{frame}{Colour matching came before direct cone measurement}
-  \small
-  An observer adjusted three primary lights until one half of a field matched a test light in the other half.
-  \vspace{0.7em}
-
-  Some wavelengths could not be matched using positive amounts of the chosen real primaries. One primary was moved to the test side:
-  \[
-    \text{test}+rR = gG+bB
-    \quad\Longleftrightarrow\quad
-    \text{test}=(-r)R+gG+bB.
-  \]
-  \vspace{0.4em}
-
-  The negative value records the experimental operation. It is not ``negative light.''
+  meet the mix. The result is recorded as a negative red coefficient; it is
+  not ``negative light.''
 \end{frame}
 
 \begin{frame}[t]{The measured curves contain negative red}
@@ -975,15 +923,6 @@
     cone signature (S and L strong, M weak) is one no single wavelength
     can produce. Blue names a band of the rainbow; magenta names only a
     mixture.
-  \end{flushleft}
-\end{frame}
-
-\begin{frame}[t]{Additive and subtractive mixing}
-  \centering
-  \includegraphics[width=0.82\textwidth,height=0.59\textheight,keepaspectratio]{fig-additive-subtractive.png}\\[-0.1em]
-  \begin{flushleft}\small
-    Additive mixing combines emitted spectral power. Ideal subtractive mixing
-    multiplies transmissions; real pigments also scatter and interact.
   \end{flushleft}
 \end{frame}
 
