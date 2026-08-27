@@ -66,7 +66,7 @@
 
 \colorlet{creditcolor}{mist}
 \newcommand{\credit}[1]{{\color{creditcolor}\tiny #1}}
-\newcommand{\chip}[3]{\setlength{\fboxsep}{5pt}\fcolorbox{gray!45}{#1}{\makebox[4.2em]{\textcolor{#2}{#3}}}}
+\newcommand{\chip}[3]{\setlength{\fboxsep}{5pt}\fcolorbox{gray!45}{#1}{\makebox[4.2em]{\strut\textcolor{#2}{#3}}}}
 \newcommand{\vgacell}[5]{%
   \setlength{\fboxsep}{0pt}%
   \fcolorbox{mist!35}{#1}{%
@@ -293,7 +293,7 @@
   \definecolor{cssyellowgreen}{HTML}{9ACD32}%
   {\small The 148 CSS colour keywords, inherited from the graphical display protocol X11 (recognised by matplotlib).\par}
   \vspace{0.6em}
-  {\ttfamily\bfseries\scriptsize\raggedright
+  {\ttfamily\bfseries\tiny\raggedright
   \textcolor{cssaliceblue}{aliceblue}
   \textcolor{cssantiquewhite}{antiquewhite}
   \textcolor{cssaqua}{aqua}
