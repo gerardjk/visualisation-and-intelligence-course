@@ -7,7 +7,10 @@ Streamlit explanatory app.
 ## Student materials
 
 - `beamer/vision-color-perception.pdf`: lecture slide deck;
-- `notebooks/vision_color_perception_lab.ipynb`: guided Jupyter lab;
+- `notebooks/vision_color_perception_starter.ipynb`: guided Jupyter lab with
+  gaps to fill in class;
+- `notebooks/vision_color_perception_lab.ipynb`: the completed reference
+  (instructor copy, also the answer key for the starter);
 - `notebooks/vision_colour_app.py`: complete Streamlit spectrum explorer;
 - `notebooks/hello_colour.py`: minimal first Streamlit app;
 - `notebooks/data/`: official CIE 1931 2° colour-matching data and metadata.

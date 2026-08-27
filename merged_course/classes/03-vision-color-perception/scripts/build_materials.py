@@ -1002,6 +1002,113 @@ def build_notebook() -> None:
     ast.parse(HELLO_APP)
     print(f"Wrote {notebook_path}")
 
+    build_starter(cells)
+
+
+STARTER_SWAPS = [
+    (
+        "received = illuminant * reflectance",
+        """\
+illuminant = planck(wavelengths, 5200)
+reflectance = 0.06 + 0.80 / (1 + np.exp(-(wavelengths - 585) / 13))
+
+# The spectrum reaching the eye is the product of the two curves above.
+received = ...
+
+# Plot illuminant, reflectance and received in three panels with shared
+# axes, titled "illumination", "surface reflectance" and
+# "spectrum reaching the eye". Label the wavelength axis.
+fig, axes = plt.subplots(1, 3, figsize=(12, 3.5), sharex=True, sharey=True)
+...
+plt.show()
+""",
+    ),
+    (
+        "def cone_response(spectrum):",
+        """\
+def cone_response(spectrum):
+    # Multiply the spectrum by each cone sensitivity curve, wavelength by
+    # wavelength, then integrate along the wavelength axis.
+    # `cones` has one column per cone class; np.trapezoid integrates.
+    return ...
+
+response_rows = []
+for label, spectrum in spectra.items():
+    response = cone_response(spectrum)
+    response_rows.append([label, *response])
+
+responses = pd.DataFrame(response_rows, columns=["light", "S", "M", "L"])
+responses[["S", "M", "L"]] = responses[["S", "M", "L"]].div(
+    responses[["S", "M", "L"]].max(axis=1), axis=0
+)
+responses.round(3)
+""",
+    ),
+    (
+        "totals = cie_xyz.sum(axis=1)",
+        """\
+# Chromaticity removes overall scale: x = X/(X+Y+Z) and y = Y/(X+Y+Z).
+# Compute spectral_xy, one (x, y) row per wavelength in cie_xyz.
+totals = ...
+spectral_xy = ...
+
+fig, ax = plt.subplots(figsize=(7, 6))
+ax.plot(spectral_xy[:, 0], spectral_xy[:, 1], color="black", lw=2.2,
+        label="spectral locus")
+ax.plot([spectral_xy[-1, 0], spectral_xy[0, 0]],
+        [spectral_xy[-1, 1], spectral_xy[0, 1]],
+        color="#9475CD", lw=2.2, label="line of purples")
+for wavelength in [420, 460, 500, 540, 580, 620, 680]:
+    row = np.argmin(np.abs(cie_wavelengths - wavelength))
+    ax.annotate(str(wavelength), spectral_xy[row], xytext=(5, 4),
+                textcoords="offset points", fontsize=8)
+ax.set(xlim=(0, .8), ylim=(0, .9), xlabel="x", ylabel="y",
+       title="CIE 1931 xy chromaticity diagram")
+ax.set_aspect("equal", adjustable="box")
+ax.legend()
+plt.show()
+""",
+    ),
+]
+
+STARTER_NOTE = (
+    "\n\nThis is the starter notebook. Three cells have gaps marked "
+    "`...`; fill each gap during the lab. "
+    "`vision_color_perception_lab.ipynb` is the completed reference."
+)
+
+
+def build_starter(cells) -> None:
+    import copy
+
+    starter_cells = []
+    swaps_used = set()
+    for cell in cells:
+        cell = copy.deepcopy(cell)
+        if cell.cell_type == "code":
+            for match, replacement in STARTER_SWAPS:
+                if match in cell.source:
+                    cell.source = replacement
+                    swaps_used.add(match)
+                    break
+        starter_cells.append(cell)
+    assert len(swaps_used) == len(STARTER_SWAPS), "starter swap did not match"
+    starter_cells[0].source += STARTER_NOTE
+
+    starter = nbf.v4.new_notebook(
+        cells=starter_cells,
+        metadata={
+            "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+            "language_info": {"name": "python", "version": "3"},
+        },
+    )
+    for cell in starter.cells:
+        if cell.cell_type == "code":
+            ast.parse(cell.source)
+    starter_path = NOTEBOOKS / "vision_color_perception_starter.ipynb"
+    nbf.write(starter, starter_path)
+    print(f"Wrote {starter_path}")
+
 
 if __name__ == "__main__":
     make_figures()
