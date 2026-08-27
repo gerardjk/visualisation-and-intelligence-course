@@ -3,6 +3,7 @@
 
 \usepackage{amsmath}
 \usepackage{booktabs}
+\usepackage{array}
 \usepackage{graphicx}
 \usepackage{fontspec}
 \usepackage{tikz}
@@ -643,31 +644,6 @@
   \credit{Schematic curves for teaching. S, M, and L mean short-, middle-, and long-wavelength sensitive.}
 \end{frame}
 
-\begin{frame}{One cone cannot identify a wavelength}
-  \begin{columns}[T]
-    \begin{column}{0.50\textwidth}
-      \Large
-      \[
-      q_i=\int P(\lambda)s_i(\lambda)\,d\lambda
-      \]
-      \normalsize
-      Multiply the incoming spectrum by one sensitivity curve, then add over wavelength.
-    \end{column}
-    \begin{column}{0.44\textwidth}
-      \small
-      The same response can be caused by:
-      \begin{itemize}
-        \item a weak light near peak sensitivity;
-        \item a stronger light farther from the peak;
-        \item many mixtures across the spectrum.
-      \end{itemize}
-      Once absorbed, the photon carries no wavelength label in that cone's output.
-    \end{column}
-  \end{columns}
-  \vspace{0.6em}
-  \alert{This is the principle of univariance.}
-\end{frame}
-
 \begin{frame}[t]{A spectrum is compressed to three responses}
   \centering
   \includegraphics[width=0.96\textwidth,height=0.72\textheight,keepaspectratio]{fig-spectrum-to-cones.png}
@@ -695,12 +671,6 @@
   \end{columns}
   \vspace{0.7em}
   Three cone classes explain the dimensionality of colour \emph{matching}. They do not, by themselves, explain all colour appearance.
-\end{frame}
-
-\begin{frame}[t]{Different spectra can produce the same match}
-  \centering
-  \includegraphics[width=0.92\textwidth,height=0.64\textheight,keepaspectratio]{fig-metamers.png}\\[-0.1em]
-  \credit{Course construction using the CIE 1931 colour-matching functions.}
 \end{frame}
 
 \begin{frame}[t]{The same code can look different}
@@ -732,7 +702,7 @@
 
 \begin{frame}{Eight questions about colour, 1704 to 1931}
   \footnotesize
-  \begin{tabular}{@{}p{0.17\textwidth}p{0.18\textwidth}p{0.55\textwidth}@{}}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.51\textwidth}@{}}
     \toprule
     \textbf{Work} & \textbf{Object} & \textbf{Question} \\
     \midrule
@@ -740,15 +710,12 @@
     Harris, 1766 & pigment mixtures & How can pigment mixtures be ordered on one wheel? \\
     Dalton, 1794 & his own vision & How can colour blindness be described and explained? \\
     Goethe, 1810 & appearance & How do boundaries, shadows, afterimages, and context affect experience? \\
-    Maxwell, 1850s--60s & matches & How can three primaries reproduce a match? \\
+    Maxwell, 1850s & matches & How can three primaries reproduce a match? \\
     Hering, 1878 & structure of appearance & Which hues look unmixed, and which blends never appear? \\
     Munsell, 1905 & surface samples & How can hue, value, and chroma be ordered for practice? \\
     CIE, 1931 & standard observer & How can colour matches be reported reproducibly? \\
     \bottomrule
   \end{tabular}
-  \vspace{0.8em}
-
-  The 1931 system settles the matching question only. The earlier questions about appearance and practice stay open.
 \end{frame}
 
 \begin{frame}[t]{Harris, 1766}
