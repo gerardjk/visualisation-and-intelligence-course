@@ -50,7 +50,7 @@
 
 \colorlet{creditcolor}{mist}
 \newcommand{\credit}[1]{{\color{creditcolor}\tiny #1}}
-\newcommand{\chip}[3]{\setlength{\fboxsep}{5pt}\fcolorbox{gray!45}{#1}{\textcolor{#2}{#3}}}
+\newcommand{\chip}[3]{\setlength{\fboxsep}{5pt}\fcolorbox{gray!45}{#1}{\makebox[4.2em]{\textcolor{#2}{#3}}}}
 \newcommand{\kicker}[2]{%
   \begingroup
   \setbeamercolor{background canvas}{bg=utsblue}
@@ -117,10 +117,13 @@
 
 \begin{frame}{English has eleven basic colour terms}
   \Large
-  \chip{black}{white}{black}\enspace \chip{white}{black}{white}\enspace \chip{cwred}{white}{red}\enspace \chip{cwgreen}{white}{green}\enspace \chip{cwyellow}{black}{yellow}\enspace \chip{cwblue}{white}{blue}
+  \chip{black}{white}{black}\enspace \chip{white}{black}{white}\enspace \chip{cwred}{white}{red}\enspace \chip{cwgreen}{white}{green}
 
   \vspace{0.6em}
-  \chip{cwbrown}{white}{brown}\enspace \chip{cwpurple}{white}{purple}\enspace \chip{cwpink}{white}{pink}\enspace \chip{cworange}{black}{orange}\enspace \chip{cwgrey}{white}{grey}
+  \chip{cwyellow}{black}{yellow}\enspace \chip{cwblue}{white}{blue}\enspace \chip{cwbrown}{white}{brown}\enspace \chip{cwpurple}{white}{purple}
+
+  \vspace{0.6em}
+  \chip{cwpink}{white}{pink}\enspace \chip{cworange}{black}{orange}\enspace \chip{cwgrey}{white}{grey}
   \normalsize
   \vspace{1.2em}
 
@@ -159,7 +162,8 @@
   \centering
   \includegraphics[width=0.84\textwidth,height=0.66\textheight,keepaspectratio]{fig-crayola-chart.png}\\[0.1em]
   \begin{flushleft}\small
-    Crayola's first box (1903) held eight; the range now exceeds 120.
+    Crayola's first box (1903) held eight crayons; the range now exceeds
+    120. The chart shows the 62 with well-documented colour values.
     Crayon names are mostly object names, so they are not basic terms.
   \end{flushleft}
   \credit{Hex values are published approximations of the crayon colours.}
