@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-st.set_page_config(page_title="Vision, Color and Perception", page_icon="👁️", layout="wide")
+st.set_page_config(page_title="Color and Perception", page_icon="👁️", layout="wide")
 
 DATA_FILE = Path(__file__).parent / "data" / "CIE_xyz_1931_2deg.csv"
 
@@ -32,7 +32,7 @@ def cone_sensitivities(wavelengths):
     ])
 
 
-st.title("Vision, Color and Perception")
+st.title("Color and Perception")
 st.caption("Change a physical spectrum; inspect what survives each representation.")
 
 st.sidebar.header("Light source")

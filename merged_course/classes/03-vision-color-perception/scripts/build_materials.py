@@ -1,4 +1,4 @@
-"""Build figures, notebook and Streamlit app for Vision, Color and Perception."""
+"""Build figures, notebook and Streamlit app for Color and Perception."""
 
 from __future__ import annotations
 
@@ -283,7 +283,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-st.set_page_config(page_title="Vision, Color and Perception", page_icon="👁️", layout="wide")
+st.set_page_config(page_title="Color and Perception", page_icon="👁️", layout="wide")
 
 DATA_FILE = Path(__file__).parent / "data" / "CIE_xyz_1931_2deg.csv"
 
@@ -310,7 +310,7 @@ def cone_sensitivities(wavelengths):
     ])
 
 
-st.title("Vision, Color and Perception")
+st.title("Color and Perception")
 st.caption("Change a physical spectrum; inspect what survives each representation.")
 
 st.sidebar.header("Light source")
@@ -397,7 +397,7 @@ def build_notebook() -> None:
     cells = [
         md(
             """
-            # Vision, Color and Perception
+            # Color and Perception
             ## From light to an interactive Streamlit explanation
 
             A colour is not stored in a wavelength, an object, an eye or a hexadecimal code. This lab follows the translations between them:
@@ -485,13 +485,13 @@ def build_notebook() -> None:
             spectra = {
                 "daylight-like source": planck(wavelengths, 5800),
                 "candle-like source": planck(wavelengths, 1800),
-                "three-primary display": (
-                    0.85 * gaussian(wavelengths, 455, 13)
-                    + gaussian(wavelengths, 535, 18)
-                    + 0.90 * gaussian(wavelengths, 625, 16)
+                "LCD display (white-LED backlight)": (
+                    gaussian(wavelengths, 450, 9)
+                    + 0.58 * gaussian(wavelengths, 535, 30)
+                    + 0.65 * gaussian(wavelengths, 612, 25)
                 ),
             }
-            spectra["three-primary display"] /= spectra["three-primary display"].max()
+            spectra["LCD display (white-LED backlight)"] /= spectra["LCD display (white-LED backlight)"].max()
 
             fig, ax = plt.subplots()
             for label, spectrum in spectra.items():

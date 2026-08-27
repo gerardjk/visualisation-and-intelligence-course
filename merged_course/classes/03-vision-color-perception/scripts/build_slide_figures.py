@@ -24,10 +24,10 @@ def build_crayola_figure() -> None:
     # The official product image arranges the swatches in five rows of eleven
     # and a final row of nine. Crop those photographs and reflow them as 8 x 8.
     x_regular = [137, 229, 321, 413, 505, 597, 689, 781, 873, 965, 1057]
-    y_regular = [455, 566, 677, 788, 899]
+    y_regular = [460, 560, 660, 760, 860]
     x_final = [228, 320, 412, 504, 596, 688, 780, 872, 964]
     centres = [(x, y) for y in y_regular for x in x_regular]
-    centres.extend((x, 985) for x in x_final)
+    centres.extend((x, 960) for x in x_final)
     assert len(centres) == 64
 
     tile_size = 104
