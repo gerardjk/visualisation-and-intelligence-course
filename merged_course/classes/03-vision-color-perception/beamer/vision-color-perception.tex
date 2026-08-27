@@ -29,6 +29,22 @@
 \definecolor{cwpink}{HTML}{D6408B}
 \definecolor{cworange}{HTML}{E07000}
 \definecolor{cwgrey}{HTML}{808080}
+\definecolor{vgablack}{HTML}{000000}
+\definecolor{vgablue}{HTML}{0000AA}
+\definecolor{vgagreen}{HTML}{00AA00}
+\definecolor{vgacyan}{HTML}{00AAAA}
+\definecolor{vgared}{HTML}{AA0000}
+\definecolor{vgamagenta}{HTML}{AA00AA}
+\definecolor{vgabrown}{HTML}{AA5500}
+\definecolor{vgalightgrey}{HTML}{AAAAAA}
+\definecolor{vgadarkgrey}{HTML}{555555}
+\definecolor{vgalightblue}{HTML}{5555FF}
+\definecolor{vgalightgreen}{HTML}{55FF55}
+\definecolor{vgalightcyan}{HTML}{55FFFF}
+\definecolor{vgalightred}{HTML}{FF5555}
+\definecolor{vgalightmagenta}{HTML}{FF55FF}
+\definecolor{vgayellow}{HTML}{FFFF55}
+\definecolor{vgawhite}{HTML}{FFFFFF}
 
 \usetheme{default}
 \renewcommand{\familydefault}{\sfdefault}
@@ -51,6 +67,17 @@
 \colorlet{creditcolor}{mist}
 \newcommand{\credit}[1]{{\color{creditcolor}\tiny #1}}
 \newcommand{\chip}[3]{\setlength{\fboxsep}{5pt}\fcolorbox{gray!45}{#1}{\makebox[4.2em]{\textcolor{#2}{#3}}}}
+\newcommand{\vgacell}[5]{%
+  \setlength{\fboxsep}{0pt}%
+  \fcolorbox{mist!35}{#1}{%
+    \parbox[c][0.145\textheight][c]{0.215\textwidth}{%
+      \centering\color{#2}\scriptsize
+      {\bfseries #3}\par
+      {\ttfamily #4}\par
+      {\ttfamily #5}%
+    }%
+  }%
+}
 \newcommand{\kicker}[2]{%
   \begingroup
   \setbeamercolor{background canvas}{bg=utsblue}
@@ -638,7 +665,7 @@
   Adaptation, local contrast, spatial scale, and viewing sequence all enter before conscious appearance.
 \end{frame}
 
-\begin{frame}{Seven questions about colour, 1704 to 1931}
+\begin{frame}{Eight questions about colour, 1704 to 1931}
   \footnotesize
   \begin{tabular}{@{}p{0.17\textwidth}p{0.18\textwidth}p{0.55\textwidth}@{}}
     \toprule
@@ -649,6 +676,7 @@
     Dalton, 1794 & his own vision & How can colour blindness be described and explained? \\
     Goethe, 1810 & appearance & How do boundaries, shadows, afterimages, and context affect experience? \\
     Maxwell, 1850s--60s & matches & How can three primaries reproduce a match? \\
+    Hering, 1878 & structure of appearance & Which hues look unmixed, and which blends never appear? \\
     Munsell, 1905 & surface samples & How can hue, value, and chroma be ordered for practice? \\
     CIE, 1931 & standard observer & How can colour matches be reported reproducibly? \\
     \bottomrule
@@ -782,6 +810,45 @@
     has to stay readable in all four panels.
   \end{flushleft}
   \credit{Simulation matrices from Machado, Oliveira and Fernandes (2009).}
+\end{frame}
+
+\begin{frame}[t]{Hering, 1878}
+  \begin{columns}[T]
+    \begin{column}{0.30\textwidth}
+      \centering
+      \includegraphics[height=0.62\textheight,keepaspectratio]{hering-portrait.jpg}\\[0.2em]
+      \credit{Photograph, public domain, via Wikimedia Commons.}
+    \end{column}
+    \begin{column}{0.64\textwidth}
+      \small
+      \vspace{0.6em}
+      Hering organised appearance around three opponent pairs:
+      black--white, red--green, yellow--blue. The four chromatic poles are
+      the \textbf{unique hues}: a red that looks neither yellowish nor
+      bluish, and likewise green, yellow and blue.\\[0.5em]
+      The test is in experience itself: reddish-yellow and greenish-blue
+      exist, and reddish-green and yellowish-blue never appear.
+      Hurvich and Jameson measured the pairs by hue cancellation in
+      1957.\\[0.5em]
+      The opponent cone combinations shown earlier are related but do not
+      line up exactly with the unique hues; their neural basis is still
+      argued. Hering's six poles are also Berlin and Kay's first six
+      basic colour terms.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{The unique-hues argument, in short}
+  \Large
+  \begin{enumerate}
+    \item Some hues look like mixtures: orange looks like red plus
+      yellow.
+    \item Four do not: red, green, yellow and blue look unmixed.
+    \item Some blends never appear: nothing ever looks reddish-green or
+      yellowish-blue.
+    \item So appearance runs on two hue axes, red--green and
+      yellow--blue, with an unmixed pole at each end.
+  \end{enumerate}
 \end{frame}
 
 \begin{frame}[t]{Munsell, 1905}
@@ -1019,6 +1086,30 @@
   \includegraphics[width=0.86\textwidth,height=0.72\textheight,keepaspectratio]{fig-retro-palettes.png}
 \end{frame}
 
+\begin{frame}[t]{The default 16-colour VGA palette}
+  \centering
+  \setlength{\tabcolsep}{1.5pt}
+  \renewcommand{\arraystretch}{0.98}
+  \begin{tabular}{@{}cccc@{}}
+    \vgacell{white}{vgablack}{Black}{(0, 0, 0)}{\#000000} &
+    \vgacell{white}{vgablue}{Blue}{(0, 0, 170)}{\#0000AA} &
+    \vgacell{white}{vgagreen}{Green}{(0, 170, 0)}{\#00AA00} &
+    \vgacell{white}{vgacyan}{Cyan}{(0, 170, 170)}{\#00AAAA} \\
+    \vgacell{white}{vgared}{Red}{(170, 0, 0)}{\#AA0000} &
+    \vgacell{white}{vgamagenta}{Magenta}{(170, 0, 170)}{\#AA00AA} &
+    \vgacell{white}{vgabrown}{Brown}{(170, 85, 0)}{\#AA5500} &
+    \vgacell{white}{vgalightgrey}{Light grey}{(170, 170, 170)}{\#AAAAAA} \\
+    \vgacell{white}{vgadarkgrey}{Dark grey}{(85, 85, 85)}{\#555555} &
+    \vgacell{black}{vgalightblue}{Light blue}{(85, 85, 255)}{\#5555FF} &
+    \vgacell{black}{vgalightgreen}{Light green}{(85, 255, 85)}{\#55FF55} &
+    \vgacell{black}{vgalightcyan}{Light cyan}{(85, 255, 255)}{\#55FFFF} \\
+    \vgacell{black}{vgalightred}{Light red}{(255, 85, 85)}{\#FF5555} &
+    \vgacell{black}{vgalightmagenta}{Light magenta}{(255, 85, 255)}{\#FF55FF} &
+    \vgacell{black}{vgayellow}{Yellow}{(255, 255, 85)}{\#FFFF55} &
+    \vgacell{black}{vgawhite}{White}{(255, 255, 255)}{\#FFFFFF}
+  \end{tabular}
+\end{frame}
+
 \begin{frame}[t]{A picture is a grid of numbers}
   \centering
   \includegraphics[width=0.88\textwidth,height=0.52\textheight,keepaspectratio]{fig-bitmap-zoom.png}\\[0.2em]
@@ -1193,6 +1284,7 @@ python -m streamlit run hello_colour.py
     \item Newton, I. (1704), \emph{Opticks}; Goethe, J. W. von (1810), \emph{Theory of Colours}.
     \item Munsell, A. H. (1905), \emph{A Color Notation}. \quad Berlin, B. and Kay, P. (1969), \emph{Basic Color Terms}.
     \item W3C, \emph{CSS Color Module Level 4}; IEC 61966-2-1 (sRGB); ITU-R BT.709 and BT.2020.
+    \item Hering, E. (1878), \emph{Zur Lehre vom Lichtsinne}; Hurvich, L. and Jameson, D. (1957), \emph{An opponent-process theory of color vision}.
     \item Machado, Oliveira and Fernandes (2009), \emph{A physiologically-based model for simulation of color vision deficiency}, IEEE TVCG.
     \item Streamlit, ``Basic concepts'' and API documentation.
   \end{itemize}
