@@ -107,7 +107,13 @@ logged means.
 > Filasterea, Ichthyosporea and Choanoflagellata off the animals (80),
 > and six splits following Magnoliopsida isolate the green plants (32).
 > Fungi counts on the page changed from 44 to 46. The assert cell was
-> removed (legend shows the counts). No exercise changes.
+> removed (legend shows the counts). No exercise changes. Later refined:
+> plants is defined as the smallest clade containing Chlorophyceae and
+> Magnoliopsida, and the descent loop stops itself when the next split
+> would separate those two anchors (32 classes; red algae and
+> cryptophytes fall outside by definition). The descent cell prints the
+> names dropped at each step so students can recognise the red algae
+> leaving at step five.
 
 ### B-1 `ex_carnivora` — The carnivore clade
 

@@ -1,0 +1,48 @@
+% A1 supervised critique sheet, single page. Build with Tectonic.
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=9mm,top=8mm,bottom=8mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Arial}
+\usepackage{xcolor}
+\definecolor{utsblue}{HTML}{0F4BEB}
+\definecolor{mist}{HTML}{5A5F63}
+\definecolor{ruleline}{HTML}{B9BEC4}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\usepackage{tikz}
+
+% label with the first answer line on the same row, then n-1 full-width lines
+\newcommand{\qfield}[2]{%
+  \vspace{7.5mm}%
+  {\bfseries #1}\enspace{\color{ruleline}\hrulefill}\par
+  \ifnum#2>1
+    \foreach \i in {2,...,#2}{\vspace{8.8mm}\textcolor{ruleline}{\rule{\textwidth}{0.5pt}}\par}%
+  \fi}
+
+\begin{document}
+
+{\large\bfseries A1 supervised critique}\hfill{36104 Data Visualisation and Narratives}
+
+\vspace{1mm}
+\begin{tabular}{@{}p{0.42\textwidth}p{0.30\textwidth}p{0.22\textwidth}@{}}
+  Name: \textcolor{ruleline}{\rule[-1mm]{0.32\textwidth}{0.5pt}} &
+  Student ID: \textcolor{ruleline}{\rule[-1mm]{0.16\textwidth}{0.5pt}} &
+  \textbf{Pool ID:} \fbox{\rule{0pt}{5mm}\hspace{24mm}}
+\end{tabular}
+
+\qfield{1. Main claim}{2}
+\qfield{2. Audience}{1}
+\qfield{3. Visual task}{1}
+\qfield{4. Directly visible}{3}
+\qfield{5. Interpretation rather than observation}{3}
+\qfield{6. What is omitted}{3}
+\qfield{7. What misleads}{3}
+\qfield{8. What needs verifying}{2}
+\qfield{9. Repaired caption}{3}
+
+\vspace{3mm}
+{\footnotesize I completed this critique in the supervised window without AI assistance.
+\quad Signature: \textcolor{ruleline}{\rule[-1mm]{40mm}{0.5pt}}
+\quad Date: \textcolor{ruleline}{\rule[-1mm]{22mm}{0.5pt}}}
+
+\end{document}

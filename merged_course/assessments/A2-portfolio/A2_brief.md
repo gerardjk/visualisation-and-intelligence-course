@@ -1,6 +1,6 @@
 # A2. Applied Visualisation Portfolio
 
-> **DRAFT — NOT RELEASED.** Do not publish to Canvas until dates and
+> **DRAFT, NOT RELEASED.** Do not publish to Canvas until dates and
 > quiz conditions are confirmed. See "Decisions needed" at the end.
 
 | | |
@@ -8,9 +8,9 @@
 | **Weight** | 30% of the subject · individual |
 | **Structure** | Part A: asynchronous sessions (15 of 100) · Part B: mid-semester quiz (25 of 100) · Part C: dashboards (60 of 100) |
 | **Covers** | Asynchronous sessions 1-3; live sessions 1-4 |
-| **Released** | [confirm — after A1 is underway, per staged-release policy] |
+| **Released** | [confirm: after A1 is underway, per staged-release policy] |
 | **Part B quiz sat** | [confirm date and conditions] |
-| **Due** | **Friday 4 September 2026, 11:59pm** (Sydney time) [confirm — see Decisions needed] |
+| **Due** | **Friday 4 September 2026, 11:59pm** (Sydney time) [confirm: see Decisions needed] |
 | **Submit** | Part A through the asynchronous-sessions Canvas assignment; Part B on Canvas at the scheduled time; Part C as one ZIP plus a public dashboard link (details below) |
 
 ## The task
