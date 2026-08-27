@@ -62,8 +62,7 @@
   {\LARGE\bfseries\insertframetitle}\\[0.2em]
   {\color{utsred}\rule{3em}{0.18em}}%
 }
-\setbeamertemplate{footline}{%
-  \hfill{\color{mist}\tiny\insertframenumber}\hspace*{1.5em}\vspace*{0.8em}}
+\setbeamertemplate{footline}{}
 
 \colorlet{creditcolor}{mist}
 \newcommand{\credit}[1]{{\color{creditcolor}\tiny #1}}
@@ -588,41 +587,14 @@
   \credit{Course calculation. Black-body curves are illustrative; the display curve is modelled on a white-LED LCD.}
 \end{frame}
 
-\begin{frame}{A light is a function}
-  \begin{columns}[T]
-    \begin{column}{0.56\textwidth}
-      \Large
-      \[
-        P(\lambda)=\text{power at wavelength }\lambda
-      \]
-      \normalsize
-      A spectral power distribution contains one value for every wavelength sampled.
-    \end{column}
-    \begin{column}{0.39\textwidth}
-      \small
-      \begin{itemize}
-        \item a narrow peak: approximately monochromatic;
-        \item a broad curve: many wavelengths;
-        \item three peaks: a typical display mixture;
-        \item one colour word: none of the above is specified.
-      \end{itemize}
-    \end{column}
-  \end{columns}
-  \vspace{0.7em}
-  \alert{The spectrum is the physical input; appearance comes several steps later.}
-\end{frame}
-
-\begin{frame}[t]{A surface is also a function}
+\begin{frame}[t]{Light and surfaces}
   \centering
   \includegraphics[width=0.90\textwidth,height=0.52\textheight,keepaspectratio]{fig-illumination-reflectance.png}\\[0.2em]
   \begin{flushleft}\small
-    A surface reflects some fraction of the light at each wavelength.
-    That fraction, between 0 and 1, is its \textbf{reflectance} $R(\lambda)$.
-    A pigment is a material that sets this curve. The light reaching the
-    eye is the product $P(\lambda)R(\lambda)$, so the same surface sends
-    a different spectrum under a different light. Mixing pigments
-    multiplies their curves, and multiplying fractions always gives
-    less: pigment mixtures darken.
+    A surface reflects a different fraction of each wavelength. Its
+    \textbf{reflectance} $R(\lambda)$ combines with the illumination
+    $P(\lambda)$, so the light reaching the eye is $P(\lambda)R(\lambda)$.
+    Change the light and the same surface sends a different spectrum.
   \end{flushleft}
 \end{frame}
 
