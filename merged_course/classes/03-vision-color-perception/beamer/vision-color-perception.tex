@@ -1,4 +1,4 @@
-% Vision, Color and Perception. Build with Tectonic or lualatex.
+% Color and Perception. Build with Tectonic or lualatex.
 \documentclass[aspectratio=169,11pt]{beamer}
 
 \usepackage{amsmath}
@@ -20,6 +20,15 @@
 \definecolor{scone}{HTML}{5B4BCE}
 \definecolor{mcone}{HTML}{00A878}
 \definecolor{lcone}{HTML}{E44B35}
+\definecolor{cwred}{HTML}{CC0000}
+\definecolor{cwgreen}{HTML}{007700}
+\definecolor{cwyellow}{HTML}{FFD700}
+\definecolor{cwblue}{HTML}{0044CC}
+\definecolor{cwbrown}{HTML}{8B4513}
+\definecolor{cwpurple}{HTML}{7D2E8D}
+\definecolor{cwpink}{HTML}{D6408B}
+\definecolor{cworange}{HTML}{E07000}
+\definecolor{cwgrey}{HTML}{808080}
 
 \usetheme{default}
 \renewcommand{\familydefault}{\sfdefault}
@@ -37,12 +46,11 @@
   {\color{utsred}\rule{3em}{0.18em}}%
 }
 \setbeamertemplate{footline}{%
-  \hspace*{1.5em}{\color{mist}\tiny 36104 · Vision, Color and Perception}\hfill
-  {\color{mist}\tiny UTS CRICOS 00099F · TEQSA PRV12060}\hfill
-  {\color{mist}\tiny\insertframenumber}\hspace*{1.5em}\vspace*{0.8em}}
+  \hfill{\color{mist}\tiny\insertframenumber}\hspace*{1.5em}\vspace*{0.8em}}
 
 \colorlet{creditcolor}{mist}
 \newcommand{\credit}[1]{{\color{creditcolor}\tiny #1}}
+\newcommand{\chip}[3]{\setlength{\fboxsep}{5pt}\fcolorbox{gray!45}{#1}{\textcolor{#2}{#3}}}
 \newcommand{\kicker}[2]{%
   \begingroup
   \setbeamercolor{background canvas}{bg=utsblue}
@@ -61,7 +69,7 @@
   \end{frame}
   \endgroup}
 
-\title{Vision, Color and Perception}
+\title{Color and Perception}
 \author{36104 Data Visualisation and Narratives}
 
 \begin{document}
@@ -81,48 +89,102 @@
   \includegraphics[height=2.0em]{uts-logo-white.png}\par
   \vspace*{\fill}
   \hspace*{1.2em}{\color{utspale}\bfseries\scriptsize 36104 · DATA VISUALISATION AND NARRATIVES}\\[0.6em]
-  \hspace*{1.2em}{\fontsize{34}{38}\selectfont\bfseries Vision, Color and Perception}\\[0.5em]
-  \hspace*{1.2em}{\Large\color{utspale} Light, eyes, measurement, and screens}\\[2em]
-  \hspace*{1.2em}{\small What survives as colour moves from the world into a visualisation?}
+  \hspace*{1.2em}{\fontsize{34}{38}\selectfont\bfseries Color and Perception}
   \vspace*{\fill}
 \end{frame}
 \endgroup
 
-\begin{frame}{One word, several different things}
+{\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{rainbow-bg.png}}
+\begin{frame}[plain]
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[fill=white, fill opacity=0.88, text opacity=1, rounded corners=12pt,
+          inner xsep=24pt, inner ysep=18pt, align=center]
+          at (current page.center) {%
+      {\Large\bfseries How many colours are there?}\\[0.35em]
+      {\color{utsred}\rule{3em}{0.18em}}\\[0.9em]
+      \begin{tabular}{@{}l@{\hspace{2.5em}}r@{}}
+        an English speaker's basic colour words & 11 \\
+        a large crayon box & about 120 \\
+        the web's named colours & 148 \\
+        codes on a modern screen & 16,777,216 \\
+        differences a human can distinguish & a few million \\
+        the spectrum & a continuum \\
+      \end{tabular}%
+    };
+  \end{tikzpicture}
+\end{frame}
+}
+
+\begin{frame}{English has eleven basic colour terms}
+  \Large
+  \chip{black}{white}{black}\enspace \chip{white}{black}{white}\enspace \chip{cwred}{white}{red}\enspace \chip{cwgreen}{white}{green}\enspace \chip{cwyellow}{black}{yellow}\enspace \chip{cwblue}{white}{blue}
+
+  \vspace{0.6em}
+  \chip{cwbrown}{white}{brown}\enspace \chip{cwpurple}{white}{purple}\enspace \chip{cwpink}{white}{pink}\enspace \chip{cworange}{black}{orange}\enspace \chip{cwgrey}{white}{grey}
+  \normalsize
+  \vspace{1.2em}
+
+  A basic term is a single word, not derived from an object (unlike
+  ``gold'' or ``turquoise''), and applies to a broad class of things.
+  \vspace{0.6em}
+
+  \credit{Berlin and Kay (1969), Basic Color Terms.}
+\end{frame}
+
+\begin{frame}{Priority of Colour Words}
+  \renewcommand{\arraystretch}{1.55}
   \small
-  \begin{tabular}{@{}p{0.25\textwidth}p{0.66\textwidth}@{}}
+  \begin{tabular}{@{}ll@{}}
     \toprule
-    \textbf{When we say ``yellow''} & \textbf{we might mean} \\
+    \textbf{Stage} & \textbf{Terms present} \\
     \midrule
-    spectral light & power concentrated near one wavelength \\
-    paint or flower & a surface reflectance under an illuminant \\
-    appearance & an observer's experience in a context \\
-    CIE coordinate & a standard-observer colour match \\
-    screen colour & a coded request to three device primaries \\
-    category & a word used by a community for a region of appearances \\
+    I & \chip{black}{white}{black}\ \chip{white}{black}{white} \\
+    II & + \chip{cwred}{white}{red} \\
+    III--IV & + \chip{cwgreen}{white}{green} and \chip{cwyellow}{black}{yellow}, in either order \\
+    V & + \chip{cwblue}{white}{blue} \\
+    VI & + \chip{cwbrown}{white}{brown} \\
+    VII & + \chip{cwpurple}{white}{purple}\ \chip{cwpink}{white}{pink}\ \chip{cworange}{black}{orange}\ \chip{cwgrey}{white}{grey} \\
     \bottomrule
   \end{tabular}
-  \vspace{0.7em}
+  \vspace{0.9em}
 
-  These descriptions can refer to related cases. They are not synonyms.
+  Languages differ in how many basic terms they have; acquisition
+  follows this order with few exceptions. Red is the first hue named
+  everywhere.
 \end{frame}
 
-\begin{frame}{Goals}
-  \begin{enumerate}
-    \item Distinguish wavelength, spectrum, cone response, appearance, coordinate, and code.
-    \item Explain univariance and metamerism without the ``three colour buckets'' overclaim.
-    \item Construct and read the CIE 1931 xy diagram.
-    \item Explain why a three-primary display has a triangular gamut.
-    \item Turn the model into a small Streamlit application.
-  \end{enumerate}
+\begin{frame}[t]{The crayon box}
+  \centering
+  \includegraphics[width=0.84\textwidth,height=0.66\textheight,keepaspectratio]{fig-crayola-chart.png}\\[0.1em]
+  \begin{flushleft}\small
+    Crayola's first box (1903) held eight; the range now exceeds 120.
+    Crayon names are mostly object names, so they are not basic terms.
+  \end{flushleft}
+  \credit{Hex values are published approximations of the crayon colours.}
 \end{frame}
 
-\kicker{Part I}{Start with the light}
+\begin{frame}[t]{The web's named colours}
+  \centering
+  \includegraphics[width=0.70\textwidth,height=0.70\textheight,keepaspectratio]{fig-css-named-colours.png}\\[0.1em]
+  \begin{flushleft}\small
+    The 148 CSS colour keywords, inherited from X11. Matplotlib ships the
+    same names; past these, codes take over.
+  \end{flushleft}
+\end{frame}
 
-\begin{frame}[t]{A wavelength is not a complete description of a light}
+\begin{frame}[t]{Visible light is a narrow band}
+  \centering
+  \includegraphics[width=0.80\textwidth,height=0.62\textheight,keepaspectratio]{fig-em-spectrum.png}\\[0.2em]
+  \begin{flushleft}\small
+    Light is electromagnetic radiation. The visible band runs from about
+    380 to 780 nanometres, between ultraviolet and infrared.
+  \end{flushleft}
+\end{frame}
+
+\begin{frame}[t]{Spectral recipes of common lights}
   \centering
   \includegraphics[width=0.88\textwidth,height=0.59\textheight,keepaspectratio]{fig-spectral-recipes.png}\\[-0.1em]
-  \credit{Course calculation. Black-body curves are illustrative; display peaks are schematic.}
+  \credit{Course calculation. Black-body curves are illustrative; the display curve is modelled on a white-LED LCD.}
 \end{frame}
 
 \begin{frame}{A light is a function}
@@ -146,25 +208,10 @@
     \end{column}
   \end{columns}
   \vspace{0.7em}
-  \alert{The spectrum is the physical input. Colour appearance is a result downstream.}
+  \alert{The spectrum is the physical input; appearance comes several steps later.}
 \end{frame}
 
-\begin{frame}[t]{An object does not send a fixed colour signal}
-  \centering
-  \includegraphics[width=0.94\textwidth,height=0.62\textheight,keepaspectratio]{fig-illumination-reflectance.png}\\[-0.1em]
-  \credit{Relative teaching model: received spectrum = illuminant × surface reflectance.}
-\end{frame}
-
-\begin{frame}[t]{``Mixing colour'' names different operations}
-  \centering
-  \includegraphics[width=0.82\textwidth,height=0.59\textheight,keepaspectratio]{fig-additive-subtractive.png}\\[-0.1em]
-  \begin{flushleft}\small
-    Additive mixing combines emitted spectral power. Ideal subtractive mixing
-    multiplies transmissions; real pigments also scatter and interact.
-  \end{flushleft}
-\end{frame}
-
-\begin{frame}{Four statements that should now sound different}
+\begin{frame}{Which layer does each statement describe?}
   \begin{itemize}
     \item ``This source has a peak at 470 nm.''
     \item ``This surface reflects more short-wavelength light under this lamp.''
@@ -172,11 +219,28 @@
     \item ``This pixel is encoded as \texttt{\#0068B7} in sRGB.''
   \end{itemize}
   \vspace{0.8em}
-  Only the first statement assigns a wavelength directly to the light.\par
-  None alone specifies the other three.
+  Each statement describes one layer. Knowing one layer does not fix the
+  other three.
 \end{frame}
 
-\kicker{Part II}{What the eye keeps\,---\,and loses}
+\begin{frame}{Rods and cones}
+  \small
+  \begin{tabular}{@{}p{0.24\textwidth}p{0.30\textwidth}p{0.34\textwidth}@{}}
+    \toprule
+     & \textbf{Rods} & \textbf{Cones} \\
+    \midrule
+    count & about 120 million & about 6 million \\
+    work in & dim light & daylight \\
+    types & one & three \\
+    colour signal & none & three compared responses \\
+    concentration & periphery & packed in the fovea \\
+    \bottomrule
+  \end{tabular}
+  \vspace{0.8em}
+
+  At chart-reading light levels the rods are saturated. The rest of this
+  deck is about the cones.
+\end{frame}
 
 \begin{frame}[t]{Three cone classes sample overlapping ranges}
   \centering
@@ -214,7 +278,7 @@
   \includegraphics[width=0.96\textwidth,height=0.72\textheight,keepaspectratio]{fig-spectrum-to-cones.png}
 \end{frame}
 
-\begin{frame}{The bucket analogy, repaired}
+\begin{frame}{The bucket analogy}
   \begin{columns}[T]
     \begin{column}{0.47\textwidth}
       \textbf{Useful part}
@@ -244,32 +308,6 @@
   \credit{Course construction using the CIE 1931 colour-matching functions.}
 \end{frame}
 
-\begin{frame}{Metamerism is the display bargain}
-  \small
-  A screen does not reconstruct the original spectral recipe. It emits a new
-  spectrum from three primaries that is intended to produce the required match.
-  \vspace{0.8em}
-  \begin{columns}[T]
-    \begin{column}{0.45\textwidth}
-      \textbf{What this makes possible}
-      \begin{itemize}
-        \item colour photography;
-        \item television and computer displays;
-        \item compact three-channel specifications.
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.48\textwidth}
-      \textbf{Where a match can fail}
-      \begin{itemize}
-        \item a different observer;
-        \item a different illuminant;
-        \item fluorescence;
-        \item changed adaptation or field size.
-      \end{itemize}
-    \end{column}
-  \end{columns}
-\end{frame}
-
 \begin{frame}[t]{The same code can look different}
   \centering
   \includegraphics[width=0.83\textwidth,height=0.59\textheight,keepaspectratio]{fig-context.png}\\[-0.1em]
@@ -289,17 +327,15 @@
     \end{column}
     \begin{column}{0.44\textwidth}
       \small
-      These are schematic opponent combinations, not a complete neural model.
-      They make one point clear: the brain does not receive an RGB image from the retina.
+      These are schematic combinations, far from a complete neural model. They
+      show that the brain does not receive an RGB image from the retina.
     \end{column}
   \end{columns}
   \vspace{0.8em}
   Adaptation, local contrast, spatial scale, and viewing sequence all enter before conscious appearance.
 \end{frame}
 
-\kicker{Part III}{How colour became measurable}
-
-\begin{frame}{Different thinkers solved different problems}
+\begin{frame}{Five questions about colour, 1704 to 1931}
   \footnotesize
   \begin{tabular}{@{}p{0.17\textwidth}p{0.18\textwidth}p{0.55\textwidth}@{}}
     \toprule
@@ -314,10 +350,24 @@
   \end{tabular}
   \vspace{0.8em}
 
-  A later framework does not turn every earlier question into the same question.
+  The 1931 system settles the matching question only. The earlier questions about appearance and practice stay open.
 \end{frame}
 
-\begin{frame}{Newton and Goethe attend to different layers}
+\begin{frame}[t]{Newton, Opticks (1704)}
+  \begin{columns}[T]
+    \begin{column}{0.40\textwidth}
+      \centering
+      \includegraphics[height=0.72\textheight,keepaspectratio]{newton-opticks-titlepage.jpg}
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      \centering
+      \includegraphics[height=0.60\textheight,keepaspectratio]{newton-colour-circle.png}\\[0.2em]
+      \credit{Newton's colour circle, Opticks, Book I, Part II. Public domain.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Newton and Goethe}
   \begin{columns}[T]
     \begin{column}{0.46\textwidth}
       \textbf{Newton}
@@ -339,7 +389,116 @@
     \end{column}
   \end{columns}
   \vspace{0.7em}
-  Goethe's physical theory did not replace Newton's optics. His observations still warn us not to confuse a spectrum with an appearance.
+  Goethe's physical theory was wrong; Newton's optics stands. His records of shadows and afterimages still show that appearance depends on the observer and the surround.
+\end{frame}
+
+\begin{frame}[t]{Harris, 1766}
+  \begin{columns}[T]
+    \begin{column}{0.44\textwidth}
+      \centering
+      \includegraphics[height=0.74\textheight,keepaspectratio]{harris-colour-wheel-1766.jpg}
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      \small
+      \vspace{1.2em}
+      Moses Harris, an engraver and entomologist, published the first
+      colour-printed colour wheel in \emph{The Natural System of Colours}.
+      Red, yellow and blue sit at the centre as the ``grand or principal''
+      colours, with mixtures grading around the circle.\\[0.6em]
+      The school story that red, yellow and blue are the three primary
+      colours descends from this wheel and the painters' practice behind
+      it.\\[0.6em]
+      \credit{M. Harris, The Natural System of Colours (c.\,1766). Public domain.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[t]{Goethe, Farbenkreis (1809)}
+  \begin{columns}[T]
+    \begin{column}{0.42\textwidth}
+      \centering
+      \includegraphics[height=0.72\textheight,keepaspectratio]{goethe-farbenkreis-1809.jpg}
+    \end{column}
+    \begin{column}{0.52\textwidth}
+      \small
+      \vspace{1.5em}
+      Goethe's watercolour wheel assigns qualities to colour sectors.
+      As physics it failed; as a record of how colours are experienced and
+      opposed in pairs, it anticipated opponent descriptions of appearance.\\[0.6em]
+      \credit{J. W. von Goethe, 1809 watercolour. Public domain, via Wikimedia Commons.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[t]{Dalton, 1794}
+  \begin{columns}[T]
+    \begin{column}{0.34\textwidth}
+      \centering
+      \includegraphics[height=0.58\textheight,keepaspectratio]{dalton-portrait-turner.jpg}\\[0.2em]
+      \credit{Mezzotint by C. Turner, 1834. Public domain.}
+    \end{column}
+    \begin{column}{0.58\textwidth}
+      \small
+      \vspace{1.2em}
+      Dalton gave the first scientific self-report of colour blindness:
+      to him, ``that part of the image which others call red appears to me
+      little more than a shade''. He blamed a blue tint in his eye's fluid.\\[0.6em]
+      He was wrong about the cause. DNA from his preserved eye (1995)
+      showed he lacked the M-cone pigment: one of the three integrators
+      from Part II was missing, so his matches needed only two primaries.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Colour vision deficiencies}
+  \small
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+    \textbf{Type} & \textbf{Affected pigment} & \textbf{Rate} \\
+    \midrule
+    deutan & M shifted or missing & about 6\% of men \\
+    protan & L shifted or missing & about 2\% of men \\
+    tritan & S affected & about 1 in 10,000, both sexes \\
+    monochromacy & two or three pigments & very rare \\
+    \bottomrule
+  \end{tabular}
+  \vspace{0.8em}
+
+  The red--green forms are X-linked, so they concentrate in men: about
+  8\% of men and 0.5\% of women. In a class of two hundred students,
+  expect eight or nine.
+\end{frame}
+
+\begin{frame}[t]{The colour bars, simulated}
+  \centering
+  \includegraphics[width=0.78\textwidth,height=0.66\textheight,keepaspectratio]{fig-cvd-simulation.png}\\[0.1em]
+  \begin{flushleft}\small
+    Under deuteranopia the green, red and magenta bars converge. A chart
+    has to stay readable in all four panels.
+  \end{flushleft}
+  \credit{Simulation matrices from Machado, Oliveira and Fernandes (2009).}
+\end{frame}
+
+\begin{frame}[t]{Munsell, 1905}
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+      \centering
+      \includegraphics[width=\textwidth,height=0.70\textheight,keepaspectratio]{munsell-atlas-plate.jpg}\\[0.2em]
+      \credit{A. H. Munsell, Atlas of the Munsell Color System (1907--1915), Chart C. Public domain.}
+    \end{column}
+    \begin{column}{0.40\textwidth}
+      \small
+      \vspace{0.8em}
+      Munsell ordered painted samples along three dimensions: hue around a
+      circle, value (lightness) up the trunk, chroma outward along the
+      branches. Steps were chosen to look equal to observers.\\[0.6em]
+      The branches have unequal lengths because pigments reach different
+      maximum chroma at each hue and value: on this chart red extends ten
+      steps, blue only six.\\[0.6em]
+      Soil science and industrial standards still use the system, and every
+      later ``perceptually uniform'' colour space descends from it.
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}{Colour matching came before direct cone measurement}
@@ -358,11 +517,25 @@
   The negative value records the experimental operation. It is not ``negative light.''
 \end{frame}
 
+\begin{frame}[t]{The measured curves contain negative red}
+  \centering
+  \includegraphics[width=0.80\textwidth,height=0.58\textheight,keepaspectratio]{fig-rgb-matching-functions.png}\\[-0.1em]
+  \begin{flushleft}\small
+    Each curve records how much of one primary matched a unit of
+    single-wavelength test light. In the negative region the red primary
+    stood on the test side of the field.
+  \end{flushleft}
+\end{frame}
+
 \begin{frame}[t]{CIE XYZ is a mathematical coordinate system}
   \centering
-  \includegraphics[width=0.84\textwidth,height=0.57\textheight,keepaspectratio]{fig-cie-matching-functions.png}\\[-0.1em]
+  \includegraphics[width=0.80\textwidth,height=0.52\textheight,keepaspectratio]{fig-cie-matching-functions.png}\\[-0.1em]
   \begin{flushleft}\footnotesize
-    XYZ is a linear transform of colour-matching results. X, Y, and Z are not physical lamps and not the three cone signals; Y was chosen to carry standard photopic luminance.
+    XYZ is a linear transform of the curves on the previous slide, chosen
+    so that no value is negative. X, Y, and Z are not physical lamps and
+    not the three cone signals; Y was chosen to carry standard photopic
+    luminance. The second bump of $\bar{x}$ in the violet is real: violet also
+    excites the red-sensitive mechanism, which is why violet looks reddish.
   \end{flushleft}
 \end{frame}
 
@@ -418,8 +591,118 @@
     \item after normalisation, a two-light mixture lies between the two chromaticities;
     \item a spectrum with many wavelengths is a non-negative mixture of many points.
   \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Nonspectral colours}
+  \centering
+  \includegraphics[width=0.78\textwidth,height=0.50\textheight,keepaspectratio]{fig-magenta-spectrum.png}\\[0.1em]
+  \begin{flushleft}\small
+    The straight edge joining the two ends of the horseshoe is the
+    \textbf{line of purples}; no single wavelength sits on it. A light that
+    looks magenta holds power near both ends of the spectrum, because its
+    cone signature (S and L strong, M weak) is one no single wavelength
+    can produce. Blue names a band of the rainbow; magenta names only a
+    mixture.
+  \end{flushleft}
+\end{frame}
+
+\begin{frame}[t]{Additive and subtractive mixing}
+  \centering
+  \includegraphics[width=0.82\textwidth,height=0.59\textheight,keepaspectratio]{fig-additive-subtractive.png}\\[-0.1em]
+  \begin{flushleft}\small
+    Additive mixing combines emitted spectral power. Ideal subtractive mixing
+    multiplies transmissions; real pigments also scatter and interact.
+  \end{flushleft}
+\end{frame}
+
+\begin{frame}{Red, yellow, blue}
+  \small
+  \begin{itemize}
+    \item The school primaries are the painters' tradition, running from
+      Le Blon's three-plate printing (1725) through Harris's wheel (1766).
+    \item Printing replaced them with cyan, magenta and yellow. Each ink
+      absorbs one band: cyan absorbs long wavelengths, magenta middle,
+      yellow short. Red and blue pigments behave like impure magenta and
+      impure cyan, so their mixtures cover less.
+    \item Light mixing uses red, green and blue, matched to where the
+      cones separate best.
+    \item No three colours are ``the'' primaries. The number three comes
+      from the cones. The choice of three comes from the medium and its
+      gamut.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Metamerism is what makes displays possible}
+  \small
+  A screen does not reconstruct the original spectral recipe. It emits a new
+  spectrum from three primaries that is intended to produce the required match.
   \vspace{0.8em}
-  The straight closure between the red and violet ends is the \textbf{line of purples}. Purple lies there because it is produced by mixing the ends; it is not a single wavelength.
+  \begin{columns}[T]
+    \begin{column}{0.45\textwidth}
+      \textbf{What this makes possible}
+      \begin{itemize}
+        \item colour photography;
+        \item television and computer displays;
+        \item compact three-channel specifications.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{Where a match can fail}
+      \begin{itemize}
+        \item a different observer;
+        \item a different illuminant;
+        \item fluorescence;
+        \item changed adaptation or field size.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{A white LED is a blue LED plus a phosphor}
+  \small
+  \begin{enumerate}
+    \item The backlight is a \textbf{blue LED} emitting a narrow spike near 450\,nm.
+    \item A \textbf{phosphor} (typically YAG:Ce) absorbs part of the blue and re-emits it at lower energies: a broad hump across green, yellow and red.
+    \item Spike plus hump reads as white. The LCD's red and green filters carve their two humps out of the phosphor light; the blue filter passes the spike.
+  \end{enumerate}
+  \vspace{0.5em}
+  The blue spike stays tallest in the power spectrum because it is the only light generated directly; everything else is converted from it, with losses.
+\end{frame}
+
+\begin{frame}{The blue LED came thirty years late}
+  \small
+  \begin{itemize}
+    \item An LED emits photons with the energy of its semiconductor's band gap. Red photons need about 1.9\,eV; blue photons need about 2.8\,eV.
+    \item Red LEDs existed by 1962 (gallium arsenide phosphide). Blue required a wide-gap crystal, in practice gallium nitride.
+    \item Gallium nitride had two standing problems: no matching substrate to grow clean crystals on, and no working p-type doping.
+    \item Akasaki, Amano and Nakamura solved both around 1986--1992 (a buffer layer for growth; activated magnesium doping). Bright blue LEDs followed in 1993, white LEDs in 1996.
+    \item Nobel Prize in Physics, 2014. Every white LED screen and lamp descends from that blue chip.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{What a PC could show}
+  \centering
+  \includegraphics[width=0.86\textwidth,height=0.72\textheight,keepaspectratio]{fig-retro-palettes.png}
+\end{frame}
+
+\begin{frame}{Bits per pixel}
+  \small
+  \begin{tabular}{@{}lrl@{}}
+    \toprule
+    \textbf{Bits per pixel} & \textbf{Colours} & \textbf{Era} \\
+    \midrule
+    1 & 2 & terminals, early Macintosh \\
+    2 & 4 & CGA graphics, 1981 \\
+    4 & 16 & EGA, 1984 \\
+    8, indexed & 256 & VGA, 1987 \\
+    15 or 16 & 32,768 or 65,536 & high colour, early 1990s \\
+    24 & 16,777,216 & true colour, since the mid-1990s \\
+    \bottomrule
+  \end{tabular}
+  \vspace{0.8em}
+
+  24 bits is the \texttt{\#RRGGBB} code: two hexadecimal digits per
+  channel. Chart libraries, CSS and image formats all speak it.
 \end{frame}
 
 \begin{frame}[t]{Three physical primaries make a triangle}
@@ -428,7 +711,19 @@
   \credit{CIE 1931 2° data; primary coordinates from sRGB/Rec.709, Display P3, and BT.2020 specifications.}
 \end{frame}
 
-\begin{frame}{The horseshoe is not a screenshot of every visible colour}
+\begin{frame}[t]{Colour bars}
+  \centering
+  \includegraphics[width=0.62\textwidth,height=0.58\textheight,keepaspectratio]{fig-colour-bars.png}\\[0.2em]
+  \begin{flushleft}\small
+    The broadcast test pattern is the gamut triangle enumerated: the three
+    primaries alone (green, red, blue), their pairwise sums (yellow, cyan,
+    magenta), and all three together (white). Every other colour the screen
+    can produce is a mixture of these, inside the triangle.
+  \end{flushleft}
+  \credit{Course rendering of the SMPTE colour-bar layout.}
+\end{frame}
+
+\begin{frame}{Five cautions about the xy diagram}
   \begin{itemize}
     \item The outline represents standard-observer chromaticity coordinates.
     \item The page is itself shown through your display's primaries and calibration.
@@ -437,8 +732,6 @@
     \item Equal distances in xy are not equal perceived differences.
   \end{itemize}
 \end{frame}
-
-\kicker{Part IV}{Use colour as an encoding\,---\,not decoration}
 
 \begin{frame}{Hue, lightness, and chroma do different jobs}
   \small
@@ -456,7 +749,7 @@
   Let position or length carry values that must be compared precisely. Use colour to organise, order coarsely, or direct attention.
 \end{frame}
 
-\begin{frame}{A palette is viewed as a scene}
+\begin{frame}{Test a palette in its context}
   \begin{itemize}
     \item test colours on the actual background;
     \item test them at the actual mark and text sizes;
@@ -466,12 +759,12 @@
     \item add labels, position, shape, or line style when the distinction matters.
   \end{itemize}
   \vspace{0.8em}
-  \alert{The viewer experiences relationships between marks, not hexadecimal values in isolation.}
+  \alert{What matters is how the marks look next to each other on the actual page.}
 \end{frame}
 
-\kicker{Part V}{Make the model interactive with Streamlit}
+\kicker{~}{Streamlit}
 
-\begin{frame}{Streamlit has a small mental model}
+\begin{frame}{How a Streamlit app runs}
   \begin{center}
     \begin{tikzpicture}[node distance=1.5cm, every node/.style={font=\small}]
       \node[draw=utsblue, very thick, rounded corners, fill=utspale, minimum width=3.2cm, minimum height=1cm] (widget) {widget returns a value};
@@ -485,7 +778,7 @@
   Whenever a widget changes, Streamlit reruns the script from top to bottom with the new value.
 \end{frame}
 
-\begin{frame}[fragile]{One widget turns a constant into an interface}
+\begin{frame}[fragile]{A slider replaces a constant}
   \begin{columns}[T]
     \begin{column}{0.47\textwidth}
       \textbf{Notebook or script}
@@ -521,7 +814,7 @@ python -m streamlit run hello_colour.py
   Final extension: add an intensity slider. Cone-response magnitudes should change; chromaticity should remain almost fixed.
 \end{frame}
 
-\begin{frame}{Keep the boundaries visible}
+\begin{frame}{The app's simplifications}
   \begin{itemize}
     \item Cone curves in the app are schematic.
     \item CIE matching functions are standard-observer data, not cone sensitivities.
@@ -552,8 +845,9 @@ python -m streamlit run hello_colour.py
     \item CIE (2019), \emph{CIE 1931 colour-matching functions, 2 degree observer}, DOI: 10.25039/CIE.DS.xvudnb9b.
     \item Kalloniatis, M. and Luu, C., ``The Perception of Color,'' \emph{Webvision}, NCBI Bookshelf.
     \item Newton, I. (1704), \emph{Opticks}; Goethe, J. W. von (1810), \emph{Theory of Colours}.
-    \item Munsell, A. H. (1905), \emph{A Color Notation}.
+    \item Munsell, A. H. (1905), \emph{A Color Notation}. \quad Berlin, B. and Kay, P. (1969), \emph{Basic Color Terms}.
     \item W3C, \emph{CSS Color Module Level 4}; IEC 61966-2-1 (sRGB); ITU-R BT.709 and BT.2020.
+    \item Machado, Oliveira and Fernandes (2009), \emph{A physiologically-based model for simulation of color vision deficiency}, IEEE TVCG.
     \item Streamlit, ``Basic concepts'' and API documentation.
   \end{itemize}
   \vspace{0.5em}

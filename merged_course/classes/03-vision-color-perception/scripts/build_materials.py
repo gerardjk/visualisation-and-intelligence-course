@@ -98,11 +98,13 @@ def make_figures() -> None:
         ax.axvspan(w, w + 2, color=wavelength_rgb(w), alpha=0.17, lw=0)
     daylight = planck(wavelengths, 5800)
     candle = planck(wavelengths, 1800)
-    pixel = 0.85 * gaussian(wavelengths, 455, 13) + gaussian(wavelengths, 535, 18) + 0.9 * gaussian(wavelengths, 625, 16)
+    # White-LED LCD shape: the backlight's blue LED spike, then phosphor
+    # light through the green and red filters.
+    pixel = gaussian(wavelengths, 450, 9) + 0.58 * gaussian(wavelengths, 535, 30) + 0.65 * gaussian(wavelengths, 612, 25)
     pixel /= pixel.max()
     ax.plot(wavelengths, daylight, color=INK, lw=2.8, label="daylight-like source")
     ax.plot(wavelengths, candle, color="#D97904", lw=2.8, label="candle-like source")
-    ax.plot(wavelengths, pixel, color=BLUE, lw=2.8, label="three-primary display")
+    ax.plot(wavelengths, pixel, color=BLUE, lw=2.8, label="LCD display (white-LED backlight)")
     ax.set(xlabel="wavelength (nm)", ylabel="relative spectral power", xlim=(380, 780), ylim=(0, 1.08))
     ax.legend(frameon=False, ncol=3, loc="upper center", bbox_to_anchor=(0.5, 1.18))
     ax.set_title("A light is a distribution of power across wavelengths")
