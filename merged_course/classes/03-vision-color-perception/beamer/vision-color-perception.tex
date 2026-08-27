@@ -104,7 +104,7 @@
       {\color{utsred}\rule{3em}{0.18em}}\\[0.9em]
       \begin{tabular}{@{}l@{\hspace{2.5em}}r@{}}
         an English speaker's basic colour words & 11 \\
-        a large crayon box & about 120 \\
+        the classic Crayola box & 64 \\
         the web's named colours & 148 \\
         codes on a modern screen & 16,777,216 \\
         differences a human can distinguish & a few million \\
@@ -416,6 +416,8 @@
   \textcolor{cssyellow}{yellow}
   \textcolor{cssyellowgreen}{yellowgreen}
   \par}
+  \vspace{0.4em}
+  \credit{X11 (1987) shipped rgb.txt, a file mapping colour names to values; CSS adopted the list and matplotlib followed.}
 \end{frame}
 
 \begin{frame}{English has eleven basic colour terms}
@@ -461,15 +463,15 @@
   everywhere.
 \end{frame}
 
-\begin{frame}[t]{The crayon box}
+\begin{frame}[t]{The classic 64-colour Crayola box}
   \centering
   \includegraphics[width=0.84\textwidth,height=0.66\textheight,keepaspectratio]{fig-crayola-chart.png}\\[0.1em]
   \begin{flushleft}\small
-    Crayola's first box (1903) held eight crayons; the range now exceeds
-    120. The chart shows the 62 with well-documented colour values.
-    Crayon names are mostly object names, so they are not basic terms.
+    Introduced in 1958 with a built-in sharpener, the 64-count box became
+    Crayola's perennial favourite. Crayon names are commercial labels,
+    mostly based on objects, rather than basic colour terms.
   \end{flushleft}
-  \credit{Hex values are published approximations of the crayon colours.}
+  \credit{Current 64-count box and colour swatches: Crayola product images.}
 \end{frame}
 
 
@@ -916,6 +918,30 @@
   \end{flushleft}
 \end{frame}
 
+\begin{frame}{RGB and CMYK}
+  \small
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+     & \textbf{RGB} & \textbf{CMYK} \\
+    \midrule
+    where & screens & ink on paper \\
+    mixing & additive: channels add light & subtractive: inks absorb light \\
+    primaries & red, green, blue & cyan, magenta, yellow, black \\
+    all zero & black (screen off) & white (bare paper) \\
+    all full & white & muddy near-black \\
+    you meet it as & \texttt{\#RRGGBB} in CSS and charts & print exports and PDF proofs \\
+    \bottomrule
+  \end{tabular}
+  \vspace{0.8em}
+
+  The K in CMYK is a separate black ink, the printers' ``key'' plate.
+  Full cyan, magenta and yellow together make a muddy brown and soak the
+  paper, so text and shadows use black ink instead. Screens and printers
+  also cover different gamuts: some screen colours have no printable
+  match, worth checking before a chart goes to print.
+\end{frame}
+
 \begin{frame}{Red, yellow, blue}
   \small
   \begin{itemize}
@@ -991,6 +1017,18 @@
   \includegraphics[width=0.86\textwidth,height=0.72\textheight,keepaspectratio]{fig-retro-palettes.png}
 \end{frame}
 
+\begin{frame}[t]{A picture is a grid of numbers}
+  \centering
+  \includegraphics[width=0.88\textwidth,height=0.52\textheight,keepaspectratio]{fig-bitmap-zoom.png}\\[0.2em]
+  \begin{flushleft}\small
+    Zoom far enough into any picture and it becomes a grid of squares:
+    \textbf{pixels}. A \textbf{bitmap} is that grid stored as numbers,
+    three per pixel: how much red, green and blue light to emit, each
+    from 0 to 255. The near-white pixel is high in all three channels;
+    the yellow one is red plus green with almost no blue.
+  \end{flushleft}
+\end{frame}
+
 \begin{frame}{Bits per pixel}
   \small
   \begin{tabular}{@{}lrl@{}}
@@ -999,8 +1037,8 @@
     \midrule
     1 & 2 & terminals, early Macintosh \\
     2 & 4 & CGA graphics, 1981 \\
-    4 & 16 & EGA, 1984 \\
-    8, indexed & 256 & VGA, 1987 \\
+    4 & 16 & EGA and VGA high-resolution modes \\
+    8, indexed & 256 & VGA 320$\times$200 mode, 1987 \\
     15 or 16 & 32,768 or 65,536 & high colour, early 1990s \\
     24 & 16,777,216 & true colour, since the mid-1990s \\
     \bottomrule
