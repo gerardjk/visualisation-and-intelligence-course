@@ -115,60 +115,6 @@
 \end{frame}
 }
 
-\begin{frame}{English has eleven basic colour terms}
-  \Large
-  \chip{black}{white}{black}\enspace \chip{white}{black}{white}\enspace \chip{cwred}{white}{red}\enspace \chip{cwgreen}{white}{green}
-
-  \vspace{0.6em}
-  \chip{cwyellow}{black}{yellow}\enspace \chip{cwblue}{white}{blue}\enspace \chip{cwbrown}{white}{brown}\enspace \chip{cwpurple}{white}{purple}
-
-  \vspace{0.6em}
-  \chip{cwpink}{white}{pink}\enspace \chip{cworange}{black}{orange}\enspace \chip{cwgrey}{white}{grey}
-  \normalsize
-  \vspace{1.2em}
-
-  A basic term is a single word, not derived from an object (unlike
-  ``gold'' or ``turquoise''), and applies to a broad class of things.
-  \vspace{0.6em}
-
-  \credit{Berlin and Kay (1969), Basic Color Terms.}
-\end{frame}
-
-\begin{frame}{Priority of Colour Words}
-  \renewcommand{\arraystretch}{1.55}
-  \small
-  {\centering
-  \begin{tabular}{@{}ll@{}}
-    \toprule
-    \textbf{Stage} & \textbf{Terms present} \\
-    \midrule
-    I & \chip{black}{white}{black}\ \chip{white}{black}{white} \\
-    II & + \chip{cwred}{white}{red} \\
-    III--IV & + \chip{cwgreen}{white}{green} and \chip{cwyellow}{black}{yellow}, in either order \\
-    V & + \chip{cwblue}{white}{blue} \\
-    VI & + \chip{cwbrown}{white}{brown} \\
-    VII & + \chip{cwpurple}{white}{purple}\ \chip{cwpink}{white}{pink}\ \chip{cworange}{black}{orange}\ \chip{cwgrey}{white}{grey} \\
-    \bottomrule
-  \end{tabular}
-  \par}
-  \vspace{0.9em}
-
-  Languages differ in how many basic terms they have; acquisition
-  follows this order with few exceptions. Red is the first hue named
-  everywhere.
-\end{frame}
-
-\begin{frame}[t]{The crayon box}
-  \centering
-  \includegraphics[width=0.84\textwidth,height=0.66\textheight,keepaspectratio]{fig-crayola-chart.png}\\[0.1em]
-  \begin{flushleft}\small
-    Crayola's first box (1903) held eight crayons; the range now exceeds
-    120. The chart shows the 62 with well-documented colour values.
-    Crayon names are mostly object names, so they are not basic terms.
-  \end{flushleft}
-  \credit{Hex values are published approximations of the crayon colours.}
-\end{frame}
-
 \begin{frame}[t]{The web's named colours}
   \definecolor{cssaliceblue}{HTML}{F0F8FF}%
   \definecolor{cssantiquewhite}{HTML}{FAEBD7}%
@@ -318,8 +264,9 @@
   \definecolor{csswhitesmoke}{HTML}{F5F5F5}%
   \definecolor{cssyellow}{HTML}{FFFF00}%
   \definecolor{cssyellowgreen}{HTML}{9ACD32}%
-  \vspace{0.2em}
-  {\ttfamily\scriptsize\raggedright
+  {\small The 148 CSS colour keywords, inherited from X11 (recognised by matplotlib).\par}
+  \vspace{0.6em}
+  {\ttfamily\bfseries\scriptsize\raggedright
   \textcolor{cssaliceblue}{aliceblue}
   \textcolor{cssantiquewhite}{antiquewhite}
   \textcolor{cssaqua}{aqua}
@@ -469,9 +416,62 @@
   \textcolor{cssyellow}{yellow}
   \textcolor{cssyellowgreen}{yellowgreen}
   \par}
-  \vspace{0.5em}
-  {\small The 148 CSS colour keywords, inherited from X11 (recognised by matplotlib).\par}
 \end{frame}
+
+\begin{frame}{English has eleven basic colour terms}
+  \Large
+  \chip{black}{white}{black}\enspace \chip{white}{black}{white}\enspace \chip{cwred}{white}{red}\enspace \chip{cwgreen}{white}{green}
+
+  \vspace{0.6em}
+  \chip{cwyellow}{black}{yellow}\enspace \chip{cwblue}{white}{blue}\enspace \chip{cwbrown}{white}{brown}\enspace \chip{cwpurple}{white}{purple}
+
+  \vspace{0.6em}
+  \chip{cwpink}{white}{pink}\enspace \chip{cworange}{black}{orange}\enspace \chip{cwgrey}{white}{grey}
+  \normalsize
+  \vspace{1.2em}
+
+  A basic term is a single word, not derived from an object (unlike
+  ``gold'' or ``turquoise''), and applies to a broad class of things.
+  \vspace{0.6em}
+
+  \credit{Berlin and Kay (1969), Basic Color Terms.}
+\end{frame}
+
+\begin{frame}{Priority of Colour Words}
+  \renewcommand{\arraystretch}{1.55}
+  \small
+  {\centering
+  \begin{tabular}{@{}ll@{}}
+    \toprule
+    \textbf{Stage} & \textbf{Terms present} \\
+    \midrule
+    I & \chip{black}{white}{black}\ \chip{white}{black}{white} \\
+    II & + \chip{cwred}{white}{red} \\
+    III--IV & + \chip{cwgreen}{white}{green} and \chip{cwyellow}{black}{yellow}, in either order \\
+    V & + \chip{cwblue}{white}{blue} \\
+    VI & + \chip{cwbrown}{white}{brown} \\
+    VII & + \chip{cwpurple}{white}{purple}\ \chip{cwpink}{white}{pink}\ \chip{cworange}{black}{orange}\ \chip{cwgrey}{white}{grey} \\
+    \bottomrule
+  \end{tabular}
+  \par}
+  \vspace{0.9em}
+
+  Languages differ in how many basic terms they have; acquisition
+  follows this order with few exceptions. Red is the first hue named
+  everywhere.
+\end{frame}
+
+\begin{frame}[t]{The crayon box}
+  \centering
+  \includegraphics[width=0.84\textwidth,height=0.66\textheight,keepaspectratio]{fig-crayola-chart.png}\\[0.1em]
+  \begin{flushleft}\small
+    Crayola's first box (1903) held eight crayons; the range now exceeds
+    120. The chart shows the 62 with well-documented colour values.
+    Crayon names are mostly object names, so they are not basic terms.
+  \end{flushleft}
+  \credit{Hex values are published approximations of the crayon colours.}
+\end{frame}
+
 
 \begin{frame}[t]{Visible light is a narrow band}
   \centering
