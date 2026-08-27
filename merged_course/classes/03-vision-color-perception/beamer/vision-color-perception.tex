@@ -711,9 +711,12 @@
 
 \begin{frame}[t]{The same code can look different}
   \centering
-  \includegraphics[width=0.83\textwidth,height=0.59\textheight,keepaspectratio]{fig-context.png}\\[-0.1em]
+  \includegraphics[width=0.80\textwidth,height=0.58\textheight,keepaspectratio]{fig-context.png}\\[-0.1em]
   \begin{flushleft}\small
-    Identical centre RGB values do not guarantee identical appearance. The visual system compares each patch with its surround.
+    Both centre squares are the same code, \texttt{RGB (128, 128, 128)}.
+    The visual system compares each patch with its surround, so the
+    square on the dark ground looks lighter than the one on the light
+    ground.
   \end{flushleft}
 \end{frame}
 

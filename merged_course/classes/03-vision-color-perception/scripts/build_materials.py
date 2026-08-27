@@ -89,6 +89,22 @@ def cone_sensitivities(wavelengths: np.ndarray) -> np.ndarray:
     )
 
 
+def make_context_figure() -> None:
+    """Two identical mid-grey squares on dark and light grounds."""
+    def panel(background: int) -> np.ndarray:
+        a = np.full((300, 460, 3), background, dtype=np.uint8)
+        a[105:195, 165:295] = 128
+        return a
+
+    fig, axes = plt.subplots(1, 2, figsize=(10, 3.6))
+    for ax, background in zip(axes, (60, 220)):
+        ax.imshow(panel(background))
+        ax.axis("off")
+    plt.subplots_adjust(wspace=0.04, left=0.01, right=0.99, top=0.99, bottom=0.01)
+    fig.savefig(FIGS / "fig-context.png", dpi=150)
+    plt.close(fig)
+
+
 def make_figures() -> None:
     wavelengths = np.arange(380, 781)
 
@@ -186,18 +202,7 @@ def make_figures() -> None:
     fig.suptitle("The first retinal encoding is a severe compression", y=0.99, fontweight="bold")
     save(fig, "fig-spectrum-to-cones.png")
 
-    # Same centre patch in different surrounds.
-    context = np.ones((260, 720, 3))
-    context[:, :360] = 0.10
-    context[:, 360:] = 0.88
-    centre = np.array([0.38, 0.52, 0.68])
-    context[78:182, 118:242] = centre
-    context[78:182, 478:602] = centre
-    fig, ax = plt.subplots(figsize=(10.8, 4.1))
-    ax.imshow(context)
-    ax.set_axis_off()
-    ax.set_title("The two centre patches contain identical RGB values")
-    save(fig, "fig-context.png")
+    make_context_figure()
 
     # CIE data and chromaticity figures.
     cmf = pd.read_csv(DATA, header=None, names=["wavelength", "xbar", "ybar", "zbar"])
