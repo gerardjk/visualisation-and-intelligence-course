@@ -676,27 +676,23 @@
 \end{frame}
 
 \begin{frame}{After the cones, signals are compared}
-  \begin{columns}[T]
-    \begin{column}{0.50\textwidth}
-      \begin{align*}
-        \text{luminance-like} &\quad L+M\\
-        \text{red--green-like} &\quad L-M\\
-        \text{blue--yellow-like} &\quad S-(L+M)
-      \end{align*}
-    \end{column}
-    \begin{column}{0.44\textwidth}
-      \small
-      These are schematic combinations, far from a complete neural model. They
-      show that the brain does not receive an RGB image from the retina.
-    \end{column}
-  \end{columns}
+  \begin{align*}
+    \text{luminance-like} &\quad L+M\\
+    \text{red--green-like} &\quad L-M\\
+    \text{blue--yellow-like} &\quad S-(L+M)
+  \end{align*}
   \vspace{0.8em}
   Adaptation, local contrast, spatial scale, and viewing sequence all enter before conscious appearance.
+  \vspace{0.5em}
+
+  \small
+  These are schematic combinations, far from a complete neural model. They
+  show that the brain does not receive an RGB image from the retina.
 \end{frame}
 
 \begin{frame}{Eight questions about colour, 1704 to 1931}
   \footnotesize
-  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.51\textwidth}@{}}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.17\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.55\textwidth}@{}}
     \toprule
     \textbf{Work} & \textbf{Object} & \textbf{Question} \\
     \midrule
@@ -716,10 +712,10 @@
   \begin{columns}[T]
     \begin{column}{0.44\textwidth}
       \centering
-      \includegraphics[height=0.74\textheight,keepaspectratio]{harris-colour-wheel-1766.jpg}
+      \includegraphics[height=0.64\textheight,keepaspectratio]{harris-colour-wheel-1766.jpg}
     \end{column}
     \begin{column}{0.50\textwidth}
-      \small
+      \normalsize
       \vspace{1.2em}
       Moses Harris, an engraver and entomologist, published the first known
       colour circle presented in full hue in \emph{The Natural System of
@@ -740,7 +736,7 @@
     \end{tikzpicture}
   \end{center}
   \vspace{0.4em}
-  \Large
+  \large
   \begin{enumerate}
     \item Some hues look like mixtures: orange looks like red plus
       yellow.
@@ -780,56 +776,6 @@
   \end{flushleft}
 \end{frame}
 
-\begin{frame}{RGB and CMYK}
-  \small
-  \renewcommand{\arraystretch}{1.3}
-  \begin{tabular}{@{}lll@{}}
-    \toprule
-     & \textbf{RGB} & \textbf{CMYK} \\
-    \midrule
-    where & screens & ink on paper \\
-    mixing & additive: channels add light & subtractive: inks absorb light \\
-    primaries & red, green, blue & cyan, magenta, yellow, black \\
-    all zero & black (screen off) & white (bare paper) \\
-    all full & white & muddy near-black \\
-    you meet it as & \texttt{\#RRGGBB} in CSS and charts & print exports and PDF proofs \\
-    \bottomrule
-  \end{tabular}
-  \vspace{0.8em}
-
-  The K in CMYK is a separate black ink, the printers' ``key'' plate.
-  Full cyan, magenta and yellow together make a muddy brown and soak the
-  paper, so text and shadows use black ink instead. Screens and printers
-  also cover different gamuts: some screen colours have no printable
-  match, worth checking before a chart goes to print.
-\end{frame}
-
-\begin{frame}{Metamerism}
-  \small
-  A screen does not reconstruct the original spectral recipe. It emits a new
-  spectrum from three primaries that is intended to produce the required match.
-  \vspace{0.8em}
-  \begin{columns}[T]
-    \begin{column}{0.45\textwidth}
-      \textbf{What this makes possible}
-      \begin{itemize}
-        \item colour photography;
-        \item television and computer displays;
-        \item compact three-channel specifications.
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.48\textwidth}
-      \textbf{Where a match can fail}
-      \begin{itemize}
-        \item a different observer;
-        \item a different illuminant;
-        \item fluorescence;
-        \item changed adaptation or field size.
-      \end{itemize}
-    \end{column}
-  \end{columns}
-\end{frame}
-
 \begin{frame}{Commission Internationale de l'Éclairage}
   \small
   The \textbf{Commission Internationale de l'Éclairage} (CIE), or
@@ -844,11 +790,12 @@
   530 and 460\,nm; Guild used filtered red, green and blue lamps.
   \vspace{0.5em}
 
-  The CIE converted both datasets to a common RGB reference: 700, 546.1 and
-  435.8\,nm. The green and violet-blue wavelengths were reproducible emission
-  lines from a mercury-vapour lamp. At 700\,nm, small wavelength errors make
-  little difference to the perceived red. These were the standard's reference
-  stimuli, not three lamps shared by both experiments.
+  The CIE converted both datasets to a common RGB reference:
+  \textcolor{cwred}{\textbf{700}}, \textcolor{cwgreen}{\textbf{546.1}} and
+  \textcolor{scone}{\textbf{435.8}}\,nm. The green and violet-blue
+  wavelengths were reproducible emission lines from a mercury-vapour lamp.
+  At 700\,nm, small wavelength errors make little difference to the
+  perceived red.
 \end{frame}
 
 \begin{frame}{Why a pure cyan cannot be matched}
@@ -856,12 +803,12 @@
   {\centering
   \begin{tabular}{@{}lrrr@{}}
     \toprule
-     & S & M & L \\
+     & \textcolor{scone}{\textbf{S}} & \textcolor{cwgreen}{\textbf{M}} & \textcolor{cwred}{\textbf{L}} \\
     \midrule
-    target: pure cyan, 490\,nm & 6 & 10 & \textbf{4} \\
-    green lamp, 546\,nm, per unit & 0 & 10 & \textbf{8} \\
-    blue lamp, 436\,nm, per unit & 10 & 1 & 0.5 \\
-    red lamp, 700\,nm, per unit & 0 & 0 & 2 \\
+    target: pure cyan, 490\,nm & \textcolor{scone}{\textbf{6}} & \textcolor{cwgreen}{\textbf{10}} & \textcolor{cwred}{\textbf{4}} \\
+    green lamp, 546\,nm, per unit & \textcolor{scone}{\textbf{0}} & \textcolor{cwgreen}{\textbf{10}} & \textcolor{cwred}{\textbf{8}} \\
+    blue lamp, 436\,nm, per unit & \textcolor{scone}{\textbf{10}} & \textcolor{cwgreen}{\textbf{1}} & \textcolor{cwred}{\textbf{0.5}} \\
+    red lamp, 700\,nm, per unit & \textcolor{scone}{\textbf{0}} & \textcolor{cwgreen}{\textbf{0}} & \textcolor{cwred}{\textbf{2}} \\
     \bottomrule
   \end{tabular}
   \par}
@@ -870,8 +817,6 @@
   Illustrative numbers. Reaching M = 10 takes one unit of green, and that
   unit already delivers L = 8. The cyan needs L = 4, with the red knob
   already at zero. The green lamp is also a red-cone lamp.
-  \vspace{0.5em}
-
   One move remains: add red to the \emph{test} side until its L rises to
   meet the mix. The result is recorded as a negative red coefficient; it is
   not ``negative light.''
@@ -899,34 +844,33 @@
   \end{flushleft}
 \end{frame}
 
-\begin{frame}{From a spectrum to three CIE values}
-  \large
-  \begin{align*}
-    X &= \int P(\lambda)\bar{x}(\lambda)\,d\lambda\\
-    Y &= \int P(\lambda)\bar{y}(\lambda)\,d\lambda\\
-    Z &= \int P(\lambda)\bar{z}(\lambda)\,d\lambda
-  \end{align*}
-  \normalsize
-  \vspace{0.5em}
-  Change the spectrum and recalculate. Any spectra with the same XYZ values are a standard-observer colour match under the specified conditions.
-\end{frame}
-
-\begin{frame}{Chromaticity removes one scale factor}
-  \Large
-  \[
-  x=\frac{X}{X+Y+Z},\qquad
-  y=\frac{Y}{X+Y+Z},\qquad
-  z=1-x-y
-  \]
-  \normalsize
+\begin{frame}{From a spectrum to CIE values}
+  \begin{columns}[T]
+    \begin{column}{0.50\textwidth}
+      \begin{align*}
+        X &= \int P(\lambda)\bar{x}(\lambda)\,d\lambda\\
+        Y &= \int P(\lambda)\bar{y}(\lambda)\,d\lambda\\
+        Z &= \int P(\lambda)\bar{z}(\lambda)\,d\lambda
+      \end{align*}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \begin{align*}
+        x &= \frac{X}{X+Y+Z}\\
+        y &= \frac{Y}{X+Y+Z}\\
+        z &= \frac{Z}{X+Y+Z}=1-x-y
+      \end{align*}
+    \end{column}
+  \end{columns}
+  \vspace{0.6em}
+  \small
   \begin{itemize}
-    \item Multiplying X, Y, and Z by the same amount leaves x and y unchanged.
-    \item Two fractions are enough because the three proportions sum to one.
-    \item xy omits overall tristimulus scale. It is not a complete colour appearance.
+    \item Spectra with the same XYZ values are a standard-observer match.
+    \item Scaling a spectrum scales X, Y and Z together, leaving x, y and z
+      unchanged: xy keeps the chromaticity and drops the overall scale.
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Build the spectral locus one wavelength at a time}
+\begin{frame}{Build the spectral locus}
   \small
   For each row in the official CIE table:
   \begin{enumerate}
@@ -940,17 +884,23 @@
 \end{frame}
 
 \begin{frame}[t]{Adding two lights traces a straight line}
-  \centering
-  \includegraphics[width=0.73\textwidth,height=0.72\textheight,keepaspectratio]{fig-mixture-line.png}
-\end{frame}
-
-\begin{frame}{Why real-light mixtures lie inside}
-  \begin{itemize}
-    \item spectra add;
-    \item XYZ values therefore add;
-    \item after normalisation, a two-light mixture lies between the two chromaticities;
-    \item a spectrum with many wavelengths is a non-negative mixture of many points.
-  \end{itemize}
+  \begin{columns}[T]
+    \begin{column}{0.58\textwidth}
+      \centering
+      \includegraphics[width=\textwidth,height=0.74\textheight,keepaspectratio]{fig-mixture-line.png}
+    \end{column}
+    \begin{column}{0.38\textwidth}
+      \small
+      \vspace{1.5em}
+      \begin{itemize}
+        \item spectra add, so XYZ values add;
+        \item after normalisation, a two-light mixture lies on the line
+          between the two chromaticities;
+        \item a spectrum with many wavelengths is a non-negative mixture
+          of many points, so every real light lands inside the locus.
+      \end{itemize}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}[t]{Nonspectral colours}
@@ -961,31 +911,70 @@
     \textbf{line of purples}; no single wavelength sits on it. A light that
     looks magenta holds power near both ends of the spectrum, because its
     cone signature (S and L strong, M weak) is one no single wavelength
-    can produce. Blue names a band of the rainbow; magenta names only a
-    mixture.
+    can produce.
   \end{flushleft}
 \end{frame}
 
-\begin{frame}{A white LED is a blue LED plus a phosphor}
+\begin{frame}{RGB and CMYK}
   \small
-  \begin{enumerate}
-    \item The backlight is a \textbf{blue LED} emitting a narrow spike near 450\,nm.
-    \item A \textbf{phosphor} (typically YAG:Ce) absorbs part of the blue and re-emits it at lower energies: a broad hump across green, yellow and red.
-    \item Spike plus hump reads as white. The LCD's red and green filters carve their two humps out of the phosphor light; the blue filter passes the spike.
-  \end{enumerate}
-  \vspace{0.5em}
-  The blue spike stays tallest in the power spectrum because it is the only light generated directly; everything else is converted from it, with losses.
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+     & \textbf{RGB} & \textbf{CMYK} \\
+    \midrule
+    where & screens & ink on paper \\
+    mixing & additive: channels add light & subtractive: inks absorb light \\
+    primaries & red, green, blue & cyan, magenta, yellow, black \\
+    all zero & black (screen off) & white (bare paper) \\
+    all full & white & muddy near-black \\
+    you meet it as & \texttt{\#RRGGBB} in CSS and charts & print exports and PDF proofs \\
+    \bottomrule
+  \end{tabular}
+  \vspace{0.8em}
+
+  The K in CMYK is a separate black ink, the printers' ``key'' plate.
+  Full cyan, magenta and yellow together make a muddy brown, so text and
+  shadows use black ink instead. Screens and printers also cover
+  different gamuts: some screen colours have no printable match.
 \end{frame}
 
-\begin{frame}{The blue LED came thirty years late}
+\begin{frame}{Metamerism}
   \small
-  \begin{itemize}
-    \item An LED emits photons with the energy of its semiconductor's band gap. Red photons need about 1.9\,eV; blue photons need about 2.8\,eV.
-    \item Red LEDs existed by 1962 (gallium arsenide phosphide). Blue required a wide-gap crystal, in practice gallium nitride.
-    \item Gallium nitride had two standing problems: no matching substrate to grow clean crystals on, and no working p-type doping.
-    \item Akasaki, Amano and Nakamura solved both around 1986--1992 (a buffer layer for growth; activated magnesium doping). Bright blue LEDs followed in 1993, white LEDs in 1996.
-    \item Nobel Prize in Physics, 2014. Every white LED screen and lamp descends from that blue chip.
-  \end{itemize}
+  Two lights with different spectra that produce the same three cone
+  responses are \textbf{metamers}: they look identical. A screen emits a
+  new spectrum from three primaries, built to be a metamer of the colour
+  it is asked to show.
+  \vspace{0.8em}
+  \begin{columns}[T]
+    \begin{column}{0.45\textwidth}
+      \textbf{What this makes possible}
+      \begin{itemize}
+        \item colour photography;
+        \item television and computer displays;
+        \item compact three-channel specifications.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{Where a match can fail}
+      \begin{itemize}
+        \item a different observer;
+        \item a different illuminant;
+        \item fluorescence;
+        \item changed adaptation or field size.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[t]{A picture is a grid of numbers}
+  \centering
+  \includegraphics[width=0.88\textwidth,height=0.52\textheight,keepaspectratio]{fig-bitmap-zoom.png}\\[0.2em]
+  \begin{flushleft}\small
+    Zoom far enough into any picture and it becomes a grid of squares:
+    \textbf{pixels}. A \textbf{bitmap} is that grid stored as numbers,
+    three per pixel: how much red, green and blue light to emit, each
+    from 0 to 255.
+  \end{flushleft}
 \end{frame}
 
 \begin{frame}[t]{What a PC could show}
@@ -1017,18 +1006,6 @@
   \end{tabular}
 \end{frame}
 
-\begin{frame}[t]{A picture is a grid of numbers}
-  \centering
-  \includegraphics[width=0.88\textwidth,height=0.52\textheight,keepaspectratio]{fig-bitmap-zoom.png}\\[0.2em]
-  \begin{flushleft}\small
-    Zoom far enough into any picture and it becomes a grid of squares:
-    \textbf{pixels}. A \textbf{bitmap} is that grid stored as numbers,
-    three per pixel: how much red, green and blue light to emit, each
-    from 0 to 255. The near-white pixel is high in all three channels;
-    the yellow one is red plus green with almost no blue.
-  \end{flushleft}
-\end{frame}
-
 \begin{frame}{Bits per pixel}
   \small
   \begin{tabular}{@{}lrl@{}}
@@ -1055,14 +1032,21 @@
 \end{frame}
 
 \begin{frame}[t]{Colour bars}
-  \centering
-  \includegraphics[width=0.62\textwidth,height=0.58\textheight,keepaspectratio]{fig-colour-bars.png}\\[0.2em]
-  \begin{flushleft}\small
-    The broadcast test pattern is the gamut triangle enumerated: the three
-    primaries alone (green, red, blue), their pairwise sums (yellow, cyan,
-    magenta), and all three together (white). Every other colour the screen
-    can produce is a mixture of these, inside the triangle.
-  \end{flushleft}
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+      \centering
+      \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{fig-colour-bars.png}
+    \end{column}
+    \begin{column}{0.41\textwidth}
+      \small
+      \vspace{1.5em}
+      The broadcast test pattern is the gamut triangle enumerated: the
+      three primaries alone (green, red, blue), their pairwise sums
+      (yellow, cyan, magenta), and all three together (white).\\[0.6em]
+      Every other colour the screen can produce is a mixture of these,
+      inside the triangle.
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}{Five cautions about the xy diagram}
@@ -1211,21 +1195,6 @@ python -m streamlit run hello_colour.py
     \item xy omits luminance and viewing context.
     \item The app is an explanatory model, not a calibrated colour-management system.
   \end{itemize}
-\end{frame}
-
-\begin{frame}{Exit ticket}
-  Complete the chain for one colour in a chart:
-  \vspace{0.8em}
-
-  \begin{quote}
-  The display emits \underline{\hspace{3cm}}. The eye reduces this to
-  \underline{\hspace{3cm}}. The viewer perceives it in relation to
-  \underline{\hspace{3cm}}. The design uses that appearance to encode
-  \underline{\hspace{3cm}}.
-  \end{quote}
-  \vspace{0.8em}
-
-  Name one thing lost at each translation.
 \end{frame}
 
 \begin{frame}{Sources and data}
