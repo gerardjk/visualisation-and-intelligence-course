@@ -293,7 +293,7 @@
   \definecolor{cssyellowgreen}{HTML}{9ACD32}%
   {\small The 148 CSS colour keywords, inherited from the graphical display protocol X11 (recognised by matplotlib).\par}
   \vspace{0.6em}
-  {\ttfamily\bfseries\fontsize{6.8}{7.6}\selectfont\raggedright
+  {\ttfamily\bfseries\fontsize{7.2}{8.0}\selectfont\raggedright
   \textcolor{cssaliceblue}{aliceblue}
   \textcolor{cssantiquewhite}{antiquewhite}
   \textcolor{cssaqua}{aqua}
@@ -603,7 +603,7 @@
   \begin{columns}[T]
     \begin{column}{0.40\textwidth}
       \centering
-      \includegraphics[height=0.72\textheight,keepaspectratio]{newton-opticks-titlepage.jpg}
+      \includegraphics[height=0.68\textheight,keepaspectratio]{newton-opticks-titlepage.jpg}
     \end{column}
     \begin{column}{0.50\textwidth}
       \centering
@@ -635,18 +635,6 @@
     $P(\lambda)$, so the light reaching the eye is $P(\lambda)R(\lambda)$.
     Change the light and the same surface sends a different spectrum.
   \end{flushleft}
-\end{frame}
-
-\begin{frame}{Which layer does each statement describe?}
-  \begin{itemize}
-    \item ``This source has a peak at 470 nm.''
-    \item ``This surface reflects more short-wavelength light under this lamp.''
-    \item ``This patch appears blue in this surround.''
-    \item ``This pixel is encoded as \texttt{\#0068B7} in sRGB.''
-  \end{itemize}
-  \vspace{0.8em}
-  Each statement describes one layer. Knowing one layer does not fix the
-  other three.
 \end{frame}
 
 \begin{frame}{Rods and cones}
@@ -792,23 +780,75 @@
   \end{flushleft}
 \end{frame}
 
+\begin{frame}{RGB and CMYK}
+  \small
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+     & \textbf{RGB} & \textbf{CMYK} \\
+    \midrule
+    where & screens & ink on paper \\
+    mixing & additive: channels add light & subtractive: inks absorb light \\
+    primaries & red, green, blue & cyan, magenta, yellow, black \\
+    all zero & black (screen off) & white (bare paper) \\
+    all full & white & muddy near-black \\
+    you meet it as & \texttt{\#RRGGBB} in CSS and charts & print exports and PDF proofs \\
+    \bottomrule
+  \end{tabular}
+  \vspace{0.8em}
+
+  The K in CMYK is a separate black ink, the printers' ``key'' plate.
+  Full cyan, magenta and yellow together make a muddy brown and soak the
+  paper, so text and shadows use black ink instead. Screens and printers
+  also cover different gamuts: some screen colours have no printable
+  match, worth checking before a chart goes to print.
+\end{frame}
+
+\begin{frame}{Metamerism}
+  \small
+  A screen does not reconstruct the original spectral recipe. It emits a new
+  spectrum from three primaries that is intended to produce the required match.
+  \vspace{0.8em}
+  \begin{columns}[T]
+    \begin{column}{0.45\textwidth}
+      \textbf{What this makes possible}
+      \begin{itemize}
+        \item colour photography;
+        \item television and computer displays;
+        \item compact three-channel specifications.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{Where a match can fail}
+      \begin{itemize}
+        \item a different observer;
+        \item a different illuminant;
+        \item fluorescence;
+        \item changed adaptation or field size.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
 \begin{frame}{Commission Internationale de l'Éclairage}
   \small
-  In 1931, the CIE did not perform the first colour-matching experiments. It
-  standardised two independent datasets: W. D. Wright's measurements of ten
-  observers (1928--29) and John Guild's measurements of seven (1931). In each
-  experiment, observers adjusted three primary lights to match a test light.
+  The \textbf{Commission Internationale de l'Éclairage} (CIE), or
+  International Commission on Illumination, is the international organisation
+  that sets standards for measuring light and colour.
   \vspace{0.5em}
 
-  Wright used spectral primaries near 650, 530 and 460\,nm. Guild used red,
-  green and blue filtered lamps. The CIE transformed both sets of results to
-  one common RGB reference: 700, 546.1 and 435.8\,nm.
+  Its 1931 standard observer was based on two independent colour-matching
+  studies. W. D. Wright measured ten observers in 1928--29; John Guild
+  measured seven in 1931. Their observers adjusted three primary lights until
+  the mixture matched a test light. Wright used spectral primaries near 650,
+  530 and 460\,nm; Guild used filtered red, green and blue lamps.
   \vspace{0.5em}
 
-  The green and violet-blue references were reproducible lines from a
-  mercury-vapour lamp. The 700\,nm red lay in a region where small wavelength
-  errors make little difference to the perceived hue. These were reference
-  stimuli for the standard, not three lamps shared by both experiments.
+  The CIE converted both datasets to a common RGB reference: 700, 546.1 and
+  435.8\,nm. The green and violet-blue wavelengths were reproducible emission
+  lines from a mercury-vapour lamp. At 700\,nm, small wavelength errors make
+  little difference to the perceived red. These were the standard's reference
+  stimuli, not three lamps shared by both experiments.
 \end{frame}
 
 \begin{frame}{Why a pure cyan cannot be matched}
@@ -924,56 +964,6 @@
     can produce. Blue names a band of the rainbow; magenta names only a
     mixture.
   \end{flushleft}
-\end{frame}
-
-\begin{frame}{RGB and CMYK}
-  \small
-  \renewcommand{\arraystretch}{1.3}
-  \begin{tabular}{@{}lll@{}}
-    \toprule
-     & \textbf{RGB} & \textbf{CMYK} \\
-    \midrule
-    where & screens & ink on paper \\
-    mixing & additive: channels add light & subtractive: inks absorb light \\
-    primaries & red, green, blue & cyan, magenta, yellow, black \\
-    all zero & black (screen off) & white (bare paper) \\
-    all full & white & muddy near-black \\
-    you meet it as & \texttt{\#RRGGBB} in CSS and charts & print exports and PDF proofs \\
-    \bottomrule
-  \end{tabular}
-  \vspace{0.8em}
-
-  The K in CMYK is a separate black ink, the printers' ``key'' plate.
-  Full cyan, magenta and yellow together make a muddy brown and soak the
-  paper, so text and shadows use black ink instead. Screens and printers
-  also cover different gamuts: some screen colours have no printable
-  match, worth checking before a chart goes to print.
-\end{frame}
-
-\begin{frame}{Metamerism}
-  \small
-  A screen does not reconstruct the original spectral recipe. It emits a new
-  spectrum from three primaries that is intended to produce the required match.
-  \vspace{0.8em}
-  \begin{columns}[T]
-    \begin{column}{0.45\textwidth}
-      \textbf{What this makes possible}
-      \begin{itemize}
-        \item colour photography;
-        \item television and computer displays;
-        \item compact three-channel specifications.
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.48\textwidth}
-      \textbf{Where a match can fail}
-      \begin{itemize}
-        \item a different observer;
-        \item a different illuminant;
-        \item fluorescence;
-        \item changed adaptation or field size.
-      \end{itemize}
-    \end{column}
-  \end{columns}
 \end{frame}
 
 \begin{frame}{A white LED is a blue LED plus a phosphor}
