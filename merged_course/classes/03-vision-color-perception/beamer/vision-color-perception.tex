@@ -786,8 +786,10 @@
   Its 1931 standard observer was based on two independent colour-matching
   studies. W. D. Wright measured ten observers in 1928--29; John Guild
   measured seven in 1931. Their observers adjusted three primary lights until
-  the mixture matched a test light. Wright used spectral primaries near 650,
-  530 and 460\,nm; Guild used filtered red, green and blue lamps.
+  the mixture matched a test light. Wright used spectral primaries near
+  \textcolor{cwred}{\textbf{650}}, \textcolor{cwgreen}{\textbf{530}} and
+  \textcolor{scone}{\textbf{460}}\,nm; Guild used filtered red, green and blue
+  lamps.
   \vspace{0.5em}
 
   The CIE converted both datasets to a common RGB reference:
@@ -803,12 +805,12 @@
   {\centering
   \begin{tabular}{@{}lrrr@{}}
     \toprule
-     & \textcolor{scone}{\textbf{S}} & \textcolor{cwgreen}{\textbf{M}} & \textcolor{cwred}{\textbf{L}} \\
+     & S & M & L \\
     \midrule
-    target: pure cyan, 490\,nm & \textcolor{scone}{\textbf{6}} & \textcolor{cwgreen}{\textbf{10}} & \textcolor{cwred}{\textbf{4}} \\
-    green lamp, 546\,nm, per unit & \textcolor{scone}{\textbf{0}} & \textcolor{cwgreen}{\textbf{10}} & \textcolor{cwred}{\textbf{8}} \\
-    blue lamp, 436\,nm, per unit & \textcolor{scone}{\textbf{10}} & \textcolor{cwgreen}{\textbf{1}} & \textcolor{cwred}{\textbf{0.5}} \\
-    red lamp, 700\,nm, per unit & \textcolor{scone}{\textbf{0}} & \textcolor{cwgreen}{\textbf{0}} & \textcolor{cwred}{\textbf{2}} \\
+    target: pure cyan, \textcolor{vgacyan}{\textbf{490}}\,nm & 6 & 10 & \textbf{4} \\
+    green lamp, \textcolor{cwgreen}{\textbf{546}}\,nm, per unit & 0 & 10 & \textbf{8} \\
+    blue lamp, \textcolor{scone}{\textbf{436}}\,nm, per unit & 10 & 1 & 0.5 \\
+    red lamp, \textcolor{cwred}{\textbf{700}}\,nm, per unit & 0 & 0 & 2 \\
     \bottomrule
   \end{tabular}
   \par}
@@ -966,6 +968,26 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}{Bits per pixel}
+  \small
+  \begin{tabular}{@{}lrl@{}}
+    \toprule
+    \textbf{Bits per pixel} & \textbf{Colours} & \textbf{Era} \\
+    \midrule
+    1 & 2 & terminals, early Macintosh \\
+    2 & 4 & CGA graphics, 1981 \\
+    4 & 16 & EGA and VGA high-resolution modes \\
+    8, indexed & 256 & VGA 320$\times$200 mode, 1987 \\
+    15 or 16 & 32,768 or 65,536 & high colour, early 1990s \\
+    24 & 16,777,216 & true colour, since the mid-1990s \\
+    \bottomrule
+  \end{tabular}
+  \vspace{0.8em}
+
+  24 bits is the \texttt{\#RRGGBB} code: two hexadecimal digits per
+  channel. Chart libraries, CSS and image formats all speak it.
+\end{frame}
+
 \begin{frame}[t]{A picture is a grid of numbers}
   \centering
   \includegraphics[width=0.88\textwidth,height=0.52\textheight,keepaspectratio]{fig-bitmap-zoom.png}\\[0.2em]
@@ -1006,26 +1028,6 @@
   \end{tabular}
 \end{frame}
 
-\begin{frame}{Bits per pixel}
-  \small
-  \begin{tabular}{@{}lrl@{}}
-    \toprule
-    \textbf{Bits per pixel} & \textbf{Colours} & \textbf{Era} \\
-    \midrule
-    1 & 2 & terminals, early Macintosh \\
-    2 & 4 & CGA graphics, 1981 \\
-    4 & 16 & EGA and VGA high-resolution modes \\
-    8, indexed & 256 & VGA 320$\times$200 mode, 1987 \\
-    15 or 16 & 32,768 or 65,536 & high colour, early 1990s \\
-    24 & 16,777,216 & true colour, since the mid-1990s \\
-    \bottomrule
-  \end{tabular}
-  \vspace{0.8em}
-
-  24 bits is the \texttt{\#RRGGBB} code: two hexadecimal digits per
-  channel. Chart libraries, CSS and image formats all speak it.
-\end{frame}
-
 \begin{frame}[t]{Three physical primaries make a triangle}
   \centering
   \includegraphics[width=0.64\textwidth,height=0.64\textheight,keepaspectratio]{fig-chromaticity-gamuts.png}
@@ -1057,22 +1059,6 @@
     \item Different luminances share the same xy point.
     \item Equal distances in xy are not equal perceived differences.
   \end{itemize}
-\end{frame}
-
-\begin{frame}{Hue, lightness, and chroma do different jobs}
-  \small
-  \begin{tabular}{@{}p{0.19\textwidth}p{0.34\textwidth}p{0.37\textwidth}@{}}
-    \toprule
-    \textbf{Dimension} & \textbf{Useful for} & \textbf{Do not assume} \\
-    \midrule
-    hue & category, identity, highlighting & a natural numeric order \\
-    lightness & ordered magnitude if monotonic & equal code steps look equal \\
-    chroma & emphasis, status, coarse order & precise quantitative comparison \\
-    \bottomrule
-  \end{tabular}
-  \vspace{0.9em}
-
-  Let position or length carry values that must be compared precisely. Use colour to organise, order coarsely, or direct attention.
 \end{frame}
 
 \begin{frame}{Test a palette in its context}
