@@ -976,7 +976,7 @@ def build_notebook() -> None:
             # Sources
 
             - CIE, [CIE 1931 2° colour-matching functions](https://cie.co.at/datatable/cie-1931-colour-matching-functions-2-degree-observer), DOI `10.25039/CIE.DS.xvudnb9b`.
-            - Kalloniatis and Luu, [The Perception of Color](https://www.ncbi.nlm.nih.gov/books/NBK11538/), *Webvision*.
+            - Kalloniatis and Luu, [Color Perception](https://www.webvision.pitt.edu/book/part-viii-psychophysics-of-vision/color-perception/), *Webvision*.
             - Isaac Newton, [*Opticks* (1704)](https://www.newtonproject.ox.ac.uk/view/texts/normalized/NATP00034).
             - J. W. von Goethe, [*Theory of Colours* (1810)](https://www.gutenberg.org/ebooks/50572).
             - A. H. Munsell, [*A Color Notation* (1905)](https://www.gutenberg.org/ebooks/26054).
